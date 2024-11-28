@@ -11,9 +11,21 @@ export default {
 
 
         },
+        
       },
+      
     ],
+    
   },
+  theme: {
+    extend: {
+      screens: {
+        'xl': '1280px',
+        '2xl': '1536px',
+      },
+    },
+  },
+  
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",

@@ -1,16 +1,17 @@
 import React from "react";
-import { FaUser, FaHeart, FaShoppingCart, FaSearch } from "react-icons/fa"; // Usa react-icons para los íconos
+import { FaUser, FaHeart, FaShoppingCart, FaSearch } from "react-icons/fa"; // Importación de íconos
 
 const Header = () => {
   return (
-    <header className="bg-red-600 text-white w-full py-4">
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-8">
+    <header className="my-bg-primary text-white w-full h-32 flex items-center justify-center">
+      {/* Contenedor principal */}
+      <div className="w-full max-w-screen-2xl mx-auto flex items-center justify-between px-4">
         {/* Logo */}
         <div className="flex items-center">
           <img
             src="./src/assets/images/logo.png"
             alt="La Campana"
-            className="h-12"
+            className="h-16"
           />
         </div>
 
