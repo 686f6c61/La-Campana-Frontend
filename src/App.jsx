@@ -6,6 +6,7 @@ import Slider from './components/layouts/Slider';
 import ProductSection from './components/layouts/ProductSection';
 import Footer from './components/layouts/Footer';
 import Navbar from './components/common/NavBar';
+import Feature from './components/common/Feature'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Navbar />
         <Banner />
         <Slider />
+        <Feature />
         <ProductSection />
         <Footer />
       </div>
