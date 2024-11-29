@@ -10,4 +10,5 @@
 }
 #root {
  padding: 0px !important;
+ max-width: 100% !important;
 }

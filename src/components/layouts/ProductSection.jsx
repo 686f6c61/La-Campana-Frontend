@@ -13,7 +13,7 @@ const ProductSection = () => {
           {products.map((product) => (
             <div
               key={product.id}
-              className="bg-white border rounded-lg shadow-md p-4 hover:shadow-lg transition"
+              className="bg-white border rounded-lg shadow-md p-5 hover:shadow-lg transition"
             >
               <img src={product.image} alt={product.name} className="w-full h-40 object-cover mb-4" />
               <h4 className="text-lg font-medium">{product.name}</h4>

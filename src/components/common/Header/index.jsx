@@ -1,13 +1,14 @@
 import React from "react";
 import { FaUser, FaHeart, FaShoppingCart, FaSearch } from "react-icons/fa"; 
 
+
 const Header = () => {
   return (
     <header className="my-bg-primary text-white w-full h-32 flex items-center justify-center">
       <div className="w-full max-w-screen-2xl mx-auto flex items-center justify-between px-4">
         <div className="flex items-center">
           <img
-            src="./src/assets/images/logo.png"
+            src="/src/assets/images/logo.png"
             alt="La Campana"
             className="h-16"
           />

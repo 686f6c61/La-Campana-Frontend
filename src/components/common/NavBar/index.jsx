@@ -10,7 +10,6 @@ const Navbar = () => {
 
   return (
     <div>
-      {/* Navbar */}
       <nav className="bg-white shadow">
         <div className="container mx-auto px-32">
           <ul className="flex justify-between items-center space-x-6 py-4">
@@ -66,8 +65,6 @@ const Navbar = () => {
           </ul>
         </div>
       </nav>
-
-      {/* Sidebar */}
       <div
         className={`fixed top-0 left-0 h-full w-64 bg-white shadow-lg transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
           } transition-transform duration-300`}
@@ -109,8 +106,6 @@ const Navbar = () => {
           </li>
         </ul>
       </div>
-
-      {/* Overlay */}
       {isSidebarOpen && (
         <div
           onClick={toggleSidebar}
