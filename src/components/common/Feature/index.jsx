@@ -1,6 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTruckFast, faWallet } from '@fortawesome/free-solid-svg-icons';
-import { MdOutlineSupportAgent } from "react-icons/md";
 import { VscWorkspaceTrusted } from "react-icons/vsc";
 
 const Confianza = () => {
@@ -19,7 +18,13 @@ const Confianza = () => {
         },
         {
             id: 3,
-            icon: <MdOutlineSupportAgent className="mx-auto h-14 w-14 text-red-600" />,
+            icon: (
+                <img 
+                    src="src/assets/images/Vector.png" 
+                    alt="Asesoría permanente" 
+                    className="mx-auto icon-style" 
+                />
+            ),
             title: "Asesoría permanente",
             description: "Lorem ipsum dolor sit amet consectetur. Etiam id enim diam sollicitudin ut molestie velit.",
         },
