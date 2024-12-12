@@ -6,8 +6,8 @@ import Slider from './components/layouts/Slider';
 import ProductSection from './components/layouts/ProductSection';
 import Footer from './components/layouts/Footer';
 import Navbar from './components/common/NavBar';
-import Feature from './components/common/Feature';
-import Sales from './components/common/Sales'
+import TrustSection from './components/common/TrustSection';
+import BestOfLaCampana from './components/common/BestofLaCampana'
 
 function App() {
   return (
@@ -18,8 +18,8 @@ function App() {
         <Navbar />
         <Banner />
         <Slider />
-        <Feature />
-        <Sales />
+        <TrustSection />
+        <BestOfLaCampana />
         <ProductSection />
         <Footer />
 
