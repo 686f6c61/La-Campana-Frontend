@@ -8,7 +8,7 @@ const Header = () => {
       <div className="w-full max-w-screen-2xl mx-auto flex items-center justify-between px-4">
         <div className="flex items-center">
           <img
-            src="/src/assets/images/logo.png"
+            src="/images/logo.png"
             alt="La Campana"
             className="h-16"
           />

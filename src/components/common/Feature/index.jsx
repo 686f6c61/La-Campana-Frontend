@@ -36,7 +36,7 @@ const Confianza = () => {
             <div className="relative h-[300px] my-bg-primary px-16 md:px-32 lg:px-64">
                 <div className="absolute inset-0">
                     <img
-                        src="src/assets/images/background.jpeg"
+                        src="/images/background.jpeg"
                         alt="Background"
                         className="w-full h-full object-cover opacity-40 rounded-lg overflow-hidden "
                     />
