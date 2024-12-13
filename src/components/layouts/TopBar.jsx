@@ -7,7 +7,7 @@ const TopBar = () => {
       </div>
       <div >
         <button className="btn btn-xs bg-grey text-white">Ciudad</button>
-        <button className="btn btn-xs btn-color text-white">Comprar Ahora</button>
+        <button className="btn btn-xs bg-lacampana-gray1 text-white">Comprar Ahora</button>
         <button className="btn btn-xs bg-grey text-white">Encontranos en</button>
       </div>
 
