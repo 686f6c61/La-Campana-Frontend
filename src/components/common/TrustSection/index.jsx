@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTruckFast, faWallet } from '@fortawesome/free-solid-svg-icons';
 import { VscWorkspaceTrusted } from "react-icons/vsc";
 
-const Confianza = () => {
+const TrustSection = () => {
     const features = [
         {
             id: 1,
@@ -86,4 +86,4 @@ const Confianza = () => {
     );
 };
 
-export default Confianza;
+export default TrustSection;
