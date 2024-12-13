@@ -58,14 +58,6 @@ h6 {
     font-semibold
 }
 
-.my-bg-primary {
-    background-color: #F70025;
-}
-
-.btn-color {
-    background-color: #3C3C3B;
-}
-
 #root {
     padding: 0px !important;
     max-width: 100% !important;

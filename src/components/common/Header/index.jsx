@@ -4,7 +4,7 @@ import { FaUser, FaHeart, FaShoppingCart, FaSearch } from "react-icons/fa";
 
 const Header = () => {
   return (
-    <header className="my-bg-primary text-white w-full h-32 flex items-center justify-center">
+    <header className="bg-lacampana-red2 text-white w-full h-32 flex items-center justify-center">
       <div className="w-full max-w-screen-2xl mx-auto flex items-center justify-between px-4">
         <div className="flex items-center">
           <img
@@ -19,7 +19,7 @@ const Header = () => {
             placeholder="Buscar producto..."
             className="w-full px-4 py-2 rounded-full text-gray-700 placeholder-gray-500 focus:outline-none"
           />
-          <button className="absolute right-2 top-2 my-bg-primary  text-white p-2 rounded-full hover:bg-red-100">
+          <button className="absolute right-2 top-2 bg-lacampana-red2  text-white p-2 rounded-full hover:bg-red-100">
             <FaSearch />
           </button>
         </div>
