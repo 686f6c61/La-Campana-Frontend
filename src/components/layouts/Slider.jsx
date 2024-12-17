@@ -99,7 +99,7 @@ const Ofertas = () => {
                   alt={product.title}
                   className="w-full h-48 object-cover"
                 />
-                <span className="absolute top-2 left-2 my-bg-primary text-white text-xs font-bold px-2 py-1 rounded">
+                <span className="absolute top-2 left-2 bg-lacampana-red2 text-white text-xs font-bold px-2 py-1 rounded">
                   {product.discount}
                 </span>
               </div>
@@ -118,7 +118,7 @@ const Ofertas = () => {
 
       {/* Botón */}
       <div className="text-center mt-10">
-        <button className="my-bg-primary text-white font-medium py-3 px-8 rounded-full hover:bg-red-700">
+        <button className="bg-lacampana-red2 text-white font-medium py-3 px-8 rounded-full hover:bg-red-700">
           Explorar todas las ofertas
         </button>
       </div>

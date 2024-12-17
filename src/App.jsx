@@ -1,28 +1,19 @@
-import './App.css'
-import TopBar from './components/layouts/TopBar';
-import Header from './components/common/Header';
-import Banner from './components/common/Banner';
-import Slider from './components/layouts/Slider';
-import ProductSection from './components/layouts/ProductSection';
-import Footer from './components/layouts/Footer';
-import Navbar from './components/common/NavBar';
-import Feature from './components/common/Feature'
+
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./App.css";
+import Home from "./components/pages/Home/Home";
 
 function App() {
   return (
-    <>
-      <div className="font-sans">
-        <TopBar />
-        <Header />
-        <Navbar />
-        <Banner />
-        <Slider />
-        <Feature />
-        <ProductSection />
-        <Footer />
-      </div>
-    </>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home greeting={"Bienvenidos"} />} />
+
+        <Route path="*" element={<h1>404 Not Found</h1>} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;

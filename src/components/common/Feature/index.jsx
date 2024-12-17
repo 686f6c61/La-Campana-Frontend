@@ -32,7 +32,7 @@ const Confianza = () => {
     ];
 
     return (
-        <section className="relative my-bg-primary text-white py-12 px-4 md:px-8">
+        <section className="relative bg-lacampana-red2 text-white py-12 px-4 md:px-8">
             <div className="absolute inset-0 bg-red-700 bg-opacity-50">
                 <img
                     src="src/assets/images/background.jpeg" 
