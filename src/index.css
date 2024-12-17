@@ -12,3 +12,12 @@
  padding: 0px !important;
  max-width: 100% !important;
 }
+.icon-style {
+    width: 64px;
+    top: 64.81px;
+    left: 12px;
+    gap: 0px;
+    opacity: 1; /* Cambiado para que sea visible */
+
+}
+
