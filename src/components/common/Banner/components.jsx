@@ -40,6 +40,7 @@ export const Content = () => {
           name="radio-1"
           onClick={() => handleDotClick("item1")}
           className="radio w-3 h-3 checked:bg-lacampana-red1 checked:w-5 checked:h-5"
+          defaultChecked
         />
         <input
           type="radio"

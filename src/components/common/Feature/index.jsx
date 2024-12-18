@@ -32,18 +32,17 @@ const Confianza = () => {
     ];
 
     return (
-        <section className="relative bg-lacampana-red2 text-white py-12 px-4 md:px-8">
-            <div className="absolute inset-0 bg-red-700 bg-opacity-50">
-                <img
-                    src="src/assets/images/background.jpeg" 
-                    alt="Background"
-                    className="w-full h-full object-cover opacity-40"
-                />
-            </div>
-
-            <div className="relative container mx-auto max-w-screen-xl">
-               
-                <div className="text-center mb-10">
+        <section className="relative text-lacampana-white py-16 md:px-32 lg:px-64 rounded-lg overflow-hidden">
+            <div className="relative h-[300px] bg-lacampana-red2 px-16 md:px-32 lg:px-64">
+                <div className="absolute inset-0">
+                    <img
+                        src="/images/background.jpeg"
+                        alt="Background"
+                        className="w-full h-full object-cover opacity-40 rounded-lg overflow-hidden "
+                    />
+                </div>
+                {/* Texto encima del fondo */}
+                <div className="relative z-10 flex flex-col items-center justify-center h-full">
                     <h2 className="text-4xl font-bold">Tranquilidad y confianza</h2>
                     <p className="mt-2">
                         En <span className="font-bold">La Campana</span>, queremos que tu experiencia de compra sea excepcional. Por eso, te ofrecemos una serie de beneficios y garantías que te darán la tranquilidad y la confianza que necesitas para realizar tu compra.

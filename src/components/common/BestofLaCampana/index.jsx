@@ -7,7 +7,7 @@ const BestOfLaCampana = () => {
     {
       id: 1,
       discount: "-20%",
-      image: "src/assets/images/prod1.jpg",
+      image: "/images/prod1.jpg",
       title: "Tubo Mueble Cuadrado Esp 1.10 un 3/4 Primera - Norma Ntc 1986",
       price: "$19.693",
       additionalInfo: "IVA incluido",
@@ -15,7 +15,7 @@ const BestOfLaCampana = () => {
     {
       id: 2,
       discount: "-20%",
-      image: "src/assets/images/prod3.jpg",
+      image: "/images/prod3.jpg",
       title: "Marco Ventana Corriente Esp 1.00 un 6.00 mt Primera",
       price: "$32.516",
       additionalInfo: "IVA incluido",
@@ -23,7 +23,7 @@ const BestOfLaCampana = () => {
     {
       id: 3,
       discount: "-20%",
-      image: "src/assets/images/prod7.jpg",
+      image: "/images/prod7.jpg",
       title: "Marco Ventana Tipo Aluminio Esp 0.85 un 6.00 mt Primera",
       price: "$24.895",
       additionalInfo: "IVA incluido",
@@ -31,7 +31,7 @@ const BestOfLaCampana = () => {
     {
       id: 4,
       discount: "-20%",
-      image: "src/assets/images/prod4.jpg",
+      image: "/images/prod4.jpg",
       title: "Tubo Agua Negra Esp 1.90 un 1 1/4 Primera",
       price: "$58.760",
       additionalInfo: "IVA incluido",
@@ -39,7 +39,7 @@ const BestOfLaCampana = () => {
     {
       id: 5,
       discount: "-20%",
-      image: "src/assets/images/prod5.jpg",
+      image: "/images/prod5.jpg",
       title: "Platina 2 Esp 1/8 un 6 mt Primera",
       price: "$42.676",
       additionalInfo: "IVA incluido",
