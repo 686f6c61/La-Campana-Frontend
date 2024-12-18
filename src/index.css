@@ -58,6 +58,29 @@ h6 {
     font-semibold
 }
 
+p {
+    @apply
+    text-p1
+    desktop:text-p1-desktop
+    font-open-sans
+    font-normal
+    text-lacampana-gray1
+}
+
+.lacampana-btn {
+    @apply
+    bg-lacampana-red2
+    px-8
+    py-3
+    rounded-l-3xl
+    rounded-tr-3xl
+    font-montserrat
+    font-semibold
+    text-base
+    text-lacampana-white
+    w-fit
+}
+
 #root {
     padding: 0px !important;
     max-width: 100% !important;
