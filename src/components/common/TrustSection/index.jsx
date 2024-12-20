@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTruckFast, faWallet } from '@fortawesome/free-solid-svg-icons';
 import { VscWorkspaceTrusted } from "react-icons/vsc";
 
+
 const TrustSection = () => {
     const features = [
         {
