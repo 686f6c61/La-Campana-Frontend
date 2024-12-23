@@ -9,7 +9,7 @@ import { FiSearch } from "react-icons/fi";
 const Header = () => {
   return (
     <header className="bg-lacampana-red2 text-white w-full h-32 flex items-center justify-center">
-      <div className="w-full max-w-screen-2xl mx-60 flex items-center justify-between ">
+      <div className="w-full max-w-screen-2xl mx-60 flex items-center justify-between pr-14 ">
         <div className="flex items-center">
           <img src="/images/logo.png" alt="La Campana" className="h-16" />
         </div>
@@ -27,9 +27,9 @@ const Header = () => {
           </div>
 
           <div className="flex items-center space-x-6">
-            <HiOutlineUser className="text-2xl cursor-pointer hover:text-red-300" />
-            <HiOutlineHeart className="text-2xl cursor-pointer hover:text-red-300" />
-            <HiOutlineShoppingCart className="text-2xl cursor-pointer hover:text-red-300" />
+            <HiOutlineUser className="text-2xl cursor-pointer hover:text-red-300 text-3xl stroke-[1.5]" />
+            <HiOutlineHeart className="text-2xl cursor-pointer hover:text-red-300 text-3xl stroke-[1.5]" />
+            <HiOutlineShoppingCart className="text-2xl cursor-pointer hover:text-red-300 text-3xl stroke-[1.5]" />
           </div>
         </div>
       </div>

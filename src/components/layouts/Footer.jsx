@@ -35,11 +35,12 @@ const Modal = ({ isOpen, onClose }) => {
             </p>
 
             <div className="space-y-2">
-              <button className="flex items-center justify-center w-full text-black border border-black py-2 rounded-md">
-                <FaWhatsapp className="mr-2" /> Escribir por WhatsApp
+              <button className="flex items-center justify-start w-full text-black border border-black py-2 pl-2 rounded-md">
+                <FaWhatsapp className="mr-2 text-xl" /> Escribir por WhatsApp
               </button>
-              <button className="flex items-center justify-center w-full text-black border border-black py-2 rounded-md">
-                <HiOutlineMail className="mr-2" /> Escribir un correo
+              <button className="flex items-center justify-start w-full text-black border border-black py-2 pl-2 rounded-md">
+                <HiOutlineMail className="mr-2 text-lacampana-red1 text-xl" />{" "}
+                Escribir un correo
               </button>
             </div>
           </div>
@@ -66,7 +67,7 @@ const Footer = () => {
     <footer className="w-full bg-lacampana-red2 text-white py-4">
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-4">
         {/* Texto del copyright */}
-        <p className="text-sm text-center md:text-left">
+        <p className="text-sm text-center md:text-left text-lacampana-white">
           Copyright © La Campana Servicios de Acero. Todos los derechos
           reservados.
         </p>
