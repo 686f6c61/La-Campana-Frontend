@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTruckFast, faWallet } from '@fortawesome/free-solid-svg-icons';
 import { VscWorkspaceTrusted } from "react-icons/vsc";
 
+
 const TrustSection = () => {
     const features = [
         {
@@ -20,7 +21,7 @@ const TrustSection = () => {
             id: 3,
             icon: (
                 <img 
-                    src="src/assets/images/Vector.png" 
+                    src="public/images/Vector.png" 
                     alt="Asesoría permanente" 
                     className="mx-auto icon-style" 
                 />
@@ -41,7 +42,7 @@ const TrustSection = () => {
             <div className="relative h-[300px] my-bg-primary px-16 md:px-32 lg:px-64">
                 <div className="absolute inset-0">
                     <img
-                        src="src/assets/images/background.jpeg"
+                        src="public/images/background.jpeg"
                         alt="Background"
                         className="w-full h-full object-cover opacity-40 rounded-lg overflow-hidden "
                     />

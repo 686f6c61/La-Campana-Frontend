@@ -9,6 +9,7 @@ import Navbar from "../../../components/common/NavBar";
 import TrustSection from "../../../components/common/TrustSection";
 import BestofLaCampana from "../../../components/common/BestofLaCampana";
 import Categories from "../../common/Categories";
+import FloatingDrawer from "../../common/FloatingDrawer/FloatingDrawer";
 
 const Home = () => {
   return (
@@ -22,6 +23,7 @@ const Home = () => {
       <BestofLaCampana />
       <Categories />
       <ProductSection />
+      <FloatingDrawer />
       <Footer />
     </div>
   );
