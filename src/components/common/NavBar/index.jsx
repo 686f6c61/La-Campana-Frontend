@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { HiMenuAlt2 } from "react-icons/hi";
+import  NavbarItems  from "../NavBarItems";
 
 const Navbar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -32,7 +33,6 @@ const Navbar = () => {
             </button>
 
             <ul className="hidden lg:flex justify-between items-center space-x-6">
-
               <li>
                 <button
                   onClick={toggleSidebar}
@@ -42,17 +42,7 @@ const Navbar = () => {
                   <p>Todas las categorías</p>
                 </button>
               </li>
-              {menuCat.map((category) => (
-                <li key={category.id}>
-                  <a
-                    href={`#${category.id}`}
-                    className="text-gray-700 text-sm hover:text-red-500"
-                  >
-                    {category.name}
-                  </a>
-                </li>
-              ))}
-
+              <NavbarItems items={menuCat} listClass={"text-gray-700 text-sm hover:text-red-500"} />
             </ul>
           </div>
         </div>
@@ -72,41 +62,7 @@ const Navbar = () => {
           </button>
         </div>
         <ul className="p-4 space-y-4">
-          <li>
-            <a href="#categoria1" className="text-gray-700 hover:text-blue-500">
-              Perfiles Drywall
-            </a>
-          </li>
-          <li>
-            <a href="#categoria2" className="text-gray-700 hover:text-blue-500">
-              Perfiles Ornamentación
-            </a>
-          </li>
-          <li>
-            <a href="#categoria3" className="text-gray-700 hover:text-blue-500">
-              Tejas y Cubiertas
-            </a>
-          </li>
-          <li>
-            <a href="#categoria4" className="text-gray-700 hover:text-blue-500">
-              Tuberías
-            </a>
-          </li>
-          <li>
-            <a href="#categoria5" className="text-gray-700 hover:text-blue-500">
-              Vigas y Perfiles
-            </a>
-          </li>
-          <li>
-            <a href="#categoria5" className="text-gray-700 hover:text-blue-500">
-              Entrepisos
-            </a>
-          </li>
-          <li>
-            <a href="#categoria5" className="text-gray-700 hover:text-blue-500">
-              Láminas
-            </a>
-          </li>
+          <NavbarItems items={menuCat} listClass={"text-gray-700 hover:text-blue-500"} />
         </ul>
       </div>
 
