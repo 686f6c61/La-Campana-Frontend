@@ -24,24 +24,26 @@ const newsData = [
 
 const News = () => {
   return (
-    <section className="flex desktop:gap-8 px-4 sm:px-8 tablet:px-16 desktop:px-0 max-w-screen-tablet flex-col desktop:flex-row desktop:max-w-screen-desktop pt-16">
-      <section className="text-start flex flex-col gap-4 desktop:w-1/4">
-        <h3>Actualidad y <span className="text-lacampana-red1">recomendaciones</span></h3>
-        <p className="w-full">Lorem ipsum dolor sit amet consectetur. Etiam id enim diam sollicitudin ut molestie velit</p>
-        <Link className="lacampana-btn">
-          Ver más noticias
-        </Link>
-      </section>
-      <section className="carousel rounded-box space-x-4 p-4 desktop:w-3/4">
-        {newsData.map(news =>
-          <NewsCard
-            key={`news-card-${news.id}`}
-            title={news.title}
-            img={news.coverImg}
-            publicationDate={news.publicationDate}
-          />
-        )}
-      </section>
+    <section className="flex justify-center">
+      <article className="flex desktop:gap-8 px-4 sm:px-8 tablet:px-16 desktop:px-0 max-w-screen-tablet flex-col desktop:flex-row desktop:max-w-screen-desktop pt-16">
+        <section className="text-start flex flex-col gap-4 desktop:w-1/4">
+          <h3>Actualidad y <span className="text-lacampana-red1">recomendaciones</span></h3>
+          <p className="w-full">Lorem ipsum dolor sit amet consectetur. Etiam id enim diam sollicitudin ut molestie velit</p>
+          <Link className="lacampana-btn">
+            Ver más noticias
+          </Link>
+        </section>
+        <section className="carousel rounded-box space-x-4 p-4 desktop:w-3/4">
+          {newsData.map(news =>
+            <NewsCard
+              key={`news-card-${news.id}`}
+              title={news.title}
+              img={news.coverImg}
+              publicationDate={news.publicationDate}
+            />
+          )}
+        </section>
+      </article>
     </section>
   )
 }

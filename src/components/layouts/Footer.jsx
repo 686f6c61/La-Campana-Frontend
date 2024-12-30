@@ -1,6 +1,12 @@
 import React, { useState } from "react";
-import { HiOutlineMail, HiOutlineChatAlt2 } from "react-icons/hi";
+import { HiOutlineMail } from "react-icons/hi";
 import { FaWhatsapp } from "react-icons/fa";
+import { PiYoutubeLogoThin } from "react-icons/pi";
+import { PiInstagramLogoThin } from "react-icons/pi";
+import { SlSocialFacebook } from "react-icons/sl";
+import { PiTiktokLogoThin } from "react-icons/pi";
+import { SlSocialLinkedin } from "react-icons/sl";
+import { PiPhoneCallThin } from "react-icons/pi";
 
 const Modal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
@@ -64,31 +70,129 @@ const Footer = () => {
   const handleCloseModal = () => setIsModalOpen(false);
 
   return (
-    <footer className="w-full bg-lacampana-red2 text-white py-4">
-      <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-4">
+    <footer className="w-full bg-lacampana-red2 text-white">
+      <div className="bg-lacampana-white text-black py-6">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-x-6 gap-y-2 px-6 text-sm md:px-20">
+          {/* Empresa Section */}
+          <div className="pl-4 md:pl-10">
+            <img
+              src="/images/logoSilhouette.png"
+              alt="logoSilhouette"
+              className="w-12 h-12"
+            />
+            <p className="text-left pt-10 pb-1 text-lg w-full md:w-60">
+              ¿Tienes alguna pregunta?
+            </p>
+            <p className="text-left font-bold pb-4">PBX: (601) 370.22.00</p>
+
+            <p className="text-left text-sm w-60 pb-4">
+              Lorem ipsum dolor sit amet consectetur. Etiam id enim diam
+              sollicitudin ut molestie velit
+            </p>
+            <div className="flex space-x-3 mt-2 w-80">
+              <PiYoutubeLogoThin className="text-3xl text-lacampana-red1" />
+              <PiInstagramLogoThin className="text-3xl text-lacampana-gray1" />
+              <PiTiktokLogoThin className="text-3xl text-lacampana-gray1" />
+              <SlSocialFacebook className="text-2xl custom-icon text-lacampana-gray1" />
+
+              <SlSocialLinkedin className="text-2xl text-lacampana-gray1" />
+              <PiPhoneCallThin className="text-2xl text-lacampana-gray1" />
+            </div>
+          </div>
+
+          {/* Empresa Section */}
+          <div className="pl-9">
+            <h3 className="font-antonio font-bold text-lacampana-red1 mb-2 text-lg text-left pt-8 pb-3">
+              Empresa
+            </h3>
+            <ul>
+              <p className="text-left pb-4 pl-2">Servicios</p>
+              <p className="text-left pb-4 pl-2">Nosotros</p>
+              <p className="text-left pb-4 pl-2">Blog</p>
+              <p className="text-left pb-4 pl-2">Documentos</p>
+              <p className="text-left pb-4 pl-2">Contacto</p>
+            </ul>
+          </div>
+
+          {/* Mi Cuenta Section */}
+          <div className="pl-0">
+            <h3 className="font-antonio font-bold text-lacampana-red1 mb-2 text-lg text-left pt-8 pb-3">
+              Mi Cuenta
+            </h3>
+            <ul>
+              <p className="text-left pb-4 pl-2">Seguimiento de pedidos</p>
+              <p className="text-left pb-4 pl-2">Ver el carrito</p>
+              <p className="text-left pb-4 pl-2">Iniciar sesión</p>
+              <p className="text-left pb-4 pl-2">Mi lista de deseos</p>
+            </ul>
+          </div>
+
+          {/* Legal Section */}
+          <div className="pl-1">
+            <h3 className="font-antonio font-bold text-lacampana-red1 mb-2 text-lg text-left pt-8 pb-3">
+              Legal
+            </h3>
+            <ul>
+              <p className="text-left pb-4 pl-2">Términos y condiciones</p>
+              <p className="text-left pb-4 pl-2">Métodos de pago</p>
+              <p className="text-left pb-4 pl-2">Devolución de producto</p>
+              <p className="text-left pb-4 pl-2">Envío</p>
+              <p className="text-left pb-4 pl-2">Política de privacidad</p>
+            </ul>
+          </div>
+
+          {/* Newsletter Section */}
+          <div className="w-80">
+            <h3 className="font-antonio font-bold text-lacampana-red1 mb-2 text-lg text-left pt-8 pb-3">
+              Newsletter
+            </h3>
+
+            <div className="flex flex-col space-y-2">
+              <input
+                type="email"
+                placeholder="Correo electrónico"
+                className="p-2 text-black rounded-md"
+              />
+              <button className="bg-lacampana-red2 font-montserrat text-white w-[270px] h-[44px] rounded-md rounded-tl-full rounded-bl-full rounded-tr-full text-lg">
+                Suscribirme
+              </button>
+              <div className="flex items-center">
+                <input type="checkbox" className="mr-2 mt-2 " />
+                <p className="text-sm pt-3">
+                  He leído y acepto la política de privacidad
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-4 pt-5 pb-5">
         {/* Texto del copyright */}
-        <p className="text-sm text-center md:text-left text-lacampana-white">
+        <p className="text-sm md:text-base text-center md:text-left text-lacampana-white pt-2 pl-4 md:pl-12">
           Copyright © La Campana Servicios de Acero. Todos los derechos
           reservados.
         </p>
 
         {/* Botones */}
-        <div className="flex space-x-4 mt-4 md:mt-0">
+        <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 mt-4 md:mt-0">
+          {/* Row for Sedes and Solicitar crédito */}
+
           {/* Botón Sedes */}
-          <button className="btn btn-secondary bg-white text-red-600 font-medium px-4 py-2 rounded-tl-full rounded-bl-full rounded-tr-full hover:bg-gray-100">
+          <button className="btn btn-secondary bg-white text-lacampana-red2 font-semibold text-sm md:text-xl px-4 py-2 pr-6 md:pr-12 pl-6 md:pl-12 rounded-tl-full rounded-bl-full rounded-tr-full hover:bg-white">
             Sedes
           </button>
 
           {/* Botón Hablar con un asesor */}
           <button
-            className="btn btn-outline text-white border-white font-medium px-4 py-2 rounded-tl-full rounded-bl-full rounded-tr-full hover:bg-red-700"
+            className="btn btn-outline text-white border-white text-sm md:text-xl px-4 py-2 pr-6 md:pr-12 pl-6 md:pl-12 rounded-tl-full rounded-bl-full rounded-tr-full w-full md:w-auto"
             onClick={handleOpenModal}
           >
             Hablar con un asesor
           </button>
 
           {/* Botón Solicitar crédito */}
-          <button className="btn bg-gray-800 text-white font-medium px-4 py-2 rounded-tl-full rounded-bl-full rounded-tr-full border-none hover:bg-gray-700">
+          <button className="btn bg-lacampana-gray1 text-white border-none text-sm md:text-xl px-4 py-2 pr-6 md:pr-12 pl-6 md:pl-12 rounded-tl-full rounded-bl-full rounded-tr-full hover:bg-lacampana-gray1">
             Solicitar crédito
           </button>
         </div>

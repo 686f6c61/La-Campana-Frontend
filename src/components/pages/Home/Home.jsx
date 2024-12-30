@@ -11,10 +11,11 @@ import BestofLaCampana from "../../../components/common/BestofLaCampana";
 import Categories from "../../common/Categories";
 import FloatingDrawer from "../../common/FloatingDrawer/FloatingDrawer";
 import News from "../../common/News";
+import ServiceSection from "../../layouts/ServiceSection";
 
 const Home = () => {
   return (
-    <div className="font-sans flex flex-col items-center">
+    <div className="font-sans">
       <TopBar />
       <Header />
       <Navbar />
@@ -26,6 +27,7 @@ const Home = () => {
       <News />
       <ProductSection />
       <FloatingDrawer />
+      <ServiceSection />
       <Footer />
     </div>
   );
