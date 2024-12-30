@@ -7,13 +7,25 @@ const TrustSection = () => {
     const features = [
         {
             id: 1,
-            icon: <FontAwesomeIcon icon={faWallet} className="text-red-600 text-5xl" />,
+            icon: (
+                <img 
+                    src="public/images/Group2.png" 
+                    alt="Pagos seguros" 
+                    className="mx-auto icon-style" 
+                />
+            ),
             title: "Pagos seguros",
             description: "Lorem ipsum dolor sit amet consectetur. Etiam id enim diam sollicitudin ut molestie velit.",
         },
         {
             id: 2,
-            icon: <VscWorkspaceTrusted className="mx-auto h-14 w-14 text-red-600" />,
+            icon: (
+                <img 
+                    src="public/images/Group3.png" 
+                    alt="Calidad asegurada" 
+                    className="mx-auto icon-style" 
+                />
+            ),
             title: "Calidad garantizada",
             description: "Lorem ipsum dolor sit amet consectetur. Etiam id enim diam sollicitudin ut molestie velit.",
         },
@@ -21,7 +33,7 @@ const TrustSection = () => {
             id: 3,
             icon: (
                 <img 
-                    src="public/images/Vector.png" 
+                    src="public/images/Group4.png" 
                     alt="Asesoría permanente" 
                     className="mx-auto icon-style" 
                 />
@@ -31,7 +43,13 @@ const TrustSection = () => {
         },
         {
             id: 4,
-            icon: <FontAwesomeIcon icon={faTruckFast} className="text-red-600 text-5xl" />,
+            icon: (
+                <img 
+                    src="public/images/Group1.png" 
+                    alt="Envios nacionales" 
+                    className="mx-auto icon-style" 
+                />
+            ),
             title: "Envíos nacionales",
             description: "Lorem ipsum dolor sit amet consectetur. Etiam id enim diam sollicitudin ut molestie velit.",
         },
@@ -50,14 +68,14 @@ const TrustSection = () => {
                 {/* Texto encima del fondo */}
                 <div className="relative z-10 flex flex-col items-center justify-center h-full">
                     <h2 className="text-4xl font-bold">Tranquilidad y confianza</h2>
-                    <p className="mt-2 text-center max-w-2xl">
+                    <p className="mt-4 text-center max-w-2xl">
                         En <span className="font-bold">La Campana</span>, queremos que tu experiencia de compra sea excepcional. Por eso, te ofrecemos una serie de beneficios y garantías que te darán la tranquilidad y la confianza que necesitas para realizar tu compra.
                     </p>
                 </div>
             </div>
 
             {/* Features (sobresalientes) */}
-            <div className="relative -mt-20 pb-16">
+            <div className="relative -mt-12 pb-16">
                 <div className="container mx-auto max-w-screen-xl">
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
                         {features.map((feature) => (
