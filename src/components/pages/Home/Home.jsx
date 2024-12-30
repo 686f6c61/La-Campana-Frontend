@@ -10,6 +10,7 @@ import TrustSection from "../../../components/common/TrustSection";
 import BestofLaCampana from "../../../components/common/BestofLaCampana";
 import Categories from "../../common/Categories";
 import FloatingDrawer from "../../common/FloatingDrawer/FloatingDrawer";
+import ServiceSection from "../../layouts/ServiceSection";
 
 const Home = () => {
   return (
@@ -24,6 +25,7 @@ const Home = () => {
       <Categories />
       <ProductSection />
       <FloatingDrawer />
+      <ServiceSection />
       <Footer />
     </div>
   );

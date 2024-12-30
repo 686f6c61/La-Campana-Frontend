@@ -70,18 +70,18 @@ const Footer = () => {
   const handleCloseModal = () => setIsModalOpen(false);
 
   return (
-    <footer className="w-full bg-lacampana-red2 text-white ">
-      <div className="bg-lacampana-white text-black py-6 pr-20 ">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-x-6 gap-y-2 text-sm pl-20 pr-20">
+    <footer className="w-full bg-lacampana-red2 text-white">
+      <div className="bg-lacampana-white text-black py-6">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-x-6 gap-y-2 px-6 text-sm md:px-20">
           {/* Empresa Section */}
-          <div className="pl-10">
+          <div className="pl-4 md:pl-10">
             <img
               src="/images/logoSilhouette.png"
               alt="logoSilhouette"
               className="w-12 h-12"
             />
-            <p className="text-left pt-10 pb-1 text-lg w-60">
-              ¿Tienes alguna pregunta?{" "}
+            <p className="text-left pt-10 pb-1 text-lg w-full md:w-60">
+              ¿Tienes alguna pregunta?
             </p>
             <p className="text-left font-bold pb-4">PBX: (601) 370.22.00</p>
 
@@ -169,28 +169,30 @@ const Footer = () => {
 
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-4 pt-5 pb-5">
         {/* Texto del copyright */}
-        <p className="text-sm text-center md:text-left text-lacampana-white pt-2">
+        <p className="text-sm md:text-base text-center md:text-left text-lacampana-white pt-2 pl-4 md:pl-12">
           Copyright © La Campana Servicios de Acero. Todos los derechos
           reservados.
         </p>
 
         {/* Botones */}
-        <div className="flex space-x-4 mt-4 md:mt-0">
+        <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 mt-4 md:mt-0">
+          {/* Row for Sedes and Solicitar crédito */}
+
           {/* Botón Sedes */}
-          <button className="btn btn-secondary bg-white text-red-600 text-lg px-4 py-2 pr-8 pl-8 rounded-tl-full rounded-bl-full rounded-tr-full hover:bg-gray-100">
+          <button className="btn btn-secondary bg-white text-lacampana-red2 font-semibold text-sm md:text-xl px-4 py-2 pr-6 md:pr-12 pl-6 md:pl-12 rounded-tl-full rounded-bl-full rounded-tr-full hover:bg-white">
             Sedes
           </button>
 
           {/* Botón Hablar con un asesor */}
           <button
-            className="btn btn-outline text-white border-white text-lg px-4 py-2 pr-8 pl-8 rounded-tl-full rounded-bl-full rounded-tr-full "
+            className="btn btn-outline text-white border-white text-sm md:text-xl px-4 py-2 pr-6 md:pr-12 pl-6 md:pl-12 rounded-tl-full rounded-bl-full rounded-tr-full w-full md:w-auto"
             onClick={handleOpenModal}
           >
             Hablar con un asesor
           </button>
 
           {/* Botón Solicitar crédito */}
-          <button className="btn bg-lacampana-gray1 text-white text-lg px-4 py-2 pr-8 pl-8 rounded-tl-full rounded-bl-full rounded-tr-full border-none ">
+          <button className="btn bg-lacampana-gray1 text-white border-none text-sm md:text-xl px-4 py-2 pr-6 md:pr-12 pl-6 md:pl-12 rounded-tl-full rounded-bl-full rounded-tr-full hover:bg-lacampana-gray1">
             Solicitar crédito
           </button>
         </div>
