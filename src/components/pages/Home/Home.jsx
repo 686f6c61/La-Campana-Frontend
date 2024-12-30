@@ -10,10 +10,11 @@ import TrustSection from "../../../components/common/TrustSection";
 import BestofLaCampana from "../../../components/common/BestofLaCampana";
 import Categories from "../../common/Categories";
 import FloatingDrawer from "../../common/FloatingDrawer/FloatingDrawer";
+import News from "../../common/News";
 
 const Home = () => {
   return (
-    <div className="font-sans">
+    <div className="font-sans flex flex-col items-center">
       <TopBar />
       <Header />
       <Navbar />
@@ -22,6 +23,7 @@ const Home = () => {
       <TrustSection />
       <BestofLaCampana />
       <Categories />
+      <News />
       <ProductSection />
       <FloatingDrawer />
       <Footer />
