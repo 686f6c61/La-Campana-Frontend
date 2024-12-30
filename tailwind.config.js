@@ -40,6 +40,7 @@ export default {
         "p2": "12px",
         "p1-desktop": "17px",
         "p2-desktop": "14px",
+        "p3-desktop": "12px",
       },
       screens: {
         'tablet': '768px',
