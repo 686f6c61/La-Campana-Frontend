@@ -7,6 +7,7 @@ import { SlSocialFacebook } from "react-icons/sl";
 import { PiTiktokLogoThin } from "react-icons/pi";
 import { SlSocialLinkedin } from "react-icons/sl";
 import { PiPhoneCallThin } from "react-icons/pi";
+import { RiTwitterXFill } from "react-icons/ri";
 
 const Modal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
@@ -94,7 +95,7 @@ const Footer = () => {
               <PiInstagramLogoThin className="text-3xl text-lacampana-gray1" />
               <PiTiktokLogoThin className="text-3xl text-lacampana-gray1" />
               <SlSocialFacebook className="text-2xl custom-icon text-lacampana-gray1" />
-
+              <RiTwitterXFill className="text-2xl custom-icon text-lacampana-gray1" />
               <SlSocialLinkedin className="text-2xl text-lacampana-gray1" />
               <PiPhoneCallThin className="text-2xl text-lacampana-gray1" />
             </div>
@@ -174,10 +175,8 @@ const Footer = () => {
           reservados.
         </p>
 
-        {/* Botones */}
-        <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 mt-4 md:mt-0">
-          {/* Row for Sedes and Solicitar crédito */}
-
+        {/* Botones para pantallas grandes */}
+        <div className="hidden sm:flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 mt-4 md:mt-0">
           {/* Botón Sedes */}
           <button className="btn btn-secondary bg-white text-lacampana-red2 font-semibold text-sm md:text-xl px-4 py-2 pr-6 md:pr-12 pl-6 md:pl-12 rounded-tl-full rounded-bl-full rounded-tr-full hover:bg-white">
             Sedes
@@ -194,6 +193,30 @@ const Footer = () => {
           {/* Botón Solicitar crédito */}
           <button className="btn bg-lacampana-gray1 text-white border-none text-sm md:text-xl px-4 py-2 pr-6 md:pr-12 pl-6 md:pl-12 rounded-tl-full rounded-bl-full rounded-tr-full hover:bg-lacampana-gray1">
             Solicitar crédito
+          </button>
+        </div>
+
+        {/* Botones para pantallas pequeñas */}
+        <div className="flex flex-col space-y-2 sm:hidden">
+          {/* Contenedor para los primeros dos botones */}
+          <div className="flex flex-row space-x-4">
+            {/* Botón Sedes */}
+            <button className="btn btn-secondary bg-white text-lacampana-red2 font-semibold text-xs px-2 py-1 rounded-tl-full rounded-bl-full rounded-tr-full hover:bg-white w-full">
+              Sedes
+            </button>
+
+            {/* Botón Solicitar crédito */}
+            <button className="btn bg-lacampana-gray1 text-white border-none text-xs px-2 py-1 rounded-tl-full rounded-bl-full rounded-tr-full hover:bg-lacampana-gray1 w-full">
+              Solicitar crédito
+            </button>
+          </div>
+
+          {/* Botón Hablar con un asesor */}
+          <button
+            className="btn btn-outline text-white border-white text-xs px-2 py-1 rounded-tl-full rounded-bl-full rounded-tr-full w-full"
+            onClick={handleOpenModal}
+          >
+            Hablar con un asesor
           </button>
         </div>
       </div>
