@@ -72,7 +72,7 @@ const FloatingDrawer = () => {
         </div>
 
         {isOpen && (
-          <div className="absolute top-0 right-20 bg-lacampana-red2 text-white w-16 h-64 rounded-full flex flex-col justify-around items-center shadow-lg transition-opacity duration-300">
+          <div className="absolute bottom-20 right-0 bg-lacampana-red2 text-white w-16 h-64 rounded-full flex flex-col justify-around items-center shadow-lg transition-opacity duration-300">
             <LuMapPin className="text-4xl stroke-[1.5]" />
             <img
               src="/images/pseblack.png"
