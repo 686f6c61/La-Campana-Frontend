@@ -28,31 +28,73 @@ const Modal = ({ isOpen, onClose }) => {
       >
         &times; {/* The "X" symbol */}
       </button>
-      <div className="relative grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 gap-4 p-4">
-        {cards.map((card, index) => (
-          <div
-            key={index}
-            className="w-[239px] h-[222px] border rounded-tl-lg p-4 bg-lacampana-gray4 text-center shadow-md"
-          >
-            <h2 className="text-xl mt-2 text-left font-antonio font-bold text-lacampana-red1">
-              {card.name}
-            </h2>
-            <p className="text-sm mt-2 text-left text-black">{card.phone}</p>
-            <p className="text-sm mt-2 text-left text-black pb-2">
-              {card.location}
-            </p>
+      <div className="relative p-4 h-screen overflow-y-auto">
+        {/* Big screens */}
+        <div className="hidden lg:grid grid-cols-4 gap-x-4 gap-y-4">
+          {cards.map((card, index) => (
+            <div
+              key={index}
+              className="w-full h-auto border rounded-tl-lg p-4 bg-lacampana-gray4 text-center shadow-md"
+            >
+              <h2 className="text-lg mt-2 text-left font-antonio font-bold text-lacampana-red1">
+                {card.name}
+              </h2>
+              <p className="text-sm mt-2 text-left text-black">{card.phone}</p>
+              <p className="text-sm mt-2 text-left text-black pb-2">
+                {card.location}
+              </p>
 
-            <div className="space-y-2">
-              <button className="flex items-center justify-start w-full text-black border border-black py-2 pl-2 rounded-md">
-                <FaWhatsapp className="mr-2 text-xl" /> Escribir por WhatsApp
-              </button>
-              <button className="flex items-center justify-start w-full text-black border border-black py-2 pl-2 rounded-md">
-                <HiOutlineMail className="mr-2 text-lacampana-red1 text-xl" />{" "}
-                Escribir un correo
-              </button>
+              <div className="space-y-2">
+                <button className="flex items-center justify-start w-full text-black border border-black py-2 pl-2 rounded-tl-full rounded-bl-full rounded-tr-full">
+                  <FaWhatsapp className="mr-2 text-xl" /> WhatsApp
+                </button>
+                <button className="flex items-center justify-start w-[180px] text-black border border-black py-2 pl-2 rounded-tl-full rounded-bl-full rounded-tr-full">
+                  <HiOutlineMail className="mr-2 text-lacampana-red1 text-xl" />{" "}
+                  Escribir un correo
+                </button>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
+
+        {/* Small screens */}
+        <div className="block lg:hidden">
+          {Array.from({ length: cards.length / 2 }).map((_, rowIndex) => (
+            <div
+              key={rowIndex}
+              className="grid grid-cols-2 gap-x-4 gap-y-4 mb-4"
+            >
+              {cards
+                .slice(rowIndex * 2, rowIndex * 2 + 2)
+                .map((card, index) => (
+                  <div
+                    key={index}
+                    className="w-full h-auto border rounded-tl-lg p-4 bg-lacampana-gray4 text-center shadow-md"
+                  >
+                    <h2 className="text-lg mt-2 text-left font-antonio font-bold text-lacampana-red1">
+                      {card.name}
+                    </h2>
+                    <p className="text-sm mt-2 text-left text-black">
+                      {card.phone}
+                    </p>
+                    <p className="text-sm mt-2 text-left text-black pb-2">
+                      {card.location}
+                    </p>
+
+                    <div className="space-y-2">
+                      <button className="flex items-center justify-start w-[170px] text-black border border-black py-2 pl-2 rounded-tl-full rounded-bl-full rounded-tr-full">
+                        <FaWhatsapp className="mr-2 text-xl" /> WhatsApp
+                      </button>
+                      <button className="flex items-center justify-start w-[170px] text-black border border-black py-2 pl-2 rounded-tl-full rounded-bl-full rounded-tr-full">
+                        <HiOutlineMail className="mr-2 text-lacampana-red1 text-xl" />{" "}
+                        Escribir un correo
+                      </button>
+                    </div>
+                  </div>
+                ))}
+            </div>
+          ))}
+        </div>
 
         <button
           onClick={onClose}
@@ -74,7 +116,7 @@ const Footer = () => {
   const [isLegalOpen, setIsLegalOpen] = useState(false);
 
   return (
-    <footer className="w-full bg-lacampana-red2 text-white">
+    <footer className="w-full bg-lacampana-red2 text-white md:mt-20">
       <div className="bg-lacampana-white text-black py-6">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-x-6 gap-y-2 px-6 text-sm md:px-20">
           {/* Empresa Section */}
@@ -230,18 +272,18 @@ const Footer = () => {
               Newsletter
             </h3>
 
-            <div className="flex flex-col space-y-4">
+            <div className="flex flex-col space-y-4 pl-10 md:pl-0">
               <input
                 type="email"
                 placeholder="Correo electrónico"
-                className="p-2 text-lacampana-white pl-4 text-lg w-[270px] h-[44px] rounded-tl-full rounded-bl-full rounded-tr-full"
+                className="p-2 text-lacampana-white pl-4 text-lg md:w-[270px] w-[300px] h-[44px] rounded-tl-full rounded-bl-full rounded-tr-full"
               />
-              <button className="bg-lacampana-red2 font-montserrat text-white w-[270px] h-[44px] rounded-md rounded-tl-full rounded-bl-full rounded-tr-full text-lg">
+              <button className="bg-lacampana-red2 font-montserrat text-white md:w-[270px] w-[300px] h-[44px] rounded-md rounded-tl-full rounded-bl-full rounded-tr-full text-lg">
                 Suscribirme
               </button>
-              <div className="flex items-center">
+              <div className="flex items-center w-[400px]">
                 <input type="checkbox" className="mr-2 mt-2 " />
-                <p className="text-sm pt-3">
+                <p className="text-xs pt-3">
                   He leído y acepto la política de privacidad
                 </p>
               </div>
