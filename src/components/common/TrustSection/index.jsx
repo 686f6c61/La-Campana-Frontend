@@ -57,24 +57,23 @@ const TrustSection = () => {
 
     return (
         <section className="relative text-white py-16 md:px-32 lg:px-64 rounded-lg overflow-hidden">
-            <div className="relative h-[300px] my-bg-primary px-16 md:px-32 lg:px-64">
+            <div className="relative h-[300px] bg-lacampana-red2 px-16 md:px-32 lg:px-64">
                 <div className="absolute inset-0">
                     <img
                         src="public/images/background.jpeg"
                         alt="Background"
-                        className="w-full h-full object-cover opacity-40 rounded-lg overflow-hidden "
+                        className="w-full h-full object-cover opacity-40 rounded-lg overflow-hidden"
                     />
                 </div>
-                {/* Texto encima del fondo */}
+                
                 <div className="relative z-10 flex flex-col items-center justify-center h-full">
-                    <h2 className="text-4xl font-bold">Tranquilidad y confianza</h2>
-                    <p className="mt-4 text-center max-w-2xl">
-                        En <span className="font-bold">La Campana</span>, queremos que tu experiencia de compra sea excepcional. Por eso, te ofrecemos una serie de beneficios y garantías que te darán la tranquilidad y la confianza que necesitas para realizar tu compra.
+                    <h2 className="text-4xl text-white font-bold">Tranquilidad y confianza</h2>
+                    <p className="mt-4 text-center text-white max-w-2xl">
+                        En <span className="font-bold ">La Campana</span>, queremos que tu experiencia de compra sea excepcional. Por eso, te ofrecemos una serie de beneficios y garantías que te darán la tranquilidad y la confianza que necesitas para realizar tu compra.
                     </p>
                 </div>
             </div>
 
-            {/* Features (sobresalientes) */}
             <div className="relative -mt-12 pb-16">
                 <div className="container mx-auto max-w-screen-xl">
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
@@ -83,15 +82,14 @@ const TrustSection = () => {
                                 key={feature.id}
                                 className="bg-white rounded-xl p-6 shadow-lg text-center border-t-4 border-red-600"
                             >
-                                {/* Ícono */}
-                                <div className="mb-4">
+                                <div className="mb-8">
                                     {feature.icon}
                                 </div>
-                                {/* Título */}
+                               
                                 <h3 className="text-lg font-bold text-gray-800 mb-2">
                                     {feature.title}
                                 </h3>
-                                {/* Descripción */}
+                                
                                 <p className="text-sm text-gray-600">{feature.description}</p>
                             </div>
                         ))}
@@ -99,7 +97,6 @@ const TrustSection = () => {
                 </div>
             </div>
 
-            {/* Espaciado para evitar solapamiento con la sección siguiente */}
             <div className="mt-20"></div>
         </section>
     );

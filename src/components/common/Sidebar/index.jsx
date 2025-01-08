@@ -224,14 +224,13 @@ const Sidebar = ({ onClose }) => {
               }`}
               onClick={() => handleCategoryClick(category)}
             >
-              <span>{category.name}</span>
+              <span className="font-bold ">{category.name}</span>
               <span>→</span>
             </div>
           ))}
         </nav>
       </div>
 
-      {/* Subcategories Panel */}
       {activeCategory && (
         <div className="absolute left-64 top-0 h-full rounded-t  bg-gray-50 p-6 overflow-y-auto shadow-lg z-20 flex-grow">
           <div className="flex justify-between items-start mb-8">
@@ -243,7 +242,7 @@ const Sidebar = ({ onClose }) => {
             </button>
           </div>
           <div className="grid grid-cols-12 gap-16">
-            {/* Subcategorías */}
+          
             <div className="col-span-8 grid grid-cols-2 gap-8">
               {activeCategory.subcategories.map((subcategory, index) => (
                 <div key={index}>
@@ -258,7 +257,7 @@ const Sidebar = ({ onClose }) => {
                 </div>
               ))}
             </div>
-            {/* Imagen */}
+          
             <div className=" lg:h-screen lg:w-60 flex bg-cover rounded-t lg:rounded-t-none lg:rounded-l">
               <img
                 src={activeCategory.image}
