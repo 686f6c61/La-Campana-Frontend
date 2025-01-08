@@ -8,6 +8,7 @@ import { PiTiktokLogoThin } from "react-icons/pi";
 import { SlSocialLinkedin } from "react-icons/sl";
 import { PiPhoneCallThin } from "react-icons/pi";
 // import { RiTwitterXFill } from "react-icons/ri";
+import { IoIosArrowDown } from "react-icons/io";
 
 const Modal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
@@ -27,7 +28,7 @@ const Modal = ({ isOpen, onClose }) => {
       >
         &times; {/* The "X" symbol */}
       </button>
-      <div className="relative grid grid-cols-1 md:grid-cols-4 gap-4 p-4 rounded-lg">
+      <div className="relative grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 gap-4 p-4">
         {cards.map((card, index) => (
           <div
             key={index}
@@ -69,6 +70,8 @@ const Footer = () => {
 
   const handleOpenModal = () => setIsModalOpen(true);
   const handleCloseModal = () => setIsModalOpen(false);
+
+  const [isLegalOpen, setIsLegalOpen] = useState(false);
 
   return (
     <footer className="w-full bg-lacampana-red2 text-white">
@@ -126,8 +129,12 @@ const Footer = () => {
             </div>
           </div>
 
+          {/* Línea divisora */}
+          <div className="border-t border-lacampana-gray3  sm:hidden"></div>
+
           {/* Empresa Section */}
-          <div className="pl-9">
+
+          <div className="md:pl-9 hidden md:block">
             <h3 className="font-antonio font-bold text-lacampana-red1 mb-2 text-lg text-left pt-8 pb-3">
               Empresa
             </h3>
@@ -141,7 +148,7 @@ const Footer = () => {
           </div>
 
           {/* Mi Cuenta Section */}
-          <div className="pl-0">
+          <div className="md:pl-0 hidden md:block">
             <h3 className="font-antonio font-bold text-lacampana-red1 mb-2 text-lg text-left pt-8 pb-3">
               Mi Cuenta
             </h3>
@@ -153,12 +160,59 @@ const Footer = () => {
             </ul>
           </div>
 
+          <div className="block md:hidden grid grid-cols-2 gap-4">
+            {/* Empresa Section */}
+            <div>
+              <h3 className="font-antonio font-bold text-lacampana-red1 mb-2 text-lg text-left pt-8 pb-3">
+                Empresa
+              </h3>
+              <ul>
+                <p className="text-left pb-4 pl-2">Servicios</p>
+                <p className="text-left pb-4 pl-2">Nosotros</p>
+                <p className="text-left pb-4 pl-2">Blog</p>
+                <p className="text-left pb-4 pl-2">Documentos</p>
+                <p className="text-left pb-4 pl-2">Contacto</p>
+              </ul>
+            </div>
+
+            {/* Mi Cuenta Section */}
+            <div>
+              <h3 className="font-antonio font-bold text-lacampana-red1 mb-2 text-lg text-left pt-8 pb-3">
+                Mi Cuenta
+              </h3>
+              <ul>
+                <p className="text-left pb-4 pl-2">Seguimiento de pedidos</p>
+                <p className="text-left pb-4 pl-2">Ver el carrito</p>
+                <p className="text-left pb-4 pl-2">Iniciar sesión</p>
+                <p className="text-left pb-4 pl-2">Mi lista de deseos</p>
+              </ul>
+            </div>
+          </div>
+
+          {/* Línea divisora */}
+          <div className="border-t border-lacampana-gray3  sm:hidden"></div>
+
           {/* Legal Section */}
           <div className="pl-1">
-            <h3 className="font-antonio font-bold text-lacampana-red1 mb-2 text-lg text-left pt-8 pb-3">
-              Legal
-            </h3>
-            <ul>
+            <div
+              className="flex justify-between items-center font-antonio font-bold text-lacampana-gray1 mb-0 text-lg text-left md:pt-8 md:pb-3 cursor-pointer sm:cursor-default"
+              onClick={() => setIsLegalOpen(!isLegalOpen)}
+            >
+              <h3 className="font-antonio font-bold text-lacampana-red1 mb-0 md:mb-1 text-lg text-left md:pt-0 pt-1 md:pt-8 md:pb-0 pb-3">
+                Legal
+              </h3>
+              <IoIosArrowDown
+                className={`text-xl transform transition-transform duration-300 ${
+                  isLegalOpen ? "rotate-180" : "rotate-0"
+                } sm:hidden`}
+              />
+            </div>
+            {/* List as accordion on small screens */}
+            <ul
+              className={`${
+                isLegalOpen ? "block" : "hidden"
+              } sm:block text-left`}
+            >
               <p className="text-left pb-4 pl-2">Términos y condiciones</p>
               <p className="text-left pb-4 pl-2">Métodos de pago</p>
               <p className="text-left pb-4 pl-2">Devolución de producto</p>
@@ -167,17 +221,20 @@ const Footer = () => {
             </ul>
           </div>
 
+          {/* Línea divisora */}
+          <div className="border-t border-lacampana-gray3  sm:hidden"></div>
+
           {/* Newsletter Section */}
           <div className="w-80">
             <h3 className="font-antonio font-bold text-lacampana-red1 mb-2 text-lg text-left pt-8 pb-3">
               Newsletter
             </h3>
 
-            <div className="flex flex-col space-y-2">
+            <div className="flex flex-col space-y-4">
               <input
                 type="email"
                 placeholder="Correo electrónico"
-                className="p-2 text-black rounded-md"
+                className="p-2 text-lacampana-white pl-4 text-lg w-[270px] h-[44px] rounded-tl-full rounded-bl-full rounded-tr-full"
               />
               <button className="bg-lacampana-red2 font-montserrat text-white w-[270px] h-[44px] rounded-md rounded-tl-full rounded-bl-full rounded-tr-full text-lg">
                 Suscribirme
@@ -195,7 +252,7 @@ const Footer = () => {
 
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-4 pt-5 pb-5">
         {/* Texto del copyright */}
-        <p className="text-sm md:text-base text-center md:text-left text-lacampana-white pt-2 pl-4 md:pl-12">
+        <p className="md:text-sm  text-sm md:text-base text-center md:text-left text-lacampana-white pt-2 pb-2 md:pl-4 md:pl-12">
           Copyright © La Campana Servicios de Acero. Todos los derechos
           reservados.
         </p>
@@ -224,21 +281,21 @@ const Footer = () => {
         {/* Botones para pantallas pequeñas */}
         <div className="flex flex-col space-y-2 sm:hidden">
           {/* Contenedor para los primeros dos botones */}
-          <div className="flex flex-row space-x-4">
+          <div className="flex justify-center space-x-4">
             {/* Botón Sedes */}
-            <button className="btn btn-secondary bg-white text-lacampana-red2 font-semibold text-xs px-2 py-1 rounded-tl-full rounded-bl-full rounded-tr-full hover:bg-white w-full">
+            <button className="btn btn-secondary w-[100px] h-[44px] bg-white text-lacampana-red2 font-semibold text-lg px-2 py-1 rounded-tl-full rounded-bl-full rounded-tr-full hover:bg-white">
               Sedes
             </button>
 
             {/* Botón Solicitar crédito */}
-            <button className="btn bg-lacampana-gray1 text-white border-none text-xs px-2 py-1 rounded-tl-full rounded-bl-full rounded-tr-full hover:bg-lacampana-gray1 w-full">
+            <button className="btn bg-lacampana-gray1 w-[180px] h-[44px] text-white border-none text-lg px-2 py-1 rounded-tl-full rounded-bl-full rounded-tr-full hover:bg-lacampana-gray1">
               Solicitar crédito
             </button>
           </div>
 
           {/* Botón Hablar con un asesor */}
           <button
-            className="btn btn-outline text-white border-white text-xs px-2 py-1 rounded-tl-full rounded-bl-full rounded-tr-full w-full"
+            className="btn btn-outline w-[300px] h-[44px] text-white border-white text-lg px-2 py-1 rounded-tl-full rounded-bl-full rounded-tr-full w-full max-w-xs mx-auto"
             onClick={handleOpenModal}
           >
             Hablar con un asesor
