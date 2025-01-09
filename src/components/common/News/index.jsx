@@ -1,28 +1,15 @@
 import { Link } from "react-router"
 import { IoIosArrowRoundForward } from "react-icons/io";
+import { useGetBlogsQuery } from '../../../store/reducers/apiSlice';
 
-const newsData = [
-  {
-    id: 1,
-    coverImg: "/images/background.jpeg",
-    title: "Noticia 1",
-    publicationDate: "01 - 01 - 2024",
-  },
-  {
-    id: 2,
-    coverImg: "/images/background.jpeg",
-    title: "Noticia 2",
-    publicationDate: "02 - 02 - 2024",
-  },
-  {
-    id: 3,
-    coverImg: "/images/background.jpeg",
-    title: "Noticia 3",
-    publicationDate: "03 - 03 - 2024",
-  },
-]
 
 const News = () => {
+  const { data, error, isLoading } = useGetBlogsQuery();
+
+  if (isLoading) return <p>Cargando...</p>;
+  if (error) return <p>Error al cargar los datos.</p>;
+
+  console.log(data)
   return (
     <section className="flex justify-center">
       <article className="flex desktop:gap-8 px-4 sm:px-8 tablet:px-16 desktop:px-0 max-w-screen-tablet flex-col desktop:flex-row desktop:max-w-screen-desktop pt-16">
@@ -34,12 +21,12 @@ const News = () => {
           </Link>
         </section>
         <section className="carousel rounded-box space-x-4 p-4 desktop:w-3/4">
-          {newsData.map(news =>
+          {data.map(news =>
             <NewsCard
-              key={`news-card-${news.id}`}
-              title={news.title}
-              img={news.coverImg}
-              publicationDate={news.publicationDate}
+              key={`news-card-${news._id}`}
+              title={news.name}
+              img={news.image}
+              publicationDate={news.createdAt}
             />
           )}
         </section>

@@ -13,6 +13,7 @@ import FloatingDrawer from "../../common/FloatingDrawer/FloatingDrawer";
 import News from "../../common/News";
 import ServiceSection from "../../layouts/ServiceSection";
 
+
 const Home = () => {
   return (
     <div className="font-sans">
