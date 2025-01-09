@@ -241,9 +241,9 @@ const Sidebar = ({ onClose }) => {
               VER TODO
             </button>
           </div>
-          <div className="grid grid-cols-12 gap-16">
+          <div className="grid grid-cols-12 gap-16 px-8">
           
-            <div className="col-span-8 grid grid-cols-2 gap-8">
+            <div className="col-start-2 col-end-8 grid grid-cols-2 gap-8">
               {activeCategory.subcategories.map((subcategory, index) => (
                 <div key={index}>
                   <h3 className="font-antonio text-lg mb-8">{subcategory.title}</h3>
