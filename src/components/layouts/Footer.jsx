@@ -3,12 +3,11 @@ import { HiOutlineMail } from "react-icons/hi";
 import { FaWhatsapp } from "react-icons/fa";
 import { PiYoutubeLogoThin } from "react-icons/pi";
 import { PiInstagramLogoThin } from "react-icons/pi";
-// import { SlSocialFacebook } from "react-icons/sl";
 import { PiTiktokLogoThin } from "react-icons/pi";
 import { SlSocialLinkedin } from "react-icons/sl";
 import { PiPhoneCallThin } from "react-icons/pi";
-// import { RiTwitterXFill } from "react-icons/ri";
 import { IoIosArrowDown } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 const Modal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
@@ -182,7 +181,12 @@ const Footer = () => {
             </h3>
             <ul>
               <p className="text-left pb-4 pl-2">Servicios</p>
-              <p className="text-left pb-4 pl-2">Nosotros</p>
+              <p className="text-left pb-4 pl-2">
+                <Link to="/nosotros" className="text-lacampana-gray1">
+                  Nosotros
+                </Link>
+              </p>
+
               <p className="text-left pb-4 pl-2">Blog</p>
               <p className="text-left pb-4 pl-2">Documentos</p>
               <p className="text-left pb-4 pl-2">Contacto</p>
@@ -210,7 +214,11 @@ const Footer = () => {
               </h3>
               <ul>
                 <p className="text-left pb-4 pl-2">Servicios</p>
-                <p className="text-left pb-4 pl-2">Nosotros</p>
+                <p className="text-left pb-4 pl-2">
+                  <Link to="/nosotros" className="text-lacampana-gray1">
+                    Nosotros
+                  </Link>
+                </p>
                 <p className="text-left pb-4 pl-2">Blog</p>
                 <p className="text-left pb-4 pl-2">Documentos</p>
                 <p className="text-left pb-4 pl-2">Contacto</p>
