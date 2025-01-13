@@ -3,7 +3,7 @@ import TopBar from "../layouts/TopBar";
 import Header from "../common/Header";
 import Banner from "../common/Banner";
 import Slider from "../layouts/Slider";
-import ProductSection from "../layouts/ProductSection";
+// import ProductSection from "../layouts/ProductSection";
 import Footer from "../layouts/Footer";
 import Navbar from "../common/NavBar";
 import TrustSection from "../common/TrustSection";
@@ -25,7 +25,7 @@ const Home = () => {
       <BestofLaCampana />
       <Categories />
       <News />
-      <ProductSection />
+      {/* <ProductSection /> */}
       <FloatingDrawer />
       <ServiceSection />
 
