@@ -3,28 +3,24 @@ import { OverlayScrollbars } from "overlayscrollbars";
 import styles from "./LegalCertification.module.css";
 
 const LegalCertification = () => {
-  const scrollRef = useRef(null); // Referencia al contenedor desplazable
+  const scrollRef = useRef(null);
 
   useEffect(() => {
-    // Inicializa OverlayScrollbars sobre el contenedor
     const instance = OverlayScrollbars(scrollRef.current, {
       scrollbars: {
-        theme: "os-theme-dark", // Cambia esto si prefieres otro tema
+        theme: "os-theme-dark",
       },
     });
 
     return () => {
-      // Limpia la instancia al desmontar el componente
       instance.destroy();
     };
   }, []);
 
   return (
     <div className="relative w-full max-w-5xl h-[500px] mx-0 my-10">
-      {/* Imagen de fondo 1 */}
       <div className="absolute inset-0 bg-lacampana-red2 opacity-10 rounded-tr-full rounded-br-full hidden md:block"></div>
 
-      {/* Imagen de fondo 2 */}
       <div
         className="absolute inset-0 bg-contain mix-blend-multiply rounded-tr-full rounded-br-full hidden md:block"
         style={{
@@ -34,15 +30,14 @@ const LegalCertification = () => {
 
       {/* Tarjeta */}
       <div
-        className={`relative top-20 md:translate-x-80 md:mr-20 z-10 bg-white rounded-lg shadow-xl max-w-md mx-auto h-60 sm:h-72 md:h-80 rounded-tr-lg pb-10`}
+        className={`relative top-20 md:translate-x-80 md:mr-20 z-10 bg-white rounded-lg shadow-xl max-w-md mx-auto h-72 sm:h-80 md:h-96 rounded-tr-lg pb-10`}
         style={{
-          boxShadow: "0 10px 25px rgba(0, 0, 0, 0.2)",
+          boxShadow: "0 10px 25px rgba(0, 0, 0, 0.2)", // Sombra personalizada
         }}
       >
-        {/* Contenido desplazable */}
         <div
           className={`p-6 overflow-y-auto h-[75%] ${styles.scrollbar}`}
-          ref={scrollRef} // Asigna la referencia
+          ref={scrollRef}
         >
           <h4 className="text-3xl font-bold mb-4">
             Legalidad y{" "}

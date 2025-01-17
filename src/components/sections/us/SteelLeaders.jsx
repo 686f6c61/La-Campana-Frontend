@@ -5,11 +5,18 @@ const SteelLeaders = () => {
   return (
     <div className="relative flex flex-col md:flex-row items-center md:text-left md:ml-40 md:pt-10 justify-between p-6 overflow-visible">
       {/* Texto de fondo */}
-      <BgText text="Líderes en Aceros " />
+      <div className="hidden md:block">
+        <BgText text="Líderes en Aceros " />
+      </div>
 
       {/* Contenido izquierdo */}
       <div className="relative z-10 flex-1 md:pr-6 sm:pt-10">
-        <h3 className="md:text-4xl text-3xl font-bold text-black">
+        {/* Texto de fondo visible solo en pantallas pequeñas */}
+        <div className="absolute -z-10 top-2 left-20 ml-10 text-gray-200 text-4xl font-bold font-anton font-normal md:hidden">
+          Líderes de Acero
+        </div>
+
+        <h3 className="md:text-4xl text-3xl font-bold text-black pt-5 md:pt-1">
           Líderes en <span className="text-lacampana-red2">Aceros</span>
         </h3>
         <p className="md:text-base text-sm text-gray-600 mt-4 w-[480px]">

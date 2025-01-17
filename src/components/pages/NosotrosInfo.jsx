@@ -7,6 +7,7 @@ import FloatingDrawer from "../common/FloatingDrawer/FloatingDrawer.jsx";
 import ServiceSection from "../common/ServiceSection/index.jsx";
 import LegalCertification from "../sections/us/LegalCertification.jsx";
 import PrecenseNation from "../sections/us/PrecenseNation.jsx";
+import Footer from "../layouts/Footer.jsx";
 
 const NosotrosInfo = () => {
   return (
@@ -17,8 +18,9 @@ const NosotrosInfo = () => {
       <FloatingDrawer />
       <SteelLeaders />
       <LegalCertification />
-      <ServiceSection />
       <PrecenseNation />
+      <ServiceSection />
+      <Footer />
     </div>
   );
 };

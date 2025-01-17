@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 const PrecenseNation = () => {
   const [carouselIndex, setCarouselIndex] = useState(0);
+  const [selectedCity, setSelectedCity] = useState("Bogotá"); // Bogotá seleccionada por defecto
 
   const sucursales = [
     {
@@ -49,11 +50,15 @@ const PrecenseNation = () => {
   ];
 
   const handleNavigation = (index) => {
-    setCarouselIndex(index);
+    setCarouselIndex(index * 2); // Cambia la posición del carrusel (2 tarjetas por página en pantallas pequeñas)
+  };
+
+  const handleSelection = (city) => {
+    setSelectedCity(city); // Actualiza el estado con la ciudad seleccionada
   };
 
   return (
-    <div className="flex flex-col lg:flex-row items-start lg:justify-between space-y-8 lg:space-y-0 lg:space-x-8">
+    <div className="flex flex-col lg:flex-row items-start lg:justify-between space-y-8 lg:space-y-0 lg:space-x-8 md:ml-40 md:pl-5 pl-5">
       {/* Left Section */}
       <div className="lg:w-2/3">
         {/* Title */}
@@ -69,23 +74,43 @@ const PrecenseNation = () => {
         </div>
 
         {/* Radio buttons */}
-
-        <div className="flex flex-wrap space-x-4">
+        <div className="flex flex-wrap space-x-1 pt-4">
           {["Bogotá", "Soacha", "Villavicencio", "Mosquera", "Neiva"].map(
-            (color) => (
-              <div key={color} className="flex items-center me-4">
+            (city) => (
+              <div
+                key={city}
+                className="flex items-center me-4 "
+                style={{ position: "relative" }}
+              >
                 <input
-                  id="red-radio"
+                  id={`${city.toLowerCase()}-radio`}
                   type="radio"
-                  value=""
-                  name="colored-radio"
-                  class="w-4 h-4 text-lacampana-red2 "
+                  value={city}
+                  name="ciudad"
+                  checked={selectedCity === city}
+                  onChange={() => handleSelection(city)}
+                  className="w-4 h-4"
+                  style={{
+                    appearance: "none",
+                    width: "15px",
+                    height: "15px",
+                    borderRadius: "50%",
+                    backgroundColor: selectedCity === city ? "red" : "#d1d3d1",
+                    position: "relative",
+                    outline: "none",
+                    border: "2px solid white",
+                    cursor: "pointer",
+                  }}
                 />
                 <label
-                  htmlFor={`${color.toLowerCase()}-radio`}
-                  className="ms-2 text-sm font-medium text-gray-900 "
+                  htmlFor={`${city.toLowerCase()}-radio`}
+                  className="ms-2 text-xs md:text-sm font-medium"
+                  style={{
+                    color: selectedCity === city ? "red" : "#d1d3d1",
+                    cursor: "pointer",
+                  }}
                 >
-                  {color}
+                  {city}
                 </label>
               </div>
             )
@@ -94,27 +119,85 @@ const PrecenseNation = () => {
 
         {/* Carousel */}
         <div className="mt-8">
-          <div className="flex overflow-hidden">
+          {/* Para pantallas pequeñas (muestra 2 tarjetas) */}
+          <div className="flex lg:hidden overflow-hidden">
             {sucursales
-              .slice(carouselIndex, carouselIndex + 3)
+              .slice(carouselIndex, carouselIndex + 2) // Muestra dos tarjetas en pantallas pequeñas
               .map((sucursal, index) => (
                 <div
                   key={index}
-                  className="card shadow-xl bg-white flex-none w-72 mx-2"
+                  className="flex-none mx-2"
+                  style={{
+                    width: "160px",
+                    backgroundColor: "#d3d3d3",
+                    borderTopLeftRadius: "8px",
+                  }}
                 >
                   <figure>
                     <img
                       src={sucursal.imagen}
                       alt={sucursal.nombre}
-                      className="h-40 object-cover w-full"
+                      className="h-24 object-cover w-full"
                     />
                   </figure>
-                  <div className="card-body">
-                    <h3 className="card-title text-red-600">
+                  <div style={{ padding: "8px" }}>
+                    <h3
+                      style={{
+                        color: "#ff0000",
+                        fontWeight: "bold",
+                        fontSize: "14px",
+                      }}
+                    >
                       {sucursal.nombre}
                     </h3>
-                    <p className="text-gray-700">PBX: {sucursal.telefono}</p>
-                    <p className="text-gray-700">{sucursal.direccion}</p>
+                    <p style={{ color: "#333", fontSize: "12px" }}>
+                      PBX: {sucursal.telefono}
+                    </p>
+                    <p style={{ color: "#333", fontSize: "12px" }}>
+                      {sucursal.direccion}
+                    </p>
+                  </div>
+                </div>
+              ))}
+          </div>
+
+          {/* Para pantallas grandes (muestra 3 tarjetas) */}
+          <div className="hidden lg:flex overflow-hidden">
+            {sucursales
+              .slice(carouselIndex, carouselIndex + 3) // Muestra tres tarjetas en pantallas grandes
+              .map((sucursal, index) => (
+                <div
+                  key={index}
+                  className="flex-none mx-2"
+                  style={{
+                    width: "200px",
+                    backgroundColor: "#d3d3d3",
+                    borderTopLeftRadius: "8px",
+                  }}
+                >
+                  <figure>
+                    <img
+                      src={sucursal.imagen}
+                      alt={sucursal.nombre}
+                      className="h-32 object-cover w-full"
+                    />
+                  </figure>
+                  <div style={{ padding: "8px" }}>
+                    <h3
+                      style={{
+                        color: "#ff0000",
+                        fontWeight: "bold",
+                        fontSize: "16px",
+                      }}
+                    >
+                      {sucursal.nombre}
+                    </h3>
+                    <p style={{ color: "#333", fontSize: "14px" }}>
+                      PBX: {sucursal.telefono}
+                    </p>
+                    <p style={{ color: "#333", fontSize: "14px" }}>
+                      {sucursal.direccion}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -122,15 +205,19 @@ const PrecenseNation = () => {
 
           {/* Navigation Dots */}
           <div className="flex justify-center space-x-2 mt-4">
-            {Array.from({ length: sucursales.length - 2 }).map((_, index) => (
-              <button
-                key={index}
-                onClick={() => handleNavigation(index)}
-                className={`w-3 h-3 rounded-full ${
-                  carouselIndex === index ? "bg-red-500" : "bg-gray-400"
-                }`}
-              />
-            ))}
+            {Array.from({ length: Math.ceil(sucursales.length / 2) }).map(
+              (_, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleNavigation(index)}
+                  className={`w-2 h-2 rounded-full ${
+                    carouselIndex === index * 2
+                      ? "bg-red-500 w-3 h-3"
+                      : "bg-gray-400"
+                  }`}
+                />
+              )
+            )}
           </div>
         </div>
       </div>
