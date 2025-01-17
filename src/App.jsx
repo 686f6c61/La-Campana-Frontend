@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Home from "./components/pages/Home";
 import NosotrosInfo from "./components/pages/NosotrosInfo";
+import "overlayscrollbars/overlayscrollbars.css";
 
 function App() {
   return (

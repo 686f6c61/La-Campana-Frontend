@@ -1,13 +1,30 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import { OverlayScrollbars } from "overlayscrollbars";
 import styles from "./LegalCertification.module.css";
 
 const LegalCertification = () => {
+  const scrollRef = useRef(null); // Referencia al contenedor desplazable
+
+  useEffect(() => {
+    // Inicializa OverlayScrollbars sobre el contenedor
+    const instance = OverlayScrollbars(scrollRef.current, {
+      scrollbars: {
+        theme: "os-theme-dark", // Cambia esto si prefieres otro tema
+      },
+    });
+
+    return () => {
+      // Limpia la instancia al desmontar el componente
+      instance.destroy();
+    };
+  }, []);
+
   return (
     <div className="relative w-full max-w-5xl h-[500px] mx-0 my-10">
-      {/* Imagen de fondo 1 (sólo para pantallas medianas o más grandes) */}
+      {/* Imagen de fondo 1 */}
       <div className="absolute inset-0 bg-lacampana-red2 opacity-10 rounded-tr-full rounded-br-full hidden md:block"></div>
 
-      {/* Imagen de fondo 2 (sólo para pantallas medianas o más grandes) */}
+      {/* Imagen de fondo 2 */}
       <div
         className="absolute inset-0 bg-contain mix-blend-multiply rounded-tr-full rounded-br-full hidden md:block"
         style={{
@@ -17,13 +34,16 @@ const LegalCertification = () => {
 
       {/* Tarjeta */}
       <div
-        className={`relative top-20 md:translate-x-80 md:mr-30 z-10 bg-white rounded-lg shadow-xl max-w-md mx-auto h-60 sm:h-72 md:h-80 rounded-tr-lg pb-10`}
+        className={`relative top-20 md:translate-x-80 md:mr-20 z-10 bg-white rounded-lg shadow-xl max-w-md mx-auto h-60 sm:h-72 md:h-80 rounded-tr-lg pb-10`}
         style={{
-          boxShadow: "0 10px 25px rgba(0, 0, 0, 0.2)", // Sombra más grande personalizada
+          boxShadow: "0 10px 25px rgba(0, 0, 0, 0.2)",
         }}
       >
         {/* Contenido desplazable */}
-        <div className={`p-6 overflow-y-auto h-[75%] ${styles.scrollbar}`}>
+        <div
+          className={`p-6 overflow-y-auto h-[75%] ${styles.scrollbar}`}
+          ref={scrollRef} // Asigna la referencia
+        >
           <h4 className="text-3xl font-bold mb-4">
             Legalidad y{" "}
             <span className="text-lacampana-red2">certificación</span>
@@ -33,14 +53,14 @@ const LegalCertification = () => {
             productos, y más aún con la credibilidad de nuestros clientes por
             años. Somos importadores directos de las principales siderúrgicas a
             nivel internacional. No ahorraremos esfuerzos para cumplir nuestro
-            objetivo, brindarle a nuestros clientes no solo productos, mejor aun
+            objetivo, brindarle a nuestros clientes no solo productos, mejor aún
             beneficios para su empresa.
           </p>
           <p className="text-gray-700 text-xs mb-4">
             Actualmente La Campana Servicios de Acero S.A. se encuentra
             desarrollando ideas, para dar inicio a una nueva etapa de
             crecimiento a nivel nacional apoyada de alianzas estratégicas que
-            ampliaran su gama de productos y servicios especializados buscando
+            ampliarán su gama de productos y servicios especializados buscando
             una mayor satisfacción en calidad de nuestros clientes.
           </p>
         </div>
