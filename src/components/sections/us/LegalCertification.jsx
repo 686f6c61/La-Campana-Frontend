@@ -1,11 +1,24 @@
 import React, { useEffect, useRef } from "react";
 import { OverlayScrollbars } from "overlayscrollbars";
-import styles from "./LegalCertification.module.css";
+
+const customScrollbarStyle = `
+  .os-scrollbar {
+    --os-size: 8px; 
+    --os-handle-bg:  #d3d3d3;
+    --os-handle-border-radius: 10px;
+    --os-track-bg: gray;
+  }
+
+`;
 
 const LegalCertification = () => {
   const scrollRef = useRef(null);
 
   useEffect(() => {
+    const styleElement = document.createElement("style");
+    styleElement.innerHTML = customScrollbarStyle;
+    document.head.appendChild(styleElement);
+
     const instance = OverlayScrollbars(scrollRef.current, {
       scrollbars: {
         theme: "os-theme-dark",
@@ -13,12 +26,13 @@ const LegalCertification = () => {
     });
 
     return () => {
+      document.head.removeChild(styleElement);
       instance.destroy();
     };
   }, []);
 
   return (
-    <div className="relative w-full max-w-5xl h-[500px] mx-0 my-10">
+    <div className="relative w-full max-w-5xl h-[500px] mx-0 my-10 ml-5">
       <div className="absolute inset-0 bg-lacampana-red2 opacity-10 rounded-tr-full rounded-br-full hidden md:block"></div>
 
       <div
@@ -35,10 +49,7 @@ const LegalCertification = () => {
           boxShadow: "0 10px 25px rgba(0, 0, 0, 0.2)", // Sombra personalizada
         }}
       >
-        <div
-          className={`p-6 overflow-y-auto h-[75%] ${styles.scrollbar}`}
-          ref={scrollRef}
-        >
+        <div className="p-6 overflow-y-auto h-[75%]" ref={scrollRef}>
           <h4 className="text-3xl font-bold mb-4">
             Legalidad y{" "}
             <span className="text-lacampana-red2">certificación</span>

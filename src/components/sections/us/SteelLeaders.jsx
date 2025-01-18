@@ -3,7 +3,7 @@ import BgText from "../../common/BgText";
 
 const SteelLeaders = () => {
   return (
-    <div className="relative flex flex-col md:flex-row items-center md:text-left md:ml-40 md:pt-10 justify-between p-6 overflow-visible">
+    <div className="relative flex flex-col md:flex-row items-center md:text-left md:ml-40 md:pt-10 justify-between p-6 overflow-visible ">
       {/* Texto de fondo */}
       <div className="hidden md:block">
         <BgText text="Líderes en Aceros " />
@@ -19,13 +19,13 @@ const SteelLeaders = () => {
         <h3 className="md:text-4xl text-3xl font-bold text-black pt-5 md:pt-1">
           Líderes en <span className="text-lacampana-red2">Aceros</span>
         </h3>
-        <p className="md:text-base text-sm text-gray-600 mt-4 w-[480px]">
+        <p className="md:text-base text-sm text-gray-600 mt-4 md:w-[480px] w-[420px] pl-10 md:pl-0">
           La Campana Servicios de Acero S.A. contribuye al crecimiento del
           sector metalmecánico y de la construcción en Colombia con el
           suministro de materias primas al brindar productos y servicios que
           aseguren un óptimo control de calidad.
         </p>
-        <p className="md:text-base text-sm text-gray-600 mt-4 w-[480px]">
+        <p className="md:text-base text-sm text-gray-600 mt-4 md:w-[480px] w-[420px] pl-10 md:pl-0">
           La Campana Servicios de Acero S.A. es líder en el mercado de los
           aceros a nivel local (Bogotá) gracias a su disponibilidad y variedad
           de material, agilidad en sus entregas y experiencia en nuestros
@@ -35,14 +35,13 @@ const SteelLeaders = () => {
         </p>
       </div>
 
-      {/* Contenido derecho (imagen e ícono) */}
-      <div className="relative z-10 flex-1 flex items-center justify-center pt-10 md:pt-40">
-        <div className="relative flex items-center justify-center w-[300px] sm:w-[500px] h-[290px] bg-opacity-75">
-          {/* Icono Play */}
+      {/*  (imagen e ícono) */}
+      <div className="relative z-10 flex-1 flex items-center justify-center pt-10 md:pt-40 ">
+        <div className="relative flex items-center justify-center w-[380px] sm:w-[500px] h-[290px] bg-opacity-75 md:mr-40 md:pl-0 pl-10">
           <img
             src="/images/play.png"
             alt="Icono representativo"
-            className="absolute z-20 w-[60px] h-[60px] sm:w-[80px] sm:h-[80px] cursor-pointer"
+            className="absolute z-20 w-[60px] h-[60px] sm:w-[80px] sm:h-[80px] cursor-pointer "
           />
           {/* Imagen reemplazo temporal de video */}
           <img

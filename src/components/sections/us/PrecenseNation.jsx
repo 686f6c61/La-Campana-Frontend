@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 const PrecenseNation = () => {
   const [carouselIndex, setCarouselIndex] = useState(0);
-  const [selectedCity, setSelectedCity] = useState("Bogotá"); // Bogotá seleccionada por defecto
+  const [selectedCity, setSelectedCity] = useState("Bogotá");
 
   const sucursales = [
     {
@@ -50,11 +50,11 @@ const PrecenseNation = () => {
   ];
 
   const handleNavigation = (index) => {
-    setCarouselIndex(index * 2); // Cambia la posición del carrusel (2 tarjetas por página en pantallas pequeñas)
+    setCarouselIndex(index * 2);
   };
 
   const handleSelection = (city) => {
-    setSelectedCity(city); // Actualiza el estado con la ciudad seleccionada
+    setSelectedCity(city);
   };
 
   return (
@@ -74,7 +74,7 @@ const PrecenseNation = () => {
         </div>
 
         {/* Radio buttons */}
-        <div className="flex flex-wrap space-x-1 pt-4">
+        <div className="flex flex-wrap space-x-1 md:space-x-3 pt-4">
           {["Bogotá", "Soacha", "Villavicencio", "Mosquera", "Neiva"].map(
             (city) => (
               <div
@@ -100,6 +100,10 @@ const PrecenseNation = () => {
                     outline: "none",
                     border: "2px solid white",
                     cursor: "pointer",
+                    boxShadow:
+                      selectedCity === city
+                        ? "0 0 0 2px rgba(255, 0, 0, 0.5)"
+                        : "0 0 0 2px rgba(209, 211, 209, 0.5)",
                   }}
                 />
                 <label
@@ -119,10 +123,10 @@ const PrecenseNation = () => {
 
         {/* Carousel */}
         <div className="mt-8">
-          {/* Para pantallas pequeñas (muestra 2 tarjetas) */}
+          {/* Para pantallas pequeñas  */}
           <div className="flex lg:hidden overflow-hidden">
             {sucursales
-              .slice(carouselIndex, carouselIndex + 2) // Muestra dos tarjetas en pantallas pequeñas
+              .slice(carouselIndex, carouselIndex + 2)
               .map((sucursal, index) => (
                 <div
                   key={index}
@@ -161,10 +165,10 @@ const PrecenseNation = () => {
               ))}
           </div>
 
-          {/* Para pantallas grandes (muestra 3 tarjetas) */}
+          {/* Para pantallas grandes  */}
           <div className="hidden lg:flex overflow-hidden">
             {sucursales
-              .slice(carouselIndex, carouselIndex + 3) // Muestra tres tarjetas en pantallas grandes
+              .slice(carouselIndex, carouselIndex + 3)
               .map((sucursal, index) => (
                 <div
                   key={index}
@@ -203,7 +207,6 @@ const PrecenseNation = () => {
               ))}
           </div>
 
-          {/* Navigation Dots */}
           <div className="flex justify-center space-x-2 mt-4">
             {Array.from({ length: Math.ceil(sucursales.length / 2) }).map(
               (_, index) => (
