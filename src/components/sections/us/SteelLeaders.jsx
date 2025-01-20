@@ -12,7 +12,7 @@ const SteelLeaders = () => {
       {/* Contenido izquierdo */}
       <div className="relative z-10 flex-1 md:pr-6 sm:pt-10">
         {/* Texto de fondo visible solo en pantallas pequeñas */}
-        <div className="absolute -z-10 top-2 left-20 ml-10 text-gray-200 text-4xl font-bold font-anton font-normal md:hidden">
+        <div className="absolute -z-10 top-2 left-20 ml-4 text-gray-200 text-4xl font-bold font-anton font-normal md:hidden">
           Líderes de Acero
         </div>
 
