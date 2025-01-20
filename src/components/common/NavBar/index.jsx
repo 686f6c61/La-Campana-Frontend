@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { HiMenuAlt2 } from "react-icons/hi";
-import  NavbarItems  from "../NavBarItems";
-import Sidebar from "../SideBar";
+import NavbarItems from "../NavBarItems";
+import Sidebar from "../Sidebar";
 
 const Navbar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -53,13 +53,8 @@ const Navbar = () => {
         className={`fixed top-0 left-0 h-full w-64 bg-white shadow-lg transform ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"
           } transition-transform duration-300 z-50`}
       >
-          {isSidebarOpen && <Sidebar onClose={() => setIsSidebarOpen(false)} />}
-      {!isSidebarOpen && (
-        <button onClick={() => setIsSidebarOpen(true)}>Abrir Sidebar</button>
-      )}
-       
+        {isSidebarOpen && <Sidebar onClose={() => setIsSidebarOpen(false)} />}
       </div>
-
 
       {isSidebarOpen && (
         <div

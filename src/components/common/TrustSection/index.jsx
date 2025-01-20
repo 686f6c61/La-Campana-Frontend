@@ -8,10 +8,10 @@ const TrustSection = () => {
         {
             id: 1,
             icon: (
-                <img 
-                    src="public/images/Group2.png" 
-                    alt="Pagos seguros" 
-                    className="mx-auto icon-style" 
+                <img
+                    src="public/images/Group2.png"
+                    alt="Pagos seguros"
+                    className="mx-auto icon-style"
                 />
             ),
             title: "Pagos seguros",
@@ -20,10 +20,10 @@ const TrustSection = () => {
         {
             id: 2,
             icon: (
-                <img 
-                    src="public/images/Group3.png" 
-                    alt="Calidad asegurada" 
-                    className="mx-auto icon-style" 
+                <img
+                    src="public/images/Group3.png"
+                    alt="Calidad asegurada"
+                    className="mx-auto icon-style"
                 />
             ),
             title: "Calidad garantizada",
@@ -32,10 +32,11 @@ const TrustSection = () => {
         {
             id: 3,
             icon: (
-                <img 
-                    src="public/images/Group4.png" 
-                    alt="Asesoría permanente" 
-                    className="mx-auto icon-style" 
+                
+                <img
+                    src="public/images/Group4.png"
+                    alt="Asesoría permanente"
+                    className="mx-auto icon-style"
                 />
             ),
             title: "Asesoría permanente",
@@ -44,10 +45,10 @@ const TrustSection = () => {
         {
             id: 4,
             icon: (
-                <img 
-                    src="public/images/Group1.png" 
-                    alt="Envios nacionales" 
-                    className="mx-auto icon-style" 
+                <img
+                    src="public/images/Group1.png"
+                    alt="Envios nacionales"
+                    className="mx-auto icon-style"
                 />
             ),
             title: "Envíos nacionales",
@@ -65,7 +66,7 @@ const TrustSection = () => {
                         className="w-full h-full object-cover opacity-40 rounded-lg overflow-hidden"
                     />
                 </div>
-                
+
                 <div className="relative z-10 flex flex-col items-center justify-center h-full">
                     <h2 className="text-4xl text-white font-bold">Tranquilidad y confianza</h2>
                     <p className="mt-4 text-center text-white max-w-2xl">
@@ -74,22 +75,22 @@ const TrustSection = () => {
                 </div>
             </div>
 
-            <div className="relative -mt-12 pb-16">
-                <div className="container mx-auto max-w-screen-xl">
+            <div className="relative -mt-12 pb-16 ">
+                <div className="container mx-auto max-w-screen-xl ">
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
                         {features.map((feature) => (
                             <div
                                 key={feature.id}
-                                className="bg-white rounded-xl p-6 shadow-lg text-center border-t-4 border-red-600"
+                                className="rounded-xl p-16 bg-lacampana-white shadow-lg text-center border-t-4 border-red-600"
                             >
-                                <div className="mb-8">
+                                <div className="mb-8 ">
                                     {feature.icon}
                                 </div>
-                               
+
                                 <h3 className="text-lg font-bold text-gray-800 mb-2">
                                     {feature.title}
                                 </h3>
-                                
+
                                 <p className="text-sm text-gray-600">{feature.description}</p>
                             </div>
                         ))}
