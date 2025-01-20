@@ -12,15 +12,11 @@ import Footer from "../layouts/Footer.jsx";
 const NosotrosInfo = () => {
   return (
     <div className="font-sans">
-      <TopBar />
-      <Header />
-      <Navbar />
       <FloatingDrawer />
       <SteelLeaders />
       <LegalCertification />
       <PrecenseNation />
       <ServiceSection />
-      <Footer />
     </div>
   );
 };
