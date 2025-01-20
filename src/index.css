@@ -61,16 +61,10 @@ p {
 }
 
 .lacampana-btn {
-  @apply bg-lacampana-red2
-    px-8
-    py-3
+    @apply
     rounded-l-3xl
     rounded-tr-3xl
     font-montserrat
-    font-semibold
-    text-base
-    text-lacampana-white
-    w-fit;
 }
 
 #root {

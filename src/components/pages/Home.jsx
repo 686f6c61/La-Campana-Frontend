@@ -16,9 +16,9 @@ import News from "../common/News";
 const Home = () => {
   return (
     <div className="font-sans">
-      <TopBar />
+      {/* <TopBar />
       <Header />
-      <Navbar />
+      <Navbar /> */}
       <Banner />
       <Slider />
       <TrustSection />
@@ -29,7 +29,7 @@ const Home = () => {
       <FloatingDrawer />
       <ServiceSection />
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };
