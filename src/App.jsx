@@ -7,6 +7,7 @@ import Topbar from "./layout/Topbar";
 import Header from "./layout/Header";
 import Navbar from "./layout/Navbar";
 import Footer from "./components/layouts/Footer";
+import "overlayscrollbars/overlayscrollbars.css";
 
 function App() {
   return (

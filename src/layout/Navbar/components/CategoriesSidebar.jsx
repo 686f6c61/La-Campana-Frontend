@@ -17,7 +17,7 @@ const CategoriesSidebar = ({ categories }) => {
   const handleShowSidebar = (value) => setShowSubcategories(value)
 
   return (
-    <div className="drawer w-fit">
+    <div className="drawer w-fit z-20">
       <input id="categories-sidebar-navbar" type="checkbox" className="drawer-toggle" />
       {/* BUTTON */}
       <div className="drawer-content">
