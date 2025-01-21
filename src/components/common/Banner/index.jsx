@@ -1,23 +1,15 @@
+import { Content, Slide } from "./components";
+
 const Banner = () => {
-    return (
-      <div className="carousel carousel-end w-full">
-        <div className="carousel-item w-full">
-          <img
-            src="src/assets/images/banner.jpg"
-            alt="Banner"
-            className="w-full h-[400px] object-cover"
-          />
-        </div>
-        <div className="carousel-item w-full">
-          <img
-            src="src/assets/images/banner2.jpeg"
-            alt="Banner2"
-            className="w-full h-[400px] object-cover"
-          />
-        </div>
+  return (
+    <div className="h-[80svh] px-4 relative">
+      <div className="carousel w-full h-full">
+        <Slide id="item1" imgURL="/images/banner.jpg" />
+        <Slide id="item2" imgURL="/images/banner2.jpeg" />
       </div>
-    );
-  };
-  
-  export default Banner;
-  
+      <Content />
+    </div>
+  );
+};
+
+export default Banner;

@@ -1,28 +1,34 @@
-import './App.css'
-import TopBar from './components/layouts/TopBar';
-import Header from './components/common/Header';
-import Banner from './components/common/Banner';
-import Slider from './components/layouts/Slider';
-import ProductSection from './components/layouts/ProductSection';
-import Footer from './components/layouts/Footer';
-import Navbar from './components/common/NavBar';
-import Feature from './components/common/Feature'
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./App.css";
+import Home from "./components/pages/Home";
+import NosotrosInfo from "./components/pages/NosotrosInfo";
+import CategoryPage from "../src/components/common/CategoryPage";
+import ProductDetailPage from "../src/components/common/ProductDetailPage";
+import Topbar from "./layout/Topbar";
+import Header from "./layout/Header";
+import Navbar from "./layout/Navbar";
+import Footer from "./components/layouts/Footer";
+import "overlayscrollbars/overlayscrollbars.css";
 
 function App() {
   return (
-    <>
-      <div className="font-sans">
-        <TopBar />
-        <Header />
-        <Navbar />
-        <Banner />
-        <Slider />
-        <Feature />
-        <ProductSection />
-        <Footer />
+    <BrowserRouter>
+      <div className="hidden tablet:block">
+        <Topbar />
       </div>
-    </>
-  )
+      <Header />
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home greeting={"Bienvenidos"} />} />
+        <Route path="/nosotros" element={<NosotrosInfo />} />
+        <Route path="/:categoryId" element={<CategoryPage />} />
+        <Route path="/product/:productId" element={<ProductDetailPage />} />
+        <Route path="*" element={<h1>404 Not Found</h1>} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;

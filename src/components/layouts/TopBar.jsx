@@ -6,9 +6,12 @@ const TopBar = () => {
         <span></span>
       </div>
       <div >
-        <button className="btn btn-xs bg-grey text-white">Ciudad</button>
-        <button className="btn btn-xs btn-color text-white">Comprar Ahora</button>
-        <button className="btn btn-xs bg-grey text-white">Encontranos en</button>
+      <button className= "btn btn-xs text-white bg-lacampana-gray1 rounded-tl-full rounded-bl-full rounded-tr-full ">
+              Ciudad
+            </button>
+            
+        <button className="btn btn-xs text-white bg-lacampana-gray1 rounded-tl-full rounded-bl-full rounded-tr-full ">Comprar Ahora</button>
+        <button className="btn btn-xs text-white bg-lacampana-gray1 rounded-tl-full rounded-bl-full rounded-tr-full ">Encontranos en</button>
       </div>
 
     </div>
