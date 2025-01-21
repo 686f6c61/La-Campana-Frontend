@@ -2,70 +2,70 @@ const Ofertas = () => {
   const products = [
     {
       id: 1,
-      image: "/images/prod1.jpg",
+      image: "src/assets/images/prod1.jpg",
       title: "Producto 1",
       price: "$5,795.00",
       discount: "-20%",
     },
     {
       id: 2,
-      image: "/images/prod1.jpg",
+      image: "src/assets/images/prod1.jpg",
       title: "Producto 2",
       price: "$5,245.00",
       discount: "-20%",
     },
     {
       id: 3,
-      image: "/images/prod3.jpg",
+      image: "src/assets/images/prod3.jpg",
       title: "Producto 3",
       price: "$5,995.00",
       discount: "-20%",
     },
     {
       id: 4,
-      image: "/images/prod4.jpg",
+      image: "src/assets/images/prod4.jpg",
       title: "Producto 4",
       price: "$5,995.00",
       discount: "-20%",
     },
     {
       id: 5,
-      image: "/images/prod5.jpg",
+      image: "src/assets/images/prod5.jpg",
       title: "Producto 5",
       price: "$5,995.00",
       discount: "-20%",
     },
     {
       id: 6,
-      image: "/images/prod1.jpg",
+      image: "src/assets/images/prod1.jpg",
       title: "Producto 6",
       price: "$5,795.00",
       discount: "-20%",
     },
     {
       id: 7,
-      image: "/images/prod7.jpg",
+      image: "src/assets/images/prod7.jpg",
       title: "Producto 7",
       price: "$5,245.00",
       discount: "-20%",
     },
     {
       id: 8,
-      image: "/images/prod8.jpg",
+      image: "src/assets/images/prod8.jpg",
       title: "Producto 8",
       price: "$5,995.00",
       discount: "-20%",
     },
     {
       id: 9,
-      image: "/images/prod7.jpg",
+      image: "src/assets/images/prod7.jpg",
       title: "Producto 9",
       price: "$5,995.00",
       discount: "-20%",
     },
     {
       id: 10,
-      image: "/images/prod4.jpg",
+      image: "src/assets/images/prod4.jpg",
       title: "Producto 10",
       price: "$5,995.00",
       discount: "-20%",
@@ -99,7 +99,7 @@ const Ofertas = () => {
                   alt={product.title}
                   className="w-full h-48 object-cover"
                 />
-                <span className="absolute top-2 left-2 bg-lacampana-red2 text-white text-xs font-bold px-2 py-1 rounded">
+                <span className="absolute top-2 left-2 my-bg-primary text-white text-xs font-bold px-2 py-1 rounded">
                   {product.discount}
                 </span>
               </div>
@@ -118,7 +118,7 @@ const Ofertas = () => {
 
       {/* Botón */}
       <div className="text-center mt-10">
-        <button className="bg-lacampana-red2 text-white font-medium py-3 px-8 rounded-full hover:bg-red-700">
+        <button className="my-bg-primary text-white font-medium py-3 px-8 rounded-full hover:bg-red-700">
           Explorar todas las ofertas
         </button>
       </div>

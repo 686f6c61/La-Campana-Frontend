@@ -1,36 +1,32 @@
 import React from "react";
-import {
-  HiOutlineUser,
-  HiOutlineHeart,
-  HiOutlineShoppingCart,
-} from "react-icons/hi";
-import { FiSearch } from "react-icons/fi";
+import { FaUser, FaHeart, FaShoppingCart, FaSearch } from "react-icons/fa"; 
+
 
 const Header = () => {
   return (
-    <header className="bg-lacampana-red2 text-white w-full h-32 flex items-center justify-center">
-      <div className="w-full max-w-screen-2xl mx-60 flex items-center justify-between pr-14 ">
+    <header className="my-bg-primary text-white w-full h-32 flex items-center justify-center">
+      <div className="w-full max-w-screen-2xl mx-auto flex items-center justify-between px-4">
         <div className="flex items-center">
-          <img src="/images/logo.png" alt="La Campana" className="h-16" />
+          <img
+            src="/src/assets/images/logo.png"
+            alt="La Campana"
+            className="h-16"
+          />
         </div>
-
-        <div className="flex items-center space-x-[24px]">
-          <div className="relative w-[260px] h-[33px]">
-            <input
-              type="text"
-              placeholder="Buscar producto..."
-              className="w-full h-full px-4 py-2 text-xs font-medium text-gray-200 font-open-sans placeholder-gray-500 rounded-tl-full rounded-bl-full rounded-tr-full focus:outline-none"
-            />
-            <button className="absolute right-0 top-0 h-full w-12 bg-lacampana-red2 flex items-center justify-center rounded-tl-full rounded-bl-full rounded-tr-full border border-white hover:bg-red-300">
-              <FiSearch className="text-white text-lg" />
-            </button>
-          </div>
-
-          <div className="flex items-center space-x-6">
-            <HiOutlineUser className="text-2xl cursor-pointer hover:text-red-300 text-3xl stroke-[1.5]" />
-            <HiOutlineHeart className="text-2xl cursor-pointer hover:text-red-300 text-3xl stroke-[1.5]" />
-            <HiOutlineShoppingCart className="text-2xl cursor-pointer hover:text-red-300 text-3xl stroke-[1.5]" />
-          </div>
+        <div className="relative w-1/2">
+          <input
+            type="text"
+            placeholder="Buscar producto..."
+            className="w-full px-4 py-2 rounded-full text-gray-700 placeholder-gray-500 focus:outline-none"
+          />
+          <button className="absolute right-2 top-2 my-bg-primary  text-white p-2 rounded-full hover:bg-red-100">
+            <FaSearch />
+          </button>
+        </div>
+        <div className="flex items-center space-x-6">
+          <FaUser className="text-xl cursor-pointer hover:text-red-300" />
+          <FaHeart className="text-xl cursor-pointer hover:text-red-300" />
+          <FaShoppingCart className="text-xl cursor-pointer hover:text-red-300" />
         </div>
       </div>
     </header>
