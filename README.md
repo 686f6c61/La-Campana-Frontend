@@ -68,23 +68,6 @@ cd <repo-name>
 - Una vez aprobado el PR, realiza el merge en `development`.
 - Asegúrate de probar los cambios integrados.
 
-Hacer el merge via consola:
-
-1- Cambia a la rama `development`
-```
-git checkout development
-```
-2- Mergear los cambios a `development`
-
-```
-git merge feature/XXXXXXXX
-```
-
-3- Subir los cambios a `development`
-
-```
-git push origin development
-```
 ### 6. Lanzar cambios a producción
 Cuando todo esté listo y probado en `development`:
 1. Cambia a la rama `main`:
