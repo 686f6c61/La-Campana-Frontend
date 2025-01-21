@@ -1,20 +1,26 @@
 import { HiMenuAlt1 } from "react-icons/hi";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import { NavbarSidebar } from "../../Sidebar";
-import { Link } from "react-router";
+import { useNavigate } from "react-router";
 import { useState } from "react";
 
 const CategoriesSidebar = ({ categories }) => {
   const [showSubcategories, setShowSubcategories] = useState(false)
   const [foundCategory, setFoundCategory] = useState()
+  const navigate = useNavigate()
+
+  const handleClickCategory = (link) => {
+    navigate(link)
+    handleShowSubcategories(false)
+  }
 
   const handleHoverCategory = (categoryID) => {
     const foundCategory = categories.find(category => category.id === categoryID)
     setFoundCategory(foundCategory)
-    handleShowSidebar(true)
+    handleShowSubcategories(true)
   }
 
-  const handleShowSidebar = (value) => setShowSubcategories(value)
+  const handleShowSubcategories = (value) => setShowSubcategories(value)
 
   return (
     <div className="drawer w-fit z-20">
@@ -32,19 +38,18 @@ const CategoriesSidebar = ({ categories }) => {
         title="Categorías"
         layerLevel={30}
         subSidebarItems={foundCategory}
-        onCloseSubsidebar={handleShowSidebar}
+        onCloseSubsidebar={handleShowSubcategories}
         showSubsidebar={showSubcategories}
       >
         {categories.map(category =>
-          <Link
-            key={`category-navbar-${category.id}`}
-            onMouseOver={() => handleHoverCategory(category.id)}
-            to={category.link}
-            className="text-start py-4 flex justify-between"
-          >
-            <p>{category.name}</p>
-            <IoIosArrowRoundForward className="text-2xl text-lacampana-gray1" />
-          </Link>
+          <CategoryLink
+            key={`category-sidebar-link-${category.id}`}
+            id={category.id}
+            link={category.link}
+            name={category.name}
+            onClick={handleClickCategory}
+            onHover={handleHoverCategory}
+          />
         )}
       </NavbarSidebar>
     </div>
@@ -52,3 +57,18 @@ const CategoriesSidebar = ({ categories }) => {
 }
 
 export default CategoriesSidebar
+
+const CategoryLink = ({ id, link, name, onClick, onHover }) => {
+  return (
+    <label
+      onMouseOver={() => onHover(id)}
+      onClick={() => onClick(link)}
+      className="text-start py-4 flex justify-between hover:cursor-pointer hover:bg-lacampana-white"
+      htmlFor="categories-sidebar-navbar"
+      aria-label="close sidebar"
+    >
+      <p>{name}</p>
+      <IoIosArrowRoundForward className="text-2xl text-lacampana-gray1" />
+    </label>
+  )
+}
