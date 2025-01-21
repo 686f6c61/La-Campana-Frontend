@@ -1,8 +1,12 @@
 import { IoIosArrowRoundForward } from "react-icons/io";
 import { Sidebar } from "../../Sidebar"
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
-const SubcategoriesSidebar = ({ id, title, subcategories }) => {
+const SubcategoriesSidebar = ({ id, link, title, subcategories }) => {
+  const navigate = useNavigate()
+
+  const handleNavigate = (link) => navigate(link)
+
   return (
     <div className="drawer drawer-end">
       <input id={`subcategories-sidebar-${id}`} type="checkbox" className="drawer-toggle" />
@@ -19,13 +23,27 @@ const SubcategoriesSidebar = ({ id, title, subcategories }) => {
         title={title}
         layerLevel={40}
       >
-        <Link className="lacampana-btn bg-lacampana-red2 px-4 py-1 text-white">Ver Todos</Link>
+        <label
+          onClick={() => handleNavigate(link)}
+          className="lacampana-btn bg-lacampana-red2 px-4 py-1 text-white"
+          htmlFor={`subcategories-sidebar-${id}`}
+          aria-label="close sidebar"
+        >
+          <label htmlFor={`categories-sidebar`} aria-label="close sidebar">
+            <label htmlFor="menu-sidebar" aria-label="close sidebar">
+              Ver Todos
+            </label>
+          </label>
+        </label>
         <section className="flex flex-col gap-4 py-4">
           {subcategories.map(subcategory =>
             <SubcategoryItem
               key={`subcategory-item-${subcategory.id}`}
+              id={subcategory.id}
               title={subcategory.title}
+              link={subcategory.link}
               subcategoryItems={subcategory.items}
+              onClick={handleNavigate}
             />
           )}
         </section>
@@ -36,12 +54,20 @@ const SubcategoriesSidebar = ({ id, title, subcategories }) => {
 
 export default SubcategoriesSidebar
 
-const SubcategoryItem = ({ title, subcategoryItems }) => {
+const SubcategoryItem = ({ id, title, link, subcategoryItems, onClick }) => {
   return (
     <article className="text-start flex flex-col gap-4">
-      <Link>
-        <h4>{title}</h4>
-      </Link>
+      <label
+        onClick={() => onClick(link)}
+        htmlFor={`subcategories-sidebar-${id}`}
+        aria-label="close sidebar"
+      >
+        <label htmlFor={`categories-sidebar`} aria-label="close sidebar">
+          <label htmlFor="menu-sidebar" aria-label="close sidebar">
+            <h4>{title}</h4>
+          </label>
+        </label>
+      </label>
       <div className="flex flex-col gap-2">
         {subcategoryItems.map(item =>
           <Link key={`item-${item}`}>
