@@ -1,9 +1,13 @@
 import { GiHamburgerMenu } from "react-icons/gi";
-import { Link } from "react-router";
+import { useNavigate } from "react-router";
 import CategoriesSidebar from "./CategoriesSidebar";
 import { Sidebar } from "../../Sidebar";
 
 const MenuSidebar = ({ categories }) => {
+  const navigate = useNavigate()
+
+  const handleMenuItemClick = (link) => navigate(link)
+
   return (
     <div className="drawer drawer-end z-20 tablet:hidden">
       <input id="menu-sidebar" type="checkbox" className="drawer-toggle" />
@@ -23,9 +27,10 @@ const MenuSidebar = ({ categories }) => {
         />
         {categories.map(category =>
           <MenuLink
-            key={`menu-link-${category.id}`}
-            title={category.name}
+            key={`menu-item-${category.id}`}
             link={category.link}
+            name={category.name}
+            onClick={handleMenuItemClick}
           />
         )}
       </Sidebar>
@@ -35,10 +40,15 @@ const MenuSidebar = ({ categories }) => {
 
 export default MenuSidebar
 
-const MenuLink = ({ title, link }) => {
+const MenuLink = ({ name, link, onClick }) => {
   return (
-    <Link className="py-4" to={link}>
-      <p className="text-start">{title}</p>
-    </Link>
+    <label
+      className="py-4"
+      onClick={() => onClick(link)}
+      htmlFor="menu-sidebar"
+      aria-label="close sidebar"
+    >
+      <p className="text-start text-lacampana-gray1">{name}</p>
+    </label>
   )
 }

@@ -23,6 +23,7 @@ const CategoriesSidebar = ({ categories }) => {
           <SubcategoriesSidebar
             key={`subcategory-sidebar-${category.id}`}
             id={category.id} 
+            link={category.link}
             title={category.name}
             subcategories={category.subcategories}
           />
