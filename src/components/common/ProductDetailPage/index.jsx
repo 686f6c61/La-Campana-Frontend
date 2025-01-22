@@ -64,123 +64,182 @@ const ProductDetailPage = () => {
 	}
 
 	return (
-		<div className="max-w-7xl mx-auto p-6">
-			<div className="flex gap-6">
-				{/* Galería de imágenes en miniatura */}
-				<div className="flex">
-					<div className="flex flex-col gap-4">
-						{[...Array(3)].map((_, index) => (
+		<div className="max-w-7xl mx-auto p-8">
+			<div className="flex gap-8">
+				{/* Galeria de imagenes */}
+				<div className="w-2/5">
+					<div className="flex">
+						{/* Galería de imágenes en miniatura */}
+						<div className="flex-initial w-32">
+							{[...Array(3)].map((_, index) => (
+								<img
+									key={index}
+									src={product.image}
+									alt={`Vista ${index + 1}`}
+									className="flex-initial mt-3 h-32 object-cover border rounded-lg cursor-pointer"
+								/>
+							))}
+						</div>
+						{/* Imagen principal */}
+						<div className="flex-1">
 							<img
-								key={index}
 								src={product.image}
-								alt={`Vista ${index + 1}`}
-								className="w-72 h-32 border rounded-lg cursor-pointer"
+								alt={product.name}
+								className="h-full w-auto object-contain border rounded-lg"
 							/>
-						))}
-					</div>
-					<div className="ml-4">
-						<img
-							src={product.image}
-							alt={product.name}
-							className="w-[1500px] h-auto border rounded-lg"
-						/>
+						</div>
+
+					</div >
+					{/* boton ficha tecnica */}
+					<div className="mt-4">
+						<button className="bg-lacampana-gray1 ont-montserrat text-white w-full h-[44px] rounded-md rounded-tl-full rounded-bl-full rounded-tr-full text-md">
+							Ficha Tecnica
+						</button>
 					</div>
 				</div>
 
 				{/* Información del producto */}
-				<div className="flex-grow">
-					<h1 className="text-2xl font-bold">{product.name}</h1>
-					<p className="text-gray-600 mt-4">{product.description}</p>
-
-					<div className="mt-6">
-						<span className="text-3xl font-bold text-red-500">
-							{product.price}
-						</span>
-						<span className="text-sm text-gray-500 ml-4">
-							{product.discount}
-						</span>
+				<div className="w-3/5">
+					{/* header */}
+					<div>
+						<h1 className="text-3xl font-bold">{product.name}</h1>
+						<p className="text-gray-600 mt-4">{product.description}</p>
 					</div>
 
-					<button className="mt-6 bg-red-500 text-white px-6 py-2 rounded">
-						Añadir al carrito
-					</button>
+					{/* propiedades */}
+					<div className="flex flex-wrap gap-6 mt-8 justify-center">
+						<div>
+							<label className="block font-bold mb-2">Selección de paquete</label>
+							<select className="border w-full p-2 rounded">
+								{product.options.paquete.map((option, index) => (
+									<option key={index}>{option}</option>
+								))}
+							</select>
+						</div>
+						<div>
+							<label className="block font-bold mb-2">Longitud</label>
+							<select className="border w-full p-2 rounded">
+								{product.options.longitud.map((option, index) => (
+									<option key={index}>{option}</option>
+								))}
+							</select>
+						</div>
+						<div>
+							<label className="block font-bold mb-2">Ancho</label>
+							<select className="border w-full p-2 rounded">
+								{product.options.ancho.map((option, index) => (
+									<option key={index}>{option}</option>
+								))}
+							</select>
+						</div>
+					</div>
+
+					{/* colores */}
+					<div className="flex flex-wrap gap-6 mt-8 justify-center">
+						<div>
+							<label className="block font-bold mb-2">Color externo</label>
+							<div className="flex gap-2">
+								{product.options.colorExterno.map((color, index) => (
+									<div
+										key={index}
+										className="w-8 h-8 rounded-full cursor-pointer border"
+										style={{ backgroundColor: color }}
+									></div>
+								))}
+							</div>
+						</div>
+						<div >
+							<label className="block font-bold mb-2">Color interno</label>
+							<div className="flex gap-2">
+								{product.options.colorInterno.map((color, index) => (
+									<div
+										key={index}
+										className="w-8 h-8 rounded-full cursor-pointer border"
+										style={{ backgroundColor: color }}
+									>
+									</div>
+								))}
+							</div>
+						</div>
+					</div>
+
+					{/* boton añadir al carrito*/}
+					<div className="flex flex-wrap gap-6 mt-8 justify-center">
+						<div className="mt-2 flex items-center gap-6">
+							<span className="text-lg font-bold text-black">{product.price}</span>
+							<div className="flex items-center gap-2">
+								<button className="bg-gray-200 w-8 h-8 rounded-full flex items-center justify-center font-bold text-gray-700">
+									-
+								</button>
+								<input
+									type="number"
+									min="1"
+									defaultValue="1"
+									className="w-12 text-center border border-gray-300 rounded-md"
+								/>
+								<button className="bg-gray-200 w-8 h-8 rounded-full flex items-center justify-center font-bold text-gray-700">
+									+
+								</button>
+							</div>
+							<div>
+								<button className="bg-lacampana-red2 font-montserrat text-white md:w-[270px] w-[300px] h-[44px] rounded-md rounded-tl-full rounded-bl-full rounded-tr-full text-md">
+									Añadir al carrito
+								</button>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 
-			{/* Sección de pestañas verticales */}
-			<div className="mt-12 flex border rounded-lg">
-				{/* Pestañas verticales */}
-				<div className="w-1/4 bg-gray-100 flex flex-col border-r">
-					<button
-						className={`py-4 px-6 text-left ${activeTab === "normas"
-								? "bg-red-500 text-white font-semibold"
-								: "text-gray-700"
-							}`}
-						onClick={() => setActiveTab("normas")}
-					>
-						Normas
-					</button>
-					<button
-						className={`py-4 px-6 text-left ${activeTab === "ventajas"
-								? "bg-red-500 text-white font-semibold"
-								: "text-gray-700"
-							}`}
-						onClick={() => setActiveTab("ventajas")}
-					>
-						Ventajas
-					</button>
-					<button
-						className={`py-4 px-6 text-left ${activeTab === "usos"
-								? "bg-red-500 text-white font-semibold"
-								: "text-gray-700"
-							}`}
-						onClick={() => setActiveTab("usos")}
-					>
-						Usos
-					</button>
+		
+			<div className="flex top-[854px] left-[137px] w-[1166px] h-[278px] bg-gray-200 rounded-md overflow-hidden mt-16">
+				{/* Sidebar */}
+				<div className="flex flex-col w-1/4 bg-gray-100 text-black">
+					{/* Normas (Activa) */}
+					<div >
+						<button className="text-lacampana-red2 font-bold px-4 py-3 text-left border-l-4 border-lacampana-red2 bg-gray-100 text-black">
+							Normas
+						</button>
+					</div>
+					{/* Ventajas */}
+					<div >
+						<button className="px-4 py-3 text-left hover:bg-gray-700 bg-gray-100 text-black">
+							Ventajas
+						</button>
+					</div>
+					{/* Usos */}
+					<div >
+						<button className="px-4 py-3 text-left rounded-md overflow-hidden hover:bg-gray-700 bg-gray-100 text-black">
+							Usos
+						</button>
+					</div>
 				</div>
 
-				{/* Contenido de la pestaña activa */}
-				<div className="w-3/4 p-6">
-					{activeTab === "normas" && (
-						<div>
-							<p>
-								<strong>NTC 5805:</strong> Lámina colaborante de acero
-								conformada en frío.
-							</p>
-							<p className="mt-2">
-								<strong>ASTM A653 = NTC 4011:</strong> Láminas de acero
-								recubiertas con zinc (galvanizadas) o recubiertas con aleación
-								hierro y zinc mediante procesos de inmersión en caliente.
-							</p>
-						</div>
-					)}
-					{activeTab === "ventajas" && (
-						<div>
-							<ul className="list-disc ml-6">
-								<li>Alta resistencia a la corrosión.</li>
-								<li>Durabilidad garantizada.</li>
-								<li>Fácil instalación.</li>
-								<li>Material 100% reciclable.</li>
-							</ul>
-						</div>
-					)}
-					{activeTab === "usos" && (
-						<div>
-							<p>
-								Este producto es ideal para estructuras metálicas, entrepisos
-								y refuerzos en construcción.
-							</p>
-						</div>
-					)}
+				<div className="flex">
+					<div className="flex-1 bg-gray-100 p-6">
+						<p className="font-bold text-lg">NTC 5805:</p>
+						<p className="mb-4 text-sm">Lámina colaborante de acero conformada en frío.</p>
+						<p className="font-bold text-lg">ASTM A653 = NTC 4011:</p>
+						<p className="text-sm">
+							Láminas de acero recubiertas con zinc (galvanizadas) o recubiertas con aleación hierro y zinc
+							mediante procesos de inmersión en caliente.
+						</p>
+					</div>
 				</div>
+
 			</div>
 
-			{/* Sección de productos relacionados */}
 			<div className="mt-12">
-				<h2 className="text-xl font-bold text-red-500">
+				<div className="flex">
+				<h2 className="text-xl font-bold text-red-500 justify-start">
 					Complementa tu compra
 				</h2>
+				</div>
+				<div >
+				<h2 className="text-xl font-bold text-black ">
+					Productos similares
+				</h2>
+				</div>
 				<div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-6">
 					{relatedProducts.map((product) => (
 						<div
@@ -204,6 +263,7 @@ const ProductDetailPage = () => {
 				</div>
 			</div>
 		</div>
+
 	);
 };
 
