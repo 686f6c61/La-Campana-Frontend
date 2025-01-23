@@ -186,14 +186,21 @@ const Footer = () => {
                   Nosotros
                 </Link>
               </p>
-
               <p className="text-left pb-4 pl-2">
                 <Link to="/blog">
                   Blog
                 </Link>
               </p>
-              <p className="text-left pb-4 pl-2">Documentos</p>
-              <p className="text-left pb-4 pl-2">Contacto</p>
+              <p className="text-left pb-4 pl-2">
+                <Link to="/documentos" className="text-lacampana-gray1">
+                  Documentos
+                </Link>
+              </p>
+              <p className="text-left pb-4 pl-2">
+                <Link to="/contacto" className="text-lacampana-gray1">
+                  Contacto
+                </Link>
+              </p>
             </ul>
           </div>
 
@@ -224,8 +231,16 @@ const Footer = () => {
                   </Link>
                 </p>
                 <p className="text-left pb-4 pl-2">Blog</p>
-                <p className="text-left pb-4 pl-2">Documentos</p>
-                <p className="text-left pb-4 pl-2">Contacto</p>
+                <p className="text-left pb-4 pl-2">
+                  <Link to="/documentos" className="text-lacampana-gray1">
+                    Documentos
+                  </Link>
+                </p>
+                <p className="text-left pb-4 pl-2">
+                  <Link to="/contacto" className="text-lacampana-gray1">
+                    Contacto
+                  </Link>
+                </p>
               </ul>
             </div>
 
@@ -252,7 +267,7 @@ const Footer = () => {
               className="flex justify-between items-center font-antonio font-bold text-lacampana-gray1 mb-0 text-lg text-left md:pt-8 md:pb-3 cursor-pointer sm:cursor-default"
               onClick={() => setIsLegalOpen(!isLegalOpen)}
             >
-              <h3 className="font-antonio font-bold text-lacampana-red1 mb-0 md:mb-1 text-lg text-left md:pt-0 pt-1 md:pt-8 md:pb-0 pb-3">
+              <h3 className="font-antonio font-bold text-lacampana-red1 mb-0 md:mb-1 text-lg text-left  md:pt-1 md:pb-0 pb-3">
                 Legal
               </h3>
               <IoIosArrowDown
