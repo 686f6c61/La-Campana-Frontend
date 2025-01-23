@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import Layout from "../../layouts/Layout";
+import Comments from "../Comments";
+import ProductTabs from "../ProductTabs";
 
 const ProductDetailPage = () => {
 	const { productId } = useParams();
@@ -191,54 +193,20 @@ const ProductDetailPage = () => {
 				</div>
 			</div>
 
-		
-			<div className="flex top-[854px] left-[137px] w-[1166px] h-[278px] bg-gray-200 rounded-md overflow-hidden mt-16">
-				{/* Sidebar */}
-				<div className="flex flex-col w-1/4 bg-gray-100 text-black">
-					{/* Normas (Activa) */}
-					<div >
-						<button className="text-lacampana-red2 font-bold px-4 py-3 text-left border-l-4 border-lacampana-red2 bg-gray-100 text-black">
-							Normas
-						</button>
-					</div>
-					{/* Ventajas */}
-					<div >
-						<button className="px-4 py-3 text-left hover:bg-gray-700 bg-gray-100 text-black">
-							Ventajas
-						</button>
-					</div>
-					{/* Usos */}
-					<div >
-						<button className="px-4 py-3 text-left rounded-md overflow-hidden hover:bg-gray-700 bg-gray-100 text-black">
-							Usos
-						</button>
-					</div>
-				</div>
-
-				<div className="flex">
-					<div className="flex-1 bg-gray-100 p-6">
-						<p className="font-bold text-lg">NTC 5805:</p>
-						<p className="mb-4 text-sm">Lámina colaborante de acero conformada en frío.</p>
-						<p className="font-bold text-lg">ASTM A653 = NTC 4011:</p>
-						<p className="text-sm">
-							Láminas de acero recubiertas con zinc (galvanizadas) o recubiertas con aleación hierro y zinc
-							mediante procesos de inmersión en caliente.
-						</p>
-					</div>
-				</div>
-
-			</div>
+	<div className="mt-12">
+		<ProductTabs/>
+	</div>
 
 			<div className="mt-12">
 				<div className="flex">
-				<h2 className="text-xl font-bold text-red-500 justify-start">
-					Complementa tu compra
-				</h2>
+					<h2 className="text-xl font-bold text-red-500 justify-start">
+						Complementa tu compra
+					</h2>
 				</div>
 				<div >
-				<h2 className="text-xl font-bold text-black ">
-					Productos similares
-				</h2>
+					<h2 className="text-xl font-bold text-black ">
+						Productos similares
+					</h2>
 				</div>
 				<div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-6">
 					{relatedProducts.map((product) => (
@@ -260,6 +228,9 @@ const ProductDetailPage = () => {
 							<p className="text-red-500 font-bold mt-2">{product.price}</p>
 						</div>
 					))}
+				</div>
+				<div className="mt-16">
+					<Comments />
 				</div>
 			</div>
 		</div>
