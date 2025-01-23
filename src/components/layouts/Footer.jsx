@@ -186,14 +186,16 @@ const Footer = () => {
                   Nosotros
                 </Link>
               </p>
-
-              <p className="text-left pb-4 pl-2">Blog</p>
+              <p className="text-left pb-4 pl-2">
+                <Link to="/blog">
+                  Blog
+                </Link>
+              </p>
               <p className="text-left pb-4 pl-2">
                 <Link to="/documentos" className="text-lacampana-gray1">
                   Documentos
                 </Link>
               </p>
-
               <p className="text-left pb-4 pl-2">
                 <Link to="/contacto" className="text-lacampana-gray1">
                   Contacto

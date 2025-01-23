@@ -1,7 +1,7 @@
 import { IoClose } from "react-icons/io5";
 import SearchBar from "../../components/common/SearchBar";
 import Topbar from "../Topbar";
-import SubSidebar from "./components/Subsidebar";
+import SubSidebar from "./components/SubSidebar";
 
 export const Sidebar = ({ id, title, layerLevel = 20, children }) => {
   return (
