@@ -10,6 +10,7 @@ import Header from "./layout/Header";
 import Navbar from "./layout/Navbar";
 import Footer from "./components/layouts/Footer";
 import "overlayscrollbars/overlayscrollbars.css";
+import Blog from "./pages/Blog";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/nosotros" element={<NosotrosInfo />} />
         <Route path="/:categoryId" element={<CategoryPage />} />
         <Route path="/product/:productId" element={<ProductDetailPage />} />
+        <Route path="/blog" element={<Blog />} />
         <Route path="*" element={<h1>404 Not Found</h1>} />
       </Routes>
       <Footer />

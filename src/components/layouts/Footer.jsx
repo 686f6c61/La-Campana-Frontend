@@ -187,7 +187,11 @@ const Footer = () => {
                 </Link>
               </p>
 
-              <p className="text-left pb-4 pl-2">Blog</p>
+              <p className="text-left pb-4 pl-2">
+                <Link to="/blog">
+                  Blog
+                </Link>
+              </p>
               <p className="text-left pb-4 pl-2">Documentos</p>
               <p className="text-left pb-4 pl-2">Contacto</p>
             </ul>
