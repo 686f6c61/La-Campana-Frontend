@@ -1,50 +1,16 @@
 import React from "react";
+import { useGetProductsQuery } from '../../../store/reducers/apiSlice';
 
 
 
 const BestOfLaCampana = () => {
-  const products = [
-    {
-      id: 1,
-      discount: "-20%",
-      image: "/images/prod1.jpg",
-      title: "Tubo Mueble Cuadrado Esp 1.10 un 3/4 Primera - Norma Ntc 1986",
-      price: "$19.693",
-      additionalInfo: "IVA incluido",
-    },
-    {
-      id: 2,
-      discount: "-20%",
-      image: "/images/prod3.jpg",
-      title: "Marco Ventana Corriente Esp 1.00 un 6.00 mt Primera",
-      price: "$32.516",
-      additionalInfo: "IVA incluido",
-    },
-    {
-      id: 3,
-      discount: "-20%",
-      image: "/images/prod7.jpg",
-      title: "Marco Ventana Tipo Aluminio Esp 0.85 un 6.00 mt Primera",
-      price: "$24.895",
-      additionalInfo: "IVA incluido",
-    },
-    {
-      id: 4,
-      discount: "-20%",
-      image: "/images/prod4.jpg",
-      title: "Tubo Agua Negra Esp 1.90 un 1 1/4 Primera",
-      price: "$58.760",
-      additionalInfo: "IVA incluido",
-    },
-    {
-      id: 5,
-      discount: "-20%",
-      image: "/images/prod5.jpg",
-      title: "Platina 2 Esp 1/8 un 6 mt Primera",
-      price: "$42.676",
-      additionalInfo: "IVA incluido",
-    },
-  ];
+  const { data, error, isLoading } = useGetProductsQuery();
+
+  if (isLoading) return <p>Cargando...</p>;
+  if (error) return <p>Error al cargar los datos.</p>;
+
+  console.log(data)
+  
 
   return (
     <section className="py-12 bg-white">
@@ -53,9 +19,9 @@ const BestOfLaCampana = () => {
           Lo mejor de la <span className="text-red-600">campana</span>
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4">
-          {products.map((product) => (
+          {data.slice(0, 5).map((product) => (
             <div
-              key={product.id}
+              key={product.TreeCode}
               className="bg-white border rounded-lg shadow-md overflow-hidden"
             >
               {/* Discount */}
@@ -65,18 +31,18 @@ const BestOfLaCampana = () => {
               {/* Image */}
               <div className="w-full h-48 bg-gray-100 flex items-center justify-center">
                 <img
-                  src={product.image}
-                  alt={product.title}
+                  src="images/notfound.jpg"
+                  alt={product.ProductDescription}
                   className="object-contain h-full"
                 />
               </div>
               {/* Details */}
               <div className="p-4">
                 <h3 className="text-sm font-bold text-gray-800 mb-2">
-                  {product.title}
+                  {product.ProductDescription}
                 </h3>
-                <p className="text-lg font-bold text-red-600">{product.price}</p>
-                <p className="text-sm text-gray-500">{product.additionalInfo}</p>
+                <p className="text-lg font-bold text-red-600">{product.ProductPrice}</p>
+                <p className="text-sm text-gray-500">{product.ProductDescription}</p>
               </div>
             </div>
           ))}

@@ -18,7 +18,11 @@ export const apiSlice = createApi({
     getBlogs: builder.query({
       query: () => 'blog',
     }),
+    getProducts: builder.query({
+      query: () => `products`, 
+
+    })
   }),
 });
 
-export const { useGetBlogsQuery } = apiSlice;
+export const { useGetBlogsQuery, useGetProductsQuery } = apiSlice;
