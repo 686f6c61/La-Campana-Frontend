@@ -19,7 +19,7 @@ const Blog = () => {
         description="Lorem ipsum dolor sit amet consectetur. Pulvinar dignissim pulvinar ut lorem pharetra. Vestibulum nulla faucibus nunc enim. Proin feugiat fames turpis sociis viverra. Viverra sit ut egestas placerat neque fames ante."
         justify="start"
       >
-        <div className="w-full tablet:w-2/3 h-[400px] tablet:h-[600px]">
+        <div className="w-full tablet:w-3/5 flex-none h-[400px] tablet:h-[600px]">
           <Highlighted highlightedNews={highlightedNews} />
         </div>
       </IntroductoryText>
