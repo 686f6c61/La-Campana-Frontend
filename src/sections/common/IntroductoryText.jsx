@@ -6,7 +6,7 @@ const IntroductoryText = ({ title = "Título", subtitle, description, bgTitle = 
       </div>
       <article className="pt-8 tablet:pt-20 desktop:pt-36 flex flex-col tablet:flex-row gap-16 px-4 desktop:px-8">
         {/* Desktop Text */}
-        <section className={`hidden text-${justify} tablet:flex flex-col gap-8 text-wrap w-full tablet:w-1/3`}>
+        <section className={`hidden text-${justify} tablet:flex flex-col gap-8 text-wrap w-full`}>
           <div>
             <h1>{title}</h1>
             <span className="font-open-sans text-2xl text-lacampana-gray1 uppercase">{subtitle}</span>

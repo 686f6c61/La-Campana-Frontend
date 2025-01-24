@@ -23,6 +23,7 @@ const BlogsGallery = ({ newsData, categories }) => {
           {newsData.map(news =>
             <NewsCard
               key={`news-card-${news._id}`}
+              id={news._id}
               title={news.name}
               description={news.body}
               image={news.image}

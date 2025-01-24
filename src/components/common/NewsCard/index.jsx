@@ -1,7 +1,7 @@
 import { Link } from 'react-router'
 import { IoIosArrowRoundForward } from "react-icons/io";
 
-const NewsCard = ({ title, image, category = "Categoría", publicationDate, description }) => {
+const NewsCard = ({ id, title, image, category = "Categoría", publicationDate, description }) => {
   const fecha = new Date(publicationDate);
 
   // Formatear la fecha
@@ -13,7 +13,7 @@ const NewsCard = ({ title, image, category = "Categoría", publicationDate, desc
   const formatedDate = `${dia.toString().padStart(2, '0')}-${mes.toString().padStart(2, '0')}-${año}`;
 
   return (
-    <article className="bg-lacampana-white flex flex-col p-4 gap-4 rounded-tl-xl h-[500px]">
+    <article className="bg-lacampana-white flex flex-col p-4 gap-4 rounded-tl-xl w-full h-[500px]">
       <header className="h-3/5 rounded-tl-lg overflow-hidden">
         <img className="w-full h-full object-cover" src={image} alt="news-card-image" />
       </header>
@@ -23,7 +23,7 @@ const NewsCard = ({ title, image, category = "Categoría", publicationDate, desc
         <p className="h-20 overflow-y-auto">{description}</p>
       </main>
       <footer className="flex justify-start">
-        <Link className="btn">
+        <Link to={`/blog/${id}`} className="btn">
           Conocer más
           <IoIosArrowRoundForward className="text-2xl" />
         </Link>
