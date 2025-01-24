@@ -3,9 +3,9 @@ import SearchBar from "../../components/common/SearchBar"
 
 const BlogsGallery = ({ newsData, categories }) => {
   return (
-    <section className="flex flex-col gap-8">
-      <header className="flex justify-between">
-        <div className="flex">
+    <section className="flex flex-col gap-8 px-4 desktop:px-8">
+      <header className="flex flex-col tablet:flex-row justify-between">
+        <div className="flex justify-center flex-wrap">
           {categories.map(category =>
             <CategoryRadio
               key={`news-category-radio-${category.id}`}
@@ -14,7 +14,7 @@ const BlogsGallery = ({ newsData, categories }) => {
             />
           )}
         </div>
-        <div className="drop-shadow-lg">
+        <div className="drop-shadow-lg flex justify-center">
           <SearchBar placeholder="Buscar noticia..." />
         </div>
       </header>
@@ -22,6 +22,7 @@ const BlogsGallery = ({ newsData, categories }) => {
         <div className="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 gap-4">
           {newsData.map(news =>
             <NewsCard
+              key={`news-card-${news._id}`}
               title={news.name}
               description={news.body}
               image={news.image}

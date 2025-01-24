@@ -12,14 +12,14 @@ const Blog = () => {
   if (error) return <p>Error al cargar los datos.</p>;
 
   return (
-    <article className="max-w-screen-desktop w-full justify-self-center">
+    <article className="max-w-screen-desktop w-full justify-self-center flex flex-col gap-16">
       <IntroductoryText
-        title="Nuestro Blog"
+        title={<>Nuestro <span className="text-lacampana-red2">Blog</span></>}
         bgTitle="Actualidad en aceros"
         description="Lorem ipsum dolor sit amet consectetur. Pulvinar dignissim pulvinar ut lorem pharetra. Vestibulum nulla faucibus nunc enim. Proin feugiat fames turpis sociis viverra. Viverra sit ut egestas placerat neque fames ante."
         justify="start"
       >
-        <div className="w-2/3 h-[600px]">
+        <div className="w-full tablet:w-2/3 h-[400px] tablet:h-[600px]">
           <Highlighted highlightedNews={highlightedNews} />
         </div>
       </IntroductoryText>
