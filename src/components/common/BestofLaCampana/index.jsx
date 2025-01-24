@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useGetProductsQuery } from '../../../store/reducers/apiSlice';
 
 
 
 const BestOfLaCampana = () => {
-  const { data, error, isLoading } = useGetProductsQuery();
+  const { data, error, isLoading, refetch } = useGetProductsQuery();
+  useEffect(() => {
+    if (error) {
+      refetch();
+    }
+  }, [error, refetch]); 
 
   if (isLoading) return <p>Cargando...</p>;
   if (error) return <p>Error al cargar los datos.</p>;
