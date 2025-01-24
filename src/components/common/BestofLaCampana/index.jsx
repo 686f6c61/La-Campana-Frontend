@@ -41,7 +41,7 @@ const BestOfLaCampana = () => {
                 <h3 className="text-sm font-bold text-gray-800 mb-2">
                   {product.ProductDescription}
                 </h3>
-                <p className="text-lg font-bold text-red-600">{product.ProductPrice}</p>
+                <p className="text-lg font-bold text-red-600">${product.ProductPrice}</p>
                 <p className="text-sm text-gray-500">{product.ProductDescription}</p>
               </div>
             </div>

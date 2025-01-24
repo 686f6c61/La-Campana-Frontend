@@ -110,7 +110,7 @@ const CategoryPage = () => {
 	});
 
 	return (
-
+		
 		<div className="max-w-7xl mx-auto">
 			<div
 				className="relative bg-cover bg-center bg-no-repeat"
@@ -128,7 +128,14 @@ const CategoryPage = () => {
 					</h1>
 				</div>
 			</div>
-
+			<div className="max-w-[1200px] mx-auto px-4">
+		{/* Header */}
+		<div className="flex items-center gap-2 py-4 text-sm">
+		  <span className="text-gray-500">Inicio</span>
+		  <span className="text-gray-500">/</span>
+		  <span>Tienda</span>
+		</div>
+		</div>
 			<div className="flex">
 				<aside className="w-1/4 bg-gray-100 p-4 shadow">
 					<div className="mb-4 relative">
@@ -154,7 +161,7 @@ const CategoryPage = () => {
 							</svg>
 						</span>
 					</div>
-
+		
 					<h2 className="text-lg font-bold mb-2">FILTRAR POR</h2>
 					<div>
 						<h3 className="font-semibold">Espesor</h3>
