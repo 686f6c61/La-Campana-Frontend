@@ -4,7 +4,7 @@ import Slide from "./components/Slide";
 const Highlighted = ({ highlightedNews }) => {
   return (
     <div className="h-full w-full flex flex-col">
-      <div className="carousel w-full rounded-tl-3xl overflow-hidden">
+      <div className="carousel w-full h-full rounded-tl-3xl overflow-hidden">
         {highlightedNews.map(news =>
           <Slide
             key={`news-slide-${news._id}`}
