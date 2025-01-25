@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import BgText from "../BgText";
+import IntroductoryText from "../../../sections/common/IntroductoryText";
 
 const FILTER_OPTIONS = {
   espesor: ["1.10 mm", "1.15 mm", "1.20 mm", "1.50 mm"],
@@ -179,19 +180,18 @@ const CategoryPage = () => {
     <div className="max-w-7xl mx-auto">
       {/* Header */}
       <div className="relative w-full flex flex-col items-center justify-center bg-white">
-        <div className="relative z-10 text-center w-full max-w-screen-xl">
-          <div className="absolute inset-0 flex z-0 transform translate-x-[300px] hidden md:block">
-            <BgText text="Tienda de aceros" className="md:justify-center md:items-center" />
-          </div>
-          <h1 className="md:text-5xl text-3xl font-semibold text-lacampana-gray1 pt-5 md:pt-20 font-anton">
-            Nuestros <span className="text-lacampana-red2">aceros</span>
-          </h1>
-        </div>
+        <div className="relative z-10 text-center w-full max-w-screen-xl " >
+				<IntroductoryText
+        title={<>Nuestros <span className="text-lacampana-red2">aceros</span></>}
+        bgTitle="Lideres en acero"
+        justify="center"
+      />
       </div>
+			</div>
 
       <div className="flex">
         {/* Sidebar */}
-        <aside className="w-1/4 bg-gray-100 p-4 shadow">
+        <aside className="w-1/4 h-1/2 bg-gray-100 p-4 shadow">
           <div className="mb-4 relative">
             <input
               type="text"
@@ -216,7 +216,7 @@ const CategoryPage = () => {
             </span>
           </div>
 
-          <h2 className="text-lg font-anton mb-6">FILTRAR POR</h2>
+          <h2 className="text-lg border-b border-gray-500 text-left font-antonio mb-6">FILTRAR POR</h2>
           {renderFilterSection("espesor", "Espesor")}
           {renderFilterSection("longitud", "Longitud")}
           {renderFilterSection("ancho", "Ancho")}
