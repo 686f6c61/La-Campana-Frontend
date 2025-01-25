@@ -15,15 +15,15 @@ const ProductDetailPage = () => {
 			name: "Tubo Mueble Cuadrado Esp 1.10 un 3/4 Primera - Norma Ntc 1986",
 			price: "$19.693",
 			discount: "-20%",
-			image: "/images/PERFILESTIPODRYWALL.png",
+			image: "/images/prod1.jpg",
 			description:
 				"Presentamos la nueva placa colaborante que se puede utilizar por ambas caras. Su innovador diseño alcanza un metro de ancho útil, es rápida en su instalación, liviana y de gran capacidad de carga. Fabricada con altos estándares de calidad y a la medida requerida, esta placa es la mejor opción para entrepisos.",
 			options: {
-				paquete: ["Paquete 1", "Paquete 2"],
-				longitud: ["1.10 mm", "1.20 mm"],
-				ancho: ["1.10 mm", "1.20 mm"],
-				colorExterno: ["Rojo", "Blanco", "Negro"],
-				colorInterno: ["Gris", "Plata"],
+				paquete: ["Seleccione una opción", "Paquete 2", "Paquete 3"],
+				longitud: ["Seleccione una opción", "1.10 mm", "1.20 mm"],
+				ancho: ["Seleccione una opción", "1.10 mm", "1.20 mm"],
+				colorExterno: ["#E32119", "#BDBDBD", "#3C3C3B", "#BDBDBD"],
+				colorInterno: ["#F2F2F2", "#3C3C3B", "#000000"],
 			},
 		},
 	];
@@ -104,31 +104,31 @@ const ProductDetailPage = () => {
 				<div className="w-3/5">
 					{/* header */}
 					<div>
-						<h1 className="text-3xl font-bold">{product.name}</h1>
-						<p className="text-gray-600 mt-4">{product.description}</p>
+						<h1 className="text-3xl font-antonio">{product.name}</h1>
+						<p className="text-gray-600 mt-4 font-opensans">{product.description}</p>
 					</div>
 
 					{/* propiedades */}
-					<div className="flex flex-wrap gap-6 mt-8 justify-center">
-						<div>
-							<label className="block font-bold mb-2">Selección de paquete</label>
-							<select className="border w-full p-2 rounded">
+					<div className="flex flex-wrap gap-6 mt-8 justify-center w-full">
+						<div className="flex-1">
+							<label className="block font-bold font-open-sans mb-2">Selección de paquete</label>
+							<select className="border w-full bg-gray-100 font-open-sans text-gray-500 p-2 rounded">
 								{product.options.paquete.map((option, index) => (
 									<option key={index}>{option}</option>
 								))}
 							</select>
 						</div>
-						<div>
-							<label className="block font-bold mb-2">Longitud</label>
-							<select className="border w-full p-2 rounded">
+						<div className="flex-1">
+							<label className="block font-bold font-open-sans mb-2">Longitud</label>
+							<select className="border w-full bg-gray-100 font-open-sans text-gray-500 p-2 rounded">
 								{product.options.longitud.map((option, index) => (
 									<option key={index}>{option}</option>
 								))}
 							</select>
 						</div>
-						<div>
-							<label className="block font-bold mb-2">Ancho</label>
-							<select className="border w-full p-2 rounded">
+						<div className="flex-1">
+							<label className="block font-bold font-open-sans mb-2">Ancho</label>
+							<select className="border w-full bg-gray-100 font-open-sans text-gray-500 p-2 rounded">
 								{product.options.ancho.map((option, index) => (
 									<option key={index}>{option}</option>
 								))}
@@ -139,7 +139,7 @@ const ProductDetailPage = () => {
 					{/* colores */}
 					<div className="flex flex-wrap gap-6 mt-8 justify-center">
 						<div>
-							<label className="block font-bold mb-2">Color externo</label>
+							<label className="block font-bold font-open-sans mb-2">Color externo</label>
 							<div className="flex gap-2">
 								{product.options.colorExterno.map((color, index) => (
 									<div
@@ -151,7 +151,7 @@ const ProductDetailPage = () => {
 							</div>
 						</div>
 						<div >
-							<label className="block font-bold mb-2">Color interno</label>
+							<label className="block font-bold font-open-sans mb-2">Color interno</label>
 							<div className="flex gap-2">
 								{product.options.colorInterno.map((color, index) => (
 									<div
@@ -193,47 +193,46 @@ const ProductDetailPage = () => {
 				</div>
 			</div>
 
-	<div className="mt-12">
-		<ProductTabs/>
-	</div>
+			<div className="mt-12">
+				<ProductTabs />
+			</div>
 
 			<div className="mt-12">
-				<div className="flex">
-					<h2 className="text-xl font-bold text-red-500 justify-start">
+				<div className="flex items-center gap-6 text-left max-w-screen-lg mx-auto">
+					<h2 className="text-xl font-bold text-red-500">
 						Complementa tu compra
 					</h2>
-				</div>
-				<div >
-					<h2 className="text-xl font-bold text-black ">
+					<h2 className="text-xl font-bold text-black">
 						Productos similares
 					</h2>
 				</div>
-				<div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-6">
-					{relatedProducts.map((product) => (
-						<div
-							key={product.id}
-							className="border rounded-lg shadow-sm p-4 text-center"
-						>
-							<div className="relative">
-								<span className="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded">
-									{product.discount}
-								</span>
-								<img
-									src={product.image}
-									alt={product.name}
-									className="w-full h-32 object-contain"
-								/>
-							</div>
-							<h3 className="text-sm font-semibold mt-4">{product.name}</h3>
-							<p className="text-red-500 font-bold mt-2">{product.price}</p>
+			</div>
+			<div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-6">
+				{relatedProducts.map((product) => (
+					<div
+						key={product.id}
+						className="border rounded-lg shadow-sm p-4 text-center"
+					>
+						<div className="relative">
+							<span className="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded">
+								{product.discount}
+							</span>
+							<img
+								src={product.image}
+								alt={product.name}
+								className="w-full h-32 object-contain"
+							/>
 						</div>
-					))}
-				</div>
-				<div className="mt-16">
-					<Comments />
-				</div>
+						<h3 className="text-sm font-semibold mt-4">{product.name}</h3>
+						<p className="text-red-500 font-bold mt-2">{product.price}</p>
+					</div>
+				))}
+			</div>
+			<div className="mt-16">
+				<Comments />
 			</div>
 		</div>
+		
 
 	);
 };
