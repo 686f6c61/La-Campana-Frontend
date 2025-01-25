@@ -11,7 +11,7 @@ const IntroductoryText = ({ title = "Título", subtitle, description, bgTitle = 
             <h1>{title}</h1>
             <span className="font-open-sans text-2xl text-lacampana-gray1 uppercase">{subtitle}</span>
           </div>
-          <p>{description}</p>
+          <p className="max-w-[1000px] self-center">{description}</p>
         </section>
         {/* Movile Text */}
         <section className={`tablet:hidden flex flex-col gap-8 text-wrap w-full`}>
