@@ -12,10 +12,10 @@ import Footer from "./components/layouts/Footer";
 import "overlayscrollbars/overlayscrollbars.css";
 import Blog from "./pages/Blog";
 import DocumentsItem from "./components/docs/DocumentsItem";
-import ContactInfo from "./components/pages/ContactInfo";
 import BlogDetails from "./pages/BlogDetails";
 import Services from "./pages/Services";
 import ServiceDetails from "./pages/ServiceDetails";
+import Contact from "./components/pages/Contact";
 
 function App() {
   return (
@@ -29,7 +29,7 @@ function App() {
         <Route path="/" element={<Home greeting={"Bienvenidos"} />} />
         <Route path="/nosotros" element={<NosotrosInfo />} />
         <Route path="/documentos" element={<DocumentsItem />} />
-        <Route path="/contacto" element={<ContactInfo />} />
+        <Route path="/contacto" element={<Contact />} />
         <Route path="/:categoryId" element={<CategoryPage />} />
         <Route path="/product/:productId" element={<ProductDetailPage />} />
         <Route path="/blog" element={<Blog />} />
