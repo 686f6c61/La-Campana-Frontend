@@ -1,88 +1,193 @@
-import { useState } from "react"
+import { useState } from "react";
 
 export default function ProductTabs() {
-  const [activeTab, setActiveTab] = useState("normas")
+  const [activeTab, setActiveTab] = useState("normas");
 
   return (
     <div className="flex gap-6">
       {/* Left side tabs */}
-      <div className="w-[200px] flex flex-col gap-2">
+      <div className="w-[200px] flex flex-col gap-3"> {/* Ajuste de gap */}
+        {/* Normas Tab */}
         <div className="relative">
           <button
             onClick={() => setActiveTab("normas")}
-            className={`w-full text-left px-6 py-4 rounded-l-lg ${
-              activeTab === "normas" ? "bg-[#ffffff] border-2 border-[#f70025] border-r-0" : "bg-[#f2f2f2]"
+            className={`text-left px-10 py-8 w-[184px] h-[94px] rounded-b-[15px] ${ // Ajuste de padding
+              activeTab === "normas"
+                ? "bg-[#ffffff] border-none"
+                : "bg-[#f2f2f2]"
             }`}
           >
             <span
-              className={`font-gothic text-base ${
-                activeTab === "normas" ? "text-[#f70025] font-medium" : "text-[#333333]"
+              className={`font-antonio text-base ${
+                activeTab === "normas"
+                  ? "text-[#f70025] font-medium"
+                  : "text-[#333333]"
               }`}
             >
               Normas
             </span>
           </button>
           {activeTab === "normas" && (
-            <div className="w-[184px] h-[94px] absolute top-[854px] left-[137px] gap-0 rounded-bl-[15px] border-t border-opacity-0 opacity-0">
-              <svg
-               
-                width="184px"
-                height="94px" 
-                top="854px"
-                left="137px"
-             
+            <div className="absolute top-0 left-0 w-full">
+              <div
+                className="absolute"
+                style={{
+                  width: "184px",  // Apliqué el width de 184px
+                  height: "94px",  // Apliqué el height de 94px
+                  top: "0",  // Alineación del rectángulo con el tab
+                  left: "0",  // Alineación del rectángulo con el tab
+                  borderRadius: "0px 0px 15px 0px",  // Borde redondeado en la parte inferior
+                  border: "1px solid #f70025",  // Borde rojo
+                  opacity: 1,  // Opacidad visible
+                }}
               >
-                <path d="M0 0 C0 20 8 20 8 50 C8 80 0 80 0 100" stroke="#f70025" strokeWidth="2" fill="none" />
-              </svg>
+                {/* Triángulo con borde rojo */}
+                <div
+                  className="absolute"
+                  style={{
+                    width: "0",
+                    height: "0",
+                    borderTop: "8.5px solid transparent",  // Sin color arriba
+                    borderBottom: "8.5px solid transparent",  // Sin color abajo
+                    borderLeft: "10px solid #f70025",  // Borde izquierdo rojo
+                    top: "47%",  // Alineación vertical del triángulo
+                    left: "100%", // Colocamos el triángulo en la esquina derecha
+                    opacity: 1,
+                  }}
+                ></div>
+              </div>
             </div>
           )}
         </div>
 
-        <button
-          onClick={() => setActiveTab("ventajas")}
-          className={`w-full text-left px-6 py-4 rounded-l-lg ${
-            activeTab === "ventajas" ? "bg-[#ffffff] border-2 border-[#f70025] border-r-0" : "bg-[#f2f2f2]"
-          }`}
-        >
-          <span
-            className={`font-gothic text-base ${
-              activeTab === "ventajas" ? "text-[#f70025] font-medium" : "text-[#333333]"
+        {/* Ventajas Tab */}
+        <div className="relative">
+          <button
+            onClick={() => setActiveTab("ventajas")}
+            className={`w-[184px] h-[94px] text-left px-8 py-8 rounded-b-[15px] ${ // Ajuste de padding
+              activeTab === "ventajas"
+                ? "bg-[#ffffff] border-none"
+                : "bg-[#f2f2f2]"
             }`}
           >
-            Ventajas
-          </span>
-        </button>
+            <span
+              className={`font-antonio text-base ${
+                activeTab === "ventajas"
+                  ? "text-[#f70025] font-medium"
+                  : "text-[#333333]"
+              }`}
+            >
+              Ventajas
+            </span>
+          </button>
+          {activeTab === "ventajas" && (
+            <div className="absolute top-0 left-0 w-full">
+              {/* Rectángulo */}
+              <div
+                className="absolute"
+                style={{
+                  width: "184px",  // Apliqué el width de 184px
+                  height: "94px",  // Apliqué el height de 94px
+                  top: "0",  // Alineación del rectángulo con el tab
+                  left: "0",  // Alineación del rectángulo con el tab
+                  borderRadius: "0px 0px 15px 0px",  // Borde redondeado en la parte inferior
+                  border: "1px solid #f70025",  // Borde rojo
+                  opacity: 1,  // Opacidad visible
+                }}
+              >
+                {/* Triángulo con borde rojo */}
+                <div
+                  className="absolute"
+                  style={{
+                    width: "0",
+                    height: "0",
+                    borderTop: "8.5px solid transparent",  // Sin color arriba
+                    borderBottom: "8.5px solid transparent",  // Sin color abajo
+                    borderLeft: "10px solid #f70025",  // Borde izquierdo rojo
+                    top: "47%",  // Alineación vertical del triángulo
+                    left: "100%", // Colocamos el triángulo en la esquina derecha
+                    opacity: 1,
+                  }}
+                ></div>
+              </div>
+            </div>
+          )}
+        </div>
 
-        <button
-          onClick={() => setActiveTab("usos")}
-          className={`w-full text-left px-6 py-4 rounded-l-lg ${
-            activeTab === "usos" ? "bg-[#ffffff] border-2 border-[#f70025] border-r-0" : "bg-[#f2f2f2]"
-          }`}
-        >
-          <span
-            className={`font-gothic text-base ${
-              activeTab === "usos" ? "text-[#f70025] font-medium" : "text-[#333333]"
+        {/* Usos Tab */}
+        <div className="relative">
+          <button
+            onClick={() => setActiveTab("usos")}
+            className={`w-[184px] h-[94px] text-left px-10 py-8 rounded-b-[15px] ${ 
+              activeTab === "usos"
+                ? "bg-[#ffffff] border-none"
+                : "bg-[#f2f2f2]"
             }`}
           >
-            Usos
-          </span>
-        </button>
+            <span
+              className={`font-antonio text-base ${
+                activeTab === "usos"
+                  ? "text-[#f70025] font-medium"
+                  : "text-[#333333]"
+              }`}
+            >
+              Usos
+            </span>
+          </button>
+          {activeTab === "usos" && (
+            <div className="absolute top-0 left-0 w-full">
+              {/* Rectángulo */}
+              <div
+                className="absolute"
+                style={{
+                  width: "184px",  // Apliqué el width de 184px
+                  height: "94px",  // Apliqué el height de 94px
+                  top: "0",  // Alineación del rectángulo con el tab
+                  left: "0",  // Alineación del rectángulo con el tab
+                  borderRadius: "0px 0px 15px 0px",  // Borde redondeado en la parte inferior
+                  border: "1px solid #f70025",  // Borde rojo
+                  opacity: 1,  // Opacidad visible
+                }}
+              >
+                <div
+                  className="absolute"
+                  style={{
+                    width: "0",
+                    height: "0",
+                    borderTop: "8.5px solid transparent", 
+                    borderBottom: "8.5px solid transparent",
+                    borderLeft: "10px solid #f70025 ", 
+                    top: "47%",  
+                    left: "100%", 
+                    opacity: 1,
+                  }}
+                ></div>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
 
-      {/* Right side content */}
       <div className="flex-1 bg-[#f2f2f2] p-8">
         {activeTab === "normas" && (
           <div className="space-y-6">
             <div>
-              <h3 className="font-gothic text-lg font-bold mb-2 text-[#333333]">NTC 5805:</h3>
-              <p className="font-gothic text-[#333333]">Lámina colaborante de acero conformada en frío.</p>
+              <h3 className="font-antonio text-lg font-bold mb-2 text-[#333333]">
+                NTC 5805:
+              </h3>
+              <p className="font-antionio text-[#333333]">
+                Lámina colaborante de acero conformada en frío.
+              </p>
             </div>
 
             <div>
-              <h3 className="font-gothic text-lg font-bold mb-2 text-[#333333]">ASTM A653 = NTC 4011:</h3>
-              <p className="font-gothic text-[#333333]">
-                Láminas de acero recubiertas con zinc (galvanizadas) o recubiertas con aleación hierro y zinc mediante
-                procesos de inmersión en caliente.
+              <h3 className="font-antonio text-lg font-bold mb-2 text-[#333333]">
+                ASTM A653 = NTC 4011:
+              </h3>
+              <p className="font-antonio text-[#333333]">
+                Láminas de acero recubiertas con zinc (galvanizadas) o recubiertas
+                con aleación hierro y zinc mediante procesos de inmersión en
+                caliente.
               </p>
             </div>
           </div>
@@ -90,17 +195,16 @@ export default function ProductTabs() {
 
         {activeTab === "ventajas" && (
           <div>
-            <p className="font-gothic text-[#333333]">Contenido de ventajas...</p>
+            <p className="font-antonio text-[#333333]">Contenido de ventajas...</p>
           </div>
         )}
 
         {activeTab === "usos" && (
           <div>
-            <p className="font-gothic text-[#333333]">Contenido de usos...</p>
+            <p className="font-antonio text-[#333333]">Contenido de usos...</p>
           </div>
         )}
       </div>
     </div>
-  )
+  );
 }
-
