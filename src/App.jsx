@@ -11,7 +11,7 @@ import Navbar from "./layout/Navbar";
 import Footer from "./components/layouts/Footer";
 import "overlayscrollbars/overlayscrollbars.css";
 import DocumentsItem from "./components/docs/DocumentsItem";
-import ContactInfo from "./components/pages/ContactInfo";
+import Contact from "./components/pages/Contact";
 
 function App() {
   return (
@@ -25,7 +25,7 @@ function App() {
         <Route path="/" element={<Home greeting={"Bienvenidos"} />} />
         <Route path="/nosotros" element={<NosotrosInfo />} />
         <Route path="/documentos" element={<DocumentsItem />} />
-        <Route path="/contacto" element={<ContactInfo />} />
+        <Route path="/contacto" element={<Contact />} />
         <Route path="/:categoryId" element={<CategoryPage />} />
         <Route path="/product/:productId" element={<ProductDetailPage />} />
         <Route path="*" element={<h1>404 Not Found</h1>} />
