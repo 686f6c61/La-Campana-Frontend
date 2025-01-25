@@ -3,6 +3,7 @@ import BgText from "../common/BgText";
 import SearchBar from "../common/SearchBar.jsx";
 import MultiSelect from "../common/Multiselect/index.jsx";
 import additionalDocuments from "../../../src/data/documentsData.jsx";
+import IntroductoryText from "../../sections/common/IntroductoryText.jsx";
 
 const DocumentsItem = () => {
   const [selectedOption, setSelectedOption] = useState("Formularios");
@@ -20,7 +21,7 @@ const DocumentsItem = () => {
   return (
     <div className="relative w-full flex flex-col items-center justify-center bg-white ">
       <div className="relative z-10 text-center w-full max-w-screen-xl">
-        <div className="absolute inset-0 flex  z-0 transform translate-x-[300px] translate-y-[0px] hidden md:block">
+        {/* <div className="absolute inset-0 flex  z-0 transform translate-x-[300px] translate-y-[0px] hidden md:block">
           <BgText
             text="Documentación"
             className="md:justify-center md:items-center  md:pl-0"
@@ -35,9 +36,20 @@ const DocumentsItem = () => {
           lorem pharetra. Vestibulum nulla faucibus nunc enim. Proin feugiat
           fames turpis sociis viverra. Viverra sit ut egestas placerat neque
           fames ante.
-        </p>
+        </p> */}
 
-        <div className="mt-6 flex flex-col md:flex-row justify-between items-center w-full relative z-10 space-y-4 md:space-y-0">
+        <IntroductoryText
+          title={
+            <>
+              Nuestro <span className="text-lacampana-red2">Blog</span>
+            </>
+          }
+          bgTitle="Actualidad en aceros"
+          description="Lorem ipsum dolor sit amet consectetur. Pulvinar dignissim pulvinar ut lorem pharetra. Vestibulum nulla faucibus nunc enim. Proin feugiat fames turpis sociis viverra. Viverra sit ut egestas placerat neque fames ante."
+          justify="center"
+        />
+
+        <div className="mt-6 flex flex-col md:flex-row justify-between  w-full relative z-10 space-y-4 md:space-y-0">
           <div className="w-full md:w-auto flex justify-center md:justify-start">
             <MultiSelect
               options={selectDocuments}
@@ -46,12 +58,8 @@ const DocumentsItem = () => {
             />
           </div>
 
-          <div className="w-full md:w-auto flex justify-center md:justify-end">
-            <SearchBar
-              className="shadow-lg m-5 w-full md:w-fit text-xs font-medium text-gray-200 font-open-sans placeholder-gray-500"
-              type="text"
-              placeholder="Buscar archivo..."
-            />
+          <div className="drop-shadow-lg flex justify-center">
+            <SearchBar placeholder="Buscar archivo..." />
           </div>
         </div>
 

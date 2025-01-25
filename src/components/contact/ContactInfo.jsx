@@ -3,6 +3,7 @@ import Form from "../common/Form";
 import Map from "../common/Map";
 import CircularImageEffect from "../common/CircularImgEffect/CircularImgEffect";
 import Carousel from "../common/Carousel";
+import IntroductoryText from "../../sections/common/IntroductoryText";
 
 const sucursalesData = [
   {
@@ -40,7 +41,19 @@ const sucursalesData = [
 const ContactInfo = () => {
   return (
     <div className="font-sans">
-      <Form />
+      <IntroductoryText
+        title={
+          <>
+            Nuestro <span className="text-lacampana-red2">Blog</span>
+          </>
+        }
+        bgTitle="Actualidad en aceros"
+        description="Lorem ipsum dolor sit amet consectetur. Pulvinar dignissim pulvinar ut lorem pharetra. Vestibulum nulla faucibus nunc enim. Proin feugiat fames turpis sociis viverra. Viverra sit ut egestas placerat neque fames ante."
+        justify="start"
+      >
+        <Form />
+      </IntroductoryText>
+
       <Map />
 
       <CircularImageEffect imageUrl="/images/contacto.jpeg" />
