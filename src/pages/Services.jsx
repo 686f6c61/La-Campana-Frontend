@@ -1,28 +1,6 @@
 import ImageCard from "../components/common/ImageCard"
 import IntroductoryText from "../sections/common/IntroductoryText"
-
-const services = [
-  {
-    id: 1,
-    name: "Corte Vigas",
-    image: "/images/services/corte-viga.png"
-  },
-  {
-    id: 2,
-    name: "Corte Planchas",
-    image: "/images/services/corte-plancha.png"
-  },
-  {
-    id: 3,
-    name: "Corte Transversal de Bobinas",
-    image: "/images/services/corte-transversal.jpeg"
-  },
-  {
-    id: 4,
-    name: "Corte Longitudinal de Bobinas",
-    image: "/images/services/corte-longitudinal.jpeg"
-  },
-]
+import services from "../utils/services"
 
 const Services = () => {
   return (
