@@ -180,7 +180,11 @@ const Footer = () => {
               Empresa
             </h3>
             <ul>
-              <p className="text-left pb-4 pl-2">Servicios</p>
+              <p className="text-left pb-4 pl-2">
+                <Link to="/servicios">
+                  Servicios
+                </Link>
+              </p>
               <p className="text-left pb-4 pl-2">
                 <Link to="/nosotros" className="text-lacampana-gray1">
                   Nosotros
@@ -271,16 +275,14 @@ const Footer = () => {
                 Legal
               </h3>
               <IoIosArrowDown
-                className={`text-xl transform transition-transform duration-300 ${
-                  isLegalOpen ? "rotate-180" : "rotate-0"
-                } sm:hidden`}
+                className={`text-xl transform transition-transform duration-300 ${isLegalOpen ? "rotate-180" : "rotate-0"
+                  } sm:hidden`}
               />
             </div>
             {/* List as accordion on small screens */}
             <ul
-              className={`${
-                isLegalOpen ? "block" : "hidden"
-              } sm:block text-left`}
+              className={`${isLegalOpen ? "block" : "hidden"
+                } sm:block text-left`}
             >
               <p className="text-left pb-4 pl-2">Términos y condiciones</p>
               <p className="text-left pb-4 pl-2">Métodos de pago</p>
