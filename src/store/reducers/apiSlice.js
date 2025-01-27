@@ -31,8 +31,25 @@ export const apiSlice = createApi({
   getProducts: builder.query({
     query: () => `products`,
     keepUnusedDataFor: 600,
-  })
+  }),
+  getProductComments: builder.query({
+    query: () => 'product-comments',
+    transformResponse: (response) => {
+      // Asegúrate de que cada comentario tenga un ID
+      return response.map((comment) => ({
+        ...comment,
+        id: comment.id || comment._id || `temp-${Math.random()}`,
+      }));
+    },
+  }),
+  addProductComment: builder.mutation({
+    query: (newComment) => ({
+      url: `product-comments`,
+      method: 'POST',
+      body: newComment,
+    }),
+  }),
   }),
 });
 
-export const { useGetBlogsQuery, useGetProductsQuery } = apiSlice;
+export const { useGetBlogsQuery, useGetProductsQuery, useGetProductCommentsQuery,useAddProductCommentMutation } = apiSlice;

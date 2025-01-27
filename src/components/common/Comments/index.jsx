@@ -1,59 +1,42 @@
 import React, { useState } from 'react';
 import { Star } from 'lucide-react';
-
-/**
- * @typedef {Object} Comment
- * @property {number} id
- * @property {string} author
- * @property {string} date
- * @property {string} content
- * @property {number} rating
- */
+import { useGetProductCommentsQuery, useAddProductCommentMutation } from '../../../store/reducers/apiSlice';
 
 export default function Comments() {
-  const [comments, setComments] = useState([
-    {
-      id: 1,
-      author: "Lorem ipsum dot",
-      date: "5 de marzo de 2024",
-      content: "Lorem ipsum dolor sit amet consectetur. Nunc est fermentum dis arcu odio.",
-      rating: 3
-    },
-    {
-      id: 2,
-      author: "Cristhian Rubiano",
-      date: "5 de marzo de 2024",
-      content: "Lorem ipsum dolor sit amet consectetur. Nunc est fermentum dis arcu odio. Vel eu habitant sit duis amet nisl nulla vel. Blandit duis at quis amet cursus diam integer.",
-      rating: 4
-    }
-  ]);
-
+  const { data: comments = [], error, isLoading, refetch } = useGetProductCommentsQuery();
+  const [addProductComment] = useAddProductCommentMutation(); // Hook para enviar un comentario
   const [newComment, setNewComment] = useState({
-    content: '',
-    author: '',
+    comment: '',
+    name: '',
     email: '',
-    rating: 0
+    rating: 0,
   });
-
   const [hoveredRating, setHoveredRating] = useState(0);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (newComment.content && newComment.author && newComment.rating) {
-      setComments([...comments, {
-        id: comments.length + 1,
-        author: newComment.author,
-        date: new Date().toLocaleDateString('es-ES', {
-          day: 'numeric',
-          month: 'long',
-          year: 'numeric'
-        }),
-        content: newComment.content,
-        rating: newComment.rating
-      }]);
-      setNewComment({ content: '', author: '', email: '', rating: 0 });
+
+    if (newComment.comment && newComment.name && newComment.rating) {
+      const newCommentObj = {
+        name: newComment.name,
+        date: new Date().toISOString(), // Fecha en formato ISO
+        comment: newComment.comment,
+        rating: newComment.rating,
+        email: newComment.email, 
+      };
+
+      try {
+        await addProductComment(newCommentObj).unwrap(); 
+        refetch(); 
+        setNewComment({ comment: '', name: '', email: '', rating: 0 }); 
+      } catch (err) {
+        console.error('Error al agregar el comentario:', err);
+      }
     }
   };
+
+  if (isLoading) return <p>Cargando...</p>;
+  if (error) return <p>Error al cargar los datos.</p>;
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
@@ -62,7 +45,7 @@ export default function Comments() {
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {/* Add Comment Form */}
+        {/* Formulario para agregar comentarios */}
         <div>
           <h3 className="text-lg font-medium mb-4">
             Agregar una <span className="text-red-500">reseña</span>
@@ -70,7 +53,7 @@ export default function Comments() {
           <p className="text-sm text-gray-600 mb-4">
             Su dirección de correo electrónico no será publicada. Los campos obligatorios están marcados *
           </p>
-          
+
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
               <div className="text-sm mb-2">Califica este producto</div>
@@ -97,8 +80,8 @@ export default function Comments() {
             </div>
 
             <textarea
-              value={newComment.content}
-              onChange={(e) => setNewComment({ ...newComment, content: e.target.value })}
+              value={newComment.comment}
+              onChange={(e) => setNewComment({ ...newComment, comment: e.target.value })}
               placeholder="Escribir opinión de este producto..."
               className="w-full p-3 border rounded-lg mb-4 min-h-[120px]"
               required
@@ -106,8 +89,8 @@ export default function Comments() {
 
             <input
               type="text"
-              value={newComment.author}
-              onChange={(e) => setNewComment({ ...newComment, author: e.target.value })}
+              value={newComment.name}
+              onChange={(e) => setNewComment({ ...newComment, name: e.target.value })}
               placeholder="Nombre *"
               className="w-full p-3 border rounded-lg mb-4"
               required
@@ -143,14 +126,14 @@ export default function Comments() {
           </form>
         </div>
 
-        {/* Comments List */}
+        {/* Lista de comentarios */}
         <div className="space-y-6">
           {comments.map((comment) => (
             <div key={comment.id} className="flex gap-4 bg-white p-6 rounded-lg shadow-sm">
               <div className="w-12 h-12 bg-gray-200 rounded-full flex-shrink-0" />
               <div className="flex-1">
                 <div className="flex items-center justify-between mb-2">
-                  <h4 className="font-medium">{comment.author}</h4>
+                  <h4 className="font-medium">{comment.name}</h4>
                   <div className="flex gap-1">
                     {[1, 2, 3, 4, 5].map((star) => (
                       <Star
@@ -164,8 +147,8 @@ export default function Comments() {
                     ))}
                   </div>
                 </div>
-                <div className="text-gray-500 text-sm mb-2">{comment.date}</div>
-                <p className="text-gray-700">{comment.content}</p>
+                <div className="text-gray-500 text-sm mb-2">{new Date(comment.date).toLocaleDateString('es-ES')}</div>
+                <p className="text-gray-700">{comment.comment}</p>
               </div>
             </div>
           ))}
