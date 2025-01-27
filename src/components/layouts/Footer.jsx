@@ -1,13 +1,9 @@
 import React, { useState } from "react";
 import { HiOutlineMail } from "react-icons/hi";
 import { FaWhatsapp } from "react-icons/fa";
-import { PiYoutubeLogoThin } from "react-icons/pi";
-import { PiInstagramLogoThin } from "react-icons/pi";
-import { PiTiktokLogoThin } from "react-icons/pi";
-import { SlSocialLinkedin } from "react-icons/sl";
-import { PiPhoneCallThin } from "react-icons/pi";
 import { IoIosArrowDown } from "react-icons/io";
 import { Link } from "react-router-dom";
+import Social from "../common/Social";
 
 const Modal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
@@ -125,49 +121,13 @@ const Footer = () => {
               alt="logoSilhouette"
               className="w-12 h-12"
             />
-            <p className="text-left pt-10 pb-1 text-lg w-full md:w-70">
-              ¿Tienes alguna pregunta?
-            </p>
-            <p className="text-left font-bold pb-4">PBX: (601) 370.22.00</p>
-
-            <p className="text-left text-sm w-60 pb-4">
-              Lorem ipsum dolor sit amet consectetur. Etiam id enim diam
-              sollicitudin ut molestie velit
-            </p>
-            <div className="flex space-x-3 mt-2 w-80">
-              <PiYoutubeLogoThin className="text-2xl text-lacampana-red1" />
-              <PiInstagramLogoThin className="text-2xl text-lacampana-gray1" />
-              <PiTiktokLogoThin className="text-2xl text-lacampana-gray1" />
-              {/* <SlSocialFacebook className="text-2xl custom-icon text-lacampana-gray1" /> */}
-              <svg
-                stroke="currentColor"
-                fill="none"
-                strokeWidth=".5"
-                height="80px"
-                width="30px"
-                xmlns="http://www.w3.org/2000/svg"
-                style={{ color: "var(--lacampana-gray1)" }} // Match lacampana-gray1 color
-              >
-                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-              </svg>
-
-              {/* <RiTwitterXFill className="text-2xl custom-icon text-lacampana-gray1" /> */}
-              <svg
-                stroke="currentColor"
-                fill="none"
-                stroke-width="0.5"
-                height="80px"
-                width="30px"
-                xmlns="http://www.w3.org/2000/svg"
-                style={{ color: "var(--lacampana-gray2)" }}
-              >
-                <path d="M17.6874 3.0625L12.6907 8.77425L8.37045 3.0625H2.11328L9.58961 12.8387L2.50378 20.9375H5.53795L11.0068 14.6886L15.7863 20.9375H21.8885L14.095 10.6342L20.7198 3.0625H17.6874ZM16.6232 19.1225L5.65436 4.78217H7.45745L18.3034 19.1225H16.6232Z"></path>
-              </svg>
-
-              <SlSocialLinkedin className="text-xl text-lacampana-gray1" />
-
-              <PiPhoneCallThin className="text-xl text-lacampana-gray1" />
-            </div>
+            <Social
+              question="¿Necesitas ayuda?"
+              phone="PBX: (601) 555.55.55"
+              description="Contáctanos para obtener más información sobre nuestros productos y servicios."
+              containerPadding="pt-8 pb-4"
+              iconsSize="text-xl"
+            />
           </div>
 
           {/* Línea divisora */}
@@ -181,9 +141,7 @@ const Footer = () => {
             </h3>
             <ul>
               <p className="text-left pb-4 pl-2">
-                <Link to="/servicios">
-                  Servicios
-                </Link>
+                <Link to="/servicios">Servicios</Link>
               </p>
               <p className="text-left pb-4 pl-2">
                 <Link to="/nosotros" className="text-lacampana-gray1">
@@ -191,9 +149,7 @@ const Footer = () => {
                 </Link>
               </p>
               <p className="text-left pb-4 pl-2">
-                <Link to="/blog">
-                  Blog
-                </Link>
+                <Link to="/blog">Blog</Link>
               </p>
               <p className="text-left pb-4 pl-2">
                 <Link to="/documentos" className="text-lacampana-gray1">
@@ -275,14 +231,16 @@ const Footer = () => {
                 Legal
               </h3>
               <IoIosArrowDown
-                className={`text-xl transform transition-transform duration-300 ${isLegalOpen ? "rotate-180" : "rotate-0"
-                  } sm:hidden`}
+                className={`text-xl transform transition-transform duration-300 ${
+                  isLegalOpen ? "rotate-180" : "rotate-0"
+                } sm:hidden`}
               />
             </div>
             {/* List as accordion on small screens */}
             <ul
-              className={`${isLegalOpen ? "block" : "hidden"
-                } sm:block text-left`}
+              className={`${
+                isLegalOpen ? "block" : "hidden"
+              } sm:block text-left`}
             >
               <p className="text-left pb-4 pl-2">Términos y condiciones</p>
               <p className="text-left pb-4 pl-2">Métodos de pago</p>
