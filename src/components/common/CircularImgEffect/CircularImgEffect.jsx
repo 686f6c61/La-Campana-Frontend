@@ -6,7 +6,7 @@ const CircularImageEffect = ({ imageUrl, className = "" }) => {
       className={`relative w-full max-w-5xl h-[500px] mx-0 my-10 ml-5 ${className}`}
     >
       {/* Capa roja semi-transparente superpuesta sobre la imagen */}
-      <div className="absolute inset-0 bg-lacampana-red1 rounded-tr-full rounded-br-full opacity-70 z-10 hidden md:block"></div>
+      <div className="absolute inset-0 bg-lacampana-red1 rounded-tr-full rounded-br-full  z-10 hidden md:block"></div>
 
       {/* Imagen de fondo */}
       <div

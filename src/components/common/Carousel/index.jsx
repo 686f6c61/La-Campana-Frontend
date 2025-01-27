@@ -29,7 +29,7 @@ const Carousel = ({ sucursalData }) => {
       {/* Carrusel para todas las pantallas */}
       <div
         ref={carouselRef}
-        className="flex space-x-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide w-full lg:w-[900px] cursor-grab"
+        className="flex space-x-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide w-full lg:w-[750px] cursor-grab"
         style={{
           scrollBehavior: "smooth",
           WebkitOverflowScrolling: "touch",

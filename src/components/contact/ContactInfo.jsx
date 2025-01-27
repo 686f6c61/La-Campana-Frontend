@@ -94,24 +94,23 @@ const ContactInfo = () => {
       <div className="relative w-full max-w-7xl mx-auto my-10">
         {/* Imagen de fondo semicircular */}
         <div
-          className="absolute inset-0 left-0 w-3/4 h-full bg-lacampana-red1 rounded-tr-full rounded-br-full opacity-10 mix-blend-multiply hidden md:block"
+          className="absolute inset-0 left-0 w-3/4 h-full bg-lacampana-red1 rounded-tr-full rounded-br-full  mix-blend-multiply hidden md:block"
           style={{
-            backgroundImage: "url('/images/contacto.jpeg')",
+            backgroundImage: "url('/images/categories/laminasRed.jpg')",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
         ></div>
 
-        <div className="relative flex flex-col md:flex-row items-center md:items-start space-y-8 md:space-y-0 md:space-x-8 px-8">
+        <div className="relative flex flex-col md:flex-row items-center md:items-start space-y-8  px-8">
           {/* Sección izquierda */}
           <div className="md:w-2/3 w-full z-10">
             <CustomSection
-              title="Presencia"
-              highlight="nacional"
+              highlight="Presencia nacional"
               padding="p-6"
               margin="mb-6"
               textColor="text-white"
-              highlightColor="text-lacampana-red1"
+              highlightColor="text-white"
             >
               <p className="text-white text-sm">
                 Lorem ipsum dolor sit amet consectetur. Pulvinar dignissim
@@ -142,13 +141,13 @@ const ContactInfo = () => {
                           height: "15px",
                           borderRadius: "50%",
                           backgroundColor:
-                            selectedBranch === city ? "red" : "#d1d3d1",
+                            selectedBranch === city ? "red" : "white",
                           border: "2px solid white",
                           cursor: "pointer",
                           boxShadow:
                             selectedBranch === city
                               ? "0 0 0 2px rgba(255, 0, 0, 0.5)"
-                              : "0 0 0 2px rgba(209, 211, 209, 0.5)",
+                              : "0 0 0 2px rgb(253, 255, 253)",
                         }}
                       />
                       <label
@@ -170,7 +169,7 @@ const ContactInfo = () => {
           </div>
 
           {/* Sección derecha - Mapa */}
-          <div className="md:w-1/3 w-full md:translate-x-12 md:-translate-y-12 z-10">
+          <div className="md:w-full w-full md:translate-x-12 md:-translate-y-12 z-10">
             <Map />
           </div>
         </div>
