@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import Layout from "../../layouts/Layout";
+import CardGrid from "../CardGrid";
 import Comments from "../Comments";
 import ProductTabs from "../ProductTabs";
 
@@ -203,37 +203,16 @@ const ProductDetailPage = () => {
 			<div className="mt-12">
 				<ProductTabs />
 			</div>
-
-			<div className="mt-12">
+			<div className="mt-16">
 				<div className="flex items-center gap-6 text-left max-w-screen-lg mx-auto">
-					<h2 className="text-xl font-bold text-red-500">
+					<h2 className="text-xl font-antonio text-red-500">
 						Complementa tu compra
 					</h2>
-					<h2 className="text-xl font-bold text-black">
+					<h2 className="text-xl font-antonio text-black">
 						Productos similares
 					</h2>
-				</div>
 			</div>
-			<div className="grid grid-cols-2 md:grid-cols-5 gap-6 mt-6">
-				{relatedProducts.map((product) => (
-					<div
-						key={product.id}
-					>
-						<div
-							className="relative w-[215px] h-[382.01px] p-[10px] pt-0 gap-[7px] rounded-b-[15px] bg-gray-100"
-						>
-							<div className="relative">
-								<img src={product.image} alt={product.name} className="w-[190px] h-[227px]" />
-								<span className="absolute top-2 left-2 bg-gray-200 font-open-sans text-black text-sm px-2 py-1 rounded">
-									{product.discount}
-								</span>
-							</div>
-							<h2 className="text-sm font-bold mt-2">{product.name}</h2>
-							<p className="text-lg text-gray-700 mt-1">{product.price}</p>
-							<p className="text-xs text-gray-500">IVA incluido</p>
-						</div>
-					</div>
-				))}
+			<CardGrid products={relatedProducts} />  {/* Aquí usas el componente CardGrid */}
 			</div>
 			<div className="mt-16">
 				<Comments />

@@ -15,20 +15,20 @@ export default function ProductTabs() {
               activeTab === "normas"
                 ? "bg-[#ffffff] border-none"
                 : "bg-[#f2f2f2]"
-            }`}
+              }`}
           >
             <span
-              className={`font-antonio text-base ${
-                activeTab === "normas"
-                  ? "text-[#f70025] font-medium"
-                  : "text-[#333333]"
-              }`}
+              className={`font-antonio text-base ${activeTab === "normas"
+                ? "text-[#f70025] font-medium"
+                : "text-[#333333]"
+                }`}
             >
               Normas
             </span>
           </button>
           {activeTab === "normas" && (
             <div className="absolute top-0 left-0 w-full">
+              {/* Rectángulo */}
               <div
                 className="absolute"
                 style={{
@@ -42,17 +42,28 @@ export default function ProductTabs() {
                 }}
               >
                 {/* Triángulo con borde rojo */}
+                <svg
+                  className="absolute top-1/2 left-full -translate-y-1/2"
+                  width="11px"  // Establecemos un ancho explícito
+                  height="17px" // Establecemos una altura explícita
+                  viewBox="0 0 10 10" // Ajustamos el viewBox para que el triángulo se ajuste mejor
+                  style={{
+                    top: "calc(50%)",  // Centrado verticalmente
+                    left: "100%",  // Posicionado al lado derecho
+                  }}
+                >
+                  <polygon points="10,5 0,0 0,10" fill="transparent" stroke="#f70025" />
+                </svg>
+                {/* Agregar una capa blanca en la intersección */}
                 <div
                   className="absolute"
                   style={{
-                    width: "0",
-                    height: "0",
-                    borderTop: "8.5px solid transparent",  // Sin color arriba
-                    borderBottom: "8.5px solid transparent",  // Sin color abajo
-                    borderLeft: "10px solid #f70025",  // Borde izquierdo rojo
-                    top: "47%",  // Alineación vertical del triángulo
-                    left: "100%", // Colocamos el triángulo en la esquina derecha
-                    opacity: 1,
+                    width: "1px",  // Ajustamos el ancho de la capa
+                    height: "10px", // Igual a la altura del rectángulo
+                    top: "40px", // Posicionamos para cubrir la intersección
+                    left: "100%", // Alineación con el triángulo
+                    backgroundColor: "white",  // Capa blanca
+                    zIndex: 2,  // Aseguramos que la capa esté detrás del triángulo
                   }}
                 ></div>
               </div>
@@ -68,14 +79,13 @@ export default function ProductTabs() {
               activeTab === "ventajas"
                 ? "bg-[#ffffff] border-none"
                 : "bg-[#f2f2f2]"
-            }`}
+              }`}
           >
             <span
-              className={`font-antonio text-base ${
-                activeTab === "ventajas"
-                  ? "text-[#f70025] font-medium"
-                  : "text-[#333333]"
-              }`}
+              className={`font-antonio text-base ${activeTab === "ventajas"
+                ? "text-[#f70025] font-medium"
+                : "text-[#333333]"
+                }`}
             >
               Ventajas
             </span>
@@ -118,18 +128,16 @@ export default function ProductTabs() {
         <div className="relative">
           <button
             onClick={() => setActiveTab("usos")}
-            className={`w-[184px] h-[94px] text-left px-10 py-8 rounded-b-[15px] ${ 
-              activeTab === "usos"
-                ? "bg-[#ffffff] border-none"
-                : "bg-[#f2f2f2]"
-            }`}
+            className={`w-[184px] h-[94px] text-left px-10 py-8 rounded-b-[15px] ${activeTab === "usos"
+              ? "bg-[#ffffff] border-none"
+              : "bg-[#f2f2f2]"
+              }`}
           >
             <span
-              className={`font-antonio text-base ${
-                activeTab === "usos"
-                  ? "text-[#f70025] font-medium"
-                  : "text-[#333333]"
-              }`}
+              className={`font-antonio text-base ${activeTab === "usos"
+                ? "text-[#f70025] font-medium"
+                : "text-[#333333]"
+                }`}
             >
               Usos
             </span>
@@ -154,11 +162,11 @@ export default function ProductTabs() {
                   style={{
                     width: "0",
                     height: "0",
-                    borderTop: "8.5px solid transparent", 
+                    borderTop: "8.5px solid transparent",
                     borderBottom: "8.5px solid transparent",
-                    borderLeft: "10px solid #f70025 ", 
-                    top: "47%",  
-                    left: "100%", 
+                    borderLeft: "10px solid #f70025 ",
+                    top: "47%",
+                    left: "100%",
                     opacity: 1,
                   }}
                 ></div>
