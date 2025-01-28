@@ -8,7 +8,6 @@ const FILTER_OPTIONS = {
 	longitud: ["1.10 mm", "1.15 mm", "1.20 mm", "1.50 mm"],
 	ancho: ["1.10 mm", "1.15 mm", "1.20 mm", "1.50 mm"],
 };
-
 const PRODUCTS = [
 	{
 		id: 1,
@@ -125,29 +124,24 @@ const CategoryPage = () => {
 		longitud: "",
 		ancho: "",
 	});
-
 	const [searchQuery, setSearchQuery] = useState("");
 	const [visibleProducts, setVisibleProducts] = useState(8);
 
 	const handleProductClick = (productId) => {
 		navigate(`/product/${productId}`);
 	};
-
 	const handleFilterChange = (filterType, value) => {
 		setSelectedFilters((prevFilters) => ({
 			...prevFilters,
 			[filterType]: value,
 		}));
 	};
-
 	const handleSearchChange = (e) => {
 		setSearchQuery(e.target.value.toLowerCase());
 	};
-
 	const handleLoadMore = () => {
 		setVisibleProducts((prevVisible) => prevVisible + 5);
 	};
-
 	const filteredProducts = PRODUCTS.filter((product) => {
 		const matchesSearch = product.name.toLowerCase().includes(searchQuery);
 		const matchesFilters = Object.keys(selectedFilters).every(
@@ -155,7 +149,6 @@ const CategoryPage = () => {
 		);
 		return matchesSearch && matchesFilters;
 	});
-
 	const renderFilterSection = (filterType, title) => (
 		<div>
 			<h3 className="font-antonio text-left text-lg mt-4">{title}</h3>
@@ -174,7 +167,6 @@ const CategoryPage = () => {
 			</ul>
 		</div>
 	);
-
 	return (
 		<div className="max-w-7xl mx-auto">
 			{/* Header */}
@@ -187,9 +179,7 @@ const CategoryPage = () => {
 					/>
 				</div>
 			</div>
-
 			<div className="flex">
-				{/* Sidebar */}
 				<aside className="w-1/4 h-1/2 bg-gray-100 p-4 shadow">
 					<div className="mb-4 relative">
 						<input
@@ -214,14 +204,11 @@ const CategoryPage = () => {
 							</svg>
 						</span>
 					</div>
-
 					<h2 className="text-lg border-b border-gray-500 text-left font-antonio mb-6">FILTRAR POR</h2>
 					{renderFilterSection("espesor", "Espesor")}
 					{renderFilterSection("longitud", "Longitud")}
 					{renderFilterSection("ancho", "Ancho")}
 				</aside>
-
-				{/* Product List */}
 				<main className="w-3/4 pl-8">
 					<div className="grid grid-cols-4 gap-2">
 						{filteredProducts.slice(0, visibleProducts).map((product) => (
@@ -243,25 +230,24 @@ const CategoryPage = () => {
 									<p className="text-lg text-gray-700 mt-1">{product.price}</p>
 									<p className="text-xs text-gray-500">IVA incluido</p>
 								</div>
-								</div>
-            ))}
 							</div>
-          {
-								visibleProducts<filteredProducts.length && (
-									<div className="mt-6 text-center">
-										<button
-											onClick={handleLoadMore}
-											className="bg-black text-white px-6 py-2 rounded-tl-full rounded-bl-full rounded-tr-full hover:bg-red-600"
-										>
-											Cargar más
-										</button>
-									</div>
-								)
-							}
-        </main>
+						))}
+					</div>
+					{
+						visibleProducts < filteredProducts.length && (
+							<div className="mt-6 text-center">
+								<button
+									onClick={handleLoadMore}
+									className="bg-black text-white px-6 py-2 rounded-tl-full rounded-bl-full rounded-tr-full hover:bg-red-600"
+								>
+									Cargar más
+								</button>
+							</div>
+						)
+					}
+				</main>
 			</div>
 		</div>
 	);
 };
-
 export default CategoryPage;
