@@ -5,6 +5,7 @@ import {
   HiOutlineShoppingCart,
 } from "react-icons/hi";
 import { FiSearch } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -27,7 +28,10 @@ const Header = () => {
           </div>
 
           <div className="flex items-center space-x-6">
-            <HiOutlineUser className="text-2xl cursor-pointer hover:text-red-300 text-3xl stroke-[1.5]" />
+            <Link to="/micuenta">
+              <HiOutlineUser className="text-2xl cursor-pointer hover:text-red-300 text-3xl stroke-[1.5]" />
+            </Link>
+
             <HiOutlineHeart className="text-2xl cursor-pointer hover:text-red-300 text-3xl stroke-[1.5]" />
             <HiOutlineShoppingCart className="text-2xl cursor-pointer hover:text-red-300 text-3xl stroke-[1.5]" />
           </div>
