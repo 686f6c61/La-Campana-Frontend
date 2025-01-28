@@ -24,18 +24,23 @@ const Header = () => {
               <SearchBar placeholder="Buscar producto..." />
             </div>
             <ul className="flex gap-4 items-center">
-              <HeaderItem icon={<HiOutlineUser className="text-white text-2xl" />} />
-              <HeaderItem icon={<HiOutlineHeart className="text-white text-2xl" />} />
-              <HeaderItem icon={<HiOutlineShoppingCart className="text-white text-2xl" />} />
+              <HeaderItem
+                link="/micuenta"
+                icon={<HiOutlineUser className="text-white text-2xl" />}
+              />
+              <HeaderItem
+                icon={<HiOutlineHeart className="text-white text-2xl" />}
+              />
+              <HeaderItem
+                icon={<HiOutlineShoppingCart className="text-white text-2xl" />}
+              />
             </ul>
-            <MenuSidebar
-              categories={categories}
-            />
+            <MenuSidebar categories={categories} />
           </div>
         </section>
       </nav>
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
