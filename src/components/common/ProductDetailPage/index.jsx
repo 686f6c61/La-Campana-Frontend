@@ -57,6 +57,13 @@ const ProductDetailPage = () => {
 			discount: "-20%",
 			image: "/images/prod3.jpg",
 		},
+		{
+			id: 6,
+			name: "Varilla Corrugada Esp 1/4 x 6 un Primera",
+			price: "$19.693 IVA incluido",
+			discount: "-20%",
+			image: "/images/prod3.jpg",
+		},
 	];
 
 	const product = products.find((p) => p.id === parseInt(productId));
@@ -207,24 +214,24 @@ const ProductDetailPage = () => {
 					</h2>
 				</div>
 			</div>
-			<div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-6">
+			<div className="grid grid-cols-2 md:grid-cols-5 gap-6 mt-6">
 				{relatedProducts.map((product) => (
 					<div
 						key={product.id}
-						className="border rounded-lg shadow-sm p-4 text-center"
 					>
-						<div className="relative">
-							<span className="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded">
-								{product.discount}
-							</span>
-							<img
-								src={product.image}
-								alt={product.name}
-								className="w-full h-32 object-contain"
-							/>
+						<div
+							className="relative w-[215px] h-[382.01px] p-[10px] pt-0 gap-[7px] rounded-b-[15px] bg-gray-100"
+						>
+							<div className="relative">
+								<img src={product.image} alt={product.name} className="w-[190px] h-[227px]" />
+								<span className="absolute top-2 left-2 bg-gray-200 font-open-sans text-black text-sm px-2 py-1 rounded">
+									{product.discount}
+								</span>
+							</div>
+							<h2 className="text-sm font-bold mt-2">{product.name}</h2>
+							<p className="text-lg text-gray-700 mt-1">{product.price}</p>
+							<p className="text-xs text-gray-500">IVA incluido</p>
 						</div>
-						<h3 className="text-sm font-semibold mt-4">{product.name}</h3>
-						<p className="text-red-500 font-bold mt-2">{product.price}</p>
 					</div>
 				))}
 			</div>
@@ -232,7 +239,7 @@ const ProductDetailPage = () => {
 				<Comments />
 			</div>
 		</div>
-		
+
 
 	);
 };

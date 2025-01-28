@@ -8,7 +8,7 @@ const TrustSection = () => {
             id: 1,
             icon: (
                 <img
-                    src="public/images/Group2.png"
+                    src="public/images/Group136.png"
                     alt="Pagos seguros"
                     className="mx-auto w-16 h-16 sm:w-20 sm:h-20 icon-style"
                 />
@@ -20,7 +20,7 @@ const TrustSection = () => {
             id: 2,
             icon: (
                 <img
-                    src="public/images/Group3.png"
+                    src="public/images/Group137.png"
                     alt="Calidad asegurada"
                     className="mx-auto w-16 h-16 sm:w-20 sm:h-20 icon-style"
                 />
@@ -32,7 +32,7 @@ const TrustSection = () => {
             id: 3,
             icon: (
                 <img
-                    src="public/images/Group4.png"
+                    src="public/images/Group134.png"
                     alt="Asesoría permanente"
                     className="mx-auto w-16 h-16 sm:w-20 sm:h-20 icon-style"
                 />
@@ -44,7 +44,7 @@ const TrustSection = () => {
             id: 4,
             icon: (
                 <img
-                    src="public/images/Group1.png"
+                    src="public/images/Group135.png"
                     alt="Envios nacionales"
                     className="mx-auto w-16 h-16 sm:w-20 sm:h-20 icon-style"
                 />
