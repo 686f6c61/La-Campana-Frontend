@@ -17,6 +17,8 @@ import Services from "./pages/Services";
 import ServiceDetails from "./pages/ServiceDetails";
 import Contact from "./components/pages/Contact";
 import MyAccount from "./pages/MyAccount";
+import Login from "./components/pages/Login";
+import Register from "./components/pages/Register";
 
 function App() {
   return (
@@ -38,6 +40,9 @@ function App() {
         <Route path="/servicios" element={<Services />} />
         <Route path="/micuenta" element={<MyAccount />} />
         <Route path="/servicios/:serviceId" element={<ServiceDetails />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+
         <Route path="*" element={<h1>404 Not Found</h1>} />
       </Routes>
       <Footer />
