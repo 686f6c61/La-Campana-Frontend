@@ -1,21 +1,32 @@
 import React, { useState } from "react";
+import { useRegisterUserMutation } from "../../store/reducers/apiSlice";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [formData, setFormData] = useState({
-    name: "",
+    username: "", // Cambiado a username
     email: "",
     password: "",
   });
+
+  const [registerUser, { isLoading, error }] = useRegisterUserMutation();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
-    alert("Registro exitoso. Ahora puedes iniciar sesión.");
-    window.location.href = "/login";
+
+    try {
+      await registerUser(formData).unwrap();
+      alert("Registro exitoso. Ahora puedes iniciar sesión.");
+      navigate("/login");
+    } catch (err) {
+      console.error("Error al registrar el usuario:", err);
+    }
   };
 
   return (
@@ -24,9 +35,9 @@ const Register = () => {
       <form onSubmit={handleRegister} className="space-y-4">
         <input
           type="text"
-          name="name"
-          placeholder="Nombre completo"
-          value={formData.name}
+          name="username" // Cambiado a username
+          placeholder="Nombre de usuario"
+          value={formData.username}
           onChange={handleChange}
           className="w-full border border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-red-500 focus:outline-none"
           required
@@ -52,10 +63,16 @@ const Register = () => {
         <button
           type="submit"
           className="w-full bg-red-500 text-white py-2 px-4 rounded-md font-semibold hover:bg-red-600"
+          disabled={isLoading}
         >
-          Registrarse
+          {isLoading ? "Registrando..." : "Registrarse"}
         </button>
       </form>
+      {error && (
+        <p className="text-red-500 text-sm mt-4">
+          Hubo un error al registrar el usuario.
+        </p>
+      )}
       <p className="text-sm text-center mt-4">
         ¿Ya tienes una cuenta?{" "}
         <a href="/login" className="text-red-500 font-semibold">
