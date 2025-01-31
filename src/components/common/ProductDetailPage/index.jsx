@@ -7,8 +7,6 @@ import ProductTabs from "../ProductTabs";
 const ProductDetailPage = () => {
 	const { productId } = useParams();
 
-	const [activeTab, setActiveTab] = useState("normas");
-
 	const products = [
 		{
 			id: 1,
@@ -27,7 +25,6 @@ const ProductDetailPage = () => {
 			},
 		},
 	];
-
 	const relatedProducts = [
 		{
 			id: 2,
@@ -67,11 +64,9 @@ const ProductDetailPage = () => {
 	];
 
 	const product = products.find((p) => p.id === parseInt(productId));
-
 	if (!product) {
 		return <div>Producto no encontrado</div>;
 	}
-
 	return (
 		<div className="max-w-7xl mx-auto p-8">
 			<div className="flex gap-8">
@@ -85,8 +80,7 @@ const ProductDetailPage = () => {
 									key={index}
 									src={product.image}
 									alt={`Vista ${index + 1}`}
-									className="flex-initial mt-3 h-32 object-cover border rounded-lg cursor-pointer"
-								/>
+									className="flex-initial mt-3 h-32 object-cover border rounded-lg cursor-pointer"/>
 							))}
 						</div>
 						{/* Imagen principal */}
@@ -94,27 +88,21 @@ const ProductDetailPage = () => {
 							<img
 								src={product.image}
 								alt={product.name}
-								className="h-full w-auto object-contain border rounded-lg"
-							/>
+								className="h-full w-auto object-contain border rounded-lg"/>
 						</div>
-
 					</div >
-					{/* boton ficha tecnica */}
 					<div className="mt-4">
 						<button className="bg-lacampana-gray1 ont-montserrat text-white w-full h-[44px] rounded-md rounded-tl-full rounded-bl-full rounded-tr-full text-md">
 							Ficha Tecnica
 						</button>
 					</div>
 				</div>
-
 				{/* Información del producto */}
 				<div className="w-3/5">
-					{/* header */}
 					<div>
 						<h1 className="text-3xl font-antonio">{product.name}</h1>
 						<p className="text-gray-600 mt-4 font-opensans">{product.description}</p>
 					</div>
-
 					{/* propiedades */}
 					<div className="flex flex-wrap gap-6 mt-8 justify-center w-full">
 						<div className="flex-1">
@@ -142,7 +130,6 @@ const ProductDetailPage = () => {
 							</select>
 						</div>
 					</div>
-
 					{/* colores */}
 					<div className="flex flex-wrap gap-6 mt-8 justify-center">
 						<div>
@@ -164,14 +151,12 @@ const ProductDetailPage = () => {
 									<div
 										key={index}
 										className="w-8 h-8 rounded-full cursor-pointer border"
-										style={{ backgroundColor: color }}
-									>
+										style={{ backgroundColor: color }}>
 									</div>
 								))}
 							</div>
 						</div>
 					</div>
-
 					{/* boton añadir al carrito*/}
 					<div className="flex flex-wrap gap-6 mt-8 justify-center">
 						<div className="mt-2 flex items-center gap-6">
@@ -184,8 +169,7 @@ const ProductDetailPage = () => {
 									type="number"
 									min="1"
 									defaultValue="1"
-									className="w-12 text-center border border-gray-300 rounded-md"
-								/>
+									className="w-12 text-center border border-gray-300 rounded-md"/>
 								<button className="bg-gray-200 w-8 h-8 rounded-full flex items-center justify-center font-bold text-gray-700">
 									+
 								</button>
@@ -199,7 +183,6 @@ const ProductDetailPage = () => {
 					</div>
 				</div>
 			</div>
-
 			<div className="mt-12">
 				<ProductTabs />
 			</div>
@@ -218,9 +201,6 @@ const ProductDetailPage = () => {
 				<Comments />
 			</div>
 		</div>
-
-
 	);
 };
-
 export default ProductDetailPage;

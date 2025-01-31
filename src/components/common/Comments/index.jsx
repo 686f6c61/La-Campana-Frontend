@@ -18,6 +18,7 @@ export default function Comments() {
 
     if (newComment.comment && newComment.name && newComment.rating) {
       const newCommentObj = {
+        productId: "CAA0.28US10703000R5017", //replace for the product id
         name: newComment.name,
         date: new Date().toISOString(), // Fecha en formato ISO
         comment: newComment.comment,

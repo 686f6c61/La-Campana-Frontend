@@ -3,7 +3,6 @@ import React from "react";
 const Card = ({ product }) => {
     return (
         <div className="relative w-full h-[382.01px] p-[10px] pt-0 rounded-b-[15px] bg-gray-100">
-          {/* Imagen */}
           <div className="relative">
             <img
               src={product.image}
@@ -16,7 +15,6 @@ const Card = ({ product }) => {
               </span>
             )}
           </div>
-          {/* Detalles */}
           <h2 className="text-sm font-bold mt-2">{product.name}</h2>
           <p className="text-lg text-gray-700 mt-1">{product.price}</p>
           <p className="text-xs text-gray-500">IVA incluido</p>

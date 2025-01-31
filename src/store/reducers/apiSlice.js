@@ -6,7 +6,21 @@ export const apiSlice = createApi({
   reducerPath: "apiSlice",
   baseQuery: fetchBaseQuery({
     baseUrl: API_URL,
-  }),
+    prepareHeaders: (headers) => {
+      if (API_KEY) {
+        headers.set('x-api-key', API_KEY);
+      }
+      return headers;
+    },
+  }), 
+  retry: (failureCount, error) => {
+    if (failureCount < 3) {
+      return true;  
+    }
+    return false;  
+  },
+  refetchOnMountOrArgChange: false,
+  keepUnusedDataFor: 600,
   endpoints: (builder) => ({
     getBlogs: builder.query({
       query: () => "blog",
