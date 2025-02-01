@@ -21,17 +21,10 @@ const MyAccount = () => {
         />
       </div>
 
-      <div className="flex max-w-screen-lg mx-auto gap-8 p-4">
-        {/* Columna izquierda con Breadcrumbs y Sidebar */}
-        <div className="w-1/3 flex flex-col gap-4">
-          <Breadcrumbs />
-          <Sidebar />
-        </div>
-
-        {/* Columna derecha con DashboardPanel */}
-        <div className="w-full">
-          <DashboardPanel />
-        </div>
+      {/* Columna izquierda con Breadcrumbs y Sidebar */}
+      <div className="md:ml-80 w-1/2 flex flex-col gap-4">
+        <Breadcrumbs />
+        <Sidebar />
       </div>
     </div>
   );

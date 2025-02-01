@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Breadcrumbs = () => {
   return (
-    <nav className="text-gray-500 text-sm transform -translate-x-40 ">
+    <nav className="text-gray-500 text-sm  ">
       <ul className="flex space-x-2">
         <li>
           <Link to="/" className="hover:text-gray-700">

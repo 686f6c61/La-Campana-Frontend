@@ -11,12 +11,12 @@ const items = [
 
 const DashboardPanel = () => {
   return (
-    <div className="w-full mx-auto my-8 px-8 text-left transform -translate-x-40">
-      <p className="text-gray-600 text-base mb-6">
+    <div className="  my-8 px-8 text-left ">
+      <p className="text-gray-600 text-base mb-6 ">
         Hola {""}
         <span className="text-lacampana-red1 font-semibold">[Mi cuenta]</span>
       </p>
-      <p className="text-gray-600 text-base mb-6 w-200">
+      <p className="text-gray-600 text-base mb-6">
         Desde el panel de su cuenta puede ver su{" "}
         <span className="text-lacampana-red1 font-semibold">
           pedidos recientes

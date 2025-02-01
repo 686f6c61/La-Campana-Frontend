@@ -2,9 +2,9 @@ import React from "react";
 
 const Orders = () => {
   return (
-    <div className="w-full mx-auto my-8 px-8 text-left">
-      <h2 className="text-lg font-bold text-gray-700">Mis pedidos</h2>
-      <p className="text-gray-600 text-base mb-6">
+    <div className="max-w-7xl mx-auto my-8 px-12 text-left">
+      <h2 className="text-2xl font-bold text-gray-700 mb-6">Mis pedidos</h2>
+      <p className="text-gray-600 text-lg mb-10">
         Revisa el estado de tus pedidos y los detalles de compras anteriores.
       </p>
 
