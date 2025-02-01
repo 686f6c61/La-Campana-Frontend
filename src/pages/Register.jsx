@@ -1,5 +1,5 @@
 import React from "react";
-import RegisterTest from "../Account/RegisterTest";
+import RegisterTest from "../components/Account/RegisterTest";
 
 const Register = () => {
   return (

@@ -1,5 +1,5 @@
 import React from "react";
-import LoginTest from "../Account/LoginTest";
+import LoginTest from "../components/Account/LoginTest";
 
 const Login = () => {
   return (
