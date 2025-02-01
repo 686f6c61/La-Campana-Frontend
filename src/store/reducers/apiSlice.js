@@ -34,6 +34,22 @@ export const apiSlice = createApi({
         body: newUser,
       }),
     }),
+
+    loginUser: builder.mutation({
+      query: (data) => ({
+        url: "users/login",
+        method: "POST",
+        body: data,
+      }),
+    }),
+
+    // forgotPassword: builder.mutation({
+    //   query: (data) => ({
+    //     url: "users/forgot-password",
+    //     method: "POST",
+    //     body: data,
+    //   }),
+    // }),
   }),
 });
 
@@ -42,5 +58,6 @@ export const {
   useGetProductsQuery,
   useGetProductCommentsQuery,
   useAddProductCommentMutation,
+  useLoginUserMutation,
   useRegisterUserMutation, // Exporta el hook correctamente
 } = apiSlice;
