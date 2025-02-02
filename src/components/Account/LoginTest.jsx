@@ -32,7 +32,9 @@ const Login = () => {
 
   return (
     <div className="max-w-md mx-auto mt-12 bg-white p-6 rounded-lg shadow-lg">
-      <h2 className="text-2xl font-bold mb-6 text-center">Iniciar Sesión</h2>
+      <h2 className="text-2xl font-bold text-lacampana-gray1 mb-6 font-antonio">
+        Iniciar Sesión
+      </h2>
       <form onSubmit={handleLogin} className="space-y-4">
         <input
           type="email"
