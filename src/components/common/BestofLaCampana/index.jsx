@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useGetProductsQuery } from "../../../store/reducers/apiSlice";
 import CardGrid from "../CardGrid";
 
-const MAX_RETRIES = 3; // Límite de reintentos
+const MAX_RETRIES = 0; // Límite de reintentos
 
 const BestOfLaCampana = () => {
   const { data, error, isLoading, refetch } = useGetProductsQuery();
