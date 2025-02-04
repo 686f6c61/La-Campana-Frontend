@@ -32,6 +32,7 @@ const Header = () => {
                 icon={<HiOutlineHeart className="text-white text-2xl" />}
               />
               <HeaderItem
+                link="/carrito"
                 icon={<HiOutlineShoppingCart className="text-white text-2xl" />}
               />
             </ul>
