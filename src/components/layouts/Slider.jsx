@@ -1,3 +1,7 @@
+import React from "react";
+import CardGrid from "../common/CardGrid";
+import Card from "../common/Card";
+
 const Ofertas = () => {
   const products = [
     {
@@ -76,8 +80,8 @@ const Ofertas = () => {
     <section className="bg-white py-12">
       {/* Título */}
       <div className="container mx-auto px-4 text-center mb-10">
-        <h2 className="text-4xl font-bold text-gray-800">
-          Las mejores <span className="text-red-600">ofertas</span>
+        <h2 className="text-4xl font-bold font-anton text-gray-800">
+          Las mejores <span className="text-lacampana-red1">ofertas</span>
         </h2>
         <p className="text-gray-500 mt-2">
           Descubre nuestras promociones destacadas y aprovecha grandes descuentos en productos seleccionados.
@@ -86,39 +90,12 @@ const Ofertas = () => {
 
       {/* Productos */}
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-          {products.map((product) => (
-            <div
-              key={product.id}
-              className="bg-gray-100 rounded-lg shadow-lg overflow-hidden"
-            >
-              {/* Imagen del producto */}
-              <div className="relative">
-                <img
-                  src={product.image}
-                  alt={product.title}
-                  className="w-full h-48 object-cover"
-                />
-                <span className="absolute top-2 left-2 bg-lacampana-red2 text-white text-xs font-bold px-2 py-1 rounded">
-                  {product.discount}
-                </span>
-              </div>
-              {/* Información del producto */}
-              <div className="p-4">
-                <h3 className="text-sm font-medium text-gray-800 truncate">
-                  {product.title}
-                </h3>
-                <p className="text-lg font-bold text-red-600">{product.price}</p>
-                <p className="text-xs text-gray-500">+ IVA incluido</p>
-              </div>
-            </div>
-          ))}
-        </div>
+        <CardGrid products={products} />
       </div>
 
       {/* Botón */}
       <div className="text-center mt-10">
-        <button className="bg-lacampana-red2 text-white font-medium py-3 px-8 rounded-full hover:bg-red-700">
+      <button className="bg-lacampana-red2 font-montserrat text-white md:w-[270px] w-[300px] h-[44px] rounded-md rounded-tl-full rounded-bl-full rounded-tr-full text-md">
           Explorar todas las ofertas
         </button>
       </div>

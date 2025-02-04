@@ -1,10 +1,9 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const API_URL = import.meta.env.VITE_BACKEND_URL;
-const API_KEY = import.meta.env.VITE_API_KEY;
 
 export const apiSlice = createApi({
-  reducerPath: 'apiSlice',
+  reducerPath: "apiSlice",
   baseQuery: fetchBaseQuery({
     baseUrl: API_URL,
     prepareHeaders: (headers) => {
@@ -13,43 +12,66 @@ export const apiSlice = createApi({
       }
       return headers;
     },
-  }),
-  // Configuración de reintentos
+  }), 
   retry: (failureCount, error) => {
-    // Configurar cuántos intentos quieres hacer, por ejemplo, 3 reintentos
     if (failureCount < 3) {
-      return true;  // Esto indica que se debe volver a intentar
+      return true;  
     }
-    return false;  // No hacer más reintentos después del tercer intento
+    return false;  
   },
   refetchOnMountOrArgChange: false,
   keepUnusedDataFor: 600,
   endpoints: (builder) => ({
     getBlogs: builder.query({
-      query: () => 'blog',
-  }),
-  getProducts: builder.query({
-    query: () => `products`,
-    keepUnusedDataFor: 600,
-  }),
-  getProductComments: builder.query({
-    query: () => 'product-comments',
-    transformResponse: (response) => {
-      // Asegúrate de que cada comentario tenga un ID
-      return response.map((comment) => ({
-        ...comment,
-        id: comment.id || comment._id || `temp-${Math.random()}`,
-      }));
-    },
-  }),
-  addProductComment: builder.mutation({
-    query: (newComment) => ({
-      url: `product-comments`,
-      method: 'POST',
-      body: newComment,
+      query: () => "blog",
     }),
-  }),
+    getProducts: builder.query({
+      query: () => "products",
+      keepUnusedDataFor: 600,
+    }),
+    getProductComments: builder.query({
+      query: () => "product-comments",
+    }),
+    addProductComment: builder.mutation({
+      query: (newComment) => ({
+        url: "product-comments",
+        method: "POST",
+        body: newComment,
+      }),
+    }),
+
+    // Cambia el endpoint a una mutación
+    registerUser: builder.mutation({
+      query: (newUser) => ({
+        url: "users/register",
+        method: "POST",
+        body: newUser,
+      }),
+    }),
+
+    loginUser: builder.mutation({
+      query: (data) => ({
+        url: "users/login",
+        method: "POST",
+        body: data,
+      }),
+    }),
+
+    // forgotPassword: builder.mutation({
+    //   query: (data) => ({
+    //     url: "users/forgot-password",
+    //     method: "POST",
+    //     body: data,
+    //   }),
+    // }),
   }),
 });
 
-export const { useGetBlogsQuery, useGetProductsQuery, useGetProductCommentsQuery,useAddProductCommentMutation } = apiSlice;
+export const {
+  useGetBlogsQuery,
+  useGetProductsQuery,
+  useGetProductCommentsQuery,
+  useAddProductCommentMutation,
+  useLoginUserMutation,
+  useRegisterUserMutation, // Exporta el hook correctamente
+} = apiSlice;
