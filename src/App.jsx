@@ -16,6 +16,7 @@ import BlogDetails from "./pages/BlogDetails";
 import Services from "./pages/Services";
 import ServiceDetails from "./pages/ServiceDetails";
 import Contact from "./components/pages/Contact";
+import Cart from "./pages/Cart";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
         <Route path="/blog/:blogId" element={<BlogDetails />} />
         <Route path="/servicios" element={<Services />} />
         <Route path="/servicios/:serviceId" element={<ServiceDetails />} />
+        <Route path="/carrito" element={<Cart />} />
         <Route path="*" element={<h1>404 Not Found</h1>} />
       </Routes>
       <Footer />

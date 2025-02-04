@@ -3,66 +3,82 @@ import { useParams } from "react-router-dom";
 import Layout from "../../layouts/Layout";
 import Comments from "../Comments";
 import ProductTabs from "../ProductTabs";
+import { useDispatch, useSelector } from "react-redux";
+import { addItem, updateItem } from "../../../features/cart/cartSlice";
+import products from "../../../utils/products";
+import relatedProducts from "../../../utils/relatedProducts";
 
 const ProductDetailPage = () => {
 	const { productId } = useParams();
 
 	const [activeTab, setActiveTab] = useState("normas");
 
-	const products = [
-		{
-			id: 1,
-			name: "Tubo Mueble Cuadrado Esp 1.10 un 3/4 Primera - Norma Ntc 1986",
-			price: "$19.693",
-			discount: "-20%",
-			image: "/images/prod1.jpg",
-			description:
-				"Presentamos la nueva placa colaborante que se puede utilizar por ambas caras. Su innovador diseño alcanza un metro de ancho útil, es rápida en su instalación, liviana y de gran capacidad de carga. Fabricada con altos estándares de calidad y a la medida requerida, esta placa es la mejor opción para entrepisos.",
-			options: {
-				paquete: ["Seleccione una opción", "Paquete 2", "Paquete 3"],
-				longitud: ["Seleccione una opción", "1.10 mm", "1.20 mm"],
-				ancho: ["Seleccione una opción", "1.10 mm", "1.20 mm"],
-				colorExterno: ["#E32119", "#BDBDBD", "#3C3C3B", "#BDBDBD"],
-				colorInterno: ["#F2F2F2", "#3C3C3B", "#000000"],
-			},
-		},
-	];
+	const cartProducts = useSelector(state => state.cart)
+	const dispatch = useDispatch()
+	// 	{
+	// 		id: 1,
+	// 		name: "Tubo Mueble Cuadrado Esp 1.10 un 3/4 Primera - Norma Ntc 1986",
+	// 		price: "19.693",
+	// 		discount: "-20%",
+	// 		image: "/images/prod1.jpg",
+	// 		quantity: 1,
+	// 		description:
+	// 			"Presentamos la nueva placa colaborante que se puede utilizar por ambas caras. Su innovador diseño alcanza un metro de ancho útil, es rápida en su instalación, liviana y de gran capacidad de carga. Fabricada con altos estándares de calidad y a la medida requerida, esta placa es la mejor opción para entrepisos.",
+	// 		options: {
+	// 			paquete: ["Seleccione una opción", "Paquete 2", "Paquete 3"],
+	// 			longitud: ["Seleccione una opción", "1.10 mm", "1.20 mm"],
+	// 			ancho: ["Seleccione una opción", "1.10 mm", "1.20 mm"],
+	// 			colorExterno: ["#E32119", "#BDBDBD", "#3C3C3B", "#BDBDBD"],
+	// 			colorInterno: ["#F2F2F2", "#3C3C3B", "#000000"],
+	// 		},
+	// 	},
+	// ];
 
-	const relatedProducts = [
-		{
-			id: 2,
-			name: "Tubo Mueble Cuadrado Esp 1.10 un 3/4 Primera - Norma Ntc 1986",
-			price: "$19.693 IVA incluido",
-			discount: "-20%",
-			image: "/images/prod3.jpg",
-		},
-		{
-			id: 3,
-			name: "Plancha Hot Rolled Esp 6.00 un 1829x6096 Primera",
-			price: "$2.386.483 IVA incluido",
-			discount: "-20%",
-			image: "/images/prod3.jpg",
-		},
-		{
-			id: 4,
-			name: "Marco Ventana Corriente Esp 1.00 un 6.00 mt Primera",
-			price: "$32.516 IVA incluido",
-			discount: "-20%",
-			image: "/images/prod3.jpg",
-		},
-		{
-			id: 5,
-			name: "Varilla Corrugada Esp 1/4 x 6 un Primera",
-			price: "$19.693 IVA incluido",
-			discount: "-20%",
-			image: "/images/prod3.jpg",
-		},
-	];
+	// const relatedProducts = [
+	// 	{
+	// 		id: 2,
+	// 		name: "Tubo Mueble Cuadrado Esp 1.10 un 3/4 Primera - Norma Ntc 1986",
+	// 		price: "$19.693 IVA incluido",
+	// 		discount: "-20%",
+	// 		image: "/images/prod3.jpg",
+	// 	},
+	// 	{
+	// 		id: 3,
+	// 		name: "Plancha Hot Rolled Esp 6.00 un 1829x6096 Primera",
+	// 		price: "$2.386.483 IVA incluido",
+	// 		discount: "-20%",
+	// 		image: "/images/prod3.jpg",
+	// 	},
+	// 	{
+	// 		id: 4,
+	// 		name: "Marco Ventana Corriente Esp 1.00 un 6.00 mt Primera",
+	// 		price: "$32.516 IVA incluido",
+	// 		discount: "-20%",
+	// 		image: "/images/prod3.jpg",
+	// 	},
+	// 	{
+	// 		id: 5,
+	// 		name: "Varilla Corrugada Esp 1/4 x 6 un Primera",
+	// 		price: "$19.693 IVA incluido",
+	// 		discount: "-20%",
+	// 		image: "/images/prod3.jpg",
+	// 	},
+	// ];
 
 	const product = products.find((p) => p.id === parseInt(productId));
 
 	if (!product) {
 		return <div>Producto no encontrado</div>;
+	}
+
+	const addToCart = () => {
+		const sameProduct = cartProducts.find(cartProduct => cartProduct.id === product.id)
+
+		if (sameProduct) {
+			dispatch(updateItem({ ...product, quantity: sameProduct.quantity + 1 }))
+		} else {
+			dispatch(addItem(product))
+		}
 	}
 
 	return (
@@ -168,7 +184,7 @@ const ProductDetailPage = () => {
 					{/* boton añadir al carrito*/}
 					<div className="flex flex-wrap gap-6 mt-8 justify-center">
 						<div className="mt-2 flex items-center gap-6">
-							<span className="text-lg font-bold text-black">{product.price}</span>
+							<span className="text-lg font-bold text-black">${product.price}</span>
 							<div className="flex items-center gap-2">
 								<button className="bg-gray-200 w-8 h-8 rounded-full flex items-center justify-center font-bold text-gray-700">
 									-
@@ -184,7 +200,7 @@ const ProductDetailPage = () => {
 								</button>
 							</div>
 							<div>
-								<button className="bg-lacampana-red2 font-montserrat text-white md:w-[270px] w-[300px] h-[44px] rounded-md rounded-tl-full rounded-bl-full rounded-tr-full text-md">
+								<button onClick={addToCart} className="bg-lacampana-red2 font-montserrat text-white md:w-[270px] w-[300px] h-[44px] rounded-md rounded-tl-full rounded-bl-full rounded-tr-full text-md">
 									Añadir al carrito
 								</button>
 							</div>
@@ -232,7 +248,7 @@ const ProductDetailPage = () => {
 				<Comments />
 			</div>
 		</div>
-		
+
 
 	);
 };

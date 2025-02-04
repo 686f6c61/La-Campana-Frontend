@@ -26,7 +26,7 @@ const Header = () => {
             <ul className="flex gap-4 items-center">
               <HeaderItem icon={<HiOutlineUser className="text-white text-2xl" />} />
               <HeaderItem icon={<HiOutlineHeart className="text-white text-2xl" />} />
-              <HeaderItem icon={<HiOutlineShoppingCart className="text-white text-2xl" />} />
+              <HeaderItem link="/carrito" icon={<HiOutlineShoppingCart className="text-white text-2xl" />} />
             </ul>
             <MenuSidebar
               categories={categories}
