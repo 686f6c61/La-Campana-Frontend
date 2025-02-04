@@ -30,7 +30,7 @@ function App() {
       <Header />
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home greeting={"Bienvenidos"} />} />
+        <Route path="/" element={<Home />} />
         <Route path="/nosotros" element={<NosotrosInfo />} />
         <Route path="/documentos" element={<DocumentsItem />} />
         <Route path="/contacto" element={<Contact />} />
