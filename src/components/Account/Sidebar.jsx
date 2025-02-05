@@ -5,6 +5,7 @@ import Addresses from "./Addresses";
 import PaymentMethod from "./PaymentMethod";
 import AccountDetails from "./AccountDetails";
 import WishList from "./WishList";
+import { useNavigate } from "react-router-dom";
 
 const SidebarItem = ({ text, isActive, onClick }) => {
   return (
@@ -30,6 +31,12 @@ const SidebarItem = ({ text, isActive, onClick }) => {
 
 const Sidebar = () => {
   const [activeComponent, setActiveComponent] = useState("dashboard");
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token"); // Elimina el token
+    navigate("/"); // Redirige a la página de inicio
+  };
 
   const renderContent = () => {
     switch (activeComponent) {
@@ -85,11 +92,14 @@ const Sidebar = () => {
             isActive={activeComponent === "deseos"}
             onClick={() => setActiveComponent("deseos")}
           />
-          <SidebarItem
-            text="Cerrar sesión"
-            isActive={activeComponent === "cerrar-sesion"}
-            onClick={() => setActiveComponent("cerrar-sesion")}
-          />
+          <li className="border-b border-gray-300">
+            <button
+              onClick={handleLogout}
+              className="block w-full text-left py-3 px-4 text-lacampana-gray1 hover:text-lacampana-red1 transition"
+            >
+              Cerrar sesión
+            </button>
+          </li>
         </ul>
       </aside>
 

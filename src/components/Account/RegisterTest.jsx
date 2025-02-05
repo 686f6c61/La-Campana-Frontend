@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [formData, setFormData] = useState({
-    username: "", // Cambiado a username
+    username: "",
     email: "",
     password: "",
   });
@@ -30,18 +30,18 @@ const Register = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-12 bg-white p-6 rounded-lg shadow-lg">
+    <div className="max-w-md mx-auto mt-12 bg-lacampana-white p-6 rounded-lg shadow-lg">
       <h2 className="text-2xl font-bold text-lacampana-gray1 mb-6 font-antonio">
         Registro
       </h2>
       <form onSubmit={handleRegister} className="space-y-4">
         <input
           type="text"
-          name="username" // Cambiado a username
+          name="username"
           placeholder="Nombre de usuario"
           value={formData.username}
           onChange={handleChange}
-          className="w-full border border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-red-500 focus:outline-none"
+          className="p-2 text-lacampana-gray1 pl-4 text-lg md:w-[400px] w-[300px] h-[44px] rounded-tl-full rounded-bl-full rounded-tr-full"
           required
         />
         <input
@@ -50,7 +50,7 @@ const Register = () => {
           placeholder="Correo electrónico"
           value={formData.email}
           onChange={handleChange}
-          className="w-full border border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-red-500 focus:outline-none"
+          className="p-2 text-lacampana-gray1 pl-4 text-lg md:w-[400px] w-[300px] h-[44px] rounded-tl-full rounded-bl-full rounded-tr-full"
           required
         />
         <input
@@ -59,12 +59,12 @@ const Register = () => {
           placeholder="Contraseña"
           value={formData.password}
           onChange={handleChange}
-          className="w-full border border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-red-500 focus:outline-none"
+          className="p-2 text-lacampana-gray1 pl-4 text-lg md:w-[400px] w-[300px] h-[44px] rounded-tl-full rounded-bl-full rounded-tr-full"
           required
         />
         <button
           type="submit"
-          className="w-full bg-red-500 text-white py-2 px-4 rounded-md font-semibold hover:bg-red-600"
+          className="bg-lacampana-red2 font-montserrat text-white md:w-[270px] w-[300px] h-[44px] rounded-md rounded-tl-full rounded-bl-full rounded-tr-full text-lg"
           disabled={isLoading}
         >
           {isLoading ? "Registrando..." : "Registrarse"}

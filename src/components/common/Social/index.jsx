@@ -17,6 +17,8 @@ const Social = ({
   textWidth = "w-full md:w-70",
   questionColor = "text-black",
   phoneColor = "text-black",
+  iconsPadding = "p-4", // Nuevo padding para los iconos
+  iconsMargin = "mt-6 mb-4", // Nuevo margin para los iconos
   iconColors = {
     youtube: "text-lacampana-red1",
     instagram: "text-lacampana-gray1",
@@ -42,7 +44,9 @@ const Social = ({
       <p className={`text-lg ${textWidth} ${questionColor}`}>{question}</p>
       <p className={`${phoneColor} pb-4`}>{phone}</p>
       <p className="text-sm w-60 pb-4">{description}</p>
-      <div className="flex space-x-3 mt-2 w-80">
+
+      {/* Contenedor de íconos con padding y margin personalizados */}
+      <div className={`flex space-x-3 ${iconsPadding} ${iconsMargin} w-80`}>
         <a href={socialLinks.youtube} target="_blank" rel="noopener noreferrer">
           <PiYoutubeLogoThin className={`${iconsSize} ${iconColors.youtube}`} />
         </a>

@@ -53,7 +53,7 @@ const PrecenseNation = () => {
   }, [carouselIndex]);
 
   return (
-    <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between space-y-8 lg:space-y-0">
+    <div className="flex flex-col lg:flex-row lg:items-start md:ml-80 lg:justify-between space-y-8 lg:space-y-0">
       {/* Left Section */}
       <div className="lg:w-2/3 p-8">
         <h4 className="text-3xl font-bold mb-4 text-left">
