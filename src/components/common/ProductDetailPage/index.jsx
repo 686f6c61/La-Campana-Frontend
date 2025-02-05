@@ -159,7 +159,7 @@ const ProductDetailPage = () => {
 						Productos similares
 					</h2>
 				</div>
-				<CardGrid products={relatedProducts} />  {/* Aquí usas el componente CardGrid */}
+				<CardGrid products={relatedProducts} />  
 			</div>
 			<div className="mt-16">
 				<Comments />
