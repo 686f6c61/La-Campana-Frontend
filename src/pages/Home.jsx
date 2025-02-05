@@ -6,12 +6,13 @@ import FloatingDrawer from "../components/common/FloatingDrawer/FloatingDrawer";
 import ServiceSection from "../components/common/ServiceSection";
 import News from "../components/common/News";
 import Banner from "../sections/Home/Banner";
+import BestOffers from "../sections/Home/BestOffers";
 
 const Home = () => {
   return (
     <>
       <Banner />
-      <Slider />
+      <BestOffers />
       <TrustSection />
       <BestofLaCampana />
       <Categories />
