@@ -41,7 +41,7 @@ const Carousel = ({ sucursalData }) => {
         {sucursalData.map((sucursal, index) => (
           <div
             key={index}
-            className="flex-none w-40 lg:w-60 snap-center bg-gray-200 rounded-lg shadow-lg p-4"
+            className="flex-none w-40 lg:w-60 snap-center bg-gray-200 rounded-tl-lg shadow-lg p-4"
           >
             <img
               src={sucursal.imagen}
@@ -59,13 +59,6 @@ const Carousel = ({ sucursalData }) => {
             </p>
           </div>
         ))}
-      </div>
-
-      {/* Puntos de navegación */}
-      <div className="flex justify-center mt-4 space-x-2">
-        <span className="w-3 h-3 bg-gray-600 rounded-full"></span>
-        <span className="w-4 h-4 bg-red-500 rounded-full"></span>
-        <span className="w-3 h-3 bg-gray-600 rounded-full"></span>
       </div>
     </div>
   );
