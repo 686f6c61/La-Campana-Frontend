@@ -1,7 +1,7 @@
-import NewsCard from "../../components/common/NewsCard"
+import BlogCard from "../../components/common/BlogCard"
 import SearchBar from "../../components/common/SearchBar"
 
-const BlogsGallery = ({ newsData, categories }) => {
+const BlogsGallery = ({ blogsData, categories }) => {
   return (
     <section className="flex flex-col gap-8 px-4 desktop:px-8">
       <header className="flex flex-col tablet:flex-row justify-between">
@@ -20,15 +20,17 @@ const BlogsGallery = ({ newsData, categories }) => {
       </header>
       <main>
         <div className="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 gap-4">
-          {newsData.map(news =>
-            <NewsCard
-              key={`news-card-${news._id}`}
-              id={news._id}
-              title={news.name}
-              description={news.body}
-              image={news.image}
-              publicationDate={news.createdAt}
-            />
+          {blogsData.map(blog =>
+            <article className="h-[500px]">
+              <BlogCard
+                key={`news-card-${blog._id}`}
+                id={blog._id}
+                title={blog.name}
+                description={blog.body}
+                image={blog.image}
+                publicationDate={blog.createdAt}
+              />
+            </article>
           )}
         </div>
       </main>

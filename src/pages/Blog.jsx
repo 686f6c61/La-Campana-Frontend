@@ -23,7 +23,10 @@ const Blog = () => {
           <Highlighted highlightedNews={highlightedNews} />
         </div>
       </IntroductoryText>
-      <BlogsGallery categories={newsCategories} newsData={data} />
+      <BlogsGallery
+        categories={newsCategories}
+        blogsData={data}
+      />
     </article>
   )
 }

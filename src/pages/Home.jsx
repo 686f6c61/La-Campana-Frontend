@@ -4,7 +4,7 @@ import BestofLaCampana from "../components/common/BestofLaCampana";
 import Categories from "../sections/Home/Categories";
 import FloatingDrawer from "../components/common/FloatingDrawer/FloatingDrawer";
 import Advisor from "../sections/Home/Advisor";
-import News from "../components/common/News";
+import Blog from "../sections/Home/Blog";
 import Banner from "../sections/Home/Banner";
 import BestOffers from "../sections/Home/BestOffers";
 
@@ -16,7 +16,7 @@ const Home = () => {
       <Trust />
       <BestofLaCampana />
       <Categories />
-      <News />
+      <Blog />
       <FloatingDrawer />
       <Advisor />
     </>
