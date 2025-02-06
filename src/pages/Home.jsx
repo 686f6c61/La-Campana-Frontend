@@ -1,5 +1,5 @@
 import Slider from "../components/layouts/Slider";
-import TrustSection from "../components/common/TrustSection";
+import Trust from "../sections/Home/Trust";
 import BestofLaCampana from "../components/common/BestofLaCampana";
 import Categories from "../components/common/Categories";
 import FloatingDrawer from "../components/common/FloatingDrawer/FloatingDrawer";
@@ -13,7 +13,7 @@ const Home = () => {
     <>
       <Banner />
       <BestOffers />
-      <TrustSection />
+      <Trust />
       <BestofLaCampana />
       <Categories />
       <News />
