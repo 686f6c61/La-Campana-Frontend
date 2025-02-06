@@ -1,6 +1,6 @@
 const CardsCarousel = ({ children, cardsList, id }) => {
   return (
-    <article>
+    <article className="flex flex-col h-full">
       <div className="carousel w-full">
         {children}
       </div>

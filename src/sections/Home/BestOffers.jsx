@@ -14,7 +14,7 @@ const BestOffers = () => {
         <p>Lorem ipsum dolor sit amet consectetur. Etiam id enim diam sollicitudin ut molestie velit</p>
       </section>
       <section className="flex flex-col gap-8 items-center">
-        <div className="tablet:hidden">
+        <div className="tablet:hidden w-full h-[300px]">
           <CardsCarousel id="best-offer-carousel-item" cardsList={chunkedProducts}>
             {chunkedProducts.map((chunk, index) =>
               <ul id={`best-offer-carousel-item-${index}`} className="carousel-item w-full">
