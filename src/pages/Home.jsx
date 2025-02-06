@@ -1,29 +1,25 @@
-import React from "react";
-import TopBar from "../components/layouts/TopBar";
-import Header from "../components/common/Header";
-import Banner from "../components/common/Banner";
 import Slider from "../components/layouts/Slider";
-import Footer from "../components/layouts/Footer";
-import Navbar from "../components/common/NavBar";
-import TrustSection from "../components/common/TrustSection";
+import Trust from "../sections/Home/Trust";
 import BestofLaCampana from "../components/common/BestofLaCampana";
-import Categories from "../components/common/Categories";
+import Categories from "../sections/Home/Categories";
 import FloatingDrawer from "../components/common/FloatingDrawer/FloatingDrawer";
-import ServiceSection from "../components/common/ServiceSection";
-import News from "../components/common/News";
+import Advisor from "../sections/Home/Advisor";
+import Blog from "../sections/Home/Blog";
+import Banner from "../sections/Home/Banner";
+import BestOffers from "../sections/Home/BestOffers";
 
 const Home = () => {
   return (
-    <div className="font-sans">
+    <>
       <Banner />
-      <Slider />
-      <TrustSection />
+      <BestOffers />
+      <Trust />
       <BestofLaCampana />
       <Categories />
-      <News />
+      <Blog />
       <FloatingDrawer />
-      <ServiceSection />
-    </div>
+      <Advisor />
+    </>
   );
 };
 

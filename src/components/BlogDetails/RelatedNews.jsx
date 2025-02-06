@@ -1,4 +1,4 @@
-import NewsCard from "../common/NewsCard"
+import BlogCard from "../common/BlogCard"
 
 const RelatedNews = ({ relatedNews }) => {
   return (
@@ -11,7 +11,7 @@ const RelatedNews = ({ relatedNews }) => {
             id={news._id}
             className="carousel-item w-full"
           >
-            <NewsCard
+            <BlogCard
               id={news._id}
               title={news.name}
               description={news.body}
