@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import BgText from "../BgText";
 import IntroductoryText from "../../../sections/common/IntroductoryText";
+import Card from "../Card";
 
 const FILTER_OPTIONS = {
 	espesor: ["1.10 mm", "1.15 mm", "1.20 mm", "1.50 mm"],
@@ -180,7 +181,7 @@ const CategoryPage = () => {
 				</div>
 			</div>
 			<div className="flex">
-				<aside className="w-1/4 h-1/2 bg-gray-100 p-4 shadow">
+				<aside className="w-1/4 h-1/2 bg-gray-100 p-4 shadow hidden lg:block">
 					<div className="mb-4 relative">
 						<input
 							type="text"
@@ -209,27 +210,15 @@ const CategoryPage = () => {
 					{renderFilterSection("longitud", "Longitud")}
 					{renderFilterSection("ancho", "Ancho")}
 				</aside>
-				<main className="w-3/4 pl-8">
-					<div className="grid grid-cols-4 gap-2">
+				<main className=" pl-4">
+					<div className="columns-2 gap-1 lg:columns-4 sm:gap-1 justify-center">
 						{filteredProducts.slice(0, visibleProducts).map((product) => (
 							<div
 								key={product.id}
-								className=" p-4 cursor-pointer"
+								className=" p-2 cursor-pointer"
 								onClick={() => handleProductClick(product.id)}
 							>
-								<div
-									className="relative w-[215px] h-[382.01px] p-[10px] pt-0 gap-[7px] rounded-b-[15px] bg-gray-100"
-								>
-									<div className="relative">
-										<img src={product.image} alt={product.name} className="w-[190px] h-[227px]" />
-										<span className="absolute top-2 left-2 bg-gray-200 font-open-sans text-black text-sm px-2 py-1 rounded">
-											{product.discount}
-										</span>
-									</div>
-									<h2 className="text-sm font-bold mt-2">{product.name}</h2>
-									<p className="text-lg text-gray-700 mt-1">{product.price}</p>
-									<p className="text-xs text-gray-500">IVA incluido</p>
-								</div>
+								<Card product={product} />
 							</div>
 						))}
 					</div>

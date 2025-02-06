@@ -32,6 +32,8 @@ const BestOfLaCampana = () => {
             price: `$${product.ProductPrice}`,
             discount: product.discount || "-",
           }))}
+          smCol="2"
+          lgCol="5"
         />
         <div className="text-center mt-8">
           <button className="my-bg-primary text-white font-bold px-6 py-3 rounded-full">

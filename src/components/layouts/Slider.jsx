@@ -89,8 +89,11 @@ const Ofertas = () => {
       </div>
 
       {/* Productos */}
-      <div className="container mx-auto px-4">
-        <CardGrid products={products} />
+      <div className="container mx-auto px-4 hidden lg:block ">
+        <CardGrid products={products} smCol="2" lgCol="5" />
+      </div>
+      <div className="container mx-auto px-4 block lg:hidden">
+        <CardGrid products={products.slice(0,2)} smCol="2" lgCol="5" />
       </div>
 
       {/* Botón */}
