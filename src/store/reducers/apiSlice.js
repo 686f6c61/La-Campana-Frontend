@@ -11,7 +11,7 @@ export const apiSlice = createApi({
       return headers;
     }, 
   retry: (failureCount, error) => {
-    if (failureCount < 3) {
+    if (failureCount < 6) {
       return true;  
     }
     return false;  

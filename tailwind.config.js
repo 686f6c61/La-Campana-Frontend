@@ -49,4 +49,18 @@ export default {
   },
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   plugins: [daisyui],
+  safelist: [
+    "columns-1",
+    "columns-2",
+    "columns-3",
+    "columns-4",
+    "columns-5",
+    "columns-6",
+    "lg:columns-1",
+    "lg:columns-2",
+    "lg:columns-3",
+    "lg:columns-4",
+    "lg:columns-5",
+    "lg:columns-6",
+  ],
 };

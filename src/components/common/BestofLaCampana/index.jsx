@@ -24,17 +24,33 @@ const BestOfLaCampana = () => {
         <h2 className="text-center text-3xl font-bold font-antonio mb-8">
           Lo mejor de la <span className="text-red-600">campana</span>
         </h2>
-        <CardGrid
-          products={data.slice(0, 5).map((product) => ({
-            id: product.TreeCode,
-            image: product.image || "images/notfound.jpg",
-            title: product.ProductDescription,
-            price: `$${product.ProductPrice}`,
-            discount: product.discount || "-",
-          }))}
-          smCol="2"
-          lgCol="5"
-        />
+        <div className="hidden lg:block">
+          <CardGrid
+            products={data.slice(0, 5).map((product) => ({
+              id: product.TreeCode,
+              image: product.image || "images/notfound.jpg",
+              title: product.ProductDescription,
+              price: `$${product.ProductPrice}`,
+              discount: product.discount || "-",
+            }))}
+            smCol="2"
+            lgCol="5"
+          />
+        </div>
+        <div className="lg:hidden">
+          <CardGrid
+            products={data.slice(0, 4).map((product) => ({
+              id: product.TreeCode,
+              image: product.image || "images/notfound.jpg",
+              title: product.ProductDescription,
+              price: `$${product.ProductPrice}`,
+              discount: product.discount || "-",
+            }))}
+            smCol="2"
+            lgCol="5"
+          />
+        </div>
+
         <div className="text-center mt-8">
           <button className="my-bg-primary text-white font-bold px-6 py-3 rounded-full">
             Ver más productos
