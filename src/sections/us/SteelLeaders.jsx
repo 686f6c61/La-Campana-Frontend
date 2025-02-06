@@ -1,5 +1,4 @@
 import React from "react";
-import BgText from "../../components/common/BgText";
 import IntroductoryText from "../../sections/common/IntroductoryText";
 
 const SteelLeaders = () => {
@@ -7,15 +6,15 @@ const SteelLeaders = () => {
     <IntroductoryText
       title={
         <>
-          <div className="md:ml-20 md:pl-20">
-            Líderes en <span className="text-lacampana-red2">acero</span>
-            <p className="md:text-base text-sm text-gray-600 mt-4 md:w-[480px] w-[420px] pl-10 md:pl-0">
+          <div className="md:ml-20 md:pl-60 pt-4">
+            Líderes en <span className="text-lacampana-red2 ">acero</span>
+            <p className="md:text-base text-sm text-gray-600 mt-4 md:w-[480px] w-[380px] pl-0 md:pl-0">
               La Campana Servicios de Acero S.A. contribuye al crecimiento del
               sector metalmecánico y de la construcción en Colombia con el
               suministro de materias primas al brindar productos y servicios que
               aseguren un óptimo control de calidad.
             </p>
-            <p className="md:text-base text-sm text-gray-600 mt-4 md:w-[480px] w-[420px] pl-10 md:pl-0">
+            <p className="md:text-base text-sm text-gray-600 mt-4 md:w-[480px] w-[380px] pl-0 md:pl-0">
               La Campana Servicios de Acero S.A. es líder en el mercado de los
               aceros a nivel local (Bogotá) gracias a su disponibilidad y
               variedad de material, agilidad en sus entregas y experiencia en
@@ -28,11 +27,11 @@ const SteelLeaders = () => {
         </>
       }
       bgTitle="Actualidad en aceros"
-      bgTitleMargin="md:ml-40"
-      bgTitlePadding="md:pl-5"
+      bgTitleMargin="md:ml-80 pt-6"
+      bgTitlePadding="md:pl-10"
     >
-      <div className="relative z-10 flex-1 flex items-center justify-center pt-10 md:pt-20 ">
-        <div className="relative flex items-center justify-center w-[380px] sm:w-[500px] h-[290px] bg-opacity-75 md:mr-40 md:pl-0 pl-10">
+      <div className="relative z-0 flex-1 flex pt-0 md:pt-20">
+        <div className="relative flex items-center justify-center w-[780px] sm:w-[500px] h-[290px] bg-opacity-75 md:mr-40 md:pl-0 pl-0 transform md:-translate-x-60 md:-translate-y-0 -translate-y-20">
           <img
             src="/images/play.png"
             alt="Icono representativo"
@@ -42,7 +41,7 @@ const SteelLeaders = () => {
           <img
             src="/images/video.jpeg"
             alt="Video Representativo"
-            className="rounded-tl-lg w-full h-full object-cover"
+            className="rounded-tl-lg w-full h-full object-cover "
             style={{ opacity: 0.9 }}
           />
         </div>

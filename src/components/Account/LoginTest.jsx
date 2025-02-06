@@ -1,37 +1,32 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useLoginUserMutation } from "../../store/reducers/apiSlice.js"; // Importa tu hook del apiSlide
+import { useLoginUserMutation } from "../../store/reducers/apiSlice.js";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  // Usar la mutación de login
   const [loginUser, { isLoading, error }] = useLoginUserMutation();
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
     try {
-      // Enviar la solicitud de login con los datos del formulario
       const response = await loginUser({ email, password }).unwrap();
 
       console.log("respuesta login: ", response);
 
-      // Guardar el token JWT (opcional)
       localStorage.setItem("token", response.token);
 
-      // Redirigir a la página de cuenta
       navigate("/micuenta");
     } catch (err) {
-      // Manejar errores (mostrar alerta o mensaje de error)
       alert(err?.data?.error || "Correo o contraseña incorrectos");
     }
   };
 
   return (
-    <div className="max-w-md mx-auto mt-12 bg-white p-6 rounded-lg shadow-lg">
+    <div className="max-w-md mx-auto mt-12 bg-lacampana-white p-6 rounded-lg shadow-lg">
       <h2 className="text-2xl font-bold text-lacampana-gray1 mb-6 font-antonio">
         Iniciar Sesión
       </h2>
@@ -41,7 +36,7 @@ const Login = () => {
           placeholder="Correo electrónico"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="w-full border border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-red-500 focus:outline-none"
+          className="p-2 text-lacampana-gray1 pl-4 text-lg md:w-[400px] w-[300px] h-[44px] rounded-tl-full rounded-bl-full rounded-tr-full"
           required
         />
         <input
@@ -49,12 +44,12 @@ const Login = () => {
           placeholder="Contraseña"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="w-full border border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-red-500 focus:outline-none"
+          className="p-2 text-lacampana-gray1 pl-4 text-lg md:w-[400px] w-[300px] h-[44px] rounded-tl-full rounded-bl-full rounded-tr-full"
           required
         />
         <button
           type="submit"
-          className="w-full bg-red-500 text-white py-2 px-4 rounded-md font-semibold hover:bg-red-600"
+          className="bg-lacampana-red2 font-montserrat text-white md:w-[270px] w-[300px] h-[44px] rounded-md rounded-tl-full rounded-bl-full rounded-tr-full text-lg"
           disabled={isLoading}
         >
           {isLoading ? "Cargando..." : "Iniciar Sesión"}

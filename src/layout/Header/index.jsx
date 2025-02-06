@@ -25,7 +25,7 @@ const Header = () => {
             </div>
             <ul className="flex gap-4 items-center">
               <HeaderItem
-                link="/micuenta"
+                link="/login"
                 icon={<HiOutlineUser className="text-white text-2xl" />}
               />
               <HeaderItem

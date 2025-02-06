@@ -24,9 +24,11 @@ const PaymentMethod = () => {
 
   return (
     <div className="max-w-3xl mx-auto p-6 bg-white rounded-lg shadow-md">
-      <h2 className="text-lg font-bold text-gray-800 mb-6">Métodos de pago</h2>
+      <h2 className="text-2xl font-bold text-lacampana-gray1 mb-6 font-antonio text-left">
+        Métodos de pago
+      </h2>
 
-      {/* Tabla de métodos de pago */}
+      {/* Tabla  */}
       <table className="w-[800px] border-collapse ">
         <thead>
           <tr className="bg-lacampana-gray1 text-lacampana-white font-antonio">

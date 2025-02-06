@@ -263,7 +263,7 @@ const Footer = () => {
               <input
                 type="email"
                 placeholder="Correo electrónico"
-                className="p-2 text-lacampana-white pl-4 text-lg md:w-[270px] w-[300px] h-[44px] rounded-tl-full rounded-bl-full rounded-tr-full"
+                className="p-2 text-lacampana-gray1 pl-4 text-lg md:w-[270px] w-[300px] h-[44px] rounded-tl-full rounded-bl-full rounded-tr-full"
               />
               <button className="bg-lacampana-red2 font-montserrat text-white md:w-[270px] w-[300px] h-[44px] rounded-md rounded-tl-full rounded-bl-full rounded-tr-full text-lg">
                 Suscribirme

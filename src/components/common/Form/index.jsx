@@ -25,7 +25,7 @@ const ContactForm = ({ padding = "p-8", margin = "my-4" }) => {
 
   return (
     <div
-      className={`max-w-md mx-auto bg-white rounded-lg shadow-lg ${padding} ${margin}`}
+      className={`md:w-[800px] mx-auto bg-white rounded-lg  drop-shadow-2xl ${padding} ${margin}`}
     >
       <form onSubmit={handleSubmit}>
         <div className="space-y-4">
@@ -35,7 +35,7 @@ const ContactForm = ({ padding = "p-8", margin = "my-4" }) => {
             placeholder="Nombre completo"
             value={formData.nombre}
             onChange={handleChange}
-            className="w-full border border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-red-500 focus:outline-none font-open-sans text-lacampana-gray3"
+            className="w-full border border-lacampana-gray3 rounded-md p-3 focus:ring-2 focus:ring-red-500 focus:outline-none font-open-sans text-lacampana-gray3"
             required
           />
           <input
@@ -44,7 +44,7 @@ const ContactForm = ({ padding = "p-8", margin = "my-4" }) => {
             placeholder="Ciudad"
             value={formData.ciudad}
             onChange={handleChange}
-            className="w-full border border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-red-500 focus:outline-none font-open-sans text-lacampana-gray3"
+            className="w-full border border-lacampana-gray3 rounded-md p-3 focus:ring-2 focus:ring-red-500 focus:outline-none font-open-sans text-lacampana-gray3"
             required
           />
           <input
@@ -53,7 +53,7 @@ const ContactForm = ({ padding = "p-8", margin = "my-4" }) => {
             placeholder="Correo electrónico"
             value={formData.correo}
             onChange={handleChange}
-            className="w-full border border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-red-500 focus:outline-none font-open-sans text-lacampana-gray3"
+            className="w-full border border-lacampana-gray3 rounded-md p-3 focus:ring-2 focus:ring-red-500 focus:outline-none font-open-sans text-lacampana-gray3"
             required
           />
           <input
@@ -62,7 +62,7 @@ const ContactForm = ({ padding = "p-8", margin = "my-4" }) => {
             placeholder="Teléfono de contacto"
             value={formData.telefono}
             onChange={handleChange}
-            className="w-full border border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-red-500 focus:outline-none font-open-sans text-lacampana-gray3"
+            className="w-full border border-lacampana-gray3 rounded-md p-3 focus:ring-2 focus:ring-red-500 focus:outline-none font-open-sans text-lacampana-gray3"
             required
           />
           <textarea
@@ -71,7 +71,7 @@ const ContactForm = ({ padding = "p-8", margin = "my-4" }) => {
             value={formData.mensaje}
             onChange={handleChange}
             rows="4"
-            className="w-full border border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-red-500 focus:outline-none font-open-sans text-lacampana-gray3"
+            className="w-full border border-lacampana-gray3 rounded-md p-3 focus:ring-2 focus:ring-red-500 focus:outline-none font-open-sans text-lacampana-gray3"
             required
           ></textarea>
 
@@ -109,7 +109,7 @@ const ContactForm = ({ padding = "p-8", margin = "my-4" }) => {
 
           <button
             type="submit"
-            className="bg-lacampana-red2 font-montserrat text-white md:w-[270px] w-[300px] h-[44px] rounded-md rounded-tl-full rounded-bl-full rounded-tr-full text-lg"
+            className="bg-lacampana-red2 md:-translate-x-16 font-montserrat text-white md:w-[270px] w-[300px] h-[44px] rounded-md rounded-tl-full rounded-bl-full rounded-tr-full text-lg"
           >
             Enviar
           </button>

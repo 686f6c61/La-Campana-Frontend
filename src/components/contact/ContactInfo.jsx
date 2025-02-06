@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import Form from "../common/Form";
 import Map from "../common/Map";
-import CircularImageEffect from "../common/CircularImgEffect/CircularImgEffect";
 import Carousel from "../common/Carousel";
 import IntroductoryText from "../../sections/common/IntroductoryText";
 import Social from "../common/Social";
-import MultiSelect from "../common/Multiselect";
+
 import CustomSection from "../common/CustomSection";
 
 const sucursalesData = [
@@ -54,7 +53,7 @@ const ContactInfo = () => {
   ];
 
   return (
-    <div className="font-sans">
+    <div className="font-sans md:ml-60">
       <IntroductoryText
         title={
           <>
@@ -69,15 +68,17 @@ const ContactInfo = () => {
               question="¿Cómo podemos ayudarte?"
               phone="PBX: (601) 123.45.67"
               description=""
-              questionColor="text-lacampana-red2 font-bold font-antonio"
+              questionColor="text-lacampana-red2 font-bold font-antonio md:text-left text-center"
+              phoneColor="md:text-left text-center"
+              iconsPadding="md:pl-0 pl-20"
               iconColors={{
-                youtube: "text-lacampana-red1",
-                instagram: "text-lacampana-red1",
-                tiktok: "text-lacampana-red1",
-                facebook: "text-lacampana-red1",
-                twitter: "text-lacampana-red1",
-                linkedin: "text-lacampana-red1",
-                phone: "text-lacampana-red1",
+                youtube: "text-lacampana-red2",
+                instagram: "text-lacampana-red2",
+                tiktok: "text-lacampana-red2",
+                facebook: "text-lacampana-red2",
+                twitter: "text-lacampana-red2",
+                linkedin: "text-lacampana-red2",
+                phone: "text-lacampana-red2",
               }}
             />
           </>
@@ -85,26 +86,29 @@ const ContactInfo = () => {
         bgTitle="Hablemos"
         description=""
         justify="start"
-        bgTitleMargin="md:ml-40 md:mt-10"
-        titleMargin="md:ml-40"
+        bgTitleMargin="md:ml-40 md:pl-6 md:mt-10"
+        titleMargin="md:ml-40 md:mt-0"
       >
-        <Form padding="p-12" margin="md:mr-40" />
+        <Form
+          padding="p-12 transform md:-translate-x-40 md:-translate-y-20"
+          margin="md:mr-40"
+        />
       </IntroductoryText>
 
-      <div className="relative w-full max-w-7xl mx-auto my-10">
+      <div className="relative max-w-full md:max-w-[1400px]  my-10 transform md:-translate-x-80">
         {/* Imagen de fondo semicircular */}
         <div
-          className="absolute inset-0 left-0 w-3/4 h-full bg-lacampana-red1 rounded-tr-full rounded-br-full  mix-blend-multiply hidden md:block"
+          className="absolute inset-0 left-0 md:w-full md:h-full h-[400px] bg-lacampana-red1 rounded-tr-full rounded-br-full mix-blend-multiply"
           style={{
-            backgroundImage: "url('/images/categories/laminasRed.jpg')",
+            backgroundImage: "url('/images/categories/laminasBg.jpg')",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
         ></div>
 
-        <div className="relative flex flex-col md:flex-row items-center md:items-start space-y-8  px-8">
+        <div className="relative flex flex-col md:flex-row items-center space-y-8 px-4 md:px-8">
           {/* Sección izquierda */}
-          <div className="md:w-2/3 w-full z-10">
+          <div className="md:w-2/3 w-full z-10 pt-10 md:pt-20 ml-0 md:ml-40">
             <CustomSection
               highlight="Presencia nacional"
               padding="p-6"
@@ -120,7 +124,7 @@ const ContactInfo = () => {
               </p>
 
               {/* Selección de sucursal */}
-              <div className="flex flex-wrap gap-x-2 md:gap-x-3 pt-4">
+              <div className="flex flex-wrap gap-x-2 md:gap-x-3 gap-x-5 md:gap-y-0 gap-y-2 pt-4">
                 {["Bogotá", "Soacha", "Villavicencio", "Mosquera", "Neiva"].map(
                   (city) => (
                     <div
@@ -164,13 +168,24 @@ const ContactInfo = () => {
               {/* Carrusel de sucursales */}
               <div className="mt-8">
                 <Carousel sucursalData={sucursalesData} />
+                <div className="flex justify-center mt-4 space-x-2">
+                  <span className="w-3 h-3 md:bg-lacampana-white bg-lacampana-red1 rounded-full"></span>
+                  <span className="w-4 h-4 bg-lacampana-gray1 rounded-full transform -translate-y-0.5"></span>
+                  <span className="w-3 h-3 md:bg-lacampana-white bg-lacampana-red1  rounded-full"></span>
+                </div>
               </div>
             </CustomSection>
           </div>
 
           {/* Sección derecha - Mapa */}
-          <div className="md:w-full w-full md:translate-x-12 md:-translate-y-12 z-10">
-            <Map />
+          <div className="md:w-1/2 w-full  md:pl-80">
+            <div className="md:w-[500px] w-full p-4">
+              <img
+                src="/images/Map.png"
+                alt="Mapa de Colombia"
+                className="w-full object-cover rounded-lg"
+              />
+            </div>
           </div>
         </div>
       </div>
