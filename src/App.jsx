@@ -8,7 +8,7 @@ import ProductDetailPage from "../src/components/common/ProductDetailPage";
 import Topbar from "./layout/Topbar";
 import Header from "./layout/Header";
 import Navbar from "./layout/Navbar";
-import Footer from "./components/layouts/Footer";
+// import Footer from "./components/layouts/Footer";
 import "overlayscrollbars/overlayscrollbars.css";
 import Blog from "./pages/Blog";
 import DocumentsItem from "./components/docs/DocumentsItem";
@@ -20,6 +20,7 @@ import Contact from "./pages/Contact";
 import MyAccount from "./pages/MyAccount";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Footer from "./layout/Footer";
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="*" element={<h1>404 Not Found</h1>} />
       </Routes>
+      {/* <Footer /> */}
       <Footer />
     </BrowserRouter>
   );
