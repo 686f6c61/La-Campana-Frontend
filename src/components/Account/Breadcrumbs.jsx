@@ -17,7 +17,9 @@ const Breadcrumbs = () => {
           </Link>
           <span className="mx-1">/</span>
         </li>
-        <li className="text-gray-900 font-medium">Mi cuenta</li>
+        <li to="/micuenta" className="text-gray-900 font-medium">
+          Mi cuenta
+        </li>
       </ul>
     </nav>
   );

@@ -34,14 +34,14 @@ const Sidebar = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem("token"); // Elimina el token
-    navigate("/"); // Redirige a la página de inicio
+    localStorage.removeItem("token");
+    navigate("/");
   };
 
   const renderContent = () => {
     switch (activeComponent) {
       case "dashboard":
-        return <DashboardPanel />;
+        return <DashboardPanel activeComponent={activeComponent} />;
       case "pedidos":
         return <Orders />;
       case "direcciones":
@@ -53,14 +53,14 @@ const Sidebar = () => {
       case "deseos":
         return <WishList />;
       default:
-        return <DashboardPanel />;
+        return <DashboardPanel activeComponent={activeComponent} />;
     }
   };
 
   return (
     <div className="flex h-full">
       {/* Sidebar */}
-      <aside className="bg-lacampana-white p-4 rounded-lg min-w-[250px] max-w-[300px] shadow-md">
+      <aside className="bg-lacampana-white p-4 rounded-lg min-w-[250px] max-w-[300px] shadow-md h-[420px] overflow-y-auto">
         <ul className="font-antonio text-xl">
           <SidebarItem
             text="Tablero"

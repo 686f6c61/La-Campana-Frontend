@@ -30,7 +30,7 @@ const Register = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-12 bg-lacampana-white p-6 rounded-lg shadow-lg">
+    <div className="max-w-md mx-auto mt-12 bg-lacampana-white p-6 rounded-lg shadow-lg mb-20">
       <h2 className="text-2xl font-bold text-lacampana-gray1 mb-6 font-antonio">
         Registro
       </h2>

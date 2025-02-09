@@ -1,9 +1,8 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
+import Carousel from "../../components/common/Carousel";
 
 const PrecenseNation = () => {
-  const [carouselIndex, setCarouselIndex] = useState(0);
   const [selectedCity, setSelectedCity] = useState("Bogotá");
-  const carouselRef = useRef(null);
 
   const sucursales = [
     {
@@ -42,16 +41,6 @@ const PrecenseNation = () => {
     setSelectedCity(city);
   };
 
-  useEffect(() => {
-    if (carouselRef.current) {
-      const cardWidth = carouselRef.current.children[0].offsetWidth;
-      carouselRef.current.scrollTo({
-        left: carouselIndex * cardWidth,
-        behavior: "smooth",
-      });
-    }
-  }, [carouselIndex]);
-
   return (
     <div className="flex flex-col lg:flex-row lg:items-start md:ml-80 lg:justify-between space-y-8 lg:space-y-0">
       {/* Left Section */}
@@ -65,7 +54,8 @@ const PrecenseNation = () => {
           fames turpis sociis viverra.
         </p>
 
-        <div className="flex flex-wrap gap-x-2 md:gap-x-3 pt-4 ">
+        {/* Radio buttons de ciudades */}
+        <div className="flex flex-wrap gap-x-2 md:gap-x-3 pt-4">
           {["Bogotá", "Soacha", "Villavicencio", "Mosquera", "Neiva"].map(
             (city) => (
               <div
@@ -100,7 +90,9 @@ const PrecenseNation = () => {
                 <label
                   htmlFor={`${city.toLowerCase()}-radio`}
                   className="ms-0 text-xs md:text-sm font-medium md:pl-1"
-                  style={{ color: selectedCity === city ? "red" : "#d1d3d1" }}
+                  style={{
+                    color: selectedCity === city ? "red" : "#d1d3d1",
+                  }}
                 >
                   {city}
                 </label>
@@ -109,79 +101,21 @@ const PrecenseNation = () => {
           )}
         </div>
 
-        {/* Carrusel */}
-        <div className="relative mt-8">
-          {/* Para pantallas grandes */}
-          <div className="hidden lg:flex space-x-4">
-            {sucursales.slice(0, 3).map((sucursal, index) => (
-              <div
-                key={index}
-                className="w-1/3 bg-gray-200 rounded-lg shadow-lg p-4"
-              >
-                <img
-                  src={sucursal.imagen}
-                  alt={sucursal.nombre}
-                  className="w-full h-40 object-cover rounded-t-lg"
-                />
-                <h3 className="text-lg font-bold text-red-500 mt-2">
-                  {sucursal.nombre}
-                </h3>
-                <p className="text-gray-700">PBX: {sucursal.telefono}</p>
-                <p className="text-gray-700">{sucursal.direccion}</p>
-              </div>
-            ))}
-          </div>
+        {/* Carrusel unificado (pantallas grandes y pequeñas) */}
+        <div className="mt-8">
+          <Carousel sucursalData={sucursales} />
 
-          {/* Indicadores de posición */}
-          <div className="hidden lg:flex justify-center mt-4 space-x-2">
+          {/* Indicadores (ejemplo con 3 puntitos) */}
+          <div className="flex justify-center mt-4 space-x-2 md:-translate-x-40">
             <span className="w-3 h-3 bg-gray-600 rounded-full mt-0.5"></span>
-            <span className="w-4 h-4 bg-lacampana-red1 rounded-full "></span>
+            <span className="w-4 h-4 bg-lacampana-red1 rounded-full"></span>
             <span className="w-3 h-3 bg-gray-600 rounded-full mt-0.5"></span>
-          </div>
-
-          {/* Para pantallas pequeñas */}
-          <div className="lg:hidden">
-            <div
-              ref={carouselRef}
-              className="flex space-x-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide"
-              style={{
-                scrollBehavior: "smooth",
-                WebkitOverflowScrolling: "touch",
-                scrollbarWidth: "none",
-                msOverflowStyle: "none",
-              }}
-            >
-              {sucursales.map((sucursal, index) => (
-                <div
-                  key={index}
-                  className="flex-none w-40 snap-center bg-gray-200 rounded-lg shadow-lg p-4"
-                >
-                  <img
-                    src={sucursal.imagen}
-                    alt={sucursal.nombre}
-                    className="w-full h-20 object-cover rounded-t-lg"
-                  />
-                  <h3 className="text-lg font-bold text-red-500 mt-2">
-                    {sucursal.nombre}
-                  </h3>
-                  <p className="text-gray-700">PBX: {sucursal.telefono}</p>
-                  <p className="text-gray-700">{sucursal.direccion}</p>
-                </div>
-              ))}
-            </div>
-
-            {/* puntitos*/}
-            <div className="flex justify-center mt-4 space-x-2">
-              <span className="w-3 h-3 bg-gray-600 rounded-full mt-0.5"></span>
-              <span className="w-4 h-4 bg-red-500 rounded-full"></span>
-              <span className="w-3 h-3 bg-gray-600 rounded-full "></span>
-            </div>
           </div>
         </div>
       </div>
 
       {/* Right Section - Mapa */}
-      <div className="lg:w-1/3 p-8">
+      <div className="lg:w-1/3 p-8 md:-translate-x-60">
         <img
           src="/images/Map.png"
           alt="Mapa de Colombia"
