@@ -18,6 +18,19 @@ const items = [
 const DashboardPanel = () => {
   const [activeComponent, setActiveComponent] = useState("");
 
+  const handleItemClick = (id) => {
+    if (id === "cerrar") {
+      localStorage.removeItem("token");
+
+      alert("Sesión cerrada exitosamente.");
+
+      window.location.href = "http://localhost:5173/";
+      return;
+    }
+
+    setActiveComponent(id);
+  };
+
   const renderComponent = () => {
     switch (activeComponent) {
       case "pedidos":
@@ -61,7 +74,7 @@ const DashboardPanel = () => {
             .
           </p>
 
-          <DashboardItems items={items} onItemClick={setActiveComponent} />
+          <DashboardItems items={items} onItemClick={handleItemClick} />
         </>
       )}
 

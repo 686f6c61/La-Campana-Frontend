@@ -7,17 +7,6 @@ export const apiSlice = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: API_URL,
   }),
-    prepareHeaders: (headers) => {
-      return headers;
-    }, 
-  retry: (failureCount, error) => {
-    if (failureCount < 6) {
-      return true;  
-    }
-    return false;  
-  },
-  refetchOnMountOrArgChange: false,
-  keepUnusedDataFor: 600,
   endpoints: (builder) => ({
     getBlogs: builder.query({
       query: () => "blog",
@@ -70,5 +59,5 @@ export const {
   useGetProductCommentsQuery,
   useAddProductCommentMutation,
   useLoginUserMutation,
-  useRegisterUserMutation, // Exporta el hook correctamente
+  useRegisterUserMutation,
 } = apiSlice;

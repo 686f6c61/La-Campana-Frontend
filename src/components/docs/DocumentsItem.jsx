@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import BgText from "../common/BgText";
 import SearchBar from "../common/SearchBar.jsx";
 import MultiSelect from "../common/Multiselect";
 import additionalDocuments from "../../../src/data/documentsData.jsx";

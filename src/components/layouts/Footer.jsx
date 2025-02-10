@@ -242,7 +242,9 @@ const Footer = () => {
                 isLegalOpen ? "block" : "hidden"
               } sm:block text-left`}
             >
-              <p className="text-left pb-4 pl-2">Términos y condiciones</p>
+              <p className="text-left pb-4 pl-2">
+                <Link to="/terminos">Términos y condiciones</Link>
+              </p>
               <p className="text-left pb-4 pl-2">Métodos de pago</p>
               <p className="text-left pb-4 pl-2">Devolución de producto</p>
               <p className="text-left pb-4 pl-2">Envío</p>

@@ -1,13 +1,7 @@
-import React, { useState } from "react";
-import DashboardPanel from "./DashboardPanel";
-import Orders from "./Orders";
-import Addresses from "./Addresses";
-import PaymentMethod from "./PaymentMethod";
-import AccountDetails from "./AccountDetails";
-import WishList from "./WishList";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const SidebarItem = ({ text, isActive, onClick }) => {
+const SidebarItem = ({ text, route, isActive, onClick }) => {
   return (
     <li
       className={`border-b border-gray-300 ${
@@ -30,82 +24,42 @@ const SidebarItem = ({ text, isActive, onClick }) => {
 };
 
 const Sidebar = () => {
-  const [activeComponent, setActiveComponent] = useState("dashboard");
   const navigate = useNavigate();
-
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    navigate("/");
-  };
-
-  const renderContent = () => {
-    switch (activeComponent) {
-      case "dashboard":
-        return <DashboardPanel activeComponent={activeComponent} />;
-      case "pedidos":
-        return <Orders />;
-      case "direcciones":
-        return <Addresses />;
-      case "metodos":
-        return <PaymentMethod />;
-      case "detalles":
-        return <AccountDetails />;
-      case "deseos":
-        return <WishList />;
-      default:
-        return <DashboardPanel activeComponent={activeComponent} />;
-    }
-  };
+  const routes = [
+    { text: "Tablero", route: "/micuenta" },
+    { text: "Pedidos", route: "/micuenta/pedidos" },
+    { text: "Direcciones", route: "/micuenta/direcciones" },
+    { text: "Métodos de pago", route: "/micuenta/metodos" },
+    { text: "Detalles de la cuenta", route: "/micuenta/detalles" },
+    { text: "Lista de deseos", route: "/micuenta/deseos" },
+  ];
 
   return (
-    <div className="flex h-full">
-      {/* Sidebar */}
-      <aside className="bg-lacampana-white p-4 rounded-lg min-w-[250px] max-w-[300px] shadow-md h-[420px] overflow-y-auto">
-        <ul className="font-antonio text-xl">
+    <aside className="bg-lacampana-white p-4 rounded-lg shadow-md mt-60">
+      <ul className="font-antonio text-xl">
+        {routes.map((item) => (
           <SidebarItem
-            text="Tablero"
-            isActive={activeComponent === "dashboard"}
-            onClick={() => setActiveComponent("dashboard")}
+            key={item.route}
+            text={item.text}
+            route={item.route}
+            isActive={window.location.pathname === item.route}
+            onClick={() => navigate(item.route)}
           />
-          <SidebarItem
-            text="Pedidos"
-            isActive={activeComponent === "pedidos"}
-            onClick={() => setActiveComponent("pedidos")}
-          />
-          <SidebarItem
-            text="Direcciones"
-            isActive={activeComponent === "direcciones"}
-            onClick={() => setActiveComponent("direcciones")}
-          />
-          <SidebarItem
-            text="Métodos de pago"
-            isActive={activeComponent === "metodos"}
-            onClick={() => setActiveComponent("metodos")}
-          />
-          <SidebarItem
-            text="Detalles de la cuenta"
-            isActive={activeComponent === "detalles"}
-            onClick={() => setActiveComponent("detalles")}
-          />
-          <SidebarItem
-            text="Lista de deseos"
-            isActive={activeComponent === "deseos"}
-            onClick={() => setActiveComponent("deseos")}
-          />
-          <li className="border-b border-gray-300">
-            <button
-              onClick={handleLogout}
-              className="block w-full text-left py-3 px-4 text-lacampana-gray1 hover:text-lacampana-red1 transition"
-            >
-              Cerrar sesión
-            </button>
-          </li>
-        </ul>
-      </aside>
-
-      {/* Contenido principal */}
-      <div className="flex-grow p-8">{renderContent()}</div>
-    </div>
+        ))}
+        <li className="border-b border-gray-300">
+          <button
+            onClick={() => {
+              localStorage.removeItem("token");
+              alert("Sesión cerrada exitosamente.");
+              navigate("/");
+            }}
+            className="block w-full text-left py-3 px-4 text-lacampana-gray1 hover:text-lacampana-red1 transition"
+          >
+            Cerrar sesión
+          </button>
+        </li>
+      </ul>
+    </aside>
   );
 };
 

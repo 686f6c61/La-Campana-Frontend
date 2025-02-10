@@ -22,6 +22,17 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Footer from "./layout/Footer";
 import BottomBar from "./layout/BottomBar";
+import Terms from "./pages/LegalTerms";
+import PaymentMethods from "./pages/LegalMethods";
+import Return from "./pages/LegalReturn";
+import Shipping from "./pages/LegalShipping";
+import Politics from "./pages/LegalPolitics";
+import Orders from "./components/Account/Orders";
+import DashboardPanel from "./components/Account/DashboardPanel";
+import Addresses from "./components/Account/Addresses";
+import PaymentMethod from "./components/Account/PaymentMethod";
+import AccountDetails from "./components/Account/AccountDetails";
+import WishList from "./components/Account/WishList";
 
 function App() {
   return (
@@ -41,11 +52,24 @@ function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:blogId" element={<BlogDetails />} />
         <Route path="/servicios" element={<Services />} />
-        <Route path="/micuenta" element={<MyAccount />} />
+        <Route path="/micuenta" element={<MyAccount />}>
+          <Route index element={<DashboardPanel />} />
+          <Route path="pedidos" element={<Orders />} />
+          <Route path="direcciones" element={<Addresses />} />
+          <Route path="metodos" element={<PaymentMethod />} />
+          <Route path="detalles" element={<AccountDetails />} />
+          <Route path="deseos" element={<WishList />} />
+        </Route>
+
         <Route path="/servicios/:serviceId" element={<ServiceDetails />} />
         <Route path="/carrito" element={<Cart />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/terminos" element={<Terms />} />
+        <Route path="/metodosdepago" element={<PaymentMethods />} />
+        <Route path="/devolucion" element={<Return />} />
+        <Route path="/envio" element={<Shipping />} />
+        <Route path="/politicadeprivacidad" element={<Politics />} />
         <Route path="*" element={<h1>404 Not Found</h1>} />
       </Routes>
       {/* <Footer /> */}

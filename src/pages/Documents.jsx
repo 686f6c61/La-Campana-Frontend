@@ -1,5 +1,5 @@
 import React from "react";
-import DocumentsItem from "../docs/DocumentsItem";
+import DocumentsItem from "../components/docs/DocumentsItem";
 
 const Documents = () => {
   return (

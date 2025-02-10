@@ -2,11 +2,18 @@ import React from "react";
 import Sidebar from "../components/Account/Sidebar.jsx";
 import IntroductoryText from "../sections/common/IntroductoryText.jsx";
 import Breadcrumbs from "../components/Account/Breadcrumbs.jsx";
+import { Outlet } from "react-router-dom";
 
 const MyAccount = () => {
   return (
-    <div className="font-sans">
-      <div className="text-center my-6">
+    <div className="font-sans flex">
+      {/* Sidebar */}
+      <div className="w-1/4 p-4">
+        <Sidebar />
+      </div>
+
+      {/* Contenido principal */}
+      <div className="flex-grow p-8">
         <IntroductoryText
           title={
             <>
@@ -17,11 +24,8 @@ const MyAccount = () => {
           justify="center"
           description=""
         />
-      </div>
-
-      <div className="md:ml-80 w-1/2 flex flex-col gap-4">
         <Breadcrumbs />
-        <Sidebar />
+        <Outlet />
       </div>
     </div>
   );

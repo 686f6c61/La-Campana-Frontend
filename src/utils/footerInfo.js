@@ -64,27 +64,27 @@ const footerInfo = {
         {
           id: 1,
           title: "Términos y condiciones",
-          link: "",
+          link: "/terminos",
         },
         {
           id: 2,
           title: "Métodos de pago",
-          link: "",
+          link: "/metodosdepago",
         },
         {
           id: 3,
           title: "Devolución de producto",
-          link: "",
+          link: "/devolucion",
         },
         {
           id: 4,
           title: "Envío",
-          link: "",
+          link: "/envio",
         },
         {
           id: 5,
           title: "Política de privacidad",
-          link: "",
+          link: "/politicadeprivacidad",
         },
       ],
     },
@@ -126,9 +126,7 @@ const footerInfo = {
       link: "https://www.linkedin.com/company/la-campana-servicios-de-acero-s-a-/?originalSubdomain=co",
       icon: "/svg/socialMedia/linkedin.svg",
     },
-  ]
-}
+  ],
+};
 
-
-
-export default footerInfo
+export default footerInfo;

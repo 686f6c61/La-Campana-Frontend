@@ -2,7 +2,7 @@ import React from "react";
 
 const DashboardItems = ({ items, onItemClick }) => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-60 gap-y-8">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-5 gap-y-8">
       {items.map((item) => (
         <div
           key={item.id}

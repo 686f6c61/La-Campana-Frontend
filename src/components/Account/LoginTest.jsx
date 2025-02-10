@@ -19,6 +19,10 @@ const Login = () => {
 
       localStorage.setItem("token", response.token);
 
+      // Mostrar pop-up de confirmación
+      alert("Inicio de sesión exitoso. Serás redirigido a tu cuenta.");
+
+      // Redirigir a la página de cuenta
       navigate("/micuenta");
     } catch (err) {
       alert(err?.data?.error || "Correo o contraseña incorrectos");
