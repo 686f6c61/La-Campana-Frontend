@@ -2,7 +2,6 @@ import Slider from "../components/layouts/Slider";
 import Trust from "../sections/Home/Trust";
 import BestofLaCampana from "../components/common/BestofLaCampana";
 import Categories from "../sections/Home/Categories";
-import FloatingDrawer from "../components/common/FloatingDrawer/FloatingDrawer";
 import Advisor from "../sections/Home/Advisor";
 import Blog from "../sections/Home/Blog";
 import Banner from "../sections/Home/Banner";
@@ -17,7 +16,6 @@ const Home = () => {
       <BestofLaCampana />
       <Categories />
       <Blog />
-      <FloatingDrawer />
       <Advisor />
     </>
   );

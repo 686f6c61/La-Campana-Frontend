@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { addItem, updateItem } from "../../../features/cart/cartSlice";
 import products from "../../../utils/products";
 import relatedProducts from "../../../utils/relatedProducts";
-import FloatingDrawer from "../FloatingDrawer/FloatingDrawer";
 
 const ProductGallery = ({ image }) => (
 	<div className="flex flex-col lg:flex-row-reverse gap-4">
@@ -153,7 +152,6 @@ const ProductDetailPage = () => {
 			<div className="mt-16">
 				<Comments />
 			</div>
-			<FloatingDrawer />
 		</div>
 	);
 };

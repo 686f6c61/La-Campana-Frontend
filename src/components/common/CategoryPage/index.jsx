@@ -3,7 +3,6 @@ import { useParams, useNavigate } from "react-router-dom";
 import FilterSearchBar from "../FilterSearchBar";
 import IntroductoryText from "../../../sections/common/IntroductoryText";
 import Card from "../Card";
-import FloatingDrawer from "../FloatingDrawer/FloatingDrawer";
 
 
 const BreadCrumbs = () => {
@@ -267,7 +266,6 @@ useEffect(() => {
 					}
 				</main>
 			</div>
-			<FloatingDrawer />
 		</div>
 	);
 };
