@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import CardGrid from "../CardGrid";
 import Comments from "../Comments";
@@ -7,6 +7,84 @@ import { useDispatch, useSelector } from "react-redux";
 import { addItem, updateItem } from "../../../features/cart/cartSlice";
 import products from "../../../utils/products";
 import relatedProducts from "../../../utils/relatedProducts";
+import FloatingDrawer from "../FloatingDrawer/FloatingDrawer";
+
+const ProductGallery = ({ image }) => (
+	<div className="flex flex-col lg:flex-row-reverse gap-4">
+		<div className="flex-1">
+			<img src={image} alt="Producto" className="w-full h-auto object-contain border rounded-lg" />
+		</div>
+		<div className="grid grid-cols-3 lg:flex lg:flex-col gap-2 mt-4 lg:mt-0 lg:mr-4">
+			{[...Array(3)].map((_, index) => (
+				<img key={index} src={image} alt={`Vista ${index + 1}`} className="h-20 w-full lg:h-32 lg:w-24 object-cover border rounded-lg cursor-pointer" />
+			))}
+		</div>
+	</div>
+);
+
+const ButtonTechnicalInformation = ({ }) => (
+	<button className="bg-lacampana-gray1 font-montserrat text-white w-[300px] md:w-[270px] h-[44px] rounded-md rounded-tl-full rounded-bl-full rounded-tr-full text-md">
+		Ficha Técnica
+	</button>
+);
+
+const ProductGalleyAndTechnicalInformation = ({ image, isMobile }) => (
+	<div className="w-full lg:w-2/5">
+		<ProductGallery image={image} />
+		<div className="mt-4 flex justify-center lg:justify-start">
+			{!isMobile && <ButtonTechnicalInformation />}
+		</div>
+	</div>
+);
+
+
+const ProductOptions = ({ options }) => (
+	<div className="flex flex-wrap gap-6 mt-8">
+		{["paquete", "longitud", "ancho"].map((prop, index) => (
+			<div key={index} className="flex-1 min-w-[120px]">
+				<label className="block font-bold font-open-sans mb-2 capitalize">{prop}</label>
+				<select className="border w-full bg-gray-100 font-open-sans text-gray-500 p-2 rounded">
+					{options[prop].map((option, i) => (
+						<option key={i}>{option}</option>
+					))}
+				</select>
+			</div>
+		))}
+	</div>
+);
+
+const ProductColors = ({ options }) => (
+	<div className="flex flex-wrap gap-6 mt-8">
+		{["colorExterno", "colorInterno"].map((colorType, index) => (
+			<div key={index}>
+				<label className="block font-bold font-open-sans mb-2 capitalize">{colorType.replace("color", "Color ")}</label>
+				<div className="flex gap-2">
+					{options[colorType].map((color, i) => (
+						<div key={i} className="w-8 h-8 rounded-full cursor-pointer border" style={{ backgroundColor: color }}></div>
+					))}
+				</div>
+			</div>
+		))}
+	</div>
+);
+
+const QuantitySelector = () => (
+	<div className="flex items-center gap-2">
+		<button className="bg-gray-200 w-8 h-8 rounded-full flex items-center justify-center font-bold text-gray-700">-</button>
+		<input type="number" min="1" defaultValue="1" className="w-12 text-center border border-gray-300 rounded-md" />
+		<button className="bg-gray-200 w-8 h-8 rounded-full flex items-center justify-center font-bold text-gray-700">+</button>
+	</div>
+);
+
+const ActionButtons = ({ addToCart, productPrice }) => (
+	<div className="mt-8 flex lg:flex-row items-center lg:items-start gap-6">
+		<span className="text-lg font-bold text-black">${productPrice}</span>
+		<QuantitySelector />
+		<button onClick={addToCart} className="bg-lacampana-red2 font-montserrat text-white w-[300px] md:w-[270px] h-[44px] rounded-md rounded-tl-full rounded-bl-full rounded-tr-full text-md">
+			Añadir al carrito
+		</button>
+	</div>
+);
 
 const ProductDetailPage = () => {
 	const { productId } = useParams();
@@ -28,100 +106,35 @@ const ProductDetailPage = () => {
 			dispatch(addItem(product));
 		}
 	};
+	const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+	useEffect(() => {
+		const handleResize = () => {
+			setIsMobile(window.innerWidth < 768);
+		};
+
+		window.addEventListener("resize", handleResize);
+		return () => window.removeEventListener("resize", handleResize);
+	}, []);
+
 
 	return (
 		<div className="max-w-7xl mx-auto p-4 md:p-8">
 			<div className="flex flex-col lg:flex-row gap-8">
-				<div className="w-full lg:w-2/5">
-					<div className="flex flex-col lg:flex-row-reverse gap-4">
-						<div className="flex-1">
-							<img
-								src={product.image}
-								alt={product.name}
-								className="w-full h-auto object-contain border rounded-lg"
-							/>
-						</div>
-				
-						<div className="grid grid-cols-3 lg:flex lg:flex-col gap-2 mt-4 lg:mt-0 lg:mr-4">
-							{[...Array(3)].map((_, index) => (
-								<img
-									key={index}
-									src={product.image}
-									alt={`Vista ${index + 1}`}
-									className="h-20 w-full lg:h-32 lg:w-24 object-cover border rounded-lg cursor-pointer"
-								/>
-							))}
-						</div>
-					</div>
-					<div className="mt-4 flex justify-center lg:justify-start">
-						<button className="bg-lacampana-gray1 font-montserrat text-white w-[300px] md:w-[270px] h-[44px] rounded-md rounded-tl-full rounded-bl-full rounded-tr-full text-md">
-							Ficha Técnica
-						</button>
-					</div>
-				</div>
-
-	
+				<ProductGalleyAndTechnicalInformation image={product.image} isMobile={isMobile} />
 				<div className="w-full lg:w-3/5">
 					<h1 className="text-3xl font-antonio">{product.name}</h1>
 					<p className="text-gray-600 mt-4 font-opensans">{product.description}</p>
-
-					<div className="flex flex-wrap gap-6 mt-8">
-						{["paquete", "longitud", "ancho"].map((prop, index) => (
-							<div key={index} className="flex-1 min-w-[120px]">
-								<label className="block font-bold font-open-sans mb-2 capitalize">
-									{prop}
-								</label>
-								<select className="border w-full bg-gray-100 font-open-sans text-gray-500 p-2 rounded">
-									{product.options[prop].map((option, i) => (
-										<option key={i}>{option}</option>
-									))}
-								</select>
-							</div>
-						))}
-					</div>
-
-					<div className="flex flex-wrap gap-6 mt-8">
-						{["colorExterno", "colorInterno"].map((colorType, index) => (
-							<div key={index}>
-								<label className="block font-bold font-open-sans mb-2 capitalize">
-									{colorType.replace("color", "Color ")}
-								</label>
-								<div className="flex gap-2">
-									{product.options[colorType].map((color, i) => (
-										<div
-											key={i}
-											className="w-8 h-8 rounded-full cursor-pointer border"
-											style={{ backgroundColor: color }}
-										></div>
-									))}
-								</div>
-							</div>
-						))}
-					</div>
-
-					<div className="mt-8 flex flex-col invisible lg:visible lg:flex-row items-center lg:items-start gap-6">
-						<span className="text-lg font-bold text-black">${product.price}</span>
-						<div className="flex items-center gap-2">
-							<button className="bg-gray-200 w-8 h-8 rounded-full flex items-center justify-center font-bold text-gray-700">
-								-
-							</button>
-							<input
-								type="number"
-								min="1"
-								defaultValue="1"
-								className="w-12 text-center border border-gray-300 rounded-md"
-							/>
-							<button className="bg-gray-200 w-8 h-8 rounded-full flex items-center justify-center font-bold text-gray-700">
-								+
-							</button>
+					{isMobile && <ActionButtons addToCart={addToCart} productPrice={product.price} />}
+					<ProductOptions options={product.options} />
+					<ProductColors options={product.options} />
+					{isMobile &&
+						<div className="mt-12">
+							<ButtonTechnicalInformation />
 						</div>
-						<button
-							onClick={addToCart}
-							className="bg-lacampana-red2 font-montserrat text-white w-[300px] md:w-[270px] h-[44px] rounded-md rounded-tl-full rounded-bl-full rounded-tr-full text-md"
-						>
-							Añadir al carrito
-						</button>
-					</div>
+
+					}
+					{!isMobile && <ActionButtons addToCart={addToCart} productPrice={product.price} />}
 				</div>
 			</div>
 
@@ -140,6 +153,7 @@ const ProductDetailPage = () => {
 			<div className="mt-16">
 				<Comments />
 			</div>
+			<FloatingDrawer />
 		</div>
 	);
 };

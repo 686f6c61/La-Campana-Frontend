@@ -4,7 +4,7 @@ import { useGetProductCommentsQuery, useAddProductCommentMutation } from '../../
 
 export default function Comments() {
   const { data: comments = [], error, isLoading, refetch } = useGetProductCommentsQuery();
-  const [addProductComment] = useAddProductCommentMutation(); // Hook para enviar un comentario
+  const [addProductComment] = useAddProductCommentMutation();
   const [newComment, setNewComment] = useState({
     comment: '',
     name: '',
@@ -15,21 +15,19 @@ export default function Comments() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (newComment.comment && newComment.name && newComment.rating) {
       const newCommentObj = {
-        productId: "CAA0.28US10703000R5017", //replace for the product id
+        productId: "CAA0.28US10703000R5017",
         name: newComment.name,
-        date: new Date().toISOString(), // Fecha en formato ISO
+        date: new Date().toISOString(),
         comment: newComment.comment,
         rating: newComment.rating,
-        email: newComment.email, 
+        email: newComment.email,
       };
-
       try {
-        await addProductComment(newCommentObj).unwrap(); 
-        refetch(); 
-        setNewComment({ comment: '', name: '', email: '', rating: 0 }); 
+        await addProductComment(newCommentObj).unwrap();
+        refetch();
+        setNewComment({ comment: '', name: '', email: '', rating: 0 });
       } catch (err) {
         console.error('Error al agregar el comentario:', err);
       }
@@ -44,9 +42,7 @@ export default function Comments() {
       <h2 className="text-2xl font-semibold font-antonio mb-8">
         Comentarios de este <span className="text-red-500">producto</span>
       </h2>
-
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {/* Formulario para agregar comentarios */}
         <div>
           <h3 className="text-lg font-medium font-open-sans mb-4">
             Agregar una <span className="text-red-500">reseña</span>
@@ -54,7 +50,6 @@ export default function Comments() {
           <p className="text-sm font-open-sans text-gray-600 mb-4">
             Su dirección de correo electrónico no será publicada. Los campos obligatorios están marcados *
           </p>
-
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
               <div className="text-sm font-open-sans mb-2">Califica este producto</div>
@@ -78,7 +73,6 @@ export default function Comments() {
                 ))}
               </div>
             </div>
-
             <textarea
               value={newComment.comment}
               onChange={(e) => setNewComment({ ...newComment, comment: e.target.value })}
@@ -86,7 +80,6 @@ export default function Comments() {
               className="w-full p-3 border rounded-lg mb-4 min-h-[120px]"
               required
             />
-
             <input
               type="text"
               value={newComment.name}
@@ -95,7 +88,6 @@ export default function Comments() {
               className="w-full p-3 border rounded-lg mb-4"
               required
             />
-
             <input
               type="email"
               value={newComment.email}
@@ -104,7 +96,6 @@ export default function Comments() {
               className="w-full p-3 border rounded-lg mb-4"
               required
             />
-
             <div className="flex items-center gap-2 mb-4">
               <input
                 type="checkbox"
@@ -116,7 +107,6 @@ export default function Comments() {
                 He leído y acepto la política de tratamiento de datos personales
               </label>
             </div>
-
             <button
               type="submit"
               className="px-6 py-2 bg-white font-montserrat font-bold text-lacampana-red1 rounded-full hover:bg-red-600 transition-colors"
@@ -129,40 +119,35 @@ export default function Comments() {
                 gap: '10px',
                 borderRadius: '25px 25px 0px 25px',
                 border: '1px solid #F70025',
-
               }}
             >
               Comentar
             </button>
           </form>
         </div>
-
-        {/* Lista de comentarios */}
-      
         <div className="space-y-6">
           {comments.map((comment) => (
             <div
               key={comment.id}
-              className="flex gap-4 bg-white rounded-lg"
+              className="flex gap-4 bg-white rounded-lg w-full"
               style={{
-                width: '566px',
                 height: '186px',
                 padding: '25px 0px 0px 0px',
                 gap: '12px',
                 borderRadius: '0px 0px 15px 0px',
-                boxShadow: '0px 4px 10px 0px #00000040', 
+                boxShadow: '0px 4px 10px 0px #00000040',
               }}
             >
               <div className="flex-1">
                 <div className="flex items-center justify-between mb-2">
                   <h4 className="font-sm ml-6">{comment.name}</h4>
-                  <div className="flex gap-1">
+                  <div className="flex gap-1 pr-8">
                     {[1, 2, 3, 4, 5].map((star) => (
                       <Star
                         key={star}
                         className={`w-5 h-5 ${star <= comment.rating
-                            ? 'fill-yellow-400 text-yellow-400'
-                            : 'text-yellow-400'
+                          ? 'fill-yellow-400 text-yellow-400'
+                          : 'text-yellow-400'
                           }`}
                       />
                     ))}

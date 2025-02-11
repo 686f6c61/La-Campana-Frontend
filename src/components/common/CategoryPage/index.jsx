@@ -1,8 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import BgText from "../BgText";
+import FilterSearchBar from "../FilterSearchBar";
 import IntroductoryText from "../../../sections/common/IntroductoryText";
 import Card from "../Card";
+import FloatingDrawer from "../FloatingDrawer/FloatingDrawer";
+
+
+const BreadCrumbs = () => {
+	return (
+		<div className="flex justify-center ">
+			<ol class="list-reset py-4 pl-4 rounded flex bg-grey-light text-lacampana-gray2">
+				<li class="px-2"><a href="/" class="no-underline text-open-sans text-sm">Inicio</a></li>
+				<li>/</li>
+				<li class="px-2"><a href="/product" class="no-underline text-open-sans text-sm">Tienda</a></li>
+				<li>/</li>
+				<li class="px-2 text-open-sans">Láminas</li>
+			</ol>
+		</div>
+	)
+}
 
 const FILTER_OPTIONS = {
 	espesor: ["1.10 mm", "1.15 mm", "1.20 mm", "1.50 mm"],
@@ -119,6 +135,16 @@ const PRODUCTS = [
 const CategoryPage = () => {
 	const { categoryId } = useParams();
 	const navigate = useNavigate();
+	const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+useEffect(() => {
+    const handleResize = () => {
+        setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+}, []);
 
 	const [selectedFilters, setSelectedFilters] = useState({
 		espesor: "",
@@ -170,7 +196,6 @@ const CategoryPage = () => {
 	);
 	return (
 		<div className="max-w-7xl mx-auto">
-			{/* Header */}
 			<div className="relative w-full flex flex-col items-center justify-center bg-white">
 				<div className="relative z-10 text-center w-full max-w-screen-xl " >
 					<IntroductoryText
@@ -180,6 +205,10 @@ const CategoryPage = () => {
 					/>
 				</div>
 			</div>
+			{!isMobile &&<div className="flex items-center space-x-2">
+			<BreadCrumbs />
+			</div>}
+			
 			<div className="flex">
 				<aside className="w-1/4 h-1/2 bg-gray-100 p-4 shadow hidden lg:block">
 					<div className="mb-4 relative">
@@ -211,6 +240,8 @@ const CategoryPage = () => {
 					{renderFilterSection("ancho", "Ancho")}
 				</aside>
 				<main className=" pl-4">
+			 {isMobile && <FilterSearchBar />}
+
 					<div className="columns-2 gap-1 lg:columns-4 sm:gap-1 justify-center">
 						{filteredProducts.slice(0, visibleProducts).map((product) => (
 							<div
@@ -224,7 +255,7 @@ const CategoryPage = () => {
 					</div>
 					{
 						visibleProducts < filteredProducts.length && (
-							<div className="mt-6 text-center">
+							<div className="mt-6 pb-12 text-center">
 								<button
 									onClick={handleLoadMore}
 									className="bg-black text-white px-6 py-2 rounded-tl-full rounded-bl-full rounded-tr-full hover:bg-red-600"
@@ -236,6 +267,7 @@ const CategoryPage = () => {
 					}
 				</main>
 			</div>
+			<FloatingDrawer />
 		</div>
 	);
 };
