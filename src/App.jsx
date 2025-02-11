@@ -33,6 +33,7 @@ import Addresses from "./components/Account/Addresses";
 import PaymentMethod from "./components/Account/PaymentMethod";
 import AccountDetails from "./components/Account/AccountDetails";
 import WishList from "./components/Account/WishList";
+import FloatingDrawer from "./components/common/FloatingDrawer";
 
 function App() {
   return (
@@ -73,6 +74,7 @@ function App() {
         <Route path="*" element={<h1>404 Not Found</h1>} />
       </Routes>
       {/* <Footer /> */}
+      <FloatingDrawer />
       <Footer />
       <BottomBar />
     </BrowserRouter>
