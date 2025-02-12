@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const SidebarItem = ({ text, route, isActive, onClick }) => {
   return (
@@ -25,6 +26,8 @@ const SidebarItem = ({ text, route, isActive, onClick }) => {
 
 const Sidebar = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+
   const routes = [
     { text: "Tablero", route: "/micuenta" },
     { text: "Pedidos", route: "/micuenta/pedidos" },
@@ -42,7 +45,7 @@ const Sidebar = () => {
             key={item.route}
             text={item.text}
             route={item.route}
-            isActive={window.location.pathname === item.route}
+            isActive={item.route === location.pathname}
             onClick={() => navigate(item.route)}
           />
         ))}

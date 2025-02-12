@@ -38,22 +38,22 @@ const footerInfo = {
         {
           id: 1,
           title: "Segimiento de pedidos",
-          link: "",
+          link: "/micuenta/pedidos",
         },
         {
           id: 2,
           title: "Ver el carrito",
-          link: "",
+          link: "/carrito",
         },
         {
           id: 3,
           title: "Iniciar sesión",
-          link: "",
+          link: "/login",
         },
         {
           id: 4,
           title: "Mi lista de deseos",
-          link: "",
+          link: "/micuenta/deseos",
         },
       ],
     },

@@ -5,13 +5,39 @@ import PaymentMethod from "./PaymentMethod";
 import AccountDetails from "./AccountDetails";
 import WishList from "./WishList";
 import DashboardItems from "./DashboardItems";
+import { useLocation } from "react-router-dom";
 
 const items = [
-  { id: "pedidos", imgSrc: "/images/cart.png", text: "Pedidos" },
-  { id: "direcciones", imgSrc: "/images/mapIcon.png", text: "Direcciones" },
-  { id: "metodos", imgSrc: "/images/credit.png", text: "Métodos de pago" },
-  { id: "detalles", imgSrc: "/images/user.png", text: "Detalles de la cuenta" },
-  { id: "deseos", imgSrc: "/images/like.png", text: "Lista de deseos" },
+  {
+    id: "pedidos",
+    link: "/micuenta/pedidos",
+    imgSrc: "/images/cart.png",
+    text: "Pedidos",
+  },
+  {
+    id: "direcciones",
+    link: "/micuenta/direcciones",
+    imgSrc: "/images/mapIcon.png",
+    text: "Direcciones",
+  },
+  {
+    id: "metodos",
+    link: "/micuenta/metodos",
+    imgSrc: "/images/credit.png",
+    text: "Métodos de pago",
+  },
+  {
+    id: "detalles",
+    link: "/micuenta/detalles",
+    imgSrc: "/images/user.png",
+    text: "Detalles de la cuenta",
+  },
+  {
+    id: "deseos",
+    link: "/micuenta/deseos",
+    imgSrc: "/images/like.png",
+    text: "Lista de deseos",
+  },
   { id: "cerrar", imgSrc: "/images/exit.png", text: "Cerrar sesión" },
 ];
 
