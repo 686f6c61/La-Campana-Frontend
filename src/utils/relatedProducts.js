@@ -26,7 +26,7 @@ const relatedProducts = [
     discount: "20%",
     quantity: 1,
     options: {
-      paquete: ["Seleccione una opción", "Paquete 2", "Paquete 3"],
+       paquete: ["Seleccione una opción", "Paquete 2", "Paquete 3"],
       longitud: ["Seleccione una opción", "1.10 mm", "1.20 mm"],
       ancho: ["Seleccione una opción", "1.10 mm", "1.20 mm"],
       colorExterno: ["#E32119", "#BDBDBD", "#3C3C3B", "#BDBDBD"],
@@ -43,7 +43,7 @@ const relatedProducts = [
     discount: "20%",
     quantity: 1,
     options: {
-      paquete: ["Seleccione una opción", "Paquete 2", "Paquete 3"],
+       paquete: ["Seleccione una opción", "Paquete 2", "Paquete 3"],
       longitud: ["Seleccione una opción", "1.10 mm", "1.20 mm"],
       ancho: ["Seleccione una opción", "1.10 mm", "1.20 mm"],
       colorExterno: ["#E32119", "#BDBDBD", "#3C3C3B", "#BDBDBD"],
@@ -60,7 +60,7 @@ const relatedProducts = [
     discount: "20%",
     quantity: 1,
     options: {
-      paquete: ["Seleccione una opción", "Paquete 2", "Paquete 3"],
+       paquete: ["Seleccione una opción", "Paquete 2", "Paquete 3"],
       longitud: ["Seleccione una opción", "1.10 mm", "1.20 mm"],
       ancho: ["Seleccione una opción", "1.10 mm", "1.20 mm"],
       colorExterno: ["#E32119", "#BDBDBD", "#3C3C3B", "#BDBDBD"],

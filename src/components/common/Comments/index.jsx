@@ -38,21 +38,21 @@ export default function Comments() {
   if (error) return <p>Error al cargar los datos.</p>;
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8">
+    <div className="max-w-6xl mx-auto text-left px-4 py-8">
       <h2 className="text-2xl font-semibold font-antonio mb-8">
         Comentarios de este <span className="text-red-500">producto</span>
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div>
-          <h3 className="text-lg font-medium font-open-sans mb-4">
+          <h3 className="text-lg font-medium text-left font-open-sans mb-4">
             Agregar una <span className="text-red-500">reseña</span>
           </h3>
-          <p className="text-sm font-open-sans text-gray-600 mb-4">
+          <p className="text-sm font-open-sans text-left text-gray-600 mb-4">
             Su dirección de correo electrónico no será publicada. Los campos obligatorios están marcados *
           </p>
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
-              <div className="text-sm font-open-sans mb-2">Califica este producto</div>
+              <div className="text-sm  text-left font-open-sans mb-2">Califica este producto</div>
               <div className="flex gap-1 mb-2">
                 {[1, 2, 3, 4, 5].map((rating) => (
                   <button
