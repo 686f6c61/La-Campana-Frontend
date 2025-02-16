@@ -44,7 +44,7 @@ const Orders = () => {
         Revisa el estado de tus pedidos y los detalles de compras anteriores.
       </p>
 
-      <table className="w-[1200px] text-left">
+      <table className="w-full text-left">
         <thead>
           <tr className="bg-lacampana-gray1 text-lacampana-white font-antonio">
             <th className="text-xl p-4 text-center">Número de orden</th>

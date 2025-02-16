@@ -5,17 +5,44 @@ const UpdateAddress = () => {
   const { addressId } = useParams();
   const navigate = useNavigate();
   const [address, setAddress] = useState({
+    id: "",
     name: "",
-    address: "",
-    postalCode: "",
+    lastName: "",
+    company: "",
+    phone: "",
+    streetAddress: "",
+    complement: "",
     country: "",
-    email: "",
+    department: "",
+    city: "",
+    postalCode: "",
   });
 
+  // Opciones para selects
+  const countries = ["Colombia", "Argentina", "México"];
+  const departments = {
+    Colombia: ["Antioquia", "Cundinamarca", "Santander"],
+    Argentina: ["Buenos Aires", "Córdoba", "Santa Fe"],
+    México: ["CDMX", "Jalisco", "Nuevo León"],
+  };
+  const cities = {
+    Antioquia: ["Medellín", "Envigado", "Bello"],
+    Cundinamarca: ["Bogotá", "Soacha", "Zipaquirá"],
+    Santander: ["Bucaramanga", "Floridablanca", "Girón"],
+    "Buenos Aires": ["La Plata", "Mar del Plata", "Tigre"],
+    Córdoba: ["Villa Carlos Paz", "Río Cuarto", "Alta Gracia"],
+    "Santa Fe": ["Rosario", "Santa Fe Capital", "Venado Tuerto"],
+    CDMX: ["Azcapotzalco", "Coyoacán", "Iztapalapa"],
+    Jalisco: ["Guadalajara", "Tlaquepaque", "Zapopan"],
+    "Nuevo León": ["Monterrey", "San Pedro", "Guadalupe"],
+  };
+
+  // Cargar la dirección guardada en localStorage
   useEffect(() => {
     const storedAddresses = JSON.parse(localStorage.getItem("addresses")) || [];
-    if (storedAddresses[addressId]) {
-      setAddress(storedAddresses[addressId]);
+    const foundAddress = storedAddresses.find((addr) => addr.id === addressId);
+    if (foundAddress) {
+      setAddress(foundAddress);
     }
   }, [addressId]);
 
@@ -25,79 +52,161 @@ const UpdateAddress = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const updatedAddresses =
-      JSON.parse(localStorage.getItem("addresses")) || [];
-    updatedAddresses[addressId] = address;
-    localStorage.setItem("addresses", JSON.stringify(updatedAddresses));
+    let storedAddresses = JSON.parse(localStorage.getItem("addresses")) || [];
+
+    // Buscar si la dirección existe en el array
+    const index = storedAddresses.findIndex((addr) => addr.id === addressId);
+
+    if (index !== -1) {
+      storedAddresses[index] = address; // Actualizar dirección existente
+    } else {
+      storedAddresses.push({ ...address, id: addressId || new Date().getTime().toString() });
+    }
+
+    localStorage.setItem("addresses", JSON.stringify(storedAddresses));
     navigate("/micuenta/direcciones");
   };
 
   return (
-    <div className="max-w-2xl mx-auto my-8 p-8 bg-white shadow-lg rounded-lg">
-      <h2 className="text-2xl font-bold mb-6">Actualizar dirección</h2>
+    <div className="max-w-5xl mx-auto my-8 p-10 bg-white shadow-lg rounded-lg">
+      <h2 className="text-2xl font-bold text-lacampana-gray1 mb-6 font-antonio">Actualizar dirección</h2>
+
       <form onSubmit={handleSubmit}>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
+          {/* Información de Contacto (Columna Izquierda) */}
           <div>
-            <label className="block text-gray-700">Nombre *</label>
+            <h3 className="text-lg font-semibold text-gray-700 mb-3">Información de contacto</h3>
+
+            <label className="block text-gray-700 font-semibold">Nombre *</label>
             <input
               type="text"
               name="name"
               value={address.name}
               onChange={handleChange}
-              className="w-full p-2 border rounded"
+              className="w-full p-3 border border-gray-300 rounded-lg mb-4"
               required
             />
-          </div>
-          <div>
-            <label className="block text-gray-700">Dirección *</label>
+
+            <label className="block text-gray-700 font-semibold">Apellidos *</label>
             <input
               type="text"
-              name="address"
-              value={address.address}
+              name="lastName"
+              value={address.lastName}
               onChange={handleChange}
-              className="w-full p-2 border rounded"
+              className="w-full p-3 border border-gray-300 rounded-lg mb-4"
+              required
+            />
+
+            <label className="block text-gray-700 font-semibold">Empresa</label>
+            <input
+              type="text"
+              name="company"
+              value={address.company}
+              onChange={handleChange}
+              className="w-full p-3 border border-gray-300 rounded-lg mb-4"
+            />
+
+            <label className="block text-gray-700 font-semibold">Teléfono de contacto *</label>
+            <input
+              type="text"
+              name="phone"
+              value={address.phone}
+              onChange={handleChange}
+              className="w-full p-3 border border-gray-300 rounded-lg"
               required
             />
           </div>
+
+          {/* Dirección (Columna Derecha) */}
           <div>
-            <label className="block text-gray-700">Código Postal *</label>
+            <h3 className="text-lg font-semibold text-gray-700 mb-3">Dirección</h3>
+
+            <label className="block text-gray-700 font-semibold">Dirección *</label>
+            <input
+              type="text"
+              name="streetAddress"
+              value={address.streetAddress}
+              onChange={handleChange}
+              className="w-full p-3 border border-gray-300 rounded-lg mb-4"
+              required
+            />
+
+            <label className="block text-gray-700 font-semibold">Complemento</label>
+            <input
+              type="text"
+              name="complement"
+              value={address.complement}
+              onChange={handleChange}
+              className="w-full p-3 border border-gray-300 rounded-lg mb-4"
+            />
+
+            <label className="block text-gray-700 font-semibold">País *</label>
+            <select
+              name="country"
+              value={address.country}
+              onChange={handleChange}
+              className="w-full p-3 border border-gray-300 rounded-lg bg-white mb-4"
+              required
+            >
+              <option value="">Seleccione un país</option>
+              {countries.map((country) => (
+                <option key={country} value={country}>
+                  {country}
+                </option>
+              ))}
+            </select>
+
+            <label className="block text-gray-700 font-semibold">Departamento *</label>
+            <select
+              name="department"
+              value={address.department}
+              onChange={handleChange}
+              className="w-full p-3 border border-gray-300 rounded-lg bg-white mb-4"
+              required
+              disabled={!address.country}
+            >
+              <option value="">Seleccione un departamento</option>
+              {departments[address.country]?.map((dep) => (
+                <option key={dep} value={dep}>
+                  {dep}
+                </option>
+              ))}
+            </select>
+
+            <label className="block text-gray-700 font-semibold">Ciudad *</label>
+            <select
+              name="city"
+              value={address.city}
+              onChange={handleChange}
+              className="w-full p-3 border border-gray-300 rounded-lg bg-white mb-4"
+              required
+              disabled={!address.department}
+            >
+              <option value="">Seleccione una ciudad</option>
+              {cities[address.department]?.map((city) => (
+                <option key={city} value={city}>
+                  {city}
+                </option>
+              ))}
+            </select>
+
+            <label className="block text-gray-700 font-semibold">Código postal *</label>
             <input
               type="text"
               name="postalCode"
               value={address.postalCode}
               onChange={handleChange}
-              className="w-full p-2 border rounded"
-              required
-            />
-          </div>
-          <div>
-            <label className="block text-gray-700">País *</label>
-            <input
-              type="text"
-              name="country"
-              value={address.country}
-              onChange={handleChange}
-              className="w-full p-2 border rounded"
-              required
-            />
-          </div>
-          <div className="md:col-span-2">
-            <label className="block text-gray-700">Correo electrónico *</label>
-            <input
-              type="email"
-              name="email"
-              value={address.email}
-              onChange={handleChange}
-              className="w-full p-2 border rounded"
+              className="w-full p-3 border border-gray-300 rounded-lg"
               required
             />
           </div>
         </div>
+
         <button
           type="submit"
-          className="bg-lacampana-red1 text-white px-6 py-2 rounded-full mt-4"
+          className="bg-lacampana-red1 text-white px-8 py-3 rounded-full mt-6 text-lg hover:bg-red-600 transition-all"
         >
-          Guardar cambios
+          Actualizar
         </button>
       </form>
     </div>
