@@ -18,7 +18,7 @@ import ServiceDetails from "./pages/ServiceDetails";
 import Cart from "./pages/Cart";
 import Contact from "./pages/Contact";
 import MyAccount from "./pages/MyAccount";
-import Login from "./pages/Login";
+import LoginPage from "./pages/Login";
 import Register from "./pages/Register";
 import Footer from "./layout/Footer";
 import BottomBar from "./layout/BottomBar";
@@ -34,6 +34,8 @@ import PaymentMethod from "./components/Account/PaymentMethod";
 import AccountDetails from "./components/Account/AccountDetails";
 import WishList from "./components/Account/WishList";
 import FloatingDrawer from "./components/common/FloatingDrawer";
+import OrderDetails from "./components/Account/OrderDetails";
+import UpdateAddress from "./components/Account/UpdateAddresses";
 
 function App() {
   return (
@@ -56,7 +58,12 @@ function App() {
         <Route path="/micuenta" element={<MyAccount />}>
           <Route index element={<DashboardPanel />} />
           <Route path="pedidos" element={<Orders />} />
+          <Route path="pedidos/:pedidoId" element={<OrderDetails />} />
           <Route path="direcciones" element={<Addresses />} />
+          <Route
+            path="direcciones/editar/:direccionId"
+            element={<UpdateAddress />}
+          />
           <Route path="metodos" element={<PaymentMethod />} />
           <Route path="detalles" element={<AccountDetails />} />
           <Route path="deseos" element={<WishList />} />
@@ -64,7 +71,7 @@ function App() {
 
         <Route path="/servicios/:serviceId" element={<ServiceDetails />} />
         <Route path="/carrito" element={<Cart />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<Register />} />
         <Route path="/terminos" element={<Terms />} />
         <Route path="/metodosdepago" element={<PaymentMethods />} />
