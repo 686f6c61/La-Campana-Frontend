@@ -3,7 +3,7 @@ const products = [
     id: 1,
     name: "Tubo Mueble Cuadrado Esp 1.10 un 3/4 Primera - Norma Ntc 1986",
     description: "Presentamos la nueva placa colaborante que se puede utilizar por ambas caras. Su innovador diseño alcanza un metro de ancho útil, es rápida en su instalación, liviana y de gran capacidad de carga. Fabricada con altos estándares de calidad y a la medida requerida, esta placa es la mejor opción para entrepisos.",
-    image: "/images/prod1.jpg",
+    image: "/images/Frame142.png",
     price: "9.99",
     stock: 10,
     discount: "20%",
@@ -27,7 +27,7 @@ const products = [
     discount: "20%",
     quantity: 1,
     options: {
-      paquete: ["Seleccione una opción", "Paquete 2", "Paquete 3"],
+       paquete: ["Seleccione una opción", "Paquete 2", "Paquete 3"],
       longitud: ["Seleccione una opción", "1.10 mm", "1.20 mm"],
       ancho: ["Seleccione una opción", "1.10 mm", "1.20 mm"],
       colorExterno: ["#E32119", "#BDBDBD", "#3C3C3B", "#BDBDBD"],
@@ -99,7 +99,7 @@ const products = [
     discount: "20%",
     quantity: 1,
     options: {
-      paquete: ["Seleccione una opción", "Paquete 2", "Paquete 3"],
+       paquete: ["Seleccione una opción", "Paquete 2", "Paquete 3"],
       longitud: ["Seleccione una opción", "1.10 mm", "1.20 mm"],
       ancho: ["Seleccione una opción", "1.10 mm", "1.20 mm"],
       colorExterno: ["#E32119", "#BDBDBD", "#3C3C3B", "#BDBDBD"],
@@ -117,7 +117,7 @@ const products = [
     discount: "20%",
     quantity: 1,
     options: {
-      paquete: ["Seleccione una opción", "Paquete 2", "Paquete 3"],
+       paquete: ["Seleccione una opción", "Paquete 2", "Paquete 3"],
       longitud: ["Seleccione una opción", "1.10 mm", "1.20 mm"],
       ancho: ["Seleccione una opción", "1.10 mm", "1.20 mm"],
       colorExterno: ["#E32119", "#BDBDBD", "#3C3C3B", "#BDBDBD"],

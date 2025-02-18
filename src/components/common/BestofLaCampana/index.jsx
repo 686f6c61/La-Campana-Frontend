@@ -27,10 +27,10 @@ const BestOfLaCampana = () => {
         <div className="hidden lg:block">
           <CardGrid
             products={data.slice(0, 5).map((product) => ({
-              id: product.TreeCode,
-              image: product.image || "images/notfound.jpg",
-              title: product.ProductDescription,
-              price: `$${product.ProductPrice}`,
+              id: product.ItemsGroupCode,
+              image: product.image || "images/prod4.jpg",
+              title: product.ItemName,
+              price: `${product.ItemCode}`,
               discount: product.discount || "-",
             }))}
             smCol="2"
@@ -40,10 +40,10 @@ const BestOfLaCampana = () => {
         <div className="lg:hidden">
           <CardGrid
             products={data.slice(0, 4).map((product) => ({
-              id: product.TreeCode,
+              id: product.ItemCode,
               image: product.image || "images/notfound.jpg",
-              title: product.ProductDescription,
-              price: `$${product.ProductPrice}`,
+              title: product.ItemName,
+              price: `$${product.ItemsGroupCode}`,
               discount: product.discount || "-",
             }))}
             smCol="2"

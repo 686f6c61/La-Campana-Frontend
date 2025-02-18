@@ -1,12 +1,12 @@
 import React from "react";
-import LoginTest from "../components/Account/LoginTest";
+import LoginPage from "../components/Account/Login";
 
 const Login = () => {
   return (
     <div className="font-sans">
-      <LoginTest />
+      <LoginPage />
     </div>
   );
 };
 
-export default Login;
+export default LoginPage;

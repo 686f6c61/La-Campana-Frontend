@@ -1,0 +1,15 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /cart/
+Disallow: /checkout/
+Disallow: /*?sessionid=
+Disallow: /*?utm_source=
+Disallow: /*?ref=
+
+# Permitir acceso a imágenes, CSS y JS
+Allow: /images/
+Allow: /*.css$
+Allow: /*.js$
+
+# Indicar a los bots dónde está el sitemap
+Sitemap: https://tusitio.com/sitemap.xml
