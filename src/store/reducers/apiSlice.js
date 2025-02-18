@@ -11,6 +11,12 @@ export const apiSlice = createApi({
     getBlogs: builder.query({
       query: () => "blog",
     }),
+    getBlogById: builder.query({
+      query: (id) => `blog/${id}`,
+    }),
+    getBlogCategories: builder.query({
+      query: () => "blog-category",
+    }),
     getProducts: builder.query({
       query: () => "products",
       keepUnusedDataFor: 600,
@@ -55,6 +61,8 @@ export const apiSlice = createApi({
 
 export const {
   useGetBlogsQuery,
+  useGetBlogByIdQuery,
+  useGetBlogCategoriesQuery,
   useGetProductsQuery,
   useGetProductCommentsQuery,
   useAddProductCommentMutation,

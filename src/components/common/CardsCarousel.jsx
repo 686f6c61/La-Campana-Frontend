@@ -1,7 +1,7 @@
 const CardsCarousel = ({ children, cardsList, id }) => {
   return (
     <article className="flex flex-col h-full">
-      <div className="carousel w-full">
+      <div className="carousel w-full h-full">
         {children}
       </div>
       <div className="flex justify-center items-center gap-2">

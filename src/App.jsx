@@ -34,10 +34,12 @@ import PaymentMethod from "./components/Account/PaymentMethod";
 import AccountDetails from "./components/Account/AccountDetails";
 import WishList from "./components/Account/WishList";
 import FloatingDrawer from "./components/common/FloatingDrawer";
+import ScrollToTop from "./components/layouts/ScrollToTop";
 
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <div className="hidden tablet:block">
         <Topbar />
       </div>
