@@ -21,6 +21,12 @@ export const apiSlice = createApi({
       query: () => "products",
       keepUnusedDataFor: 600,
     }),
+    getProductsByText: builder.query({
+      query: (params) => {
+        return `products/${params.toString()}`;
+      },
+      keepUnusedDataFor: 600,
+    }),
     getProductComments: builder.query({
       query: () => "product-comments",
     }),
@@ -68,4 +74,5 @@ export const {
   useAddProductCommentMutation,
   useLoginUserMutation,
   useRegisterUserMutation,
+  useGetProductsByTextQuery,
 } = apiSlice;

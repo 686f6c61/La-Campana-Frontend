@@ -2,7 +2,7 @@ const categories = [
   {
     id: "drywall",
     name: "Perfiles Drywall",
-    link: "/drywall",
+    link: "/PERFIL",
     image: "public/images/steel-pipes-factory.png", // Cambia por tu URL de imagen
     results: 256,
     subcategories: [
@@ -41,7 +41,7 @@ const categories = [
   {
     id: "ornamentacion",
     name: "Perfiles Ornamentación",
-    link: "/ornamentacion",
+    link: "/PERFIL",
     image: "public/images/steel-pipes-factory.png", // Cambia por tu URL de imagen
     results: 256,
     subcategories: [
@@ -80,7 +80,7 @@ const categories = [
   {
     id: "tejas",
     name: "Tejas y Cubiertas",
-    link: "/tejas",
+    link: "/TEJA",
     image: "public/images/steel-pipes-factory.png", // Cambia por tu URL de imagen
     results: 256,
     subcategories: [
@@ -119,7 +119,7 @@ const categories = [
   {
     id: "tuberias",
     name: "Tuberias",
-    link: "/tuberias",
+    link: "/TUB",
     image: "public/images/steel-pipes-factory.png", // Cambia por tu URL de imagen
     results: 256,
     subcategories: [
@@ -158,7 +158,7 @@ const categories = [
   {
     id: "vigas",
     name: "Vigas y Perfiles",
-    link: "/vigas",
+    link: "/VIGA",
     image: "public/images/steel-pipes-factory.png", // Cambia por tu URL de imagen
     results: 256,
     subcategories: [
@@ -197,7 +197,7 @@ const categories = [
   {
     id: "entrepisos",
     name: "Entrepisos",
-    link: "/entrepisos",
+    link: "/ENTREPISO",
     image: "public/images/steel-pipes-factory.png", // Cambia por tu URL de imagen
     results: 256,
     subcategories: [
@@ -236,7 +236,7 @@ const categories = [
   {
     id: "laminas",
     name: "Laminas",
-    link: "/laminas",
+    link: "/LAMINA",
     image: "public/images/steel-pipes-factory.png", // Cambia por tu URL de imagen
     results: 256,
     subcategories: [

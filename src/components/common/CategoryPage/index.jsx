@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import FilterSearchBar from "../FilterSearchBar";
 import IntroductoryText from "../../../sections/common/IntroductoryText";
 import Card from "../Card";
-
+import { useGetProductsByTextQuery } from "../../../store/reducers/apiSlice";
 
 const BreadCrumbs = () => {
 	return (
@@ -18,132 +18,16 @@ const BreadCrumbs = () => {
 		</div>
 	)
 }
-
 const FILTER_OPTIONS = {
 	espesor: ["1.10 mm", "1.15 mm", "1.20 mm", "1.50 mm"],
 	longitud: ["1.10 mm", "1.15 mm", "1.20 mm", "1.50 mm"],
 	ancho: ["1.10 mm", "1.15 mm", "1.20 mm", "1.50 mm"],
 };
-const PRODUCTS = [
-	{
-		id: 1,
-		name: "Tubo Mueble Cuadrado Esp 1.10 un 3/4 Primera - Norma Ntc 1986",
-		price: "$19.693",
-		discount: "-20%",
-		image: "/images/prod1.jpg",
-		espesor: "1.10 mm",
-		longitud: "1.15 mm",
-		ancho: "1.10 mm",
-	},
-	{
-		id: 2,
-		name: "Plancha Hot Rolled Esp 6.00 un 1829x6096 Primera",
-		price: "$2.386.483",
-		discount: "-20%",
-		image: "/images/prod5.jpg",
-		espesor: "1.20 mm",
-		longitud: "1.20 mm",
-		ancho: "1.15 mm",
-	},
-	{
-		id: 3,
-		name: "Plancha Hot Rolled Esp 6.00 un 1829x6096 Primera",
-		price: "$2.386.483",
-		discount: "-20%",
-		image: "/images/prod5.jpg",
-		espesor: "1.20 mm",
-		longitud: "1.20 mm",
-		ancho: "1.15 mm",
-	}, {
-		id: 4,
-		name: "Plancha Hot Rolled Esp 6.00 un 1829x6096 Primera",
-		price: "$2.386.483",
-		discount: "-20%",
-		image: "/images/prod5.jpg",
-		espesor: "1.20 mm",
-		longitud: "1.20 mm",
-		ancho: "1.15 mm",
-	}, {
-		id: 5,
-		name: "Plancha Hot Rolled Esp 6.00 un 1829x6096 Primera",
-		price: "$2.386.483",
-		discount: "-20%",
-		image: "/images/prod5.jpg",
-		espesor: "1.20 mm",
-		longitud: "1.20 mm",
-		ancho: "1.15 mm",
-	}, {
-		id: 6,
-		name: "Plancha Hot Rolled Esp 6.00 un 1829x6096 Primera",
-		price: "$2.386.483",
-		discount: "-20%",
-		image: "/images/prod5.jpg",
-		espesor: "1.20 mm",
-		longitud: "1.20 mm",
-		ancho: "1.15 mm",
-	}, {
-		id: 7,
-		name: "Plancha Hot Rolled Esp 6.00 un 1829x6096 Primera",
-		price: "$2.386.483",
-		discount: "-20%",
-		image: "/images/prod5.jpg",
-		espesor: "1.20 mm",
-		longitud: "1.20 mm",
-		ancho: "1.15 mm",
-	}, {
-		id: 8,
-		name: "Plancha Hot Rolled Esp 6.00 un 1829x6096 Primera",
-		price: "$2.386.483",
-		discount: "-20%",
-		image: "/images/prod5.jpg",
-		espesor: "1.20 mm",
-		longitud: "1.20 mm",
-		ancho: "1.15 mm",
-	}, {
-		id: 9,
-		name: "Plancha Hot Rolled Esp 6.00 un 1829x6096 Primera",
-		price: "$2.386.483",
-		discount: "-20%",
-		image: "/images/prod5.jpg",
-		espesor: "1.20 mm",
-		longitud: "1.20 mm",
-		ancho: "1.15 mm",
-	},
-	{
-		id: 10,
-		name: "Plancha Hot Rolled Esp 6.00 un 1829x6096 Primera",
-		price: "$2.386.483",
-		discount: "-20%",
-		image: "/images/prod5.jpg",
-		espesor: "1.20 mm",
-		longitud: "1.20 mm",
-		ancho: "1.15 mm",
-	},
-	{
-		id: 11,
-		name: "Plancha Hot Rolled Esp 6.00 un 1829x6096 Primera",
-		price: "$2.386.483",
-		discount: "-20%",
-		image: "/images/prod5.jpg",
-		espesor: "1.20 mm",
-		longitud: "1.20 mm",
-		ancho: "1.15 mm",
-	},
-];
 
 const CategoryPage = () => {
 	const { categoryId } = useParams();
 	const navigate = useNavigate();
 	const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-
-useEffect(() => {
-    const handleResize = () => {
-        setIsMobile(window.innerWidth < 768);
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-}, []);
 
 	const [selectedFilters, setSelectedFilters] = useState({
 		espesor: "",
@@ -152,6 +36,20 @@ useEffect(() => {
 	});
 	const [searchQuery, setSearchQuery] = useState("");
 	const [visibleProducts, setVisibleProducts] = useState(8);
+console.log(categoryId)
+	const { data, error, isLoading } = useGetProductsByTextQuery(categoryId);
+
+
+	useEffect(() => {
+		const handleResize = () => {
+			setIsMobile(window.innerWidth < 768);
+		};
+
+		window.addEventListener("resize", handleResize);
+		return () => window.removeEventListener("resize", handleResize);
+	}, []);
+
+	
 
 	const handleProductClick = (productId) => {
 		navigate(`/product/${productId}`);
@@ -168,12 +66,24 @@ useEffect(() => {
 	const handleLoadMore = () => {
 		setVisibleProducts((prevVisible) => prevVisible + 5);
 	};
-	const filteredProducts = PRODUCTS.filter((product) => {
-		const matchesSearch = product.name.toLowerCase().includes(searchQuery);
+
+	if (isLoading) return <p>Cargando...</p>;
+	if (error) return <p>Error al cargar los datos.</p>;
+
+	let products= data.map((product) => ({
+		id: product.ItemsGroupCode,
+		image: product.image || "images/prod4.jpg",
+		title: product.ItemName,
+		price: `${product.ItemCode}`,
+		discount: product.discount || "-",
+	}))
+
+	const filteredProducts = products.filter((product) => {
+		//const matchesSearch = product.name.toLowerCase().includes(searchQuery);
 		const matchesFilters = Object.keys(selectedFilters).every(
 			(filter) => !selectedFilters[filter] || product[filter] === selectedFilters[filter]
 		);
-		return matchesSearch && matchesFilters;
+		return products && matchesFilters;
 	});
 	const renderFilterSection = (filterType, title) => (
 		<div>
@@ -204,10 +114,10 @@ useEffect(() => {
 					/>
 				</div>
 			</div>
-			{!isMobile &&<div className="flex items-center space-x-2">
-			<BreadCrumbs />
+			{!isMobile && <div className="flex items-center space-x-2">
+				<BreadCrumbs />
 			</div>}
-			
+
 			<div className="flex">
 				<aside className="w-1/4 h-1/2 bg-gray-100 p-4 shadow hidden lg:block">
 					<div className="mb-4 relative">
@@ -239,7 +149,7 @@ useEffect(() => {
 					{renderFilterSection("ancho", "Ancho")}
 				</aside>
 				<main className=" pl-4">
-			 {isMobile && <FilterSearchBar />}
+					{isMobile && <FilterSearchBar />}
 
 					<div className="columns-2 gap-1 lg:columns-4 sm:gap-1 justify-center">
 						{filteredProducts.slice(0, visibleProducts).map((product) => (
