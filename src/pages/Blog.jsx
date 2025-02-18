@@ -1,31 +1,53 @@
-import Highlighted from "../components/Blog/Highlighted"
+import LatestBlogItem from "../components/Blog/LatestBlogItem";
+import CardsCarousel from "../components/common/CardsCarousel";
 import BlogsGallery from "../sections/Blog/BlogsGallery";
 import IntroductoryText from "../sections/common/IntroductoryText"
-import { useGetBlogsQuery } from "../store/reducers/apiSlice"
-import newsCategories from "../utils/newsCategories";
+import { useGetBlogCategoriesQuery, useGetBlogsQuery } from "../store/reducers/apiSlice"
 
 const Blog = () => {
-  const { data, error, isLoading } = useGetBlogsQuery();
-  const highlightedNews = data?.filter((news, index) => index <= 2)
+  const { data: blogs, error: errorBlogs, isLoading: isLoadingBlogs, } = useGetBlogsQuery()
+  const { data: categories, error: errorCategories, isLoading: isLoadingCategories } = useGetBlogCategoriesQuery()
+  const latestBlogs = blogs?.slice(blogs.length - 3, blogs.length).sort((a, b) => {
+    const fechaA = new Date(a.createdAt);
+    const fechaB = new Date(b.createdAt);
 
-  if (isLoading) return <p>Cargando...</p>;
-  if (error) return <p>Error al cargar los datos.</p>;
+    // Comparar las fechas de forma descendente
+    return fechaB.getTime() - fechaA.getTime();
+  })
+  
+
+  if (isLoadingBlogs) return <p>Cargando...</p>;
+  if (errorBlogs) return <p>Error al cargar los datos.</p>;
+  if (isLoadingCategories) return <p>Cargando...</p>;
+  if (errorCategories) return <p>Error al cargar los datos.</p>;
 
   return (
-    <article className="max-w-screen-desktop w-full justify-self-center flex flex-col gap-16">
+    <article className="max-w-screen-desktop w-full justify-self-center flex flex-col gap-16 py-16">
       <IntroductoryText
         title={<>Nuestro <span className="text-lacampana-red2">Blog</span></>}
         bgTitle="Actualidad en aceros"
         description="Lorem ipsum dolor sit amet consectetur. Pulvinar dignissim pulvinar ut lorem pharetra. Vestibulum nulla faucibus nunc enim. Proin feugiat fames turpis sociis viverra. Viverra sit ut egestas placerat neque fames ante."
         justify="start"
       >
-        <div className="w-full tablet:w-3/5 flex-none h-[400px] tablet:h-[600px]">
-          <Highlighted highlightedNews={highlightedNews} />
+        {/* LATEST BLOGS */}
+        <div className="w-full tablet:w-3/5 flex-none h-[500px]">
+          <CardsCarousel id="hl-blog-card" cardsList={latestBlogs}>
+            {latestBlogs.map((blog, index) =>
+              <article key={`blog-carousel-item-${index}`} className="carousel-item w-full py-2" id={`hl-blog-card-${index}`}>
+                {<LatestBlogItem
+                  title={blog.name}
+                  description={blog.body}
+                  image={blog.image}
+                  publicationDate={blog.createdAt}
+                  link={`/blog/${blog._id}`}
+                />}
+              </article>)}
+          </CardsCarousel>
         </div>
       </IntroductoryText>
       <BlogsGallery
-        categories={newsCategories}
-        blogsData={data}
+        categories={categories}
+        blogsData={blogs}
       />
     </article>
   )
