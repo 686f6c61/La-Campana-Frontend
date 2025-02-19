@@ -1,12 +1,12 @@
 import React from "react";
-import RegisterTest from "../components/Account/RegisterTest";
+import Register from "../components/Account/Register";
 
-const Register = () => {
+const RegisterPage = () => {
   return (
     <div className="font-sans">
-      <RegisterTest />
+      <Register />
     </div>
   );
 };
 
-export default Register;
+export default RegisterPage;

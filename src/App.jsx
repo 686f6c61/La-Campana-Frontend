@@ -73,8 +73,8 @@ function App() {
 
         <Route path="/servicios/:serviceId" element={<ServiceDetails />} />
         <Route path="/carrito" element={<Cart />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/inicio" element={<LoginPage />} />
+        <Route path="/registro" element={<Register />} />
         <Route path="/terminos" element={<Terms />} />
         <Route path="/metodosdepago" element={<PaymentMethods />} />
         <Route path="/devolucion" element={<Return />} />
