@@ -44,7 +44,7 @@ const Login = () => {
 
               <p className="text-sm text-center">
                 ¿No tienes una cuenta?{" "}
-                <a href="/register" className="text-red-500 font-semibold">
+                <a href="/registro" className="text-red-500 font-semibold">
                   Regístrate
                 </a>
               </p>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useRegisterUserMutation } from "../../store/reducers/apiSlice";
+import { useRegisterUserMutation } from "../../store/reducers/apiSlice.js";
 import { useNavigate } from "react-router-dom";
 import IntroductoryText from "../../sections/common/IntroductoryText.jsx";
 
@@ -21,6 +21,7 @@ const Register = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
+    console.log("Botón de registro presionado");
 
     if (formData.password !== formData.confirmPassword) {
       alert("Las contraseñas no coinciden.");
@@ -33,8 +34,9 @@ const Register = () => {
         email: formData.email,
         password: formData.password,
       }).unwrap();
+
       alert("Registro exitoso. Ahora puedes iniciar sesión.");
-      navigate("/login");
+      navigate("/inicio"); // Redirige después de cerrar el alert
     } catch (err) {
       console.error("Error al registrar el usuario:", err);
     }
@@ -58,7 +60,7 @@ const Register = () => {
               </a>
             </p>
 
-            <div className="max-w-xl mx-auto mt-6 bg-lacampana-white p-8 rounded-lg shadow-lg">
+            <div className="max-w-xl mx-auto mt-6 bg-lacampana-white p-8 rounded-lg shadow-lg min-h-[500px]">
               <h2 className="text-2xl font-bold text-lacampana-gray1 font-antonio mb-2">
                 Acceda a <span className="text-lacampana-red2">su cuenta</span>
               </h2>
@@ -135,19 +137,16 @@ const Register = () => {
                   />
                 </div>
 
-                <div className="text-left pl-14 transform -translate-y-12">
-                  <a
-                    href="/forgot-password"
-                    className="text-gray-600 font-open-sans text-sm"
-                  >
+                <div className="text-left pl-14 transform -translate-y-12 ">
+                  <a href="/forgot-password" className="text-gray-600 font-open-sans text-sm">
                     ¿Olvidaste la contraseña?
                   </a>
                 </div>
 
-                <div className="text-center">
+                <div className="text-center transform -translate-y-12">
                   <button
                     type="submit"
-                    className="btn btn-outline text-lacampana-red1 transform -translate-y-14 text-center border-lacampana-red1 text-lg rounded-tl-full rounded-bl-full rounded-tr-full w-[200px] font-montserrat"
+                    className="btn btn-outline text-lacampana-red1 text-center border-lacampana-red1 text-lg rounded-tl-full rounded-bl-full rounded-tr-full w-[200px] font-montserrat"
                     disabled={isLoading}
                   >
                     {isLoading ? "Registrando..." : "Ingresar"}
@@ -156,7 +155,7 @@ const Register = () => {
               </form>
 
               {error && (
-                <p className="text-red-500 text-center mt-2">
+                <p className="text-red-500 text-center mt-2 min-h-[30px]">
                   Error: {error.data?.error}
                 </p>
               )}
