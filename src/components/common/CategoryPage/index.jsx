@@ -151,11 +151,11 @@ console.log(categoryId)
 				<main className=" pl-4">
 					{isMobile && <FilterSearchBar />}
 
-					<div className="columns-2 gap-1 lg:columns-4 sm:gap-1 justify-center">
+					<div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 ">
 						{filteredProducts.slice(0, visibleProducts).map((product) => (
 							<div
 								key={product.id}
-								className=" p-2 cursor-pointer"
+								className=" p-2 cursor-pointer "
 								onClick={() => handleProductClick(product.id)}
 							>
 								<Card product={product} />
