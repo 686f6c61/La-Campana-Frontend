@@ -1,8 +1,18 @@
 import NavItem from "./components/NavItem";
 import CategoriesSidebar from "./components/CategoriesSidebar";
 import categories from "../../utils/categories";
+import { useState } from "react";
+
 
 const Navbar = () => {
+  const [activeItemId, setActiveItemId] = useState(null);
+
+  // Handler to update active item
+  const handleItemClick = (itemId) => {
+    setActiveItemId(itemId);
+  };
+
+
   return (
     <nav className="hidden tablet:block">
       <article className="navbar bg-white max-w-screen-desktop justify-self-center">
@@ -12,9 +22,11 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">
           {categories.map(item =>
             <NavItem
-              key={`navitem-${item.id}`}
-              text={item.name}
-              link={item.link}
+            active={activeItemId === item.id}
+            key={`navitem-${item.id}`}
+            text={item.name}
+            link={item.link}
+            onClick={() => handleItemClick(item.id)}
             />
           )}
         </ul>

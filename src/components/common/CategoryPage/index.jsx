@@ -28,7 +28,6 @@ const CategoryPage = () => {
 	const { categoryId } = useParams();
 	const navigate = useNavigate();
 	const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-
 	const [selectedFilters, setSelectedFilters] = useState({
 		espesor: "",
 		longitud: "",
@@ -36,8 +35,22 @@ const CategoryPage = () => {
 	});
 	const [searchQuery, setSearchQuery] = useState("");
 	const [visibleProducts, setVisibleProducts] = useState(8);
-console.log(categoryId)
-	const { data, error, isLoading } = useGetProductsByTextQuery(categoryId);
+
+	// Get data for current category
+	const { data, error, isLoading, refetch } = useGetProductsByTextQuery(categoryId);
+
+	useEffect(() => {
+    // Reset visible products count when category changes
+    setVisibleProducts(8);
+    
+    // Force a refetch of the data
+    refetch();
+    
+    return () => {
+      // Cleanup when component unmounts or category changes
+      setVisibleProducts(8);
+    };
+  }, [categoryId, refetch]);
 
 
 	useEffect(() => {
@@ -49,17 +62,42 @@ console.log(categoryId)
 		return () => window.removeEventListener("resize", handleResize);
 	}, []);
 
-	
+	if (isLoading) return <p>Cargando...</p>;
+	if (error) return <p>Error al cargar los datos.</p>;
+
+	const products = useMemo(() => {
+    if (!data) return [];
+    
+    return data.map((product) => ({
+      id: product.ItemsGroupCode,
+      image: product.image || "images/prod4.jpg",
+      title: product.ItemName,
+      price: `${product.ItemCode}`,
+      discount: product.discount || "-",
+    }));
+  }, [data]);
+
+	const filteredProducts = useMemo(() => {
+    return products.filter((product) => {
+      const matchesSearch = product.title.toLowerCase().includes(searchQuery);
+      const matchesFilters = Object.keys(selectedFilters).every(
+        (filter) => !selectedFilters[filter] || product[filter] === selectedFilters[filter]
+      );
+      return matchesSearch && matchesFilters;
+    });
+  }, [products, searchQuery, selectedFilters]);
 
 	const handleProductClick = (productId) => {
 		navigate(`/product/${productId}`);
 	};
+
 	const handleFilterChange = (filterType, value) => {
 		setSelectedFilters((prevFilters) => ({
 			...prevFilters,
 			[filterType]: value,
 		}));
 	};
+
 	const handleSearchChange = (e) => {
 		setSearchQuery(e.target.value.toLowerCase());
 	};
@@ -67,24 +105,6 @@ console.log(categoryId)
 		setVisibleProducts((prevVisible) => prevVisible + 5);
 	};
 
-	if (isLoading) return <p>Cargando...</p>;
-	if (error) return <p>Error al cargar los datos.</p>;
-
-	let products= data.map((product) => ({
-		id: product.ItemsGroupCode,
-		image: product.image || "images/prod4.jpg",
-		title: product.ItemName,
-		price: `${product.ItemCode}`,
-		discount: product.discount || "-",
-	}))
-
-	const filteredProducts = products.filter((product) => {
-		//const matchesSearch = product.name.toLowerCase().includes(searchQuery);
-		const matchesFilters = Object.keys(selectedFilters).every(
-			(filter) => !selectedFilters[filter] || product[filter] === selectedFilters[filter]
-		);
-		return products && matchesFilters;
-	});
 	const renderFilterSection = (filterType, title) => (
 		<div>
 			<h3 className="font-antonio text-left text-lg mt-4">{title}</h3>

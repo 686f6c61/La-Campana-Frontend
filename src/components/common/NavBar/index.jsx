@@ -43,7 +43,7 @@ const Navbar = () => {
                   <p>Todas las categorías</p>
                 </button>
               </li>
-              <NavbarItems items={menuCat} listClass={"text-gray-700 text-sm hover:text-red-500"} />
+              <NavbarItems items={menuCat} listClass={"text-gray-700 text-sm hover:bg-red-600"} />
             </ul>
           </div>
         </div>

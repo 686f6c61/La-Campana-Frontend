@@ -62,5 +62,6 @@ export default {
     "lg:columns-4",
     "lg:columns-5",
     "lg:columns-6",
+    "hover:bg-red-600"
   ],
 };
