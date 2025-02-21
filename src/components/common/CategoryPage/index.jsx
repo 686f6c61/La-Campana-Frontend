@@ -26,46 +26,37 @@ const FILTER_OPTIONS = {
 
 const CategoryPage = () => {
 	const { categoryId } = useParams();
-	const navigate = useNavigate();
-	const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-	const [selectedFilters, setSelectedFilters] = useState({
-		espesor: "",
-		longitud: "",
-		ancho: "",
-	});
-	const [searchQuery, setSearchQuery] = useState("");
-	const [visibleProducts, setVisibleProducts] = useState(8);
+  const navigate = useNavigate();
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [selectedFilters, setSelectedFilters] = useState({
+    espesor: "",
+    longitud: "",
+    ancho: "",
+  });
+  const [searchQuery, setSearchQuery] = useState("");
+  const [visibleProducts, setVisibleProducts] = useState(8);
 
-	// Get data for current category
-	const { data, error, isLoading, refetch } = useGetProductsByTextQuery(categoryId);
+  const { data, error, isLoading, refetch } = useGetProductsByTextQuery(categoryId);
 
-	useEffect(() => {
-    // Reset visible products count when category changes
+  // All hooks must be called before any conditional returns
+  useEffect(() => {
     setVisibleProducts(8);
-    
-    // Force a refetch of the data
     refetch();
-    
     return () => {
-      // Cleanup when component unmounts or category changes
       setVisibleProducts(8);
     };
   }, [categoryId, refetch]);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
 
-	useEffect(() => {
-		const handleResize = () => {
-			setIsMobile(window.innerWidth < 768);
-		};
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
-		window.addEventListener("resize", handleResize);
-		return () => window.removeEventListener("resize", handleResize);
-	}, []);
-
-	if (isLoading) return <p>Cargando...</p>;
-	if (error) return <p>Error al cargar los datos.</p>;
-
-	const products = useMemo(() => {
+  const products = useMemo(() => {
     if (!data) return [];
     
     return data.map((product) => ({
@@ -77,7 +68,7 @@ const CategoryPage = () => {
     }));
   }, [data]);
 
-	const filteredProducts = useMemo(() => {
+  const filteredProducts = useMemo(() => {
     return products.filter((product) => {
       const matchesSearch = product.title.toLowerCase().includes(searchQuery);
       const matchesFilters = Object.keys(selectedFilters).every(
@@ -87,23 +78,31 @@ const CategoryPage = () => {
     });
   }, [products, searchQuery, selectedFilters]);
 
-	const handleProductClick = (productId) => {
-		navigate(`/product/${productId}`);
-	};
+  // Event handlers
+  const handleProductClick = (productId) => {
+    navigate(`/product/${productId}`);
+  };
 
-	const handleFilterChange = (filterType, value) => {
-		setSelectedFilters((prevFilters) => ({
-			...prevFilters,
-			[filterType]: value,
-		}));
-	};
+  const handleFilterChange = (filterType, value) => {
+    setSelectedFilters((prevFilters) => ({
+      ...prevFilters,
+      [filterType]: value,
+    }));
+  };
 
-	const handleSearchChange = (e) => {
-		setSearchQuery(e.target.value.toLowerCase());
-	};
-	const handleLoadMore = () => {
-		setVisibleProducts((prevVisible) => prevVisible + 5);
-	};
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value.toLowerCase());
+  };
+
+  const handleLoadMore = () => {
+    setVisibleProducts((prevVisible) => prevVisible + 5);
+  };
+
+  // Now we can have conditional returns
+  if (isLoading) return <p>Cargando...</p>;
+  if (error) return <p>Error al cargar los datos.</p>;
+
+	
 
 	const renderFilterSection = (filterType, title) => (
 		<div>
