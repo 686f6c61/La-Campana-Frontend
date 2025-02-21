@@ -1,58 +1,93 @@
 import React, { useState } from "react";
 import { useForgotPasswordMutation } from "../../store/reducers/apiSlice.js";
+import { useNavigate } from "react-router-dom";
+import IntroductoryText from "../../sections/common/IntroductoryText.jsx";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
-  const [forgotPassword, { isLoading, error, isSuccess }] =
-    useForgotPasswordMutation();
+  const [message, setMessage] = useState("");
+  const navigate = useNavigate();
+  const [forgotPassword, { isLoading, error }] = useForgotPasswordMutation();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      await forgotPassword({ email }).unwrap();
+      const response = await forgotPassword({ email }).unwrap();
+      setMessage(response.message);
       alert("Correo enviado. Revisa tu bandeja de entrada.");
+      navigate("/login"); // Redirigir al login después de enviar el correo
     } catch (err) {
-      alert(
-        err?.data?.error || "Error al enviar el correo de restablecimiento."
-      );
+      setMessage(err?.data?.error || "Error al enviar el correo.");
     }
   };
 
   return (
-    <div className="max-w-md mx-auto mt-12 bg-white p-6 rounded-lg shadow-lg">
-      <h2 className="text-2xl font-bold mb-6 text-center">
-        Restablecer Contraseña
-      </h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <input
-          type="email"
-          placeholder="Ingresa tu correo electrónico"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="w-full border border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-red-500 focus:outline-none"
-          required
-        />
-        <button
-          type="submit"
-          className="w-full bg-red-500 text-white py-2 px-4 rounded-md font-semibold hover:bg-red-600"
-          disabled={isLoading}
-        >
-          {isLoading ? "Enviando..." : "Enviar"}
-        </button>
-      </form>
+    <IntroductoryText
+      title={
+        <>
+          <div className="text-center">
+            <div className="relative">
+              <h2 className="relative text-4xl font-anton text-lacampana-gray1">
+                Recuperar <span className="text-lacampana-red2">Contraseña</span>
+              </h2>
+            </div>
 
-      {error && (
-        <p className="text-red-500 text-center mt-2">
-          Error: {error.data?.error}
-        </p>
-      )}
-      {isSuccess && (
-        <p className="text-green-500 text-center mt-2">
-          Correo enviado correctamente.
-        </p>
-      )}
-    </div>
+            <div className="max-w-xl mx-auto mt-12 bg-lacampana-white p-8 rounded-lg shadow-lg">
+              <h2 className="text-2xl font-bold text-lacampana-gray1 font-antonio mb-2">
+                Restablecer <span className="text-lacampana-red2">Contraseña</span>
+              </h2>
+
+              <p className="text-sm text-center">
+                Introduce tu correo y te enviaremos un enlace para restablecer tu contraseña.
+              </p>
+
+              <form onSubmit={handleSubmit} className="space-y-6 pt-10">
+                <div className="flex flex-col items-center">
+                  <label className="text-lacampana-gray1 transform -translate-x-28 font-open-sans text-lg mb-1">
+                    Correo electrónico
+                  </label>
+                  <input
+                    type="email"
+                    placeholder="Correo electrónico *"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-[400px] p-3 text-lg border border-lacampana-gray3 rounded-lg font-open-sans focus:outline-none focus:border-black"
+                    required
+                  />
+                </div>
+
+                <div className="text-center">
+                  <button
+                    type="submit"
+                    className="btn btn-outline text-lacampana-red1 text-center border-lacampana-red1 text-lg rounded-tl-full rounded-bl-full rounded-tr-full w-[200px] font-montserrat"
+                    disabled={isLoading}
+                  >
+                    {isLoading ? "Enviando..." : "Enviar"}
+                  </button>
+                </div>
+              </form>
+
+              {message && (
+                <p className={error ? "text-red-500 text-center mt-2" : "text-green-500 text-center mt-2"}>
+                  {message}
+                </p>
+              )}
+
+              <div className="text-center mt-4">
+                <a href="/login" className="text-gray-600 font-open-sans text-sm">
+                  Volver a iniciar sesión
+                </a>
+              </div>
+            </div>
+          </div>
+        </>
+      }
+      bgTitle="Recuperar Contraseña"
+      justify="center"
+      bgTitleMargin=""
+      bgTitlePadding=""
+    />
   );
 };
 

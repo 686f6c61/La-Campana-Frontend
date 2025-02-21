@@ -76,8 +76,8 @@ const UpdateAddress = () => {
           {/* Información de Contacto (Columna Izquierda) */}
           <div>
             <h3 className="text-lg font-semibold text-gray-700 mb-3">Información de contacto</h3>
-
-            <label className="block text-gray-700 font-semibold">Nombre *</label>
+            
+            <label className="block text-gray-700 font-semibold text-left">Nombre<span className="text-lacampana-red2"> *</span></label>
             <input
               type="text"
               name="name"
@@ -87,7 +87,7 @@ const UpdateAddress = () => {
               required
             />
 
-            <label className="block text-gray-700 font-semibold">Apellidos *</label>
+            <label className="block text-gray-700 font-semibold text-left">Apellidos<span className="text-lacampana-red2"> *</span></label>
             <input
               type="text"
               name="lastName"
@@ -97,7 +97,7 @@ const UpdateAddress = () => {
               required
             />
 
-            <label className="block text-gray-700 font-semibold">Empresa</label>
+            <label className="block text-gray-700 font-semibold text-left">Empresa</label>
             <input
               type="text"
               name="company"
@@ -106,7 +106,7 @@ const UpdateAddress = () => {
               className="w-full p-3 border border-gray-300 rounded-lg mb-4"
             />
 
-            <label className="block text-gray-700 font-semibold">Teléfono de contacto *</label>
+            <label className="block text-gray-700 font-semibold text-left">Teléfono de contacto *</label>
             <input
               type="text"
               name="phone"
@@ -121,7 +121,7 @@ const UpdateAddress = () => {
           <div>
             <h3 className="text-lg font-semibold text-gray-700 mb-3">Dirección</h3>
 
-            <label className="block text-gray-700 font-semibold">Dirección *</label>
+            <label className="block text-gray-700 font-semibold text-left">Dirección<span className="text-lacampana-red2"> *</span></label>
             <input
               type="text"
               name="streetAddress"
@@ -131,7 +131,7 @@ const UpdateAddress = () => {
               required
             />
 
-            <label className="block text-gray-700 font-semibold">Complemento</label>
+            <label className="block text-gray-700 font-semibold text-left">Complemento</label>
             <input
               type="text"
               name="complement"
@@ -140,7 +140,7 @@ const UpdateAddress = () => {
               className="w-full p-3 border border-gray-300 rounded-lg mb-4"
             />
 
-            <label className="block text-gray-700 font-semibold">País *</label>
+            <label className="block text-gray-700 font-semibold text-left">País<span className="text-lacampana-red2"> *</span></label>
             <select
               name="country"
               value={address.country}
@@ -156,7 +156,7 @@ const UpdateAddress = () => {
               ))}
             </select>
 
-            <label className="block text-gray-700 font-semibold">Departamento *</label>
+            <label className="block text-gray-700 font-semibold text-left">Departamento<span className="text-lacampana-red2"> *</span></label>
             <select
               name="department"
               value={address.department}
@@ -173,7 +173,7 @@ const UpdateAddress = () => {
               ))}
             </select>
 
-            <label className="block text-gray-700 font-semibold">Ciudad *</label>
+            <label className="block text-gray-700 font-semibold text-left">Ciudad<span className="text-lacampana-red2"> *</span></label>
             <select
               name="city"
               value={address.city}
@@ -190,7 +190,7 @@ const UpdateAddress = () => {
               ))}
             </select>
 
-            <label className="block text-gray-700 font-semibold">Código postal *</label>
+            <label className="block text-gray-700 font-semibold text-left">Código postal<span className="text-lacampana-red2"> *</span></label>
             <input
               type="text"
               name="postalCode"
@@ -204,7 +204,7 @@ const UpdateAddress = () => {
 
         <button
           type="submit"
-          className="bg-lacampana-red1 text-white px-8 py-3 rounded-full mt-6 text-lg hover:bg-red-600 transition-all"
+          className="bg-lacampana-red1 text-white px-8 py-3 rounded-tl-full rounded-bl-full rounded-tr-full mt-6 text-lg hover:bg-red-600 transition-all"
         >
           Actualizar
         </button>

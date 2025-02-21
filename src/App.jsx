@@ -37,6 +37,8 @@ import FloatingDrawer from "./components/common/FloatingDrawer";
 import ScrollToTop from "./components/layouts/ScrollToTop";
 import OrderDetails from "./components/Account/OrderDetails";
 import UpdateAddress from "./components/Account/UpdateAddresses";
+import ForgotPassword from "./components/Account/ForgotPassword";
+
 
 function App() {
   return (
@@ -80,6 +82,8 @@ function App() {
         <Route path="/devolucion" element={<Return />} />
         <Route path="/envio" element={<Shipping />} />
         <Route path="/politicadeprivacidad" element={<Politics />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+      
         <Route path="*" element={<h1>404 Not Found</h1>} />
       </Routes>
       {/* <Footer /> */}
