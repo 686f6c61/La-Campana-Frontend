@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Sidebar from "../components/Account/Sidebar.jsx";
 import IntroductoryText from "../sections/common/IntroductoryText.jsx";
 import Breadcrumbs from "../components/Account/Breadcrumbs.jsx";
@@ -6,6 +6,8 @@ import DashboardWelcome from "../components/Account/DashBoardWelcome.jsx";
 import { Outlet, useLocation } from "react-router-dom";
 
 const MyAccount = () => {
+  const location = useLocation();
+
   return (
     <div className="font-sans">
       {/* Contenedor principal */}
@@ -25,10 +27,12 @@ const MyAccount = () => {
         {/* Breadcrumbs arriba del contenido */}
         <Breadcrumbs />
 
-        {/* Mostrar DashboardWelcome en pantallas pequeñas */}
-        <div className="block md:hidden mb-4">
-          <DashboardWelcome />
-        </div>
+        {/* Mostrar DashboardWelcome solo en /micuenta (DashboardPanel) y solo en pantallas pequeñas */}
+        {location.pathname === "/micuenta" && (
+          <div className="block md:hidden mb-4">
+            <DashboardWelcome />
+          </div>
+        )}
 
         {/* Contenedor de Sidebar y Contenido */}
         <div className="flex flex-col md:flex-row">
