@@ -48,7 +48,7 @@ const footerInfo = {
         {
           id: 3,
           title: "Iniciar sesión",
-          link: "/login",
+          link: "/inicio",
         },
         {
           id: 4,

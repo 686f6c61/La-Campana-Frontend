@@ -25,24 +25,24 @@ const OrderDetails = () => {
         actualmente <span className="font-bold">{order.status}</span>.
       </p>
 
-      <table className="w-full text-left border-collapse">
+      <table className=" transform -translate-x-14 w-full text-left border-collapse ">
         <thead>
           <tr className="bg-lacampana-gray1 text-lacampana-white font-antonio">
-            <th className="text-left text-xl py-3 px-4 border-b">Producto</th>
-            <th className="text-center text-xl py-3 px-4 border-b">Cantidad</th>
-            <th className="text-right text-xl py-3 px-4 border-b">Total</th>
+            <th className="text-left md:text-xl text-sm py-3 px-4 border-b md:pr-0 pr-20">Producto</th>
+            <th className="text-center md:text-xl text-sm py-3 px-4 border-b">Cantidad</th>
+            <th className="text-right md:text-xl text-sm py-3 px-4 border-b">Total</th>
           </tr>
         </thead>
         <tbody>
           {order.items.map((item, index) => (
             <tr key={index} className="border-b">
-              <td className="py-3 px-4 font-opens-sans text-lacampana-gray1 text-lg">
+              <td className="py-3 px-4 font-opens-sans text-lacampana-gray1 md:text-xl text-sm">
                 {item.product}
               </td>
-              <td className="text-center py-3 px-4 text-lacampana-gray1 text-2xl font-opens-sans">
+              <td className="text-center py-3 px-4 text-lacampana-gray1 md:text-2xl text-sm font-opens-sans">
                 {item.quantity}
               </td>
-              <td className="text-right py-3 px-4 font-antonio text-3xl text-lacampana-gray1">
+              <td className="text-right py-3 px-4 font-antonio md:text-3xl text-xl text-lacampana-gray1">
                 ${item.total.toLocaleString()}
               </td>
             </tr>
@@ -50,33 +50,33 @@ const OrderDetails = () => {
         </tbody>
         <tfoot>
           <tr className="bg-lacampana-white ">
-            <td className="py-3 px-4 text-left text-2xl text-lacampana-gray1 font-bold">
+            <td className="py-3 px-4 text-left md:text-2xl text-xs text-lacampana-gray1 font-bold">
               Subtotal:
             </td>
             <td></td>
-            <td className="text-right px-4 font-antonio text-3xl text-lacampana-gray1">
+            <td className="text-right px-4 font-antonio md:text-3xl text-xl text-lacampana-gray1">
               ${order.subtotal.toLocaleString()}
             </td>
           </tr>
-          <tr className="bg-white  text-2xl text-lacampana-gray1">
-            <td className="py-3 px-4 text-left font-bold">Costo de envío:</td>
+          <tr className="bg-white  md:text-2xl  text-lacampana-gray1">
+            <td className="py-3 px-4 text-left text-xs font-bold">Costo de envío:</td>
             <td></td>
-            <td className="text-right px-4 font-antonio text-3xl text-lacampana-gray1">
+            <td className="text-right px-4 font-antonio md:text-3xl text-xl text-lacampana-gray1">
               ${order.shippingCost.toLocaleString()}
             </td>
           </tr>
-          <tr className="bg-white font-bold text-2xl text-lacampana-gray1">
+          <tr className="bg-white font-bold md:text-2xl text-xs text-lacampana-gray1">
             <td className="py-3 px-4 text-left font-bold">Método de pago:</td>
             <td colSpan="2" className="text-right px-4">
               {order.paymentMethod}
             </td>
           </tr>
           <tr className="bg-lacampana-white ">
-            <td className="py-3 px-4 text-left text-2xl text-lacampana-gray1 font-bold">
+            <td className="py-3 px-4 text-left md:text-2xl text-xs text-lacampana-gray1 font-bold">
               Total:
             </td>
             <td></td>
-            <td className="text-right px-4 font-antonio text-3xl text-lacampana-gray1">
+            <td className="text-right px-4 font-antonio md:text-3xl text-lg text-lacampana-gray1">
               ${order.total.toLocaleString()}
             </td>
           </tr>
