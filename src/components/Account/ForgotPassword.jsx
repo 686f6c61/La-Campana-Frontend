@@ -44,7 +44,7 @@ const ForgotPassword = () => {
 
               <form onSubmit={handleSubmit} className="space-y-6 pt-10">
                 <div className="flex flex-col items-center">
-                  <label className="text-lacampana-gray1 transform -translate-x-28 font-open-sans text-lg mb-1">
+                  <label className="text-lacampana-gray1 transform -translate-x-28 md:pl-0 pl-24 font-open-sans text-lg mb-1">
                     Correo electrónico
                   </label>
                   <input
@@ -52,7 +52,7 @@ const ForgotPassword = () => {
                     placeholder="Correo electrónico *"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-[400px] p-3 text-lg border border-lacampana-gray3 rounded-lg font-open-sans focus:outline-none focus:border-black"
+                    className="md:w-[400px] w-[280px] p-3 text-lg border border-lacampana-gray3 bg-lacampana-white rounded-lg font-open-sans focus:outline-none focus:border-black"
                     required
                   />
                 </div>
@@ -60,7 +60,7 @@ const ForgotPassword = () => {
                 <div className="text-center">
                   <button
                     type="submit"
-                    className="btn btn-outline text-lacampana-red1 text-center border-lacampana-red1 text-lg rounded-tl-full rounded-bl-full rounded-tr-full w-[200px] font-montserrat"
+                    className="btn btn-outline text-lacampana-red1 bg-white text-center border-lacampana-red1 text-lg rounded-tl-full rounded-bl-full rounded-tr-full md:w-[200px]  font-montserrat"
                     disabled={isLoading}
                   >
                     {isLoading ? "Enviando..." : "Enviar"}
@@ -75,7 +75,7 @@ const ForgotPassword = () => {
               )}
 
               <div className="text-center mt-4">
-                <a href="/login" className="text-gray-600 font-open-sans text-sm">
+                <a href="/inicio" className="text-gray-600 font-open-sans text-sm">
                   Volver a iniciar sesión
                 </a>
               </div>
