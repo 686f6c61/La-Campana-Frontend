@@ -2,37 +2,44 @@ import React from "react";
 import Sidebar from "../components/Account/Sidebar.jsx";
 import IntroductoryText from "../sections/common/IntroductoryText.jsx";
 import Breadcrumbs from "../components/Account/Breadcrumbs.jsx";
-import { Outlet } from "react-router-dom";
+import DashboardWelcome from "../components/Account/DashboardWelcome.jsx";
+import TitleAndParagraph from "../components/Account/TitleAndParagraph.jsx"
+import { Outlet, useLocation } from "react-router-dom";
 
 const MyAccount = () => {
-  return (
-    <div className="font-sans ">
-      {/* Contenedor principal */}
-      <div className="p-8">
-        {/* Título */}
-        <IntroductoryText
-          title={
-            <>
-              Mi <span className="text-lacampana-red2">cuenta</span>
-            </>
-          }
-          bgTitle="Mi cuenta"
-          justify="center"
-          description=""
-        />
+  const location = useLocation();
 
+  return (
+    <div className="font-sans">
+      <div className="p-4 md:p-8">
         {/* Breadcrumbs arriba del contenido */}
         <Breadcrumbs />
 
+        {/* Mostrar DashboardWelcome solo en /micuenta */}
+        {location.pathname === "/micuenta" && (
+          <div className="block md:hidden mb-4 pt-4">
+            <DashboardWelcome />
+          </div>
+        )}
+
+        {/* Mostrar TitleAndParagraph solo en /micuenta/pedidos y /micuenta/pedidos/:pedidoId */}
+        {(location.pathname.startsWith("/micuenta/pedidos")) && (
+          <div className="block md:hidden mb-4">
+            <TitleAndParagraph title="Mis pedidos">
+              Revisa el estado de tus pedidos y los detalles de compras anteriores.
+            </TitleAndParagraph>
+          </div>
+        )}
+
         {/* Contenedor de Sidebar y Contenido */}
-        <div className="flex ">
-          {/* Sidebar */}
-          <div className="w-1/4 p-4 transform -translate-y-60">
+        <div className="flex flex-col md:flex-row">
+          {/* Sidebar - Siempre visible */}
+          <div className="w-full md:w-1/4 p-4">
             <Sidebar />
           </div>
 
-          {/* Contenido principal */}
-          <div className="flex-grow p-8 bg-white shadow-md rounded-lg">
+          {/* Outlet - Muestra Orders o cualquier otra vista */}
+          <div className="p-8 bg-white shadow-md rounded-lg flex-grow">
             <Outlet />
           </div>
         </div>

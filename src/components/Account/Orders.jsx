@@ -1,88 +1,39 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { orders } from "../../data/ordersInfo";
+import TitleAndParagraph from "../Account/TitleAndParagraph";
+import TableHeader from "../Account/TableHeader";
+import OrderRow from "../Account/OrderRow";
+import OrderCarousel from "../Account/OrderCarousel";
 
 const Orders = () => {
-  const navigate = useNavigate();
-
-  const orders = [
-    {
-      id: "LC25874569871365",
-      date: "Enero 15, 2025",
-      status: "Pendiente",
-      total: "$ 19.693",
-      color: "bg-yellow-200 text-black",
-    },
-    {
-      id: "LC25874569871365",
-      date: "Enero 15, 2025",
-      status: "Cancelado",
-      total: "$ 19.693",
-      color: "bg-red-200 text-black",
-    },
-    {
-      id: "LC25874569871365",
-      date: "Enero 15, 2025",
-      status: "Confirmado",
-      total: "$ 19.693",
-      color: "bg-blue-200 text-black",
-    },
-    {
-      id: "LC25874569871365",
-      date: "Enero 15, 2025",
-      status: "Completado",
-      total: "$ 19.693",
-      color: "bg-green-200 text-black",
-    },
-  ];
-
   return (
-    <div className="w-full mx-auto my-8 px-8 text-left">
-      <h2 className="text-2xl font-bold text-lacampana-gray1 mb-6 font-antonio">
-        Mis pedidos
-      </h2>
-      <p className="text-gray-600 text-lg mb-10">
+    <div>
+      {/* Mostrar solo en pantallas grandes */}
+      <TitleAndParagraph title="Mis pedidos" showOnSmall={false}>
         Revisa el estado de tus pedidos y los detalles de compras anteriores.
-      </p>
+      </TitleAndParagraph>
 
-      <table className="w-full text-left">
-        <thead>
-          <tr className="bg-lacampana-gray1 text-lacampana-white font-antonio">
-            <th className="text-xl p-4 text-center">Número de orden</th>
-            <th className="text-xl p-4 text-center">Fecha de compra</th>
-            <th className="text-xl p-4 text-center">Estado del pedido</th>
-            <th className="text-xl p-4 text-center">Total</th>
-            <th className="text-xl p-4 text-center">Detalles</th>
-          </tr>
-        </thead>
-        <tbody>
-          {orders.map((order, index) => (
-            <tr key={index} className="">
-              <td className="p-4 font-open-sans text-center text-xl ">
-                {order.id}
-              </td>
-              <td className="p-4 font-open-sans text-center ">{order.date}</td>
-              <td className="p-4 font-open-sans text-center">
-                <span
-                  className={`px-20 py-1 rounded-lg text-xl text-center ${order.color}`}
-                >
-                  {order.status}
-                </span>
-              </td>
-              <td className="p-4 font-antonio text-center text-xl">
-                {order.total}
-              </td>
-              <td className="p-4">
-                <button
-                  onClick={() => navigate(`/micuenta/pedidos/${order.id}`)}
-                  className="btn btn-outline pl-20 pr-20 text-lacampana-red1 text-center border-lacampana-red1 text-lg px-2 py-1 rounded-tl-full rounded-bl-full rounded-tr-full w-full max-w-xs mx-auto"
-                >
-                  Ver
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      {/* Tabla para pantallas medianas y grandes */}
+      <div className="hidden md:block overflow-x-auto">
+        <table className="w-full text-left border-collapse">
+          <TableHeader /> {/* 🔹 Encabezado en fila en pantallas grandes */}
+          <tbody>
+            {orders.map((order, index) => (
+              <OrderRow key={index} order={order} />
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {/* Contenedor para móviles: TableHeader a la izquierda y OrderCarousel a la derecha */}
+      <div className="md:hidden flex w-full p-4 gap-2">
+        <div className="w-1/3">
+          <TableHeader isMobile={true} />
+        </div>
+        <div className="w-2/3">
+          <OrderCarousel orders={orders} />
+        </div>
+      </div>
     </div>
   );
 };

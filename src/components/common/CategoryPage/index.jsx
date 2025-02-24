@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import FilterSearchBar from "../FilterSearchBar";
 import IntroductoryText from "../../../sections/common/IntroductoryText";
@@ -26,65 +26,84 @@ const FILTER_OPTIONS = {
 
 const CategoryPage = () => {
 	const { categoryId } = useParams();
-	const navigate = useNavigate();
-	const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const navigate = useNavigate();
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [selectedFilters, setSelectedFilters] = useState({
+    espesor: "",
+    longitud: "",
+    ancho: "",
+  });
+  const [searchQuery, setSearchQuery] = useState("");
+  const [visibleProducts, setVisibleProducts] = useState(8);
 
-	const [selectedFilters, setSelectedFilters] = useState({
-		espesor: "",
-		longitud: "",
-		ancho: "",
-	});
-	const [searchQuery, setSearchQuery] = useState("");
-	const [visibleProducts, setVisibleProducts] = useState(8);
-console.log(categoryId)
-	const { data, error, isLoading } = useGetProductsByTextQuery(categoryId);
+  const { data, error, isLoading, refetch } = useGetProductsByTextQuery(categoryId);
 
+  // All hooks must be called before any conditional returns
+  useEffect(() => {
+    setVisibleProducts(8);
+    refetch();
+    return () => {
+      setVisibleProducts(8);
+    };
+  }, [categoryId, refetch]);
 
-	useEffect(() => {
-		const handleResize = () => {
-			setIsMobile(window.innerWidth < 768);
-		};
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
 
-		window.addEventListener("resize", handleResize);
-		return () => window.removeEventListener("resize", handleResize);
-	}, []);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const products = useMemo(() => {
+    if (!data) return [];
+    
+    return data.map((product) => ({
+      id: product.ItemsGroupCode,
+      image: product.image || "images/prod4.jpg",
+      title: product.ItemName,
+      price: `${product.ItemCode}`,
+      discount: product.discount || "-",
+    }));
+  }, [data]);
+
+  const filteredProducts = useMemo(() => {
+    return products.filter((product) => {
+      const matchesSearch = product.title.toLowerCase().includes(searchQuery);
+      const matchesFilters = Object.keys(selectedFilters).every(
+        (filter) => !selectedFilters[filter] || product[filter] === selectedFilters[filter]
+      );
+      return matchesSearch && matchesFilters;
+    });
+  }, [products, searchQuery, selectedFilters]);
+
+  // Event handlers
+  const handleProductClick = (productId) => {
+    navigate(`/product/${productId}`);
+  };
+
+  const handleFilterChange = (filterType, value) => {
+    setSelectedFilters((prevFilters) => ({
+      ...prevFilters,
+      [filterType]: value,
+    }));
+  };
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value.toLowerCase());
+  };
+
+  const handleLoadMore = () => {
+    setVisibleProducts((prevVisible) => prevVisible + 5);
+  };
+
+  // Now we can have conditional returns
+  if (isLoading) return <p>Cargando...</p>;
+  if (error) return <p>Error al cargar los datos.</p>;
 
 	
 
-	const handleProductClick = (productId) => {
-		navigate(`/product/${productId}`);
-	};
-	const handleFilterChange = (filterType, value) => {
-		setSelectedFilters((prevFilters) => ({
-			...prevFilters,
-			[filterType]: value,
-		}));
-	};
-	const handleSearchChange = (e) => {
-		setSearchQuery(e.target.value.toLowerCase());
-	};
-	const handleLoadMore = () => {
-		setVisibleProducts((prevVisible) => prevVisible + 5);
-	};
-
-	if (isLoading) return <p>Cargando...</p>;
-	if (error) return <p>Error al cargar los datos.</p>;
-
-	let products= data.map((product) => ({
-		id: product.ItemsGroupCode,
-		image: product.image || "images/prod4.jpg",
-		title: product.ItemName,
-		price: `${product.ItemCode}`,
-		discount: product.discount || "-",
-	}))
-
-	const filteredProducts = products.filter((product) => {
-		//const matchesSearch = product.name.toLowerCase().includes(searchQuery);
-		const matchesFilters = Object.keys(selectedFilters).every(
-			(filter) => !selectedFilters[filter] || product[filter] === selectedFilters[filter]
-		);
-		return products && matchesFilters;
-	});
 	const renderFilterSection = (filterType, title) => (
 		<div>
 			<h3 className="font-antonio text-left text-lg mt-4">{title}</h3>
@@ -151,11 +170,11 @@ console.log(categoryId)
 				<main className=" pl-4">
 					{isMobile && <FilterSearchBar />}
 
-					<div className="columns-2 gap-1 lg:columns-4 sm:gap-1 justify-center">
+					<div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 ">
 						{filteredProducts.slice(0, visibleProducts).map((product) => (
 							<div
 								key={product.id}
-								className=" p-2 cursor-pointer"
+								className=" p-2 cursor-pointer "
 								onClick={() => handleProductClick(product.id)}
 							>
 								<Card product={product} />

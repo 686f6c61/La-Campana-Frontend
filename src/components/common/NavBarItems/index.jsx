@@ -6,7 +6,7 @@ const NavbarItems = ({ items, listClass }) => {
     <>
       {items.map((category) => (
         <li key={category.id}>
-          <Link to={`/${category.id}`} className={listClass}>
+          <Link to={`/${category.id}`} className="text-gray-700 text-sm  hover:text-gray-700">
             {category.name}
           </Link>
         </li>
