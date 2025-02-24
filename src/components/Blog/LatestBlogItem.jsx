@@ -1,7 +1,7 @@
 import { Link } from "react-router"
 import formatDate from "../../helpers/formatDate"
 
-const LatestBlogItem = ({ title, image, publicationDate, description, link }) => {
+const LatestBlogItem = ({ title, image, category, publicationDate, description, link }) => {
   const formatedDate = formatDate(publicationDate)
   const formatedDescription = description.length > 115 ? `${description.slice(0, 115)}...` : description
 
@@ -10,7 +10,7 @@ const LatestBlogItem = ({ title, image, publicationDate, description, link }) =>
       <img className="absolute object-cover w-full h-full -z-20" src={image} alt="blog-image" />
       <section className="flex flex-col gap-2 justify-end h-full p-4 tablet:p-8 text-white text-start">
         <h3 className="text-white">{title}</h3>
-        <span>Categoría | {formatedDate}</span>
+        <span>{category} | {formatedDate}</span>
         <p className="text-white h-24 overflow-hidden">{formatedDescription}</p>
         <Link to={link} className="btn w-fit">
           Conoce más
