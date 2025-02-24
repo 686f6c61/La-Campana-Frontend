@@ -2,11 +2,11 @@ import LatestBlogItem from "../components/Blog/LatestBlogItem";
 import CardsCarousel from "../components/common/CardsCarousel";
 import BlogsGallery from "../sections/Blog/BlogsGallery";
 import IntroductoryText from "../sections/common/IntroductoryText"
-import { useGetBlogCategoriesQuery, useGetBlogsQuery } from "../store/reducers/apiSlice"
+import { useGetBlogsQuery } from "../store/reducers/apiSlice"
 
 const Blog = () => {
-  const { data: blogs, error: errorBlogs, isLoading: isLoadingBlogs, } = useGetBlogsQuery()
-  const { data: categories, error: errorCategories, isLoading: isLoadingCategories } = useGetBlogCategoriesQuery()
+  const { data: blogs, error: errorBlogs, isLoading: isLoadingBlogs } = useGetBlogsQuery()
+  
   const latestBlogs = blogs?.slice(blogs.length - 3, blogs.length).sort((a, b) => {
     const fechaA = new Date(a.createdAt);
     const fechaB = new Date(b.createdAt);
@@ -18,8 +18,6 @@ const Blog = () => {
 
   if (isLoadingBlogs) return <p>Cargando...</p>;
   if (errorBlogs) return <p>Error al cargar los datos.</p>;
-  if (isLoadingCategories) return <p>Cargando...</p>;
-  if (errorCategories) return <p>Error al cargar los datos.</p>;
 
   return (
     <article className="max-w-screen-desktop w-full justify-self-center flex flex-col gap-16 py-16">
@@ -37,6 +35,7 @@ const Blog = () => {
                 {<LatestBlogItem
                   title={blog.name}
                   description={blog.body}
+                  category={blog.blogCategoryId.name}
                   image={blog.image}
                   publicationDate={blog.createdAt}
                   link={`/blog/${blog._id}`}
@@ -45,10 +44,7 @@ const Blog = () => {
           </CardsCarousel>
         </div>
       </IntroductoryText>
-      <BlogsGallery
-        categories={categories}
-        blogsData={blogs}
-      />
+      <BlogsGallery />
     </article>
   )
 }
