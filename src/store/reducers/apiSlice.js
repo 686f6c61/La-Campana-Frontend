@@ -59,11 +59,27 @@ export const apiSlice = createApi({
       query: (data) => ({
         url: "users/forgot-password",
         method: "POST",
-        body: data,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data), 
       }),
     }),
+    
+
+
+    resetPassword: builder.mutation({
+      query: (data) => ({
+        url: "users/reset-password", 
+        method: "POST",
+        body: data, 
+      }),
+    }),
+ 
+
+
+
   }),
 });
+
 
  
 
@@ -77,5 +93,8 @@ export const {
   useLoginUserMutation,
   useRegisterUserMutation,
   useGetProductsByTextQuery,
-  useForgotPasswordMutation,
+  useForgotPasswordMutation, 
+  useResetPasswordMutation,
+
+  
 } = apiSlice;

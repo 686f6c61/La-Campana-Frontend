@@ -38,6 +38,7 @@ import ScrollToTop from "./components/layouts/ScrollToTop";
 import OrderDetails from "./components/Account/OrderDetails";
 import UpdateAddress from "./components/Account/UpdateAddresses";
 import ForgotPassword from "./components/Account/ForgotPassword";
+import ResetPassword from "./components/Account/ResetPassword";
 
 
 function App() {
@@ -83,6 +84,8 @@ function App() {
         <Route path="/envio" element={<Shipping />} />
         <Route path="/politicadeprivacidad" element={<Politics />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
+
       
         <Route path="*" element={<h1>404 Not Found</h1>} />
       </Routes>

@@ -11,16 +11,25 @@ const ForgotPassword = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
+    console.log("📩 Enviando email al backend:", email); 
+  
+    if (!email) {
+      setMessage("Por favor, ingresa tu correo electrónico.");
+      return;
+    }
+  
     try {
       const response = await forgotPassword({ email }).unwrap();
-      setMessage(response.message);
-      alert("Correo enviado. Revisa tu bandeja de entrada.");
-      navigate("/login"); // Redirigir al login después de enviar el correo
+      console.log("✅ Respuesta del backend:", response);
+      setMessage("Correo enviado. Revisa tu bandeja de entrada.");
+      alert("Correo enviado correctamente.");
     } catch (err) {
+      console.error("❌ Error en forgotPassword:", err);
       setMessage(err?.data?.error || "Error al enviar el correo.");
     }
   };
+  
 
   return (
     <IntroductoryText
