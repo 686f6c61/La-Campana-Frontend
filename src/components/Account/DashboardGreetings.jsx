@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const DashboardWelcome = () => {
+const DashboardGreetings = () => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -37,4 +37,4 @@ const DashboardWelcome = () => {
   );
 };
 
-export default DashboardWelcome;
+export default DashboardGreetings;

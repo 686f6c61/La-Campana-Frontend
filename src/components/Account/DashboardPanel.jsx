@@ -5,7 +5,7 @@ import PaymentMethod from "./PaymentMethod";
 import AccountDetails from "./AccountDetails";
 import WishList from "./WishList";
 import DashboardItems from "./DashboardItems";
-import DashboardWelcome from "./DashBoardWelcome";
+import DashboardGreetings from "./DashboardGreetings";
 
 const items = [
   { id: "pedidos", link: "/micuenta/pedidos", imgSrc: "/images/cart.png", text: "Pedidos" },
@@ -52,7 +52,7 @@ const DashboardPanel = () => {
         <>
           {/* Ocultar DashboardWelcome en pantallas pequeñas */}
           <div className="hidden md:block">
-            <DashboardWelcome />
+            <DashboardGreetings />
           </div>
           <DashboardItems items={items} onItemClick={handleItemClick} />
         </>
