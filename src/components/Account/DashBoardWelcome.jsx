@@ -6,7 +6,7 @@ const DashboardWelcome = () => {
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
-      setUser(JSON.parse(storedUser)); // Recupera el usuario desde localStorage
+      setUser(JSON.parse(storedUser)); 
     }
   }, []);
 

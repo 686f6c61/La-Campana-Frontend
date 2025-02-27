@@ -1,13 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLoginUserMutation } from "../../store/reducers/apiSlice.js";
 import IntroductoryText from "../../sections/common/IntroductoryText.jsx";
+import PasswordToggleInput from "../Account/PasswordToggleInput.jsx";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const [loginUser, { isLoading, error }] = useLoginUserMutation();
+
+  // Redirigir a /micuenta si el usuario ya está logueado
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      navigate("/micuenta");
+    }
+  }, [navigate]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -49,9 +58,8 @@ const Login = () => {
               </p>
 
               <form onSubmit={handleLogin} className="space-y-6 pt-10">
-                {/* Ingrese usuario */}
-                <div className="flex flex-col items-center">
-                  <label className="text-lacampana-gray1 md:pl-0 pl-28 items-start transform -translate-x-32 font-open-sans text-lg mb-1">
+                <div className="flex flex-col items-center w-full max-w-[400px] mx-auto">
+                  <label className="text-lacampana-gray1 text-lg mb-1 font-open-sans text-left w-full">
                     Ingrese usuario
                   </label>
                   <input
@@ -59,35 +67,29 @@ const Login = () => {
                     placeholder="Correo electrónico *"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full max-w-[400px] p-3 text-lg bg-lacampana-white border border-lacampana-gray3 rounded-lg font-open-sans focus:outline-none focus:border-black"
+                    className="w-full p-3 text-lg bg-lacampana-white border border-lacampana-gray3 rounded-lg font-open-sans focus:outline-none focus:border-black"
                     required
                   />
                 </div>
 
-                <div className="flex flex-col items-center">
-                  <label className="text-lacampana-gray1 md:pl-0 pl-28 transform -translate-x-36 font-open-sans text-lg mb-1">
+                <div className="flex flex-col items-center w-full max-w-[400px] mx-auto">
+                  <label className="text-lacampana-gray1 text-lg mb-1 font-open-sans text-left w-full">
                     Contraseña
                   </label>
-                  <input
-                    type="password"
-                    placeholder="Contraseña *"
+                  <PasswordToggleInput
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full max-w-[400px] p-3 text-lg bg-lacampana-white border border-lacampana-gray3 rounded-lg font-open-sans focus:outline-none focus:border-black"
-                    required
+                    placeholder="Contraseña *"
                   />
                 </div>
 
-                <div className="text-left md:pl-14 pl-0 pt-2 md:transform -translate-y-14 ">
-                  <a
-                    href="/forgot-password"
-                    className="text-gray-600 font-open-sans text-sm"
-                  >
+                <div className="text-left w-full max-w-[400px] mx-auto pt-0">
+                  <a href="/forgot-password" className="text-gray-600 font-open-sans text-sm">
                     ¿Olvidaste la contraseña?
                   </a>
                 </div>
 
-                <div className="text-center transform -translate-y-14">
+                <div className="text-center">
                   <button
                     type="submit"
                     className="w-full max-w-[200px] py-3 text-lg text-lacampana-red1 text-center border border-lacampana-red1 rounded-tl-full rounded-bl-full bg-white rounded-tr-full font-montserrat"
