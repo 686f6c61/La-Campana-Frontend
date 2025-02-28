@@ -37,7 +37,7 @@ const footerInfo = {
       links: [
         {
           id: 1,
-          title: "Segimiento de pedidos",
+          title: "Seguimiento de pedidos",
           link: "/micuenta/pedidos",
         },
         {

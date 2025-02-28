@@ -9,10 +9,10 @@ const DocumentsItem = () => {
 
   const selectDocuments = ["Formularios", "Normas técnicas", "Todos"];
 
-  // Estado para manejar los documentos adicionales
+
   const [loadedDocs, setLoadedDocs] = useState([]);
 
-  // Función para cargar más documentos
+  
   const loadMoreDocuments = () => {
     setLoadedDocs((prevDocs) => [...prevDocs, ...additionalDocuments]);
   };
@@ -49,7 +49,7 @@ const DocumentsItem = () => {
           </div>
         </div>
 
-        {/* Lista de documentos iniciales */}
+       
         <div className="mt-10 space-y-4 relative z-10">
           <div className="p-4 bg-lacampana-white rounded-tl-lg rounded-bl-lg rounded-tr-lg flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
             <div className="w-full md:w-auto">
@@ -61,9 +61,10 @@ const DocumentsItem = () => {
                 pulvinar ut lorem pharetra.
               </p>
             </div>
-            <button className="bg-lacampana-gray1 text-lacampana-white py-2 px-8 font-montserrat rounded-tl-full rounded-bl-full rounded-tr-full w-full md:w-auto">
-              Descargar
-            </button>
+            <button className="inline-flex self-start bg-lacampana-gray1 text-lacampana-white py-2 px-4 sm:py-2 sm:px-8 font-montserrat rounded-tl-full rounded-bl-full rounded-tr-full">
+  Descargar
+</button>
+
           </div>
 
           {[
@@ -74,7 +75,7 @@ const DocumentsItem = () => {
           ].map((title, index) => (
             <div
               key={index}
-              className="p-4 bg-lacampana-white rounded-tl-lg rounded-bl-lg rounded-tr-lg flex flex-col md:flex-row justify-between items-start md:items-center gap-4"
+              className="p-4 bg-lacampana-white rounded-tl-lg rounded-bl-lg rounded-tr-lg flex flex-col md:flex-row justify-between items-start md:items-center items-start gap-4"
             >
               <div className="w-full md:w-auto">
                 <h3 className="text-lg font-bold font-open-sans text-left">
@@ -85,13 +86,13 @@ const DocumentsItem = () => {
                   pulvinar ut lorem pharetra.
                 </p>
               </div>
-              <button className="border border-lacampana-gray1 text-lacampana-gray1 py-2 px-8 font-montserrat rounded-tl-full rounded-bl-full rounded-tr-full w-full md:w-auto">
+              <button className="border border-lacampana-gray1 text-lacampana-gray1 inline-flex self-start  py-2 px-4 sm:py-2 sm:px-8 font-montserrat rounded-tl-full rounded-bl-full rounded-tr-full">
                 Descargar
               </button>
             </div>
           ))}
 
-          {/* Documentos adicionales desde el archivo data */}
+       
           {loadedDocs.map((doc, index) => (
             <div
               key={index + 5}
@@ -112,13 +113,14 @@ const DocumentsItem = () => {
           ))}
         </div>
 
-        {/* Botón de cargar más */}
+       
         <button
-          className="mt-8 bg-lacampana-red1 text-lacampana-white px-8 py-3 font-montserrat rounded-tl-full rounded-bl-full rounded-tr-full w-full md:w-auto relative z-10"
-          onClick={loadMoreDocuments}
-        >
-          Cargar más documentos
-        </button>
+  className="mt-8 bg-lacampana-red1 text-lacampana-white px-8 py-2 text-sm sm:text-base font-montserrat rounded-tl-full rounded-bl-full rounded-tr-full w-auto md:w-auto relative z-10"
+  onClick={loadMoreDocuments}
+>
+  Cargar más documentos
+</button>
+
       </div>
     </div>
   );

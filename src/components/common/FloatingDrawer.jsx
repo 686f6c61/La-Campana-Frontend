@@ -32,7 +32,7 @@ const FloatingDrawer = () => {
             <DrawerLink
               text="Solicitar crédito"
               icon={<FaRegCreditCard className="text-3xl" />}
-              link=""
+              link="https://clientes.covifactura.com/linksolicitudcupo/#/cupo-afiliado?codigo=1N8600569718"
             />
             <DrawerLink
               text="Ver el carrito"
