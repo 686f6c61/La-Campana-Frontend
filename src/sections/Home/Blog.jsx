@@ -5,8 +5,7 @@ import CardsCarousel from "../../components/common/CardsCarousel";
 
 
 const Blog = () => {
-  const { data, error, isLoading } = useGetBlogsQuery();
-  const blogs = data?.slice(0, 3)
+  const { data: blogs, error, isLoading } = useGetBlogsQuery("");
 
   if (isLoading) return <p>Cargando...</p>;
   if (error) return <p>Error al cargar los datos.</p>;
@@ -24,13 +23,14 @@ const Blog = () => {
         </section>
         {/* BLOGS DESKTOP */}
         <section className="hidden tablet:grid grid-cols-3">
-          {blogs.map(blog =>
+          {blogs?.slice(0, 3).map(blog =>
             <article className="p-2 h-[500px]">
               <BlogCard
                 key={`blog-home-${blog._id}`}
                 id={blog._id}
                 title={blog.name}
                 description={blog.body}
+                category={blog.blogCategoryId.name}
                 image={blog.image}
                 publicationDate={blog.createdAt}
               />
@@ -39,13 +39,14 @@ const Blog = () => {
         {/* BLOGS MOVILE */}
         <section className="tablet:hidden h-[500px]">
           <CardsCarousel id="blog-card-home-movile" cardsList={blogs}>
-            {blogs.map((blog, index) =>
+            {blogs?.slice(0, 3).map((blog, index) =>
               <article id={`blog-card-home-movile-${index}`} className="carousel-item w-4/5 p-2">
                 <BlogCard
                   key={`blog-home-${blog._id}`}
                   id={blog._id}
                   title={blog.name}
                   description={blog.body}
+                  category={blog.blogCategoryId.name}
                   image={blog.image}
                   publicationDate={blog.createdAt}
                 />
