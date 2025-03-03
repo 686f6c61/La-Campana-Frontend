@@ -5,7 +5,7 @@ import IntroductoryText from "../sections/common/IntroductoryText"
 import { useGetBlogsQuery } from "../store/reducers/apiSlice"
 
 const Blog = () => {
-  const { data: blogs, error: errorBlogs, isLoading: isLoadingBlogs } = useGetBlogsQuery()
+  const { data: blogs, error: errorBlogs, isLoading: isLoadingBlogs } = useGetBlogsQuery("")
   
   const latestBlogs = blogs?.slice(blogs.length - 3, blogs.length).sort((a, b) => {
     const fechaA = new Date(a.createdAt);

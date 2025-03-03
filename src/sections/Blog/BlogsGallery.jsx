@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
 import BlogCard from "../../components/common/BlogCard"
 import SearchBar from "../../components/common/SearchBar"
-import { useGetBlogCategoriesQuery, useGetBlogsByCategoryIdQuery } from "../../store/reducers/apiSlice"
+import { useGetBlogCategoriesQuery, useGetBlogsQuery } from "../../store/reducers/apiSlice"
+import { useLocation } from "react-router"
 
 const MAX_NUM_RENDERS = 9
 
@@ -9,23 +10,44 @@ const BlogsGallery = () => {
   const [query, setQuery] = useState([]) // Query que se enviará al back para traer los blogs filtrados por categoría
   const [numRenders, setNumRenders] = useState(1) // Número de veces que se a clickeado el boton "Cargar más"
   const [blogsGallery, setBlogsGallery] = useState() // Los datos de los Blogs de la galería 
+  const { state: blogDetailsSearch } = useLocation()
 
   const { data: categories, error: errorCategories, isLoading: isLoadingCategories } = useGetBlogCategoriesQuery()
-  // Datos blogs filtrados por categoría (DEFAULT: TODOS)
-  const {
-    data: blogs,
-    error: errorBlogs,
-    isLoading: isLoadingBlogs
-  } = useGetBlogsByCategoryIdQuery(`${query.length ? "?" : ""}${query.join("&")}`)
+  const { data: blogs, error: errorBlogs, isLoading: isLoadingBlogs } = useGetBlogsQuery(`${query.length ? "?" : ""}${query.join("&")}`)
 
   useEffect(() => {
     if (blogs) {
       setBlogsGallery(blogs.slice(0, MAX_NUM_RENDERS * numRenders))
     }
-    console.log(blogs)
   }, [numRenders, blogs])
+  useEffect(() => {
+    if (blogDetailsSearch) {
+      const searchTerm = blogDetailsSearch
+      handleSearchBar(searchTerm)
 
-  const increaseNumRenders = () => setNumRenders(numRenders + 1)
+      setTimeout(() => {
+        window.scrollTo({
+          top: 950,
+          behavior: "smooth"
+        })
+      }, 300)
+    }
+  }, [])
+
+  const handleLoadMore = () => setNumRenders(numRenders + 1)
+  const handleRadioFilter = (event, categoryId) => {
+    if (event.target.checked) {
+      setQuery([...query, `categoryId=${categoryId}`])
+    } else {
+      setQuery(query.filter(value => !value.includes(categoryId)))
+    }
+  }
+  const handleSearchBar = (searchTerm) => {
+    const keywordParam = query.find(queryParam => queryParam.includes("keyword"))
+    const newQuery = query.filter(queryParam => queryParam !== keywordParam)
+
+    setQuery([...newQuery, `keyword=${searchTerm}`])
+  }
 
   if (isLoadingBlogs) return <p>Cargando...</p>;
   if (errorBlogs) return <p>Error al cargar los datos.</p>;
@@ -41,21 +63,25 @@ const BlogsGallery = () => {
               key={`blogs-category-filter-${category._id}`}
               id={category._id}
               name={category.name}
-              onClick={(event) => {
-                if (event.target.checked) {
-                  setQuery([...query, `categoryId=${category._id}`])
-                } else {
-                  setQuery(query.filter(value => !value.includes(category._id)))
-                }
-              }}
+              onClick={() => handleRadioFilter(event, category._id)}
             />
           )}
         </div>
         <div className="drop-shadow-lg flex justify-center">
-          <SearchBar placeholder="Buscar noticia..." />
+          <SearchBar
+            onSubmit={handleSearchBar}
+            defaultValue={blogDetailsSearch}
+            placeholder="Buscar noticia..."
+          />
         </div>
       </header>
       <main>
+        {!blogsGallery?.length &&
+          <div className="py-32">
+            <h2>
+              No se encontraron resultados para la búsqueda...
+            </h2>
+          </div>}
         <div className="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 gap-4">
           {blogsGallery?.map(blog =>
             <article key={`blog-card-${blog._id}`} className="h-[500px]">
@@ -74,7 +100,7 @@ const BlogsGallery = () => {
       <footer>
         <button
           disabled={MAX_NUM_RENDERS * numRenders >= blogs?.length}
-          onClick={increaseNumRenders}
+          onClick={handleLoadMore}
           className="lacampana-btn bg-lacampana-red2 px-8 py-2 text-white disabled:bg-lacampana-gray2"
         >
           Cargar más
