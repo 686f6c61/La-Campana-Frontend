@@ -11,7 +11,7 @@ const Sidebar = ({ onNavigate }) => {
           { name: "Panel", path: "/micuenta" },
           { name: "Pedidos", path: "/micuenta/pedidos" },
           { name: "Direcciones", path: "/micuenta/direcciones" },
-          { name: "Métodos de pago", path: "/micuenta/metodos" },
+          // { name: "Métodos de pago", path: "/micuenta/metodos" },
           { name: "Detalles de la cuenta", path: "/micuenta/detalles" },
           { name: "Lista de deseos", path: "/micuenta/deseos" },
         ].map((item) => {
@@ -39,11 +39,11 @@ const Sidebar = ({ onNavigate }) => {
           );
         })}
 
-        {/* Cerrar sesión */}
+        {/* Cerrar sesión Remove User removeItem*/}
         <li className="border-b border-gray-300">
           <button
             onClick={() => {
-              localStorage.removeItem("token");
+              localStorage.removeItem("user");
               alert("Sesión cerrada exitosamente.");
               window.location.href = "/";
             }}

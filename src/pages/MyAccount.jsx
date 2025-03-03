@@ -2,7 +2,7 @@ import React from "react";
 import Sidebar from "../components/Account/Sidebar.jsx";
 import IntroductoryText from "../sections/common/IntroductoryText.jsx";
 import Breadcrumbs from "../components/Account/Breadcrumbs.jsx";
-import DashboardWelcome from "../components/Account/DashboardWelcome.jsx";
+import DashboardGreetings from "../components/Account/DashboardGreetings.jsx";
 import TitleAndParagraph from "../components/Account/TitleAndParagraph.jsx"
 import { Outlet, useLocation } from "react-router-dom";
 
@@ -15,10 +15,10 @@ const MyAccount = () => {
         {/* Breadcrumbs arriba del contenido */}
         <Breadcrumbs />
 
-        {/* Mostrar DashboardWelcome solo en /micuenta */}
+        {/* Mostrar DashboardGreetings solo en /micuenta */}
         {location.pathname === "/micuenta" && (
           <div className="block md:hidden mb-4 pt-4">
-            <DashboardWelcome />
+            <DashboardGreetings />
           </div>
         )}
 

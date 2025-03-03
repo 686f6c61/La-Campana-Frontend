@@ -41,9 +41,14 @@ const BottomBar = () => {
               )}
             </ModalScreen>
           </div>
-          <button className="lacampana-btn text-nowrap h-fit px-8 py-2 text-white font-semibold bg-lacampana-gray1">
-            Solicitar un crédito
-          </button>
+          <button 
+      className="lacampana-btn text-nowrap h-fit px-8 py-2 text-white font-semibold bg-lacampana-gray1"
+      onClick={() => window.open("https://clientes.covifactura.com/linksolicitudcupo/#/cupo-afiliado?codigo=1N8600569718", "_blank")}
+>
+  Solicitar un crédito
+</button>
+
+
         </div>
       </article>
     </footer>

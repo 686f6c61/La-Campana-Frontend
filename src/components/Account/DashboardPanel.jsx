@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import Orders from "./Orders";
 import Addresses from "./Addresses";
-import PaymentMethod from "./PaymentMethod";
+// import PaymentMethod from "./PaymentMethod";
 import AccountDetails from "./AccountDetails";
 import WishList from "./WishList";
 import DashboardItems from "./DashboardItems";
-import DashboardWelcome from "./DashBoardWelcome";
+import DashboardGreetings from "./DashboardGreetings";
 
 const items = [
   { id: "pedidos", link: "/micuenta/pedidos", imgSrc: "/images/cart.png", text: "Pedidos" },
   { id: "direcciones", link: "/micuenta/direcciones", imgSrc: "/images/mapIcon.png", text: "Direcciones" },
-  { id: "metodos", link: "/micuenta/metodos", imgSrc: "/images/credit.png", text: "Métodos de pago" },
+  // { id: "metodos", link: "/micuenta/metodos", imgSrc: "/images/credit.png", text: "Métodos de pago" },
   { id: "detalles", link: "/micuenta/detalles", imgSrc: "/images/user.png", text: "Detalles de la cuenta" },
   { id: "deseos", link: "/micuenta/deseos", imgSrc: "/images/like.png", text: "Lista de deseos" },
   { id: "cerrar", imgSrc: "/images/exit.png", text: "Cerrar sesión" },
@@ -35,8 +35,8 @@ const DashboardPanel = () => {
         return <Orders />;
       case "direcciones":
         return <Addresses />;
-      case "metodos":
-        return <PaymentMethod />;
+      // case "metodos":
+      //   return <PaymentMethod />;
       case "detalles":
         return <AccountDetails />;
       case "deseos":
@@ -50,9 +50,9 @@ const DashboardPanel = () => {
     <div className="my-8 px-8 text-left">
       {activeComponent === "" && (
         <>
-          {/* Ocultar DashboardWelcome en pantallas pequeñas */}
+          
           <div className="hidden md:block">
-            <DashboardWelcome />
+            <DashboardGreetings />
           </div>
           <DashboardItems items={items} onItemClick={handleItemClick} />
         </>

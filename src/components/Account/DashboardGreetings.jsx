@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 
-const DashboardWelcome = () => {
+const DashboardGreetings = () => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
-      setUser(JSON.parse(storedUser)); // Recupera el usuario desde localStorage
+      setUser(JSON.parse(storedUser)); 
     }
   }, []);
 
@@ -37,4 +37,4 @@ const DashboardWelcome = () => {
   );
 };
 
-export default DashboardWelcome;
+export default DashboardGreetings;
