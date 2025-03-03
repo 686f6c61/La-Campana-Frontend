@@ -70,7 +70,7 @@ const BlogsGallery = () => {
         <div className="drop-shadow-lg flex justify-center">
           <SearchBar
             onSubmit={handleSearchBar}
-            defaultValue={location.state}
+            defaultValue={blogDetailsSearch}
             placeholder="Buscar noticia..."
           />
         </div>
