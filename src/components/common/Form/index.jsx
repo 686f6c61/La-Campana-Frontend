@@ -24,10 +24,11 @@ const ContactForm = ({ padding = "p-8", margin = "my-4" }) => {
 
     emailjs
       .sendForm(
-        "service_ql4l8jp",
-        "template_r2axg8f",
+        import.meta.env.VITE_SERVICE_ID,   
+        import.meta.env.VITE_TEMPLATE_ID,  
         form.current,
-        "A9qRr6XGiI8PZy8rS"
+        import.meta.env.VITE_PUBLIC_KEY
+
       )
       .then(
         () => {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import CardsCarousel from "../../components/common/CardsCarousel";
-import MultiSelect from "../../components/common/MultiSelect";
+import RadioSelect from "../../components/common/RadioSelect";
 import sucursales from "../../data/sucursales"; 
 
 
@@ -27,7 +27,7 @@ const PrecenseNation = () => {
           </p>
 
        
-          <MultiSelect
+          <RadioSelect
             options={["Bogotá", "Soacha", "Villavicencio", "Mosquera", "Neiva"]}
             selectedOption={selectedCity}
             onSelectionChange={setSelectedCity}
