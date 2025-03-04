@@ -1,115 +1,87 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 
 const ContactForm = ({ padding = "p-8", margin = "my-4" }) => {
+  const form = useRef();
   const [formData, setFormData] = useState({
-    nombre: "",
-    ciudad: "",
-    correo: "",
-    telefono: "",
-    mensaje: "",
-    aceptoPolitica: false,
+    user_name: "",
+    user_city: "",
+    user_email: "",
+    user_phone: "",
+    message: "",
   });
 
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
+    const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: type === "radio" ? value === "yes" : value,
+      [name]: value,
     });
   };
 
-  const handleSubmit = (e) => {
+  const sendEmail = (e) => {
     e.preventDefault();
-    console.log("Datos del formulario:", formData);
+
+    emailjs
+      .sendForm(
+        "service_ql4l8jp",
+        "template_r2axg8f",
+        form.current,
+        "A9qRr6XGiI8PZy8rS"
+      )
+      .then(
+        () => {
+          alert("Mensaje enviado correctamente");
+        },
+        (error) => {
+          console.error("Error al enviar:", error);
+        }
+      );
   };
 
   return (
-    <div
-      className={`md:w-[800px] mx-auto bg-white rounded-lg  drop-shadow-2xl ${padding} ${margin}`}
-    >
-      <form onSubmit={handleSubmit}>
+    <div className={`md:w-[800px] mx-auto bg-white rounded-lg drop-shadow-2xl ${padding} ${margin}`}>
+      <form ref={form} onSubmit={sendEmail}>
         <div className="space-y-4">
           <input
             type="text"
-            name="nombre"
+            name="user_name"
             placeholder="Nombre completo"
-            value={formData.nombre}
-            onChange={handleChange}
-            className="w-full border border-lacampana-gray3 rounded-md p-3 focus:ring-2 focus:ring-red-500 focus:outline-none font-open-sans text-lacampana-gray3"
             required
+            className="w-full border border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-red-500 focus:outline-none"
           />
           <input
             type="text"
-            name="ciudad"
+            name="user_city"
             placeholder="Ciudad"
-            value={formData.ciudad}
-            onChange={handleChange}
-            className="w-full border border-lacampana-gray3 rounded-md p-3 focus:ring-2 focus:ring-red-500 focus:outline-none font-open-sans text-lacampana-gray3"
             required
+            className="w-full border border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-red-500 focus:outline-none"
           />
           <input
             type="email"
-            name="correo"
+            name="user_email"
             placeholder="Correo electrónico"
-            value={formData.correo}
-            onChange={handleChange}
-            className="w-full border border-lacampana-gray3 rounded-md p-3 focus:ring-2 focus:ring-red-500 focus:outline-none font-open-sans text-lacampana-gray3"
             required
+            className="w-full border border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-red-500 focus:outline-none"
           />
           <input
             type="tel"
-            name="telefono"
+            name="user_phone"
             placeholder="Teléfono de contacto"
-            value={formData.telefono}
-            onChange={handleChange}
-            className="w-full border border-lacampana-gray3 rounded-md p-3 focus:ring-2 focus:ring-red-500 focus:outline-none font-open-sans text-lacampana-gray3"
             required
+            className="w-full border border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-red-500 focus:outline-none"
           />
           <textarea
-            name="mensaje"
+            name="message"
             placeholder="Mensaje breve"
-            value={formData.mensaje}
-            onChange={handleChange}
             rows="4"
-            className="w-full border border-lacampana-gray3 rounded-md p-3 focus:ring-2 focus:ring-red-500 focus:outline-none font-open-sans text-lacampana-gray3"
             required
+            className="w-full border border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-red-500 focus:outline-none"
           ></textarea>
-
-          <div className="flex items-center space-x-4">
-            <div className="flex items-center">
-              <input
-                id="aceptoPolitica-yes"
-                type="radio"
-                name="aceptoPolitica"
-                value="yes"
-                checked={formData.aceptoPolitica === true}
-                onChange={handleChange}
-                className="w-4 h-4"
-                style={{
-                  appearance: "none",
-                  width: "15px",
-                  height: "15px",
-                  borderRadius: "50%",
-                  backgroundColor: formData.aceptoPolitica ? "red" : "#d1d3d1",
-                  border: "2px solid white",
-                  cursor: "pointer",
-                  boxShadow: formData.aceptoPolitica
-                    ? "0 0 0 2px rgba(255, 0, 0, 0.5)"
-                    : "0 0 0 2px rgba(209, 211, 209, 0.5)",
-                }}
-              />
-              <label
-                htmlFor="aceptoPolitica-yes"
-                className="ml-2 text-xs text-lacampana-gray3 font-open-sans"
-              >
-                He leído y acepto la política de tratamiento de datos personales
-              </label>
-            </div>
-          </div>
 
           <button
             type="submit"
-            className="bg-lacampana-red2 md:-translate-x-16 font-montserrat text-white md:w-[270px] w-[300px] h-[44px] rounded-md rounded-tl-full rounded-bl-full rounded-tr-full text-lg"
+            className="bg-red-500 text-white w-full py-2 rounded-md text-lg"
           >
             Enviar
           </button>
