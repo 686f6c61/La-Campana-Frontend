@@ -3,10 +3,11 @@ import IntroductoryText from "../../sections/common/IntroductoryText";
 
 const SteelLeaders = () => {
   return (
+    <article className="max-w-screen-desktop w-full justify-self-center">
     <IntroductoryText
       title={
         <>
-          <div className="md:ml-20 md:pl-60 pt-4">
+          <div className="">
             Líderes en <span className="text-lacampana-red2 ">acero</span>
             <p className="md:text-base text-sm text-gray-600 mt-4 md:w-[480px] w-[380px] pl-0 md:pl-0">
               La Campana Servicios de Acero S.A. contribuye al crecimiento del
@@ -27,26 +28,27 @@ const SteelLeaders = () => {
         </>
       }
       bgTitle="Actualidad en aceros"
-      bgTitleMargin="md:ml-80 pt-6"
+      bgTitleMargin=""
       bgTitlePadding="md:pl-10"
     >
-      <div className="relative z-0 flex-1 flex pt-0 md:pt-20">
-        <div className="relative flex items-center justify-center w-[780px] sm:w-[500px] h-[290px] bg-opacity-75 md:mr-40 md:pl-0 pl-0 transform md:-translate-x-60 md:-translate-y-0 -translate-y-20">
-          <img
-            src="/images/play.png"
-            alt="Icono representativo"
-            className="absolute z-20 w-[60px] h-[60px] sm:w-[80px] sm:h-[80px] cursor-pointer "
-          />
-          {/* Imagen reemplazo temporal de video */}
-          <img
-            src="/images/video.jpeg"
-            alt="Video Representativo"
-            className="rounded-tl-lg w-full h-full object-cover "
-            style={{ opacity: 0.9 }}
-          />
-        </div>
-      </div>
-    </IntroductoryText>
+      <div className="relative z-0 flex-1 flex items-end justify-end md:mr-0">
+  <div className="relative flex items-center justify-center w-[780px] sm:w-[500px] h-[290px] bg-opacity-75">
+    <img
+      src="/images/play.png"
+      alt="Icono representativo"
+      className="absolute z-20 w-[60px] h-[60px] sm:w-[80px] sm:h-[80px] cursor-pointer"
+    />
+    {/* Imagen reemplazo temporal de video */}
+    <img
+      src="/images/video.jpeg"
+      alt="Video Representativo"
+      className="rounded-tl-lg w-full h-full object-cover"
+      style={{ opacity: 0.9 }}
+    />
+  </div>
+</div>
+
+    </IntroductoryText></article>
   );
 };
 
