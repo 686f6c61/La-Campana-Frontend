@@ -26,14 +26,14 @@ const Header = () => {
             <ul className="flex gap-4 items-center">
               <HeaderItem
                 link="/inicio"
-                icon={<HiOutlineUser className="text-white text-2xl" />}
+                icon={<HiOutlineUser className="text-white text-2xl hover:scale-90 transition duration-300 ease-in-out" />}
               />
               <HeaderItem
-                icon={<HiOutlineHeart className="text-white text-2xl" />}
+                icon={<HiOutlineHeart className="text-white text-2xl hover:scale-90 transition duration-300 ease-in-out" />}
               />
               <HeaderItem
                 link="/carrito"
-                icon={<HiOutlineShoppingCart className="text-white text-2xl" />}
+                icon={<HiOutlineShoppingCart className="text-white text-2xl hover:scale-90 transition duration-300 ease-in-out" />}
               />
             </ul>
             <MenuSidebar categories={categories} />
