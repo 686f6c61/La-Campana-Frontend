@@ -6,7 +6,7 @@ const FooterItem = ({ title, links }) => {
       <h5 className="text-lacampana-red2">{title}</h5>
       <ul className="flex flex-col gap-2">
         {links.map(linkItem =>
-          <li>
+          <li className="hover:text-lacampana-red1 hover:scale-105">
             <Link to={linkItem.link}>
               <p>{linkItem.title}</p>
             </Link>

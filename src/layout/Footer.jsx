@@ -40,7 +40,7 @@ const Footer = () => {
               Suscribirme
             </button>
             <div className="flex gap-2">
-              <input type="checkbox" defaultChecked className="w-4 h-4 rounded-none checked:bg-lacampana-red2" />
+              <input type="checkbox" className="w-4 h-4 rounded-none checked:bg-lacampana-red2" />
               <Link className="text-p3-desktop text-lacampana-gray1 hover:text-lacampana-red1">
                 He leído y acepto la política de privacidad
               </Link>
