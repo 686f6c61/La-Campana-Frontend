@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import SearchBar from "../common/SearchBar.jsx";
-import MultiSelect from "../common/Multiselect";
+import RadioSelect from "../common/RadioSelect/index.jsx";
 import additionalDocuments from "../../../src/data/documentsData.jsx";
 import IntroductoryText from "../../sections/common/IntroductoryText.jsx";
 
@@ -37,7 +37,7 @@ const DocumentsItem = () => {
 
         <div className="mt-6 flex flex-col md:flex-row justify-between  w-full relative z-10 space-y-4 md:space-y-0">
           <div className="w-full md:w-auto flex justify-center md:justify-start">
-            <MultiSelect
+            <RadioSelect
               options={selectDocuments}
               selectedOption={selectedOption}
               onSelectionChange={setSelectedOption}

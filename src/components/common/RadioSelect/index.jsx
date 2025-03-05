@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const MultiSelect = ({ options, selectedOption, onSelectionChange }) => {
+const RadioSelect = ({ options, selectedOption, onSelectionChange }) => {
   return (
     <div className="flex flex-wrap gap-x-2 md:gap-x-3 pt-4">
       {options.map((option) => (
@@ -40,4 +40,4 @@ const MultiSelect = ({ options, selectedOption, onSelectionChange }) => {
   );
 };
 
-export default MultiSelect;
+export default RadioSelect;

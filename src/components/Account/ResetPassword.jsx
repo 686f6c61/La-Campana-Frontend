@@ -6,19 +6,43 @@ import IntroductoryText from "../../sections/common/IntroductoryText.jsx";
 const ResetPassword = () => {
   const [searchParams] = useSearchParams();
   const token = searchParams.get("token"); // Obtener el token de la URL
+  console.log("token", token);
 
   const [newPassword, setNewPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [load, setLoad] = useState(false);
 
   const [resetPassword, { isLoading, error }] = useResetPasswordMutation();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoad(true);
     try {
-      const response = await resetPassword({ token, newPassword }).unwrap();
-      setMessage(response.message);
+      // const response = await resetPassword({ token, newPassword }).unwrap();
+      const response = await fetch(
+        `http://localhost:3000/api/users/reset-password`,
+        {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({ newpassword: newPassword, token: token }),
+        }
+      );
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error);
+      }
+      console.log("result dessde fetch", result);
+
+      setMessage(result.message);
+      setLoad(false);
     } catch (err) {
-      setMessage("Error al actualizar la contraseña");
+      console.log("error desde catch", err);
+
+      setMessage(err.message);
+      setLoad(false);
     }
   };
 
@@ -29,13 +53,15 @@ const ResetPassword = () => {
           <div className="text-center pb-20">
             <div className="relative">
               <h2 className="relative text-4xl font-anton text-lacampana-gray1">
-                Restablecer <span className="text-lacampana-red2">Contraseña</span>
+                Restablecer{" "}
+                <span className="text-lacampana-red2">Contraseña</span>
               </h2>
             </div>
 
             <div className="w-full max-w-xl mx-auto mt-12 bg-lacampana-white p-8 rounded-lg shadow-lg">
               <h2 className="text-2xl font-bold text-lacampana-gray1 font-antonio mb-2">
-                Ingresa tu <span className="text-lacampana-red2">nueva contraseña</span>
+                Ingresa tu{" "}
+                <span className="text-lacampana-red2">nueva contraseña</span>
               </h2>
 
               <form onSubmit={handleSubmit} className="space-y-6 pt-10">
@@ -59,19 +85,21 @@ const ResetPassword = () => {
                   <button
                     type="submit"
                     className="w-full max-w-[200px] py-3 text-lg text-lacampana-red1 text-center border border-lacampana-red1 rounded-tl-full rounded-bl-full bg-white rounded-tr-full font-montserrat"
-                    disabled={isLoading}
+                    disabled={load}
                   >
-                    {isLoading ? "Actualizando..." : "Restablecer"}
+                    {load ? "Actualizando..." : "Restablecer"}
                   </button>
                 </div>
               </form>
 
-              {message && <p className="text-green-500 text-center mt-2">{message}</p>}
-              {error && (
+              {message && (
+                <p className="text-green-500 text-center mt-2">{message}</p>
+              )}
+              {/* {error && (
                 <p className="text-red-500 text-center mt-2">
                   Error: {error.data?.error}
                 </p>
-              )}
+              )} */}
             </div>
           </div>
         </>
