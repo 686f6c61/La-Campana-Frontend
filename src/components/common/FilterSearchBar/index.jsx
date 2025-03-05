@@ -7,7 +7,7 @@ const BreadCrumbs = () => {
 			<ol class="list-reset py-4 pl-4 rounded flex bg-grey-light text-lacampana-gray2">
 				<li class="px-2"><a href="/" class="no-underline text-open-sans text-sm">Inicio</a></li>
 				<li>/</li>
-				<li class="px-2"><a href="/product" class="no-underline text-open-sans text-sm">Tienda</a></li>
+				<li class="px-2"><a href="/tienda" class="no-underline text-open-sans text-sm">Tienda</a></li>
 				<li>/</li>
 				<li class="px-2 text-open-sans">Láminas</li>
 			</ol>

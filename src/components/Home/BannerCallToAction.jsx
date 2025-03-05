@@ -15,7 +15,7 @@ const BannerCallToAction = () => {
       </div>
       <ActionButton 
         text="Comprar ahora"
-        link="/products"
+        link="/tienda"
       />
       <div className="w-full flex justify-end items-center gap-2 py-2 min-h-12">
         <BannerDot id="item1" />

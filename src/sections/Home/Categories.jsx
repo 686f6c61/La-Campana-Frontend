@@ -17,7 +17,7 @@ const Categories = () => {
           />
         )}
       </ul>
-      <Link to="/products" className="lacampana-btn px-8 py-2 bg-lacampana-red2 font-semibold text-white">
+      <Link to="/tienda" className="lacampana-btn px-8 py-2 bg-lacampana-red2 font-semibold text-white">
         Ver más categorías
       </Link>
     </div>

@@ -39,6 +39,7 @@ import OrderDetails from "./components/Account/OrderDetails";
 import UpdateAddress from "./components/Account/UpdateAddresses";
 import ForgotPassword from "./components/Account/ForgotPassword";
 import ResetPassword from "./components/Account/ResetPassword";
+import Store from "./pages/Store";
 
 
 function App() {
@@ -55,8 +56,9 @@ function App() {
         <Route path="/nosotros" element={<NosotrosInfo />} />
         <Route path="/documentos" element={<DocumentsItem />} />
         <Route path="/contacto" element={<Contact />} />
-        <Route path="/:categoryId" element={<CategoryPage />} />
-        <Route path="/product/:productId" element={<ProductDetailPage />} />
+        <Route path="/tienda" element={<Store />} />
+        <Route path="/tienda/:categoryId" element={<CategoryPage />} />
+        <Route path="/tienda/:productId" element={<ProductDetailPage />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:blogId" element={<BlogDetails />} />
         <Route path="/servicios" element={<Services />} />

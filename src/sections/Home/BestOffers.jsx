@@ -48,7 +48,7 @@ const BestOffers = () => {
         </ul>
         <ActionButton
           text="Explorar todas las ofertas"
-          link="/productos"
+          link="/tienda"
         />
       </section>
     </section>

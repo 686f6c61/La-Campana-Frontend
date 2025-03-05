@@ -2,7 +2,7 @@ import { Link } from "react-router"
 
 const ProductCard = ({ id, name, image, price, discount }) => {
   return (
-    <Link to={`/product/${id}`} className="text-start bg-lacampana-white p-4 flex flex-col gap-4 h-full rounded-br-2xl">
+    <Link to={`/tienda/${id}`} className="text-start bg-lacampana-white p-4 flex flex-col gap-4 h-full rounded-br-2xl">
       <section className="h-1/2">
         <img className="w-full h-full object-cover" src={image} alt="product-image" />
       </section>
