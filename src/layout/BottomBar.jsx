@@ -12,9 +12,10 @@ const BottomBar = () => {
         <div className="flex flex-wrap gap-2 tablet:gap-4 w-fit">
           <ModalScreen
             id="locations-home"
-            button={<button className="lacampana-btn text-nowrap h-fit px-8 py-2 text-lacampana-red2 bg-white font-semibold" onClick={() => document.getElementById("locations-home").showModal()}>
-              Sedes
-            </button>}
+            button={
+              <button className="lacampana-btn text-nowrap h-fit px-8 py-2 border border-white/0 hover:border-white text-lacampana-red2 bg-white font-semibold hover:scale-90 hover:bg-lacampana-red2 hover:text-white transition duration-300 ease-in-out" onClick={() => document.getElementById("locations-home").showModal()}>
+                Sedes
+              </button>}
           >
             {locations.map(location =>
               <LocationCard
@@ -28,9 +29,10 @@ const BottomBar = () => {
           <div className="order-last desktop:order-none w-full tablet:w-fit">
             <ModalScreen
               id="talk-with-advisor-home"
-              button={<button className="lacampana-btn w-full tablet:w-fit tablet:order-none text-nowrap h-fit px-8 py-2 text-white border border-white font-semibold" onClick={() => document.getElementById("talk-with-advisor-home").showModal()}>
-                Hablar con un asesor
-              </button>}
+              button={
+                <button className="lacampana-btn w-full hover:text-lacampana-red2 hover:bg-white hover:scale-90 transition duration-300 ease-in-out tablet:w-fit tablet:order-none text-nowrap h-fit px-8 py-2 text-white border border-white font-semibold" onClick={() => document.getElementById("talk-with-advisor-home").showModal()}>
+                  Hablar con un asesor
+                </button>}
             >
               {advisors.map(advisor =>
                 <AdvisorCard
@@ -41,14 +43,12 @@ const BottomBar = () => {
               )}
             </ModalScreen>
           </div>
-          <button 
-      className="lacampana-btn text-nowrap h-fit px-8 py-2 text-white font-semibold bg-lacampana-gray1"
-      onClick={() => window.open("https://clientes.covifactura.com/linksolicitudcupo/#/cupo-afiliado?codigo=1N8600569718", "_blank")}
->
-  Solicitar un crédito
-</button>
-
-
+          <button
+            className="lacampana-btn text-nowrap h-fit px-8 py-2 hover:bg-white hover:text-lacampana-gray1 hover:scale-90 transition duration-300 ease-in-out text-white font-semibold bg-lacampana-gray1"
+            onClick={() => window.open("https://clientes.covifactura.com/linksolicitudcupo/#/cupo-afiliado?codigo=1N8600569718", "_blank")}
+          >
+            Solicitar un crédito
+          </button>
         </div>
       </article>
     </footer>

@@ -86,7 +86,7 @@ const Drawer = () => {
 
 const DrawerLink = ({ text, link, icon }) => {
   return (
-    <Link to={link} className="flex items-center gap-2">
+    <Link to={link} className="flex items-center gap-2 hover:scale-90 transition duration-300 ease-in-out">
       {icon}
       <span>{text}</span>
     </Link>

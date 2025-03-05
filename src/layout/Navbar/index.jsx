@@ -1,17 +1,11 @@
 import NavItem from "./components/NavItem";
 import CategoriesSidebar from "./components/CategoriesSidebar";
 import categories from "../../utils/categories";
-import { useState } from "react";
+import { useLocation } from "react-router";
 
 
 const Navbar = () => {
-  const [activeItemId, setActiveItemId] = useState(null);
-
-  // Handler to update active item
-  const handleItemClick = (itemId) => {
-    setActiveItemId(itemId);
-  };
-
+  const { pathname } = useLocation()
 
   return (
     <nav className="hidden tablet:block">
@@ -19,14 +13,13 @@ const Navbar = () => {
         <CategoriesSidebar
           categories={categories}
         />
-        <ul className="menu menu-horizontal px-1">
+        <ul className="menu menu-horizontal gap-2 px-1">
           {categories.map(item =>
             <NavItem
-            active={activeItemId === item.id}
-            key={`navitem-${item.id}`}
-            text={item.name}
-            link={item.link}
-            onClick={() => handleItemClick(item.id)}
+              active={pathname === item.link}
+              key={`navitem-${item.id}`}
+              text={item.name}
+              link={item.link}
             />
           )}
         </ul>

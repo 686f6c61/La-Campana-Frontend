@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import FilterSearchBar from "../FilterSearchBar";
-import IntroductoryText from "../../../sections/common/IntroductoryText";
-import Card from "../Card";
-import { useGetProductsByTextQuery } from "../../../store/reducers/apiSlice";
+import FilterSearchBar from "../components/common/FilterSearchBar";
+import IntroductoryText from "../sections/common/IntroductoryText";
+import Card from "../components/common/Card";
+import { useGetProductsByTextQuery } from "../store/reducers/apiSlice";
 
 const BreadCrumbs = () => {
 	return (
@@ -24,7 +24,7 @@ const FILTER_OPTIONS = {
 	ancho: ["1.10 mm", "1.15 mm", "1.20 mm", "1.50 mm"],
 };
 
-const CategoryPage = () => {
+const Store = () => {
 	const { categoryId } = useParams();
   const navigate = useNavigate();
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -198,4 +198,4 @@ const CategoryPage = () => {
 		</div>
 	);
 };
-export default CategoryPage;
+export default Store;

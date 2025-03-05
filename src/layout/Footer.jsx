@@ -18,7 +18,7 @@ const Footer = () => {
           <p>Lorem ipsum dolor sit amet consectetur. Etiam id enim diam sollicitudin ut molestie velit</p>
           <div className="flex gap-4">
             {socialMedia.map(social =>
-              <Link className="flex" title={social.title} to={social.link}>
+              <Link className="flex hover:scale-90 transition duration-300 ease-in-out" title={social.title} to={social.link}>
                 <img src={social.icon} alt="icon" />
               </Link>
             )}
@@ -36,11 +36,11 @@ const Footer = () => {
           <h5 className="text-lacampana-red2">News Letter</h5>
           <div className="flex flex-col gap-4">
             <input className="lacampana-btn py-2 px-4 border border-lacampana-gray4" type="text" placeholder="Correo electrónico" />
-            <button className="lacampana-btn bg-lacampana-red2 text-white px-8 py-2 w-full">
+            <button className="lacampana-btn bg-lacampana-red2 text-white px-8 py-2 w-full border border-lacampana-red2/0 hover:scale-90 hover:bg-white hover:text-lacampana-red2 hover:border-lacampana-red2 transition duration-300 ease-in-out">
               Suscribirme
             </button>
             <div className="flex gap-2">
-              <input type="checkbox" defaultChecked className="w-4 h-4 rounded-none checked:bg-lacampana-red2" />
+              <input type="checkbox" className="w-4 h-4 rounded-none checked:bg-lacampana-red2" />
               <Link className="text-p3-desktop text-lacampana-gray1 hover:text-lacampana-red1">
                 He leído y acepto la política de privacidad
               </Link>

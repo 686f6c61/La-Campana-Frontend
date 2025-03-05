@@ -52,7 +52,7 @@ const PurchaseSummary = ({ subtotal, city = "Bogotá" }) => {
         <button className="lacampana-btn bg-lacampana-red2 text-white py-2 w-full">
           Finalizar carrito
         </button>
-        <Link to="/productos" className="flex justify-end items-center text-lacampana-gray3">
+        <Link to="/tienda" className="flex justify-end items-center text-lacampana-gray3">
           <IoIosArrowBack className="text-lacampana-gray3 text-lg" />
           Volver a la tienda
         </Link>
