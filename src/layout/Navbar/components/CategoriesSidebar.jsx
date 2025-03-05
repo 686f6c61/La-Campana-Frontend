@@ -27,9 +27,9 @@ const CategoriesSidebar = ({ categories }) => {
       <input id="categories-sidebar-navbar" type="checkbox" className="drawer-toggle" />
       {/* BUTTON */}
       <div className="drawer-content">
-        <label htmlFor="categories-sidebar-navbar" className="btn btn-ghost drawer-button flex justify-start p-0">
+        <label htmlFor="categories-sidebar-navbar" className="drawer-button flex justify-center items-center gap-2 w-fit p-4 rounded-lg border border-lacampana-red2/0 hover:cursor-pointer hover:scale-90 hover:border-lacampana-red2 transition duration-300 ease-in-out">
           <HiMenuAlt1 className="text-lacampana-gray1" />
-          <p>Todas las categorías</p>
+          <p className="text-p2 desktop:text-p2-desktop">Todas las categorías</p>
         </label>
       </div>
       {/* SIDEBAR */}
