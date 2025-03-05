@@ -10,15 +10,17 @@ const ResetPassword = () => {
 
   const [newPassword, setNewPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [load, setLoad] = useState(false);
 
   const [resetPassword, { isLoading, error }] = useResetPasswordMutation();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoad(true);
     try {
       // const response = await resetPassword({ token, newPassword }).unwrap();
       const response = await fetch(
-        `${import.meta.VITE_BACKEND_URL}users/reset-password`,
+        `http://localhost:3000/api/users/reset-password`,
         {
           method: "POST",
           headers: {
@@ -30,15 +32,17 @@ const ResetPassword = () => {
       const result = await response.json();
 
       if (!response.ok) {
-        throw new Error("Error al establecer la nueva contraseña");
+        throw new Error(result.error);
       }
       console.log("result dessde fetch", result);
 
       setMessage(result.message);
+      setLoad(false);
     } catch (err) {
       console.log("error desde catch", err);
 
-      setMessage(err);
+      setMessage(err.message);
+      setLoad(false);
     }
   };
 
@@ -81,9 +85,9 @@ const ResetPassword = () => {
                   <button
                     type="submit"
                     className="w-full max-w-[200px] py-3 text-lg text-lacampana-red1 text-center border border-lacampana-red1 rounded-tl-full rounded-bl-full bg-white rounded-tr-full font-montserrat"
-                    disabled={isLoading}
+                    disabled={load}
                   >
-                    {isLoading ? "Actualizando..." : "Restablecer"}
+                    {load ? "Actualizando..." : "Restablecer"}
                   </button>
                 </div>
               </form>
@@ -91,11 +95,11 @@ const ResetPassword = () => {
               {message && (
                 <p className="text-green-500 text-center mt-2">{message}</p>
               )}
-              {error && (
+              {/* {error && (
                 <p className="text-red-500 text-center mt-2">
                   Error: {error.data?.error}
                 </p>
-              )}
+              )} */}
             </div>
           </div>
         </>
