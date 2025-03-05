@@ -18,7 +18,7 @@ const Footer = () => {
           <p>Lorem ipsum dolor sit amet consectetur. Etiam id enim diam sollicitudin ut molestie velit</p>
           <div className="flex gap-4">
             {socialMedia.map(social =>
-              <Link className="flex" title={social.title} to={social.link}>
+              <Link className="flex hover:scale-90" title={social.title} to={social.link}>
                 <img src={social.icon} alt="icon" />
               </Link>
             )}
