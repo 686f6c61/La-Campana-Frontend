@@ -2,6 +2,7 @@ import { Link } from "react-router"
 import { useGetBlogsQuery } from '../../store/reducers/apiSlice';
 import BlogCard from "../../components/common/BlogCard";
 import CardsCarousel from "../../components/common/CardsCarousel";
+import ActionButton from "../../components/common/ActionButton";
 
 
 const Blog = () => {
@@ -14,22 +15,22 @@ const Blog = () => {
     <section className="max-w-screen-desktop w-full justify-self-center px-4 tablet:px-8 py-16">
       <article className="flex desktop:gap-8 flex-col desktop:flex-row">
         {/* TITLE SECTION */}
-        <section className="text-start flex flex-col gap-4 desktop:w-1/4">
+        <section className="text-start flex flex-col justify-center gap-4 desktop:w-1/4">
           <h3>Actualidad y <span className="text-lacampana-red1">recomendaciones</span></h3>
           <p className="w-full">Lorem ipsum dolor sit amet consectetur. Etiam id enim diam sollicitudin ut molestie velit</p>
-          <Link to="/blog" className="lacampana-btn bg-lacampana-red2 px-8 py-2 text-white text-center font-semibold">
-            Ver más noticias
-          </Link>
+          <ActionButton 
+            link="/blog"
+            text="Ver más noticias"
+          />
         </section>
         {/* BLOGS DESKTOP */}
         <section className="hidden tablet:grid grid-cols-3">
           {blogs?.slice(0, 3).map(blog =>
-            <article className="p-2 h-[500px]">
+            <article className="p-2 h-[400px]">
               <BlogCard
                 key={`blog-home-${blog._id}`}
                 id={blog._id}
                 title={blog.name}
-                description={blog.body}
                 category={blog.blogCategoryId.name}
                 image={blog.image}
                 publicationDate={blog.createdAt}
@@ -45,7 +46,6 @@ const Blog = () => {
                   key={`blog-home-${blog._id}`}
                   id={blog._id}
                   title={blog.name}
-                  description={blog.body}
                   category={blog.blogCategoryId.name}
                   image={blog.image}
                   publicationDate={blog.createdAt}

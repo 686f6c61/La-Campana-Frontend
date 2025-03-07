@@ -2,7 +2,7 @@ import { Link } from 'react-router'
 import { IoIosArrowRoundForward } from "react-icons/io";
 import formatDate from '../../helpers/formatDate';
 
-const BlogCard = ({ id, title, image, category = "Categoría", publicationDate, description }) => {
+const BlogCard = ({ id, title, image, category = "Categoría", publicationDate, description = "" }) => {
   const formatedDate = formatDate(publicationDate)
   const formatedDescription = description.length > 115 ? `${description.slice(0, 115)}...` : description
 
@@ -13,10 +13,10 @@ const BlogCard = ({ id, title, image, category = "Categoría", publicationDate, 
         <div className="text-start">
           <h4 className="overflow-hidden">{title}</h4>
           <span>{category} | {formatedDate}</span>
-          <p className="max-h-20 overflow-hidden">{formatedDescription}</p>
+          {description && <p className="max-h-20 overflow-hidden">{formatedDescription}</p>}
         </div>
       </div>
-      <Link to={`/blog/${id}`} className="btn w-fit">
+      <Link to={`/blog/${id}`} className="w-fit flex items-center hover:text-lacampana-red2 hover:scale-90 transition duration-300 ease-in-out">
         Conoce más
         <IoIosArrowRoundForward className="text-2xl" />
       </Link>
