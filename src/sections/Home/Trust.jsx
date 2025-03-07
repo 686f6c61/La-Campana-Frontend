@@ -9,7 +9,7 @@ const Trust = () => {
 			<div className="flex flex-col gap-8 items-center py-32 px-2 tablet:px-8">
 				<h2 className="text-white">Tranquilidad y confianza</h2>
 				<p className="text-white">En <strong>La Campana</strong>, queremos que tu experiencia de compra sea excepcional. Por eso, te ofrecemos una serie de beneficios y garantías que te darán la tranquilidad y la confianza que necesitas para realizar tu compra</p>
-				<ul className="grid grid-cols-2 desktop:grid-cols-4 gap-4">
+				<ul className="grid grid-cols-2 desktop:grid-cols-4 gap-4 tablet:max-w-screen-tablet desktop:max-w-screen-desktop">
 					{trustTexts.map(feature =>
 						<article className="bg-lacampana-white p-4 tablet:p-8 text-start rounded-tl-2xl flex flex-col gap-4">
 							<img className="h-16 w-16 object-contain" src={feature.icon} alt="icon" />
