@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Form from "../common/Form";
-import Map from "../common/Map";
 import Carousel from "../common/Carousel";
 import IntroductoryText from "../../sections/common/IntroductoryText";
 import Social from "../common/Social";
@@ -53,7 +52,8 @@ const ContactInfo = () => {
   ];
 
   return (
-    <div className="font-sans md:ml-60">
+    <article className="max-w-screen-desktop w-full justify-self-center">
+    <div className="font-sans ">
       <IntroductoryText
         title={
           <>
@@ -189,7 +189,7 @@ const ContactInfo = () => {
           </div>
         </div>
       </div>
-    </div>
+    </div></article>
   );
 };
 

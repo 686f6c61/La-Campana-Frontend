@@ -7,15 +7,15 @@ const SteelLeaders = () => {
     <IntroductoryText
       title={
         <>
-          <div className="">
+          
             Líderes en <span className="text-lacampana-red2 ">acero</span>
-            <p className="md:text-base text-sm text-gray-600 mt-4 md:w-[480px] w-[380px] pl-0 md:pl-0">
+            <p className="md:text-base text-sm text-gray-600 mt-4 md:w-[480px] w-[360px] pl-0 md:pl-0">
               La Campana Servicios de Acero S.A. contribuye al crecimiento del
               sector metalmecánico y de la construcción en Colombia con el
               suministro de materias primas al brindar productos y servicios que
               aseguren un óptimo control de calidad.
             </p>
-            <p className="md:text-base text-sm text-gray-600 mt-4 md:w-[480px] w-[380px] pl-0 md:pl-0">
+            <p className="md:text-base text-sm text-gray-600 mt-4 md:w-[480px] w-[360px] pl-0 md:pl-0">
               La Campana Servicios de Acero S.A. es líder en el mercado de los
               aceros a nivel local (Bogotá) gracias a su disponibilidad y
               variedad de material, agilidad en sus entregas y experiencia en
@@ -24,15 +24,15 @@ const SteelLeaders = () => {
               un equipo de trabajo honesto y dispuesto a brindar el mejor
               servicio.
             </p>
-          </div>
+          
         </>
       }
-      bgTitle="Actualidad en aceros"
-      bgTitleMargin=""
-      bgTitlePadding="md:pl-10"
+      bgTitle="Lideres en aceros"
+      bgTitleMargin="md:pl-6 md:pt-6"
+      bgTitlePadding=""
     >
-      <div className="relative z-0 flex-1 flex items-end justify-end md:mr-0">
-  <div className="relative flex items-center justify-center w-[780px] sm:w-[500px] h-[290px] bg-opacity-75">
+      <div className=" flex items-end justify-end md:transform -translate-x-[80px] transform -translate-x-[0px] md:transform -translate-y-[30px] transform -translate-y-[0px]">
+  <div className=" flex items-center justify-center w-[790px] sm:w-[500px] h-[290px] bg-opacity-75">
     <img
       src="/images/play.png"
       alt="Icono representativo"

@@ -4,7 +4,7 @@ const RadioSelect = ({ options, selectedOption, onSelectionChange }) => {
   return (
     <div className="flex flex-wrap gap-x-2 md:gap-x-3 pt-4">
       {options.map((option) => (
-        <div key={option} className="flex items-center sm:me-3 md:me-4">
+        <div key={option} className="flex items-center sm:me-3 md:me-4 pb-2">
           <input
             id={`${option.toLowerCase()}-radio`}
             type="radio"
