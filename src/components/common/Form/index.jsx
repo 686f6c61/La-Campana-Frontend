@@ -43,6 +43,11 @@ const ContactForm = ({ padding = "p-8", margin = "my-4" }) => {
   return (
     <div className={`md:w-[800px] mx-auto bg-white rounded-lg drop-shadow-2xl ${padding} ${margin}`}>
       <form ref={form} onSubmit={sendEmail}>
+
+      <input type="hidden" name="origin" value={origin} />
+
+
+
         <div className="space-y-4">
           <input
             type="text"
@@ -82,7 +87,7 @@ const ContactForm = ({ padding = "p-8", margin = "my-4" }) => {
 
           <button
             type="submit"
-            className="bg-red-500 text-white w-full py-2 rounded-md text-lg"
+            className="mt-8 bg-lacampana-red1 text-lacampana-white px-8 py-2 text-sm sm:text-base font-montserrat rounded-tl-full rounded-bl-full rounded-tr-full w-auto md:w-auto relative z-10 border border-lacampana-red1 hover:bg-white hover:text-lacampana-red1 hover:border-lacampana-red1 transition duration-300 ease-in-out"
           >
             Enviar
           </button>
