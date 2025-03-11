@@ -15,7 +15,7 @@ const DashboardGreetings = () => {
       <p className="text-gray-600 text-base mb-6">
         Hola{" "}
         <span className="text-lacampana-red1 font-semibold">
-          {user ? user.username : "Invitado"}
+          {user ? user.name : "Invitado"}
         </span>
       </p>
       <p className="text-gray-600 md:text-base text-sm mb-6 md:w-[650px] w-[350px]">

@@ -43,7 +43,7 @@ const Sidebar = ({ onNavigate }) => {
         <li className="border-b border-gray-300">
           <button
             onClick={() => {
-              localStorage.removeItem("user");
+              localStorage.removeItem("token");
               alert("Sesión cerrada exitosamente.");
               window.location.href = "/";
             }}

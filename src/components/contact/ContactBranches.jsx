@@ -15,7 +15,7 @@ const ContactBranches = () => {
     <div className="relative max-w-screen-desktop w-full my-10 overflow-hidden">
       {/* Fondo decorativo pegado a la izquierda */}
       <div
-        className="absolute top-0 left-0 h-full w-2/3 md:w-[80%] md:h-full h-[34%] w-[100%] rounded-tr-full rounded-br-full z-0"
+        className="absolute top-0 left-0 h-full w-2/3 md:w-[80%] md:h-full h-[32%] w-[100%] rounded-tr-full rounded-br-full z-0"
         style={{
           backgroundImage: "url('/images/categories/laminasBg.jpg')",
           backgroundSize: "cover",

@@ -1,7 +1,9 @@
 import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 
-const ContactForm = ({ padding = "p-8", margin = "my-4" }) => {
+//team help
+
+const ContactForm = ({ origin="", padding = "p-8", margin = "my-4" }) => {
   const form = useRef();
   const [formData, setFormData] = useState({
     user_name: "",
@@ -9,6 +11,7 @@ const ContactForm = ({ padding = "p-8", margin = "my-4" }) => {
     user_email: "",
     user_phone: "",
     message: "",
+    origin: "",
   });
 
   const handleChange = (e) => {

@@ -7,6 +7,8 @@ import PasswordToggleInput from "../Account/PasswordToggleInput.jsx";
 
 const Register = () => {
   const [formData, setFormData] = useState({
+    name: "",
+    lastName: "",
     username: "",
     email: "",
     password: "",
@@ -37,6 +39,8 @@ const Register = () => {
 
     try {
       await registerUser({
+        name: formData.name,
+        lastName: formData.lastName,
         username: formData.username,
         email: formData.email,
         password: formData.password,
@@ -73,25 +77,38 @@ const Register = () => {
 
 
             <form onSubmit={handleRegister} className="space-y-6 pt-4">
-              {/* Campos de nombre y email */}
-              {["username", "email"].map((field, index) => (
-                <div key={index} className="w-full max-w-[400px] mx-auto flex flex-col items-center">
-                  <label className="text-lacampana-gray3 text-lg font-open-sans mb-1 w-full text-left">
-                    {field === "username" ? "Nombre" : "Correo Electrónico"}
-                  </label>
-                  <input
-                    type={field === "email" ? "email" : "text"}
-                    name={field}
-                    placeholder={
-                      field === "username" ? "Nombre completo" : "Dirección de correo *"
-                    }
-                    value={formData[field]}
-                    onChange={handleChange}
-                    className="w-full p-3 text-lg border border-lacampana-gray3 bg-lacampana-white rounded-lg font-open-sans focus:outline-none focus:border-black"
-                    required
-                  />
-                </div>
-              ))}
+              
+            {["name", "lastName", "username", "email"].map((field, index) => (
+  <div key={index} className="w-full max-w-[400px] mx-auto flex flex-col items-center">
+    <label className="text-lacampana-gray3 text-lg font-open-sans mb-1 w-full text-left">
+      {field === "name"
+        ? "Nombre"
+        : field === "lastName"
+        ? "Apellido"
+        : field === "username"
+        ? "Nombre de usuario"
+        : "Correo Electrónico"}
+    </label>
+    <input
+      type={field === "email" ? "email" : "text"}
+      name={field}
+      placeholder={
+        field === "name"
+          ? "Nombre *"
+          : field === "lastName"
+          ? "Apellido *"
+          : field === "username"
+          ? "Nombre de usuario *"
+          : "Correo electrónico *"
+      }
+      value={formData[field]}
+      onChange={handleChange}
+      className="w-full p-3 text-lg border border-lacampana-gray3 bg-lacampana-white rounded-lg font-open-sans focus:outline-none focus:border-black"
+      required
+    />
+  </div>
+))}
+
 
 
              
@@ -116,7 +133,7 @@ const Register = () => {
                 <PasswordToggleInput
                   name="confirmPassword"
                   value={formData.confirmPassword}
-                  onChange={handleChange} // ✅ Ahora actualiza correctamente el estado
+                  onChange={handleChange} 
                   placeholder="Confirmar contraseña *"
                 />
               </div>

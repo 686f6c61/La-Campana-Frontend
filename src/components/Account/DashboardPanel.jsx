@@ -18,7 +18,7 @@ const items = [
 
 const DashboardPanel = () => {
   const [activeComponent, setActiveComponent] = useState("");
-//view problem!!!
+
   const handleItemClick = (id) => {
     if (id === "cerrar") {
       localStorage.removeItem("token");
