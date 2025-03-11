@@ -42,7 +42,8 @@ const ServiceDetails = () => {
         </section>
         <section className="w-full desktop:w-1/3 flex flex-col gap-4">
           <h3>Contacte un <span className="text-lacampana-red2">Asesor</span></h3>
-          <ContactForm />
+          <ContactForm 
+          origin="Página de Servicios"/>
         </section>
       </section>
     </article>
