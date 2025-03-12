@@ -18,6 +18,7 @@ const Blog = () => {
 
   if (isLoadingBlogs) return <p>Cargando...</p>;
   if (errorBlogs) return <p>Error al cargar los datos.</p>;
+  console.log(blogs)
 
   return (
     <article className="max-w-screen-desktop w-full justify-self-center flex flex-col gap-16 py-16">
@@ -35,7 +36,7 @@ const Blog = () => {
                 {<LatestBlogItem
                   title={blog.name}
                   description={blog.body}
-                  category={blog.blogCategoryId.name}
+                  //category={blog.blogCategory.name}
                   image={blog.image}
                   publicationDate={blog.createdAt}
                   link={`/blog/${blog._id}`}

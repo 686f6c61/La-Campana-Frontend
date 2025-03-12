@@ -89,7 +89,7 @@ const BlogsGallery = () => {
                 id={blog._id}
                 title={blog.name}
                 description={blog.body}
-                category={blog.blogCategoryId.name}
+                //category={blog.blogCategory.name}
                 image={blog.image}
                 publicationDate={blog.createdAt}
               />

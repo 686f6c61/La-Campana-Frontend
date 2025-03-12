@@ -13,11 +13,11 @@ const Navbar = () => {
   const menuCat = [
     { id: "drywall", name: "Perfiles Drywall" },
     { id: "ornamentacion", name: "Perfiles Ornamentación" },
-    { id: "tejas", name: "Tejas y Cubiertas" },
-    { id: "tuberias", name: "Tuberías" },
-    { id: "vigas", name: "Vigas y Perfiles" },
-    { id: "entrepisos", name: "Entrepisos" },
-    { id: "laminas", name: "Láminas" },
+    { id: "teja", name: "Tejas y Cubiertas" },
+    { id: "tuberia", name: "Tuberías" },
+    { id: "viga", name: "Vigas y Perfiles" },
+    { id: "entrepiso", name: "Entrepisos" },
+    { id: "lamina", name: "Láminas" },
   ];
 
   return (

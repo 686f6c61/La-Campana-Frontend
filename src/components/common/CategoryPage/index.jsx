@@ -25,7 +25,7 @@ const FILTER_OPTIONS = {
 };
 
 const CategoryPage = () => {
-	const { categoryId } = useParams();
+  const { categoryId } = useParams();
   const navigate = useNavigate();
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const [selectedFilters, setSelectedFilters] = useState({
@@ -60,8 +60,8 @@ const CategoryPage = () => {
     if (!data) return [];
     
     return data.map((product) => ({
-      id: product.ItemsGroupCode,
-      image: product.image || "images/prod4.jpg",
+      id: product.ItemsGroupCode == 0 ? 1 : product.ItemsGroupCode,
+      image: product.image || "/images/prod4.jpg",
       title: product.ItemName,
       price: `${product.ItemCode}`,
       discount: product.discount || "-",
@@ -80,7 +80,7 @@ const CategoryPage = () => {
 
   // Event handlers
   const handleProductClick = (productId) => {
-    navigate(`/tienda/${productId}`);
+    navigate(`/tienda/product/${productId}`);
   };
 
   const handleFilterChange = (filterType, value) => {

@@ -2,7 +2,7 @@ const categories = [
   {
     id: "drywall",
     name: "Perfiles Drywall",
-    link: "/tienda/perfiles-drywall",
+    link: "/tienda/perfiles",
     image: "public/images/steel-pipes-factory.png", // Cambia por tu URL de imagen
     results: 256,
     subcategories: [
@@ -41,7 +41,7 @@ const categories = [
   {
     id: "ornamentacion",
     name: "Perfiles Ornamentación",
-    link: "/tienda/perfiles-ornamentacion",
+    link: "/tienda/perfil",
     image: "public/images/steel-pipes-factory.png", // Cambia por tu URL de imagen
     results: 256,
     subcategories: [
@@ -78,9 +78,9 @@ const categories = [
     ],
   },
   {
-    id: "tejas",
+    id: "teja",
     name: "Tejas y Cubiertas",
-    link: "/tienda/tejas",
+    link: "/tienda/teja",
     image: "public/images/steel-pipes-factory.png", // Cambia por tu URL de imagen
     results: 256,
     subcategories: [
@@ -117,9 +117,9 @@ const categories = [
     ],
   },
   {
-    id: "tuberias",
+    id: "tuberia",
     name: "Tuberias",
-    link: "/tienda/tuberias",
+    link: "/tienda/tuberia",
     image: "public/images/steel-pipes-factory.png", // Cambia por tu URL de imagen
     results: 256,
     subcategories: [
@@ -156,9 +156,9 @@ const categories = [
     ],
   },
   {
-    id: "vigas",
+    id: "viga",
     name: "Vigas y Perfiles",
-    link: "/tienda/vigas-y-perfiles",
+    link: "/tienda/viga",
     image: "public/images/steel-pipes-factory.png", // Cambia por tu URL de imagen
     results: 256,
     subcategories: [
@@ -195,9 +195,9 @@ const categories = [
     ],
   },
   {
-    id: "entrepisos",
+    id: "entrepiso",
     name: "Entrepisos",
-    link: "/tienda/entrepisos",
+    link: "/tienda/entrepiso",
     image: "public/images/steel-pipes-factory.png", // Cambia por tu URL de imagen
     results: 256,
     subcategories: [
@@ -234,9 +234,9 @@ const categories = [
     ],
   },
   {
-    id: "laminas",
+    id: "lamina",
     name: "Laminas",
-    link: "/tienda/laminas",
+    link: "/tienda/lamina",
     image: "public/images/steel-pipes-factory.png", // Cambia por tu URL de imagen
     results: 256,
     subcategories: [

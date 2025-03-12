@@ -31,7 +31,7 @@ const Blog = () => {
                 key={`blog-home-${blog._id}`}
                 id={blog._id}
                 title={blog.name}
-                category={blog.blogCategoryId.name}
+                //category={blog.blogCategory.name}
                 image={blog.image}
                 publicationDate={blog.createdAt}
               />
@@ -46,7 +46,7 @@ const Blog = () => {
                   key={`blog-home-${blog._id}`}
                   id={blog._id}
                   title={blog.name}
-                  category={blog.blogCategoryId.name}
+                  //category={blog.blogCategory.name}
                   image={blog.image}
                   publicationDate={blog.createdAt}
                 />

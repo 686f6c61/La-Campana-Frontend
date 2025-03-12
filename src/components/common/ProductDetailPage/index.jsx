@@ -101,12 +101,16 @@ const ActionButtons = ({ addToCart, productPrice }) => (
 
 const ProductDetailPage = () => {
 	const { productId } = useParams();
+	console.log(productId)
+	console.log(products)
 	const [activeTab, setActiveTab] = useState("normas");
 
 	const cartProducts = useSelector(state => state.cart);
 	const dispatch = useDispatch();
 
-	const product = products.find((p) => p.id === parseInt(productId));
+	const product = products.find(p => p.id === Number(productId));
+
+	console.log(product)
 	if (!product) {
 		return <div>Producto no encontrado</div>;
 	}
