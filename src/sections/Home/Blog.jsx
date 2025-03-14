@@ -15,7 +15,7 @@ const Blog = () => {
     <section className="max-w-screen-desktop w-full justify-self-center px-4 tablet:px-8 py-16">
       <article className="flex desktop:gap-8 flex-col desktop:flex-row">
         {/* TITLE SECTION */}
-        <section className="text-start flex flex-col items-center gap-4 desktop:w-1/4">
+        <section className="text-start sm:text-center flex flex-col items-center gap-4 desktop:w-1/4">
           <h3>Actualidad y <span className="text-lacampana-red1">recomendaciones</span></h3>
           <p className="w-full">Lorem ipsum dolor sit amet consectetur. Etiam id enim diam sollicitudin ut molestie velit</p>
           <div className="flex flex-col justify-center gap-4 ">
@@ -26,7 +26,7 @@ const Blog = () => {
           </div>
         </section>
         {/* BLOGS DESKTOP */}
-        <section className="hidden tablet:grid grid-cols-3">
+        <section className="hidden tablet:mt-4 tablet:grid grid-cols-3">
           {blogs?.slice(0, 3).map(blog =>
             <article className="p-2 h-[400px]">
               <BlogCard
@@ -40,7 +40,7 @@ const Blog = () => {
             </article>)}
         </section>
         {/* BLOGS MOVILE */}
-        <section className="tablet:hidden h-[500px]">
+        <section className="tablet:hidden h-[500px] mt-4">
           <CardsCarousel id="blog-card-home-movile" cardsList={blogs}>
             {blogs?.slice(0, 3).map((blog, index) =>
               <article id={`blog-card-home-movile-${index}`} className="carousel-item w-full p-2">

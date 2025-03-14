@@ -32,7 +32,7 @@ const Footer = () => {
             />
           )}
         </section>
-        <article className="flex flex-col gap-4 max-w-[300px] text-start w-full tablet:w-2/5 desktop:w-1/4 pt-8">
+        <article className="flex flex-col gap-4 w-full text-start w-full tablet:w-2/5 desktop:w-1/4 pt-8">
           <h5 className="text-lacampana-red2">News Letter</h5>
           <div className="flex flex-col gap-4">
             <input className="lacampana-btn py-2 px-4 border border-lacampana-gray4" type="text" placeholder="Correo electrónico" />

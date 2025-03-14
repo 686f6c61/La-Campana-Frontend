@@ -39,7 +39,7 @@ const ProductGalleyAndTechnicalInformation = ({ image, isMobile }) => (
 
 const ProductOptions = ({ options }) => (
 	<div className="flex flex-wrap gap-6 text-left mt-8">
-		{["paquete", "longitud", "ancho"].map((prop, index) => (
+		{["longitud", "ancho"].map((prop, index) => (
 			<div key={index} className="flex-1 min-w-[120px]">
 				<label className="block font-bold font-open-sans mb-2 capitalize">{prop}</label>
 				<select className="border w-full bg-gray-100 font-open-sans text-sm  text-gray-500 p-2 rounded 

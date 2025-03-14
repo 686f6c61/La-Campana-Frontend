@@ -21,7 +21,7 @@ const products = [
     id: 2,
     name: "Plancha Hot Rolled Esp 6.00 un 1829x6096 Primera",
     description: "Lorem ipsum",
-    image: "/images/prod3.jpg",
+    image: "/images/prod3.png",
     price: "19.99",
     stock: 20,
     discount: "20%",

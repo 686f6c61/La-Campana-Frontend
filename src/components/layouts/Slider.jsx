@@ -6,21 +6,21 @@ const Ofertas = () => {
   const products = [
     {
       id: 1,
-      image: "/images/prod1.jpg",
+      image: "/images/prod1.png",
       title: "Producto 1",
       price: "$5,795.00",
       discount: "-20%",
     },
     {
       id: 2,
-      image: "/images/prod1.jpg",
+      image: "/images/prod1.png",
       title: "Producto 2",
       price: "$5,245.00",
       discount: "-20%",
     },
     {
       id: 3,
-      image: "/images/prod3.jpg",
+      image: "/images/prod3.png",
       title: "Producto 3",
       price: "$5,995.00",
       discount: "-20%",
@@ -41,7 +41,7 @@ const Ofertas = () => {
     },
     {
       id: 6,
-      image: "/images/prod1.jpg",
+      image: "/images/prod1.png",
       title: "Producto 6",
       price: "$5,795.00",
       discount: "-20%",

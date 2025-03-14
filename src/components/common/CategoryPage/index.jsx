@@ -167,14 +167,14 @@ const CategoryPage = () => {
 					{renderFilterSection("longitud", "Longitud")}
 					{renderFilterSection("ancho", "Ancho")}
 				</aside>
-				<main className=" pl-4">
+				<main className="desktop:pl-4 sm:px-4">
 					{isMobile && <FilterSearchBar />}
 
 					<div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 ">
 						{filteredProducts.slice(0, visibleProducts).map((product) => (
 							<div
 								key={product.id}
-								className=" p-2 cursor-pointer "
+								className="p-2 cursor-pointer "
 								onClick={() => handleProductClick(product.id)}
 							>
 								<ProductCard
