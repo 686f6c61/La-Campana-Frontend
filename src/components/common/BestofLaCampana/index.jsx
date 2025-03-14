@@ -42,10 +42,10 @@ const BestOfLaCampana = () => {
         <div className="lg:hidden">
           <CardGrid
             products={data.slice(0, 4).map((product) => ({
-              id: product.ItemCode,
-              image: product.image || "images/notfound.jpg",
-              title: product.ItemName,
-              price: `$${product.ItemsGroupCode}`,
+              id: product.ItemsGroupCode,
+              image: product.image || "images/prod4.jpg",
+              name: product.ItemName,
+              price: "29,99",
               discount: product.discount || "-",
             }))}
             smCol="2"

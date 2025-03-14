@@ -15,13 +15,15 @@ const Blog = () => {
     <section className="max-w-screen-desktop w-full justify-self-center px-4 tablet:px-8 py-16">
       <article className="flex desktop:gap-8 flex-col desktop:flex-row">
         {/* TITLE SECTION */}
-        <section className="text-start flex flex-col justify-center gap-4 desktop:w-1/4">
+        <section className="text-start flex flex-col items-center gap-4 desktop:w-1/4">
           <h3>Actualidad y <span className="text-lacampana-red1">recomendaciones</span></h3>
           <p className="w-full">Lorem ipsum dolor sit amet consectetur. Etiam id enim diam sollicitudin ut molestie velit</p>
-          <ActionButton 
-            link="/blog"
-            text="Ver más noticias"
-          />
+          <div className="flex flex-col justify-center gap-4 ">
+            <ActionButton 
+              link="/blog"
+              text="Ver más noticias"
+            />
+          </div>
         </section>
         {/* BLOGS DESKTOP */}
         <section className="hidden tablet:grid grid-cols-3">
@@ -41,7 +43,7 @@ const Blog = () => {
         <section className="tablet:hidden h-[500px]">
           <CardsCarousel id="blog-card-home-movile" cardsList={blogs}>
             {blogs?.slice(0, 3).map((blog, index) =>
-              <article id={`blog-card-home-movile-${index}`} className="carousel-item w-4/5 p-2">
+              <article id={`blog-card-home-movile-${index}`} className="carousel-item w-full p-2">
                 <BlogCard
                   key={`blog-home-${blog._id}`}
                   id={blog._id}
