@@ -60,7 +60,7 @@ const Login = () => {
               <form onSubmit={handleLogin} className="space-y-6 pt-10">
                 <div className="flex flex-col items-center w-full max-w-[400px] mx-auto">
                   <label className="text-lacampana-gray1 text-lg mb-1 font-open-sans text-left w-full">
-                    Ingrese usuario
+                    Ingrese email
                   </label>
                   <input
                     type="email"

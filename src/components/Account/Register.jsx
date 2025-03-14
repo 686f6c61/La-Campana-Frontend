@@ -8,7 +8,7 @@ import PasswordToggleInput from "../Account/PasswordToggleInput.jsx";
 const Register = () => {
   const [formData, setFormData] = useState({
     name: "",
-    lastName: "",
+    lastname: "",
     username: "",
     email: "",
     password: "",
@@ -40,7 +40,7 @@ const Register = () => {
     try {
       await registerUser({
         name: formData.name,
-        lastName: formData.lastName,
+        lastname: formData.lastname,
         username: formData.username,
         email: formData.email,
         password: formData.password,
@@ -78,12 +78,12 @@ const Register = () => {
 
             <form onSubmit={handleRegister} className="space-y-6 pt-4">
               
-            {["name", "lastName", "username", "email"].map((field, index) => (
+            {["name", "lastname", "username", "email"].map((field, index) => (
   <div key={index} className="w-full max-w-[400px] mx-auto flex flex-col items-center">
     <label className="text-lacampana-gray3 text-lg font-open-sans mb-1 w-full text-left">
       {field === "name"
         ? "Nombre"
-        : field === "lastName"
+        : field === "lastname"
         ? "Apellido"
         : field === "username"
         ? "Nombre de usuario"
@@ -95,7 +95,7 @@ const Register = () => {
       placeholder={
         field === "name"
           ? "Nombre *"
-          : field === "lastName"
+          : field === "lastname"
           ? "Apellido *"
           : field === "username"
           ? "Nombre de usuario *"

@@ -20,8 +20,8 @@ const ServiceDetails = () => {
             bgTitle={serviceData.name}
             description={serviceData.customDescription || serviceData.description}
           >
-            <div className="w-full tablet:w-1/2 flex-none h-[300px] tablet:h-[350px] rounded-tl-2xl overflow-hidden relative">
-              <div className="absolute left-0 right-0 bottom-0 top-0 flex justify-center items-center">
+            <div className="w-full md:mt-20 mt-0 tablet:w-1/2 flex-none h-[300px] tablet:h-[350px] rounded-tl-2xl overflow-hidden relative ">
+              <div className="absolute left-0 right-0 bottom-0 top-0 flex justify-center items-center ">
                 <button className="btn btn-circle bg-lacampana-red2 btn-ghost pl-1">
                   <CiPlay1 className="text-2xl text-white" />
                 </button>
