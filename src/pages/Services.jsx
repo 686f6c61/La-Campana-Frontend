@@ -1,6 +1,6 @@
 import ImageCard from "../components/common/ImageCard"
 import IntroductoryText from "../sections/common/IntroductoryText"
-import services from "../utils/services"
+import services from "../data/services"
 
 const Services = () => {
   return (

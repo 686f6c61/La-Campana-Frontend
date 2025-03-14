@@ -5,7 +5,7 @@ const IntroductoryText = ({
   bgTitle = "Título",
   bgTitlePadding = "",
   bgTitleMargin = "",
-  titleMargin = "", // Nueva prop para margen del título
+  titleMargin = "", 
   justify = "start",
   children,
 }) => {

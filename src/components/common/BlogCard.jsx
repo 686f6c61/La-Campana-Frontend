@@ -13,7 +13,11 @@ const BlogCard = ({ id, title, image, category = "Categoría", publicationDate, 
         <div className="text-start">
           <h4 className="overflow-hidden">{title}</h4>
           <span>{category} | {formatedDate}</span>
-          {description && <p className="max-h-20 overflow-hidden">{formatedDescription}</p>}
+          {description && <p className="max-h-20 overflow-hidden"
+          dangerouslySetInnerHTML={{
+            __html: formatedDescription,
+          }}>
+            </p>}
         </div>
       </div>
       <Link to={`/blog/${id}`} className="w-fit flex items-center hover:text-lacampana-red2 hover:scale-90 transition duration-300 ease-in-out">
