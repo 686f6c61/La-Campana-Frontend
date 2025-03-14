@@ -47,7 +47,7 @@ const DocumentsItem = () => {
             />
           </div>
 
-          <div className="drop-shadow-lg flex justify-center">
+          <div className="drop-shadow-lg flex justify-center w-full md:w-[300px] md:h-[40px] md:p-0 p-8">
             <SearchBar placeholder="Buscar archivo..." />
           </div>
         </div>

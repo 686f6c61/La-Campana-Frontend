@@ -39,7 +39,7 @@ const ContactInfo = () => {
           <Form
             origin="Página de Contacto"
             padding="p-12"
-            margin=""
+            margin="md:transform -translate-y-12"
           />
         </IntroductoryText>
 

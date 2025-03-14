@@ -30,7 +30,6 @@ import Politics from "./pages/LegalPolitics";
 import Orders from "./components/Account/Orders";
 import DashboardPanel from "./components/Account/DashboardPanel";
 import Addresses from "./components/Account/Addresses";
-// import PaymentMethod from "./components/Account/PaymentMethod";
 import AccountDetails from "./components/Account/AccountDetails";
 import WishList from "./components/Account/WishList";
 import FloatingDrawer from "./components/common/FloatingDrawer";
@@ -63,20 +62,6 @@ function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:blogId" element={<BlogDetails />} />
         <Route path="/servicios" element={<Services />} />
-        {/* <Route path="/micuenta" element={<MyAccount />}> */}
-          {/* <Route index element={<DashboardPanel />} /> */}
-          {/* <Route path="pedidos" element={<Orders />} /> */}
-          {/* <Route path="pedidos/:pedidoId" element={<OrderDetails />} /> */}
-          {/* <Route path="direcciones" element={<Addresses />} /> */}
-          {/* <Route
-            path="direcciones/editar/:direccionId"
-            element={<UpdateAddress />}
-          /> */}
-          {/* <Route path="metodos" element={<PaymentMethod />} /> */}
-          {/* <Route path="detalles" element={<AccountDetails />} /> */}
-          {/* <Route path="deseos" element={<WishList />} /> */}
-        {/* </Route> */}
-
         <Route path="/micuenta" element={<ProtectedRoute />}>
   <Route path="/micuenta" element={<MyAccount />}>
     <Route index element={<DashboardPanel />} />
@@ -84,7 +69,6 @@ function App() {
     <Route path="pedidos/:pedidoId" element={<OrderDetails />} />
     <Route path="direcciones" element={<Addresses />} />
     <Route path="direcciones/editar/:direccionId" element={<UpdateAddress />} />
-    {/* <Route path="metodos" element={<PaymentMethod />} /> */}
     <Route path="detalles" element={<AccountDetails />} />
     <Route path="deseos" element={<WishList />} />
   </Route>

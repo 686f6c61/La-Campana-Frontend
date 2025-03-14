@@ -26,6 +26,8 @@ const Blog = () => {
         bgTitle="Actualidad en aceros"
         description="Lorem ipsum dolor sit amet consectetur. Pulvinar dignissim pulvinar ut lorem pharetra. Vestibulum nulla faucibus nunc enim. Proin feugiat fames turpis sociis viverra. Viverra sit ut egestas placerat neque fames ante."
         justify="start"
+
+        
       >
         {/* LATEST BLOGS */}
         <div className="w-full tablet:w-3/5 flex-none h-[500px]">

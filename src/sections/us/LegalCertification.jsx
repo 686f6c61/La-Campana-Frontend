@@ -44,9 +44,10 @@ const LegalCertification = () => {
         </p>
 
         <div className="mt-6">
-          <button className="btn bg-lacampana-gray1 text-white font-montserrat  text-sm px-8 py-2 rounded-tl-full rounded-bl-full rounded-tr-full">
-            Conoce nuestros productos
-          </button>
+        <button className="btn bg-lacampana-gray1 text-white font-montserrat text-sm px-8 py-2 rounded-tl-full rounded-bl-full rounded-tr-full border border-transparent hover:bg-white hover:text-lacampana-gray1 hover:border-lacampana-gray1 transition duration-300 ease-in-out">
+  Conoce nuestros productos
+</button>
+
         </div>
       </div></div>
     </div>

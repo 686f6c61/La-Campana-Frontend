@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 
-//team help
+
 
 const ContactForm = ({ origin="", padding = "p-8", margin = "my-4" }) => {
   const form = useRef();
