@@ -108,7 +108,9 @@ const ProductDetailPage = () => {
 	const cartProducts = useSelector(state => state.cart);
 	const dispatch = useDispatch();
 
-	const product = products.find(p => p.id === Number(productId));
+	const pid = productId == 0 ? 1 : productId // TODO: Remove when backend logic works as expected
+
+	const product = products.find(p => p.id === Number(pid));
 
 	console.log(product)
 	if (!product) {
