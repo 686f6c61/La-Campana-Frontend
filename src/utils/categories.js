@@ -3,7 +3,7 @@ const categories = [
     id: "drywall",
     name: "Perfiles Drywall",
     link: "/tienda/perfiles",
-    image: "public/images/steel-pipes-factory.png", // Cambia por tu URL de imagen
+    image: "/images/steel-pipes-factory.png", // Cambia por tu URL de imagen
     results: 256,
     subcategories: [
       {
@@ -42,7 +42,7 @@ const categories = [
     id: "ornamentacion",
     name: "Perfiles Ornamentación",
     link: "/tienda/perfil",
-    image: "public/images/steel-pipes-factory.png", // Cambia por tu URL de imagen
+    image: "/images/steel-pipes-factory.png", // Cambia por tu URL de imagen
     results: 256,
     subcategories: [
       {
@@ -81,7 +81,7 @@ const categories = [
     id: "teja",
     name: "Tejas y Cubiertas",
     link: "/tienda/teja",
-    image: "public/images/steel-pipes-factory.png", // Cambia por tu URL de imagen
+    image: "/images/steel-pipes-factory.png", // Cambia por tu URL de imagen
     results: 256,
     subcategories: [
       {
@@ -120,7 +120,7 @@ const categories = [
     id: "tuberia",
     name: "Tuberias",
     link: "/tienda/tuberia",
-    image: "public/images/steel-pipes-factory.png", // Cambia por tu URL de imagen
+    image: "/images/steel-pipes-factory.png", // Cambia por tu URL de imagen
     results: 256,
     subcategories: [
       {
@@ -159,7 +159,7 @@ const categories = [
     id: "viga",
     name: "Vigas y Perfiles",
     link: "/tienda/viga",
-    image: "public/images/steel-pipes-factory.png", // Cambia por tu URL de imagen
+    image: "/images/steel-pipes-factory.png", // Cambia por tu URL de imagen
     results: 256,
     subcategories: [
       {
@@ -198,7 +198,7 @@ const categories = [
     id: "entrepiso",
     name: "Entrepisos",
     link: "/tienda/entrepiso",
-    image: "public/images/steel-pipes-factory.png", // Cambia por tu URL de imagen
+    image: "/images/steel-pipes-factory.png", // Cambia por tu URL de imagen
     results: 256,
     subcategories: [
       {
@@ -237,7 +237,7 @@ const categories = [
     id: "lamina",
     name: "Laminas",
     link: "/tienda/lamina",
-    image: "public/images/steel-pipes-factory.png", // Cambia por tu URL de imagen
+    image: "/images/steel-pipes-factory.png", // Cambia por tu URL de imagen
     results: 256,
     subcategories: [
       {

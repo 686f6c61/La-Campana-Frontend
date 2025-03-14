@@ -3,6 +3,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import FilterSearchBar from "../components/common/FilterSearchBar";
 import IntroductoryText from "../sections/common/IntroductoryText";
 import Card from "../components/common/Card";
+import ProductCard from "../components/common/ProductCard"
+
 import { useGetProductsByTextQuery } from "../store/reducers/apiSlice";
 
 const BreadCrumbs = () => {
@@ -26,83 +28,85 @@ const FILTER_OPTIONS = {
 
 const Store = () => {
 	const { categoryId } = useParams();
-  const navigate = useNavigate();
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-  const [selectedFilters, setSelectedFilters] = useState({
-    espesor: "",
-    longitud: "",
-    ancho: "",
-  });
-  const [searchQuery, setSearchQuery] = useState("");
-  const [visibleProducts, setVisibleProducts] = useState(8);
+	const navigate = useNavigate();
+	const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+	const [selectedFilters, setSelectedFilters] = useState({
+		espesor: "",
+		longitud: "",
+		ancho: "",
+	});
+	const [searchQuery, setSearchQuery] = useState("");
+	const [visibleProducts, setVisibleProducts] = useState(8);
 
-  const { data, error, isLoading, refetch } = useGetProductsByTextQuery(categoryId);
+	const productCategory = categoryId || "tuberia";
 
-  // All hooks must be called before any conditional returns
-  useEffect(() => {
-    setVisibleProducts(8);
-    refetch();
-    return () => {
-      setVisibleProducts(8);
-    };
-  }, [categoryId, refetch]);
+	const { data, error, isLoading, refetch } = useGetProductsByTextQuery(productCategory);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
+	// All hooks must be called before any conditional returns
+	useEffect(() => {
+		setVisibleProducts(8);
+		refetch();
+		return () => {
+			setVisibleProducts(8);
+		};
+	}, [categoryId, refetch]);
 
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+	useEffect(() => {
+		const handleResize = () => {
+			setIsMobile(window.innerWidth < 768);
+		};
 
-  const products = useMemo(() => {
-    if (!data) return [];
-    
-    return data.map((product) => ({
-      id: product.ItemsGroupCode,
-      image: product.image || "images/prod4.jpg",
-      title: product.ItemName,
-      price: `${product.ItemCode}`,
-      discount: product.discount || "-",
-    }));
-  }, [data]);
+		window.addEventListener("resize", handleResize);
+		return () => window.removeEventListener("resize", handleResize);
+	}, []);
 
-  const filteredProducts = useMemo(() => {
-    return products.filter((product) => {
-      const matchesSearch = product.title.toLowerCase().includes(searchQuery);
-      const matchesFilters = Object.keys(selectedFilters).every(
-        (filter) => !selectedFilters[filter] || product[filter] === selectedFilters[filter]
-      );
-      return matchesSearch && matchesFilters;
-    });
-  }, [products, searchQuery, selectedFilters]);
+	const products = useMemo(() => {
+		if (!data) return [];
 
-  // Event handlers
-  const handleProductClick = (productId) => {
-    navigate(`/tienda/${productId}`);
-  };
+		return data.map((product) => ({
+			id: product.ItemsGroupCode,
+			image: product.image || "images/prod4.jpg",
+			name: product.ItemName,
+			price: "29.99",
+			discount: product.discount || "-",
+		}));
+	}, [data]);
 
-  const handleFilterChange = (filterType, value) => {
-    setSelectedFilters((prevFilters) => ({
-      ...prevFilters,
-      [filterType]: value,
-    }));
-  };
+	const filteredProducts = useMemo(() => {
+		return products.filter((product) => {
+			const matchesSearch = product.name.toLowerCase().includes(searchQuery);
+			const matchesFilters = Object.keys(selectedFilters).every(
+				(filter) => !selectedFilters[filter] || product[filter] === selectedFilters[filter]
+			);
+			return matchesSearch && matchesFilters;
+		});
+	}, [products, searchQuery, selectedFilters]);
 
-  const handleSearchChange = (e) => {
-    setSearchQuery(e.target.value.toLowerCase());
-  };
+	// Event handlers
+	const handleProductClick = (productId) => {
+		navigate(`/tienda/${productId}`);
+	};
 
-  const handleLoadMore = () => {
-    setVisibleProducts((prevVisible) => prevVisible + 5);
-  };
+	const handleFilterChange = (filterType, value) => {
+		setSelectedFilters((prevFilters) => ({
+			...prevFilters,
+			[filterType]: value,
+		}));
+	};
 
-  // Now we can have conditional returns
-  if (isLoading) return <p>Cargando...</p>;
-  if (error) return <p>Error al cargar los datos.</p>;
+	const handleSearchChange = (e) => {
+		setSearchQuery(e.target.value.toLowerCase());
+	};
 
-	
+	const handleLoadMore = () => {
+		setVisibleProducts((prevVisible) => prevVisible + 5);
+	};
+
+	// Now we can have conditional returns
+	if (isLoading) return <p>Cargando...</p>;
+	if (error) return <p>Error al cargar los datos.</p>;
+
+
 
 	const renderFilterSection = (filterType, title) => (
 		<div>
@@ -177,7 +181,13 @@ const Store = () => {
 								className=" p-2 cursor-pointer "
 								onClick={() => handleProductClick(product.id)}
 							>
-								<Card product={product} />
+								<ProductCard
+									id={product.id}
+									name={product.name}
+									image={product.image}
+									price={product.price}
+									discount={product.discount}
+								/>
 							</div>
 						))}
 					</div>

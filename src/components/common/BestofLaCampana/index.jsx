@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useGetProductsQuery } from "../../../store/reducers/apiSlice";
+import { useGetProductsByTextQuery } from "../../../store/reducers/apiSlice";
+
 import CardGrid from "../CardGrid";
+import ActionButton from "../../common/ActionButton"
 
 const MAX_RETRIES = 3; // Límite de reintentos
 
 const BestOfLaCampana = () => {
-  const { data, error, isLoading, refetch } = useGetProductsQuery();
+  const { data, error, isLoading, refetch } = useGetProductsByTextQuery("tuberia");
   const [retryCount, setRetryCount] = useState(0);
 
   useEffect(() => {
@@ -29,8 +31,8 @@ const BestOfLaCampana = () => {
             products={data.slice(0, 5).map((product) => ({
               id: product.ItemsGroupCode,
               image: product.image || "images/prod4.jpg",
-              title: product.ItemName,
-              price: `${product.ItemCode}`,
+              name: product.ItemName,
+              price: "29,99",
               discount: product.discount || "-",
             }))}
             smCol="2"
@@ -52,9 +54,11 @@ const BestOfLaCampana = () => {
         </div>
 
         <div className="text-center mt-8">
-          <button className="my-bg-primary text-white font-bold px-6 py-3 rounded-full">
-            Ver más productos
-          </button>
+          <ActionButton
+            text="Ver más productos"
+            link="/tienda"
+            className="text-center mt-8"
+          />
         </div>
       </div>
     </section>
