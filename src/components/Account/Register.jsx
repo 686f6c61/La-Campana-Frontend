@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { useRegisterUserMutation } from "../../store/reducers/apiSlice.js";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import IntroductoryText from "../../sections/common/IntroductoryText.jsx";
 import PasswordToggleInput from "../Account/PasswordToggleInput.jsx";
-
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -15,10 +14,8 @@ const Register = () => {
     confirmPassword: "",
   });
 
-
   const [registerUser, { isLoading, error }] = useRegisterUserMutation();
   const navigate = useNavigate();
-
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -28,14 +25,12 @@ const Register = () => {
     }));
   };
 
-
   const handleRegister = async (e) => {
     e.preventDefault();
     if (formData.password !== formData.confirmPassword) {
       alert("Las contraseñas no coinciden.");
       return;
     }
-
 
     try {
       await registerUser({
@@ -46,7 +41,6 @@ const Register = () => {
         password: formData.password,
       }).unwrap();
 
-
       alert("Registro exitoso. Ahora puedes iniciar sesión.");
       navigate("/inicio");
     } catch (err) {
@@ -54,64 +48,64 @@ const Register = () => {
     }
   };
 
-
   return (
     <IntroductoryText
       title={
         <div className="text-center pb-10 px-4">
-          <h2 className="text-4xl font-anton text-lacampana-gray1">Registrarse</h2>
-
+          <h2 className="text-4xl font-anton text-lacampana-gray1">
+            Registrarse
+          </h2>
 
           <p className="text-sm mt-2">
             ¿Ya tienes una cuenta?{" "}
-            <a href="/inicio" className="text-red-500 font-semibold">
+            {/* <a href="/inicio" className="text-red-500 font-semibold">
               Inicia sesión
-            </a>
+            </a> */}
+            <Link to="/inicio" className="text-red-500 font-semibold">
+              Inicia sesión
+            </Link>
           </p>
-
 
           <div className="max-w-xl mx-auto mt-6 bg-lacampana-white p-8 rounded-lg shadow-lg min-h-[500px]">
             <h2 className="text-2xl font-bold text-lacampana-gray1 font-antonio mb-2">
               Accede a <span className="text-lacampana-red2">su cuenta</span>
             </h2>
 
-
             <form onSubmit={handleRegister} className="space-y-6 pt-4">
-              
-            {["name", "lastname", "username", "email"].map((field, index) => (
-  <div key={index} className="w-full max-w-[400px] mx-auto flex flex-col items-center">
-    <label className="text-lacampana-gray3 text-lg font-open-sans mb-1 w-full text-left">
-      {field === "name"
-        ? "Nombre"
-        : field === "lastname"
-        ? "Apellido"
-        : field === "username"
-        ? "Nombre de usuario"
-        : "Correo Electrónico"}
-    </label>
-    <input
-      type={field === "email" ? "email" : "text"}
-      name={field}
-      placeholder={
-        field === "name"
-          ? "Nombre *"
-          : field === "lastname"
-          ? "Apellido *"
-          : field === "username"
-          ? "Nombre de usuario *"
-          : "Correo electrónico *"
-      }
-      value={formData[field]}
-      onChange={handleChange}
-      className="w-full p-3 text-lg border border-lacampana-gray3 bg-lacampana-white rounded-lg font-open-sans focus:outline-none focus:border-black"
-      required
-    />
-  </div>
-))}
+              {["name", "lastname", "username", "email"].map((field, index) => (
+                <div
+                  key={index}
+                  className="w-full max-w-[400px] mx-auto flex flex-col items-center"
+                >
+                  <label className="text-lacampana-gray3 text-lg font-open-sans mb-1 w-full text-left">
+                    {field === "name"
+                      ? "Nombre"
+                      : field === "lastname"
+                      ? "Apellido"
+                      : field === "username"
+                      ? "Nombre de usuario"
+                      : "Correo Electrónico"}
+                  </label>
+                  <input
+                    type={field === "email" ? "email" : "text"}
+                    name={field}
+                    placeholder={
+                      field === "name"
+                        ? "Nombre *"
+                        : field === "lastname"
+                        ? "Apellido *"
+                        : field === "username"
+                        ? "Nombre de usuario *"
+                        : "Correo electrónico *"
+                    }
+                    value={formData[field]}
+                    onChange={handleChange}
+                    className="w-full p-3 text-lg border border-lacampana-gray3 bg-lacampana-white rounded-lg font-open-sans focus:outline-none focus:border-black"
+                    required
+                  />
+                </div>
+              ))}
 
-
-
-             
               <div className="w-full max-w-[400px] mx-auto flex flex-col items-center">
                 <label className="text-lacampana-gray3 text-lg font-open-sans mb-1 w-full text-left">
                   Contraseña
@@ -124,8 +118,6 @@ const Register = () => {
                 />
               </div>
 
-
-             
               <div className="w-full max-w-[400px] mx-auto flex flex-col items-center">
                 <label className="text-lacampana-gray3 text-lg font-open-sans mb-1 w-full text-left">
                   Confirmar Contraseña
@@ -133,19 +125,20 @@ const Register = () => {
                 <PasswordToggleInput
                   name="confirmPassword"
                   value={formData.confirmPassword}
-                  onChange={handleChange} 
+                  onChange={handleChange}
                   placeholder="Confirmar contraseña *"
                 />
               </div>
 
-
               {/* Olvidaste la contraseña */}
               <div className="text-left w-full max-w-[400px] mx-auto pt-0">
-                <a href="/forgot-password" className="text-gray-600 font-open-sans text-sm">
+                <a
+                  href="/forgot-password"
+                  className="text-gray-600 font-open-sans text-sm"
+                >
                   ¿Olvidaste la contraseña?
                 </a>
               </div>
-
 
               {/* Botón de registro */}
               <div className="text-center">
@@ -158,7 +151,6 @@ const Register = () => {
                 </button>
               </div>
             </form>
-
 
             {error && (
               <p className="text-red-500 text-center mt-2 min-h-[30px]">
@@ -174,8 +166,4 @@ const Register = () => {
   );
 };
 
-
 export default Register;
-
-
-

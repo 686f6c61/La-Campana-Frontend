@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useLoginUserMutation } from "../../store/reducers/apiSlice.js";
 import IntroductoryText from "../../sections/common/IntroductoryText.jsx";
 import PasswordToggleInput from "../Account/PasswordToggleInput.jsx";
@@ -52,9 +52,12 @@ const Login = () => {
 
               <p className="text-sm text-center">
                 ¿No tienes una cuenta?{" "}
-                <a href="/registro" className="text-red-500 font-semibold">
+                {/* <a href="/registro" className="text-red-500 font-semibold">
                   Regístrate
-                </a>
+                </a> */}
+                <Link className="text-red-500 font-semibold" to="/registro">
+                  Regístrate
+                </Link>
               </p>
 
               <form onSubmit={handleLogin} className="space-y-6 pt-10">
@@ -84,9 +87,18 @@ const Login = () => {
                 </div>
 
                 <div className="text-left w-full max-w-[400px] mx-auto pt-0">
-                  <a href="/forgot-password" className="text-gray-600 font-open-sans text-sm">
+                  {/* <a
+                    href="/forgot-password"
+                    className="text-gray-600 font-open-sans text-sm"
+                  >
                     ¿Olvidaste la contraseña?
-                  </a>
+                  </a> */}
+                  <Link
+                    to="/forgot-password"
+                    className="text-gray-600 font-open-sans text-sm"
+                  >
+                    ¿Olvidaste la contraseña?
+                  </Link>
                 </div>
 
                 <div className="text-center">
