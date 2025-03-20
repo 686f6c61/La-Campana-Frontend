@@ -40,6 +40,7 @@ import ForgotPassword from "./components/Account/ForgotPassword";
 import ResetPassword from "./components/Account/ResetPassword";
 import Store from "./pages/Store";
 import ProtectedRoute from "./helpers/ProtectedRoute";
+import Checkout from "./pages/Checkout";
 
 
 function App() {
@@ -88,6 +89,7 @@ function App() {
         <Route path="/politicadeprivacidad" element={<Politics />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/checkout" element={<Checkout />} />
 
       
         <Route path="*" element={<h1>404 Not Found</h1>} />

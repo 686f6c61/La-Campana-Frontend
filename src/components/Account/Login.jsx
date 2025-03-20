@@ -92,7 +92,7 @@ const Login = () => {
                 <div className="text-center">
                   <button
                     type="submit"
-                    className="w-full max-w-[200px] py-3 text-lg text-lacampana-red1 text-center border border-lacampana-red1 rounded-tl-full rounded-bl-full bg-white rounded-tr-full font-montserrat"
+                    className="w-full max-w-[200px] py-3 text-lg text-lacampana-red1 text-center border border-lacampana-red1 rounded-tl-full rounded-bl-full rounded-tr-full bg-white font-montserrat transition duration-300 ease-in-out hover:bg-lacampana-red1 hover:text-white hover:scale-90"
                     disabled={isLoading}
                   >
                     {isLoading ? "Cargando..." : "Ingresar"}

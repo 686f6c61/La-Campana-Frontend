@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useResetPasswordMutation } from "../../store/reducers/apiSlice";
 import IntroductoryText from "../../sections/common/IntroductoryText.jsx";
+import PasswordToggleInput from "./PasswordToggleInput.jsx";
 
 const ResetPassword = () => {
   const [searchParams] = useSearchParams();
@@ -70,21 +71,19 @@ const ResetPassword = () => {
                   <label className="text-lacampana-gray1 md:pl-0 pl-28 transform -translate-x-24 font-open-sans text-lg mb-1">
                     Nueva Contraseña
                   </label>
-                  <input
-                    type="password"
-                    placeholder="Ingrese su nueva contraseña *"
+                  <PasswordToggleInput
                     value={newPassword}
                     onChange={(e) => setNewPassword(e.target.value)}
-                    className="w-full max-w-[400px] p-3 text-lg bg-lacampana-white border border-lacampana-gray3 rounded-lg font-open-sans focus:outline-none focus:border-black"
-                    required
-                  />
+                    placeholder="Ingrese su nueva contraseña *"
+                    />
+
                 </div>
 
                 {/* Botón de Actualizar */}
                 <div className="text-center transform -translate-y-2">
                   <button
                     type="submit"
-                    className="w-full max-w-[200px] py-3 text-lg text-lacampana-red1 text-center border border-lacampana-red1 rounded-tl-full rounded-bl-full bg-white rounded-tr-full font-montserrat"
+                    className="w-full max-w-[200px] py-3 text-lg text-lacampana-red1 text-center border border-lacampana-red1 rounded-tl-full rounded-bl-full rounded-tr-full bg-white font-montserrat transition duration-300 ease-in-out hover:bg-lacampana-red1 hover:text-white hover:scale-90"
                     disabled={load}
                   >
                     {load ? "Actualizando..." : "Restablecer"}

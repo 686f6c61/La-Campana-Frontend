@@ -7,7 +7,7 @@ const UpdateAddress = () => {
   const [address, setAddress] = useState({
     id: "",
     name: "",
-    lastName: "",
+    lastname: "",
     company: "",
     phone: "",
     streetAddress: "",
@@ -90,8 +90,8 @@ const UpdateAddress = () => {
             <label className="block text-gray-700 font-semibold text-left">Apellidos<span className="text-lacampana-red2"> *</span></label>
             <input
               type="text"
-              name="lastName"
-              value={address.lastName}
+              name="lastname"
+              value={address.lastname}
               onChange={handleChange}
               className="w-full p-3 border border-gray-300 rounded-lg mb-4"
               required

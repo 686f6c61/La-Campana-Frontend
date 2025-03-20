@@ -31,7 +31,7 @@ const SteelLeaders = () => {
       bgTitleMargin="md:pl-6 md:pt-6"
       bgTitlePadding=""
     >
-      <div className=" flex items-end justify-end md:transform -translate-x-[80px] transform -translate-x-[-8px] md:transform -translate-y-[30px] transform -translate-y-[0px]">
+      <div className=" flex items-center justify-end  ">
   <div className=" flex items-center justify-center w-[790px] sm:w-[500px] h-[290px] bg-opacity-75 ">
     <img
       src="/images/play.png"

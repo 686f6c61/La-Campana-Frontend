@@ -15,13 +15,14 @@ const ContactBranches = () => {
     <div className="relative max-w-screen-desktop w-full my-10 overflow-hidden">
       {/* Fondo decorativo pegado a la izquierda */}
       <div
-        className="absolute top-0 left-0 h-full w-2/3 md:w-[80%] md:h-full h-[385px] w-[100%] rounded-tr-full rounded-br-full z-0"
-        style={{
-          backgroundImage: "url('/images/categories/laminasBg.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      />
+  className="absolute top-0 left-0 w-full md:w-[80%] h-[381px] md:h-full rounded-tr-full rounded-br-full z-0"
+  style={{
+    backgroundImage: "url('/images/categories/laminasBg.jpg')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  }}
+/>
+
 
       <div className="relative z-10 flex flex-col md:flex-row items-start justify-between ">
         {/* Contenido a la izquierda */}
