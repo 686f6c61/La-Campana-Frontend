@@ -138,7 +138,7 @@ const CategoryPage = () => {
 			</div>}
 
 			<div className="flex">
-				<aside className="w-1/4 h-1/2 bg-gray-100 p-4 shadow hidden lg:block">
+				<aside className="w-1/4 h-1/2 bg-gray-100 p-10 shadow hidden lg:block">
 					<div className="mb-4 relative">
 						<input
 							type="text"
@@ -170,7 +170,7 @@ const CategoryPage = () => {
 				<main className="desktop:pl-4 sm:px-4">
 					{isMobile && <FilterSearchBar />}
 
-					<div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 ">
+					<div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-0 ">
 						{filteredProducts.slice(0, visibleProducts).map((product) => (
 							<div
 								key={product.id}

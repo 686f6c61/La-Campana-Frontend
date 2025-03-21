@@ -64,19 +64,16 @@ function App() {
         <Route path="/blog/:blogId" element={<BlogDetails />} />
         <Route path="/servicios" element={<Services />} />
         <Route path="/micuenta" element={<ProtectedRoute />}>
-  <Route path="/micuenta" element={<MyAccount />}>
-    <Route index element={<DashboardPanel />} />
-    <Route path="pedidos" element={<Orders />} />
-    <Route path="pedidos/:pedidoId" element={<OrderDetails />} />
-    <Route path="direcciones" element={<Addresses />} />
-    <Route path="direcciones/editar/:direccionId" element={<UpdateAddress />} />
-    <Route path="detalles" element={<AccountDetails />} />
-    <Route path="deseos" element={<WishList />} />
-  </Route>
-</Route>
-
-
-        
+          <Route path="/micuenta" element={<MyAccount />}>
+            <Route index element={<DashboardPanel />} />
+            <Route path="pedidos" element={<Orders />} />
+            <Route path="pedidos/:pedidoId" element={<OrderDetails />} />
+            <Route path="direcciones" element={<Addresses />} />
+            <Route path="direcciones/editar/:direccionId" element={<UpdateAddress />} />
+            <Route path="detalles" element={<AccountDetails />} />
+            <Route path="deseos" element={<WishList />} />
+          </Route>
+        </Route>
 
         <Route path="/servicios/:serviceId" element={<ServiceDetails />} />
         <Route path="/carrito" element={<Cart />} />
@@ -91,7 +88,6 @@ function App() {
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/checkout" element={<Checkout />} />
 
-      
         <Route path="*" element={<h1>404 Not Found</h1>} />
       </Routes>
       {/* <Footer /> */}
