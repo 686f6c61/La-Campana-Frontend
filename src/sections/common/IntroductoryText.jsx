@@ -5,7 +5,7 @@ const IntroductoryText = ({
   bgTitle = "Título",
   bgTitlePadding = "",
   bgTitleMargin = "",
-  titleMargin = "", 
+  titleMargin = "",
   justify = "start",
   children,
 }) => {
@@ -34,10 +34,10 @@ const IntroductoryText = ({
       <article className="pt-8 tablet:pt-20 desktop:pt-36 flex flex-col tablet:flex-row gap-16 px-4 desktop:px-8">
         {/* Desktop Text */}
         <section
-          className={`hidden text-${justify} tablet:flex flex-col gap-8 text-wrap w-full`}
+          className={`hidden text-${justify}  tablet:flex flex-col justify-center text-wrap w-full`}
         >
           <div className={`${titleMargin}`}>
-            <h1 className="leading-tight">{title}</h1>
+            <h1 className="leading-tight mb-10">{title}</h1>
             <span className="font-open-sans text-2xl text-lacampana-gray1 uppercase">
               {subtitle}
             </span>

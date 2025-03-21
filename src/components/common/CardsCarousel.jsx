@@ -166,6 +166,7 @@ const CardsCarousel = ({
   controlBgColor = "bg-lacampana-gray3",
   controlCheckedColor = "checked:bg-lacampana-red2",
   customControlClass = "",
+  latestBlogs,
 }) => {
   const slides = [];
 
@@ -201,20 +202,30 @@ const CardsCarousel = ({
           <article
             key={`${id}-${index}`}
             id={`${id}-${index}`}
-            className="carousel-item w-full flex gap-4"
+            className={
+              !latestBlogs
+                ? "carousel-item flex w-[280px] mt-5"
+                : "carousel-item w-full"
+            }
           >
             {slide}
           </article>
         ))}
       </div>
 
-      <div className="flex justify-center items-center gap-2 mt-4">
+      <div
+        className={
+          !latestBlogs
+            ? "flex justify-start items-center gap-2 mt-4"
+            : "flex justify-center items-center gap-2 mt-4"
+        }
+      >
         {slides.map((_, index) => (
           <input
             key={`${id}-radio-${index}`}
             type="radio"
             name={id}
-            className={`radio w-3 h-3 checked:w-5 checked:h-5 border-none ${controlBgColor} ${controlCheckedColor} ${customControlClass}`}
+            className={`radio w-2 h-2 checked:w-3 checked:h-3 border-none ${controlBgColor} ${controlCheckedColor} ${customControlClass}`}
             onClick={() =>
               document
                 .getElementById(`${id}-${index}`)
@@ -229,7 +240,3 @@ const CardsCarousel = ({
 };
 
 export default CardsCarousel;
-
-
-
-

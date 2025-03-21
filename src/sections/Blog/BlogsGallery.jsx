@@ -1,53 +1,66 @@
-import { useEffect, useState } from "react"
-import BlogCard from "../../components/common/BlogCard"
-import SearchBar from "../../components/common/SearchBar"
-import { useGetBlogCategoriesQuery, useGetBlogsQuery } from "../../store/reducers/apiSlice"
-import { useLocation } from "react-router"
+import { useEffect, useState } from "react";
+import BlogCard from "../../components/common/BlogCard";
+import SearchBar from "../../components/common/SearchBar";
+import {
+  useGetBlogCategoriesQuery,
+  useGetBlogsQuery,
+} from "../../store/reducers/apiSlice";
+import { useLocation } from "react-router";
 
-const MAX_NUM_RENDERS = 9
+const MAX_NUM_RENDERS = 9;
 
 const BlogsGallery = () => {
-  const [query, setQuery] = useState([]) // Query que se enviará al back para traer los blogs filtrados por categoría
-  const [numRenders, setNumRenders] = useState(1) // Número de veces que se a clickeado el boton "Cargar más"
-  const [blogsGallery, setBlogsGallery] = useState() // Los datos de los Blogs de la galería 
-  const { state: blogDetailsSearch } = useLocation()
+  const [query, setQuery] = useState([]); // Query que se enviará al back para traer los blogs filtrados por categoría
+  const [numRenders, setNumRenders] = useState(1); // Número de veces que se a clickeado el boton "Cargar más"
+  const [blogsGallery, setBlogsGallery] = useState(); // Los datos de los Blogs de la galería
+  const { state: blogDetailsSearch } = useLocation();
 
-  const { data: categories, error: errorCategories, isLoading: isLoadingCategories } = useGetBlogCategoriesQuery()
-  const { data: blogs, error: errorBlogs, isLoading: isLoadingBlogs } = useGetBlogsQuery(`${query.length ? "?" : ""}${query.join("&")}`)
+  const {
+    data: categories,
+    error: errorCategories,
+    isLoading: isLoadingCategories,
+  } = useGetBlogCategoriesQuery();
+  const {
+    data: blogs,
+    error: errorBlogs,
+    isLoading: isLoadingBlogs,
+  } = useGetBlogsQuery(`${query.length ? "?" : ""}${query.join("&")}`);
 
   useEffect(() => {
     if (blogs) {
-      setBlogsGallery(blogs.slice(0, MAX_NUM_RENDERS * numRenders))
+      setBlogsGallery(blogs.slice(0, MAX_NUM_RENDERS * numRenders));
     }
-  }, [numRenders, blogs])
+  }, [numRenders, blogs]);
   useEffect(() => {
     if (blogDetailsSearch) {
-      const searchTerm = blogDetailsSearch
-      handleSearchBar(searchTerm)
+      const searchTerm = blogDetailsSearch;
+      handleSearchBar(searchTerm);
 
       setTimeout(() => {
         window.scrollTo({
           top: 950,
-          behavior: "smooth"
-        })
-      }, 300)
+          behavior: "smooth",
+        });
+      }, 300);
     }
-  }, [])
+  }, []);
 
-  const handleLoadMore = () => setNumRenders(numRenders + 1)
+  const handleLoadMore = () => setNumRenders(numRenders + 1);
   const handleRadioFilter = (event, categoryId) => {
     if (event.target.checked) {
-      setQuery([...query, `categoryId=${categoryId}`])
+      setQuery([...query, `categoryId=${categoryId}`]);
     } else {
-      setQuery(query.filter(value => !value.includes(categoryId)))
+      setQuery(query.filter((value) => !value.includes(categoryId)));
     }
-  }
+  };
   const handleSearchBar = (searchTerm) => {
-    const keywordParam = query.find(queryParam => queryParam.includes("keyword"))
-    const newQuery = query.filter(queryParam => queryParam !== keywordParam)
+    const keywordParam = query.find((queryParam) =>
+      queryParam.includes("keyword")
+    );
+    const newQuery = query.filter((queryParam) => queryParam !== keywordParam);
 
-    setQuery([...newQuery, `keyword=${searchTerm}`])
-  }
+    setQuery([...newQuery, `keyword=${searchTerm}`]);
+  };
 
   if (isLoadingBlogs) return <p>Cargando...</p>;
   if (errorBlogs) return <p>Error al cargar los datos.</p>;
@@ -58,14 +71,14 @@ const BlogsGallery = () => {
     <section className="flex flex-col gap-8 px-4 desktop:px-8">
       <header className="flex flex-col tablet:flex-row justify-between">
         <div className="flex justify-center flex-wrap">
-          {categories?.map(category =>
+          {categories?.map((category) => (
             <CategoryRadio
               key={`blogs-category-filter-${category._id}`}
               id={category._id}
               name={category.name}
               onClick={() => handleRadioFilter(event, category._id)}
             />
-          )}
+          ))}
         </div>
         <div className="drop-shadow-lg flex justify-center">
           <SearchBar
@@ -76,25 +89,25 @@ const BlogsGallery = () => {
         </div>
       </header>
       <main>
-        {!blogsGallery?.length &&
+        {!blogsGallery?.length && (
           <div className="py-32">
-            <h2>
-              No se encontraron resultados para la búsqueda...
-            </h2>
-          </div>}
-        <div className="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 gap-4">
-          {blogsGallery?.map(blog =>
-            <article key={`blog-card-${blog._id}`} className="h-[500px]">
+            <h2>No se encontraron resultados para la búsqueda...</h2>
+          </div>
+        )}
+        <div className="flex flex-wrap justify-center gap-3">
+          {blogsGallery?.map((blog) => (
+            <article key={`blog-card-${blog._id}`} className="max-w-[365px]">
               <BlogCard
                 id={blog._id}
                 title={blog.name}
                 description={blog.body}
-                //category={blog.blogCategory.name}
+                category={blog.blogCategoryId.name}
                 image={blog.image}
                 publicationDate={blog.createdAt}
+                blogsGallery={true}
               />
             </article>
-          )}
+          ))}
         </div>
       </main>
       <footer>
@@ -107,19 +120,23 @@ const BlogsGallery = () => {
         </button>
       </footer>
     </section>
-  )
-}
+  );
+};
 
-export default BlogsGallery
+export default BlogsGallery;
 
 const CategoryRadio = ({ id, name, onClick }) => {
-
   return (
     <div className="form-control">
       <label className="label cursor-pointer gap-2">
-        <input onClick={onClick} type="checkbox" name={`radio-filter-news-${id}`} className="radio w-4 h-4 checked:bg-lacampana-red2" />
+        <input
+          onClick={onClick}
+          type="checkbox"
+          name={`radio-filter-news-${id}`}
+          className="radio w-4 h-4 checked:bg-lacampana-red2"
+        />
         <span className="text-p2-desktop">{name}</span>
       </label>
     </div>
-  )
-}
+  );
+};

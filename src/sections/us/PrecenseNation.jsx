@@ -40,6 +40,7 @@ const PrecenseNation = () => {
                 cardsList={sucursalesFiltradas}
                 id="sucursal-desktop"
                 itemsPerSlide={3}
+                latestBlogs={true}
               />
             </div>
 
@@ -54,7 +55,6 @@ const PrecenseNation = () => {
           </div>
         </div>
 
-       
         <div className="relative z-0 flex-1 flex items-end justify-end md:mr-0">
           <img
             src="/images/Map.png"
