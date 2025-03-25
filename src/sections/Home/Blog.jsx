@@ -7,6 +7,8 @@ import ActionButton from "../../components/common/ActionButton";
 const Blog = () => {
   const { data: blogs, error, isLoading } = useGetBlogsQuery("");
 
+  console.log(blogs)
+
   if (isLoading) return <p>Cargando...</p>;
   if (error) return <p>Error al cargar los datos.</p>;
 
@@ -38,7 +40,7 @@ const Blog = () => {
                 key={`blog-home-${blog._id}`}
                 id={blog._id}
                 title={blog.name}
-                category={blog.blogCategoryId.name}
+                category={blog.category}
                 image={blog.image}
                 publicationDate={blog.createdAt}
                 blogsGallery={false}
@@ -58,7 +60,7 @@ const Blog = () => {
                   key={`blog-home-${blog._id}`}
                   id={blog._id}
                   title={blog.name}
-                  category={blog.blogCategoryId.name}
+                  category={blog.category}
                   image={blog.image}
                   publicationDate={blog.createdAt}
                 />
