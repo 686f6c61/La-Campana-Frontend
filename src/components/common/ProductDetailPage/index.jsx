@@ -7,6 +7,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { addItem, updateItem } from "../../../features/cart/cartSlice";
 import products from "../../../utils/products";
 import relatedProducts from "../../../utils/relatedProducts";
+import ActionButton from "../ActionButton";
+import QuantitySelector from "../QuantitySelector";
+import RadioSelect from "../RadioSelect";
+import ComplementSection from "../ComplementSection";
 
 const ProductGallery = ({ image }) => (
 	<div className="flex flex-col lg:flex-row-reverse gap-1">
@@ -14,8 +18,8 @@ const ProductGallery = ({ image }) => (
 			<img src={image} alt="Producto" className="w-full h-full object-cover border rounded-lg" />
 
 			<span className="absolute top-2 left-2 bg-gray-200 w-24 lg:w-24 lg:h-7 lg:text-sm lg:pt-1 md:w-52 md:h-14 md:text-3xl md:pt-2 font-open-sans text-black px-2 py-1 rounded-tr-lg rounded-bl-lg rounded-br-lg text-md">
-          -20%
-        </span>
+				-20%
+			</span>
 		</div>
 		<div className="grid grid-cols-3 lg:flex lg:flex-col gap-2 lg:mt-0 lg:mr-2">
 			{[...Array(3)].map((_, index) => (
@@ -79,26 +83,14 @@ const ProductColors = ({ options }) => (
 );
 
 
-
-const QuantitySelector = () => (
-	<div className="flex items-center gap-2">
-		<button className="bg-gray-200 w-8 h-8 flex items-center justify-center font-bold text-gray-700">
-			-
-		</button>
-		<input type="number" min="1" defaultValue="1" className="w-12 text-center border border-gray-300 rounded-md" />
-		<button className="bg-gray-200 w-8 h-8 flex items-center justify-center font-bold text-gray-700">
-			+
-		</button>
-	</div>
-);
-
 const ActionButtons = ({ addToCart, productPrice }) => (
 	<div className="mt-4 flex lg:flex-row items-center justify-start md:justify-center lg:justify-start lg:items-center gap-6">
 		<span className="text-2xl font-antonio text-black">${productPrice}</span>
 		<QuantitySelector />
-		<button onClick={addToCart} className="bg-lacampana-red2 font-montserrat text-white w-[180px] md:w-[270px] h-[44px] rounded-md rounded-tl-full rounded-bl-full rounded-tr-full text-md">
-			Añadir al carrito
-		</button>
+		<ActionButton
+			text="Añadir al carrito"
+			className="text-center mt-8"
+		/>
 	</div>
 );
 
@@ -112,7 +104,6 @@ const ProductDetailPage = () => {
 	const dispatch = useDispatch();
 
 	const pid = productId == 0 ? 1 : productId // TODO: Remove when backend logic works as expected
-
 	const product = products.find(p => p.id === Number(pid));
 
 	console.log(product)
@@ -163,12 +154,10 @@ const ProductDetailPage = () => {
 			<div className="mt-12">
 				<ProductTabs />
 			</div>
+			<ComplementSection />
 
-			<div className="mt-16">
-				<div className="flex flex-col md:flex-row items-center gap-6 text-left max-w-screen-lg mx-auto">
-					<h2 className="text-xl font-antonio text-red-500">Complementa tu compra</h2>
-					<h2 className="text-xl font-antonio text-black">Productos similares</h2>
-				</div>
+			<div className="mt-8">
+
 				<CardGrid products={relatedProducts} lgCol="4" smCol="2" />
 			</div>
 

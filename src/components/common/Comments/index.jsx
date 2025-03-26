@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Star } from 'lucide-react';
 import { useGetProductCommentsQuery, useAddProductCommentMutation } from '../../../store/reducers/apiSlice';
+import ActionButton from '../ActionButton';
 
 export default function Comments() {
   const { data: comments = [], error, isLoading, refetch } = useGetProductCommentsQuery();
@@ -107,22 +108,10 @@ export default function Comments() {
                 He leído y acepto la política de tratamiento de datos personales
               </label>
             </div>
-            <button
-              type="submit"
-              className="px-6 py-2 bg-white font-montserrat font-bold text-lacampana-red1 rounded-full hover:bg-red-600 transition-colors"
-              style={{
-                width: '155px',
-                height: '42px',
-                top: '2198px',
-                left: '152px',
-                padding: '9px 35px 9px 35px',
-                gap: '10px',
-                borderRadius: '25px 25px 0px 25px',
-                border: '1px solid #F70025',
-              }}
-            >
-              Comentar
-            </button>
+            <ActionButton
+              text="Comentar"
+              className="text-center mt-8"
+            />
           </form>
         </div>
         <div className="space-y-6">

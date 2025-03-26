@@ -4,6 +4,7 @@ import FilterSearchBar from "../FilterSearchBar";
 import IntroductoryText from "../../../sections/common/IntroductoryText";
 import ProductCard from "../../common/ProductCard"
 import { useGetProductsByTextQuery } from "../../../store/reducers/apiSlice";
+import ActionButton from "../ActionButton";
 
 const BreadCrumbs = () => {
 	return (
@@ -190,12 +191,12 @@ const CategoryPage = () => {
 					{
 						visibleProducts < filteredProducts.length && (
 							<div className="mt-6 pb-12 text-center">
-								<button
+								<ActionButton
 									onClick={handleLoadMore}
-									className="bg-black text-white px-6 py-2 rounded-tl-full rounded-bl-full rounded-tr-full hover:bg-red-600"
-								>
-									Cargar más
-								</button>
+									text="Cargar más"
+									bgColor="black"
+									
+								/>
 							</div>
 						)
 					}

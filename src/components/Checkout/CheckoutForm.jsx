@@ -1,7 +1,7 @@
 import { useState } from "react";
 import NaturalForm from "./NaturalForm";
 import JuridicaForm from "./JuridicaForm";
-import RadioSelect from "../common/RadioSelect"; 
+import RadioSelect from "../common/RadioSelect";
 
 
 const CheckoutForm = () => {
@@ -25,23 +25,23 @@ const CheckoutForm = () => {
         </thead>
       </table>
 
-<div className="pl-10">
-     
-      <RadioSelect
-      
-  options={["Persona Natural", "Persona Jurídica"]}
-  selectedOption={selectedType === "natural" ? "Persona Natural" : "Persona Jurídica"}
-  onSelectionChange={handleSelection}
-  bgColor="red"
-  borderColor="red"
-  textColor="lacamapana-gray1"
-  labelClassName="font-open-sans text-base"
-  
- 
-/></div>
+      <div className="pl-10">
+
+        <RadioSelect
+
+          options={["Persona Natural", "Persona Jurídica"]}
+          selectedOption={selectedType === "natural" ? "Persona Natural" : "Persona Jurídica"}
+          onSelectionChange={handleSelection}
+          bgColor="red"
+          borderColor="red"
+          textColor="lacamapana-gray1"
+          labelClassName="font-open-sans text-base"
 
 
-    
+        /></div>
+
+
+
       {selectedType === "natural" ? <NaturalForm /> : <JuridicaForm />}
     </section>
   );
