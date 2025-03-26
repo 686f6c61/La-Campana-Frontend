@@ -15,14 +15,13 @@ const ContactBranches = () => {
     <div className="relative max-w-screen-desktop w-full my-10 overflow-hidden">
       {/* Fondo decorativo pegado a la izquierda */}
       <div
-  className="absolute top-0 left-0 w-full md:w-[80%] h-[381px] md:h-full rounded-tr-full rounded-br-full z-0"
-  style={{
-    backgroundImage: "url('/images/categories/laminasBg.jpg')",
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-  }}
-/>
-
+        className="absolute top-0 left-0 w-full md:w-[80%] h-[381px] md:h-full rounded-tr-full rounded-br-full z-0"
+        style={{
+          backgroundImage: "url('/images/categories/laminasBg.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      />
 
       <div className="relative z-10 flex flex-col md:flex-row items-start justify-between ">
         {/* Contenido a la izquierda */}
@@ -37,12 +36,18 @@ const ContactBranches = () => {
             <p className="text-white text-sm">
               Lorem ipsum dolor sit amet consectetur. Pulvinar dignissim
               pulvinar ut lorem pharetra. Vestibulum nulla faucibus nunc enim.
-              Proin feugiat fames turpis sociis viverra. Viverra sit ut
-              egestas placerat neque fames ante.
+              Proin feugiat fames turpis sociis viverra. Viverra sit ut egestas
+              placerat neque fames ante.
             </p>
 
             <RadioSelect
-              options={["Bogotá", "Soacha", "Villavicencio", "Mosquera", "Neiva"]}
+              options={[
+                "Bogotá",
+                "Soacha",
+                "Villavicencio",
+                "Mosquera",
+                "Neiva",
+              ]}
               selectedOption={selectedBranch}
               onSelectionChange={setSelectedBranch}
               bgColor="black"
@@ -57,8 +62,7 @@ const ContactBranches = () => {
                   id="sucursal-desktop"
                   itemsPerSlide={3}
                   controlBgColor="bg-gray-200"
-  controlCheckedColor="checked:bg-gray-800"
-
+                  controlCheckedColor="checked:bg-gray-800"
                 />
               </div>
               <div className="lg:hidden">

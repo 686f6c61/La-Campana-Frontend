@@ -7,36 +7,75 @@ import HeaderItem from "./components/HeaderItem";
 import SearchBar from "../../components/common/SearchBar";
 import MenuSidebar from "./components/MenuSidebar";
 import categories from "../../utils/categories";
+import { useState, useEffect } from "react";
 import { Link } from "react-router";
 
 const Header = () => {
+  const [scrolling, setScrolling] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 100) {
+        setScrolling(true);
+      } else {
+        setScrolling(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <header className="bg-lacampana-red2">
-      <nav className="navbar w-full py-4 max-w-screen-desktop justify-self-center">
-        <div className="mx-2 px-2 navbar-start">
+    <header
+      className={`pl-5 pr-5 bg-lacampana-red2 flex justify-evenly items-center ${
+        !scrolling
+          ? "h-[100px]"
+          : "bg-lacampana-red2 fixed top-0 w-full z-50 shadow-lg h-[70px]"
+      } transition-all duration-300 ease-in-out`}
+    >
+      <nav className="w-full max-w-7xl flex items-center justify-between">
+        <div className="navbar-start">
           <Link to="/">
-            <img src="/images/logo.png" alt="logo" />
+            <img
+              src="/images/logo.png"
+              alt="logo"
+              className={`transition-all duration-300 ease-in-out object-cover ${
+                scrolling
+                  ? "w-[130px] tablet:w-[200px]"
+                  : "w-[130px] tablet:w-[230px]"
+              }`}
+            />
           </Link>
         </div>
         <section className="navbar-end">
-          <div className="flex gap-4">
-            <div className="hidden tablet:block">
+          <div className="flex justify-end gap-4">
+            <div className="hidden tablet:block w-[300px]">
               <SearchBar placeholder="Buscar producto..." />
             </div>
             <ul className="flex gap-4 items-center">
               <HeaderItem
                 link="/inicio"
-                icon={<HiOutlineUser className="text-white text-2xl hover:scale-90 transition duration-300 ease-in-out" />}
+                icon={
+                  <HiOutlineUser className="text-white text-2xl hover:scale-90 transition duration-200 ease-in-out" />
+                }
               />
               <HeaderItem
-                icon={<HiOutlineHeart className="text-white text-2xl hover:scale-90 transition duration-300 ease-in-out" />}
+                icon={
+                  <HiOutlineHeart className="text-white text-2xl hover:scale-90 transition duration-200 ease-in-out" />
+                }
               />
               <HeaderItem
                 link="/carrito"
-                icon={<HiOutlineShoppingCart className="text-white text-2xl hover:scale-90 transition duration-300 ease-in-out" />}
+                icon={
+                  <HiOutlineShoppingCart className="text-white text-2xl hover:scale-90 transition duration-200 ease-in-out" />
+                }
               />
             </ul>
-            <MenuSidebar categories={categories} />
+            <MenuSidebar categories={categories} scrolling={scrolling} />
           </div>
         </section>
       </nav>

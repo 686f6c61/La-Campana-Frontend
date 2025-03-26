@@ -46,15 +46,15 @@ const BlogCard = ({
       </Link>
     </article>
   ) : (
-    <article className="bg-lacampana-white flex flex-col p-3 rounded-br-xl w-[265px] h-[350px] border border-lacampana-gray1/0 hover:border-lacampana-gray1 hover:scale-95 transition duration-300 ease-in-out">
+    <article className="bg-lacampana-white flex flex-col p-2 rounded-br-xl w-[270px] m-h-[330px] border border-lacampana-gray1/0 hover:scale-95 transition duration-300 ease-in-out">
       <div className="flex flex-col">
         <img
-          className="rounded-tl-lg overflow-hidden w-full h-48 object-cover"
+          className="overflow-hidden w-full h-[175px] object-cover"
           src={image}
           alt="news-card-image"
         />
         <div className="text-start">
-          <div>
+          <div className="mt-2">
             <span className="font-light text-sm">
               {category} | {formatedDate}
             </span>
@@ -63,7 +63,7 @@ const BlogCard = ({
         </div>
         <Link
           to={`/blog/${id}`}
-          className="w-fit mb-2 text-2x1 flex items-center hover:text-lacampana-red2 hover:scale-90 transition duration-300 ease-in-out"
+          className="w-fit mb-2 mt-2 font-light text-2x1 flex items-center hover:text-lacampana-red2 hover:scale-90 transition duration-300 ease-in-out"
         >
           Leer más
           <IoIosArrowRoundForward className="text-2xl" />

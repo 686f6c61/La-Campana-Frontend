@@ -68,7 +68,7 @@ const BlogsGallery = () => {
   if (errorCategories) return <p>Error al cargar los datos.</p>;
 
   return (
-    <section className="flex flex-col gap-8 px-4 desktop:px-8">
+    <section className="flex flex-col">
       <header className="flex flex-col tablet:flex-row justify-between">
         <div className="flex justify-center flex-wrap">
           {categories?.map((category) => (
@@ -94,9 +94,9 @@ const BlogsGallery = () => {
             <h2>No se encontraron resultados para la búsqueda...</h2>
           </div>
         )}
-        <div className="flex flex-wrap justify-center gap-3">
+        <div className="pt-10 pb-10 flex flex-wrap justify-center gap-2 w-full max-w-6xl mx-auto">
           {blogsGallery?.map((blog) => (
-            <article key={`blog-card-${blog._id}`} className="max-w-[365px]">
+            <article key={`blog-card-${blog._id}`} className="">
               <BlogCard
                 id={blog._id}
                 title={blog.name}
@@ -114,7 +114,7 @@ const BlogsGallery = () => {
         <button
           disabled={MAX_NUM_RENDERS * numRenders >= blogs?.length}
           onClick={handleLoadMore}
-          className="lacampana-btn bg-lacampana-red2 px-8 py-2 text-white disabled:bg-lacampana-gray2"
+          className="lacampana-btn bg-lacampana-red2 px-8 py-2 mb-5 text-white disabled:bg-lacampana-gray2"
         >
           Cargar más
         </button>
