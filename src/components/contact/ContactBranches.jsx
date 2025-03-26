@@ -56,7 +56,7 @@ const ContactBranches = () => {
                   cardsList={sucursalesFiltradas}
                   id="sucursal-desktop"
                   itemsPerSlide={3}
-                  controlBgColor="bg-gray-200"
+                  controlBgColor="bg-lacampana-gray1"
   controlCheckedColor="checked:bg-gray-800"
 
                 />

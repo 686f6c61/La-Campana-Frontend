@@ -1,34 +1,51 @@
+import { useState } from "react";
+import NaturalForm from "./NaturalForm";
+import JuridicaForm from "./JuridicaForm";
+import RadioSelect from "../common/RadioSelect"; 
+
+
 const CheckoutForm = () => {
-    return (
-      <section className="bg-gray-100 p-6 rounded-md space-y-4">
-        <div className="flex gap-4">
-          <button className="border border-gray-400 px-4 py-2 rounded-full">Persona Natural</button>
-          <button className="border border-gray-400 px-4 py-2 rounded-full">Persona Jurídica</button>
-        </div>
-  
-  
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <input placeholder="Nombres *" className="input-style" />
-          <input placeholder="Apellidos *" className="input-style" />
-          <input placeholder="Documento de identidad" className="input-style" />
-          <input placeholder="Correo electrónico *" className="input-style" />
-          <input placeholder="Teléfono de contacto *" className="input-style" />
-          <select className="input-style"><option>Departamento de Colombia *</option></select>
-          <select className="input-style"><option>Ciudad *</option></select>
-          <input placeholder="Dirección *" className="input-style" />
-          <input placeholder="Complementa la dirección" className="input-style" />
-          <input placeholder="Código Postal" className="input-style" />
-        </div>
-  
-  
-        <div className="flex gap-4">
-          <label><input type="checkbox" /> Enviar a otra dirección</label>
-          <label><input type="checkbox" /> Crear una cuenta</label>
-        </div>
-      </section>
-    );
+  const [selectedType, setSelectedType] = useState("natural");
+
+
+  const handleSelection = (option) => {
+    setSelectedType(option === "Persona Jurídica" ? "juridica" : "natural");
   };
+
+
+  return (
+    <section className="bg-white p-6 rounded-md space-y-6 w-full">
+      <table className="w-full text-left border-collapse">
+        <thead>
+          <tr className="bg-lacampana-gray1 text-lacampana-white font-antonio">
+            <th className="text-left md:text-xl text-sm py-3 px-4 border-b md:pr-0 pr-20">
+              Detalles del Pedido
+            </th>
+          </tr>
+        </thead>
+      </table>
+
+<div className="pl-10">
+     
+      <RadioSelect
+      
+  options={["Persona Natural", "Persona Jurídica"]}
+  selectedOption={selectedType === "natural" ? "Persona Natural" : "Persona Jurídica"}
+  onSelectionChange={handleSelection}
+  bgColor="red"
+  borderColor="red"
+  textColor="lacamapana-gray1"
+  labelClassName="font-open-sans text-base"
   
-  
-  export default CheckoutForm;
-  
+ 
+/></div>
+
+
+    
+      {selectedType === "natural" ? <NaturalForm /> : <JuridicaForm />}
+    </section>
+  );
+};
+
+
+export default CheckoutForm;

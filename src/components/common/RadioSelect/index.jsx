@@ -1,43 +1,69 @@
 import React from "react";
 
-const RadioSelect = ({ options, selectedOption, onSelectionChange, bgColor = "red", borderColor = "white", textColor = "white" }) => {
+
+const RadioSelect = ({
+  options,
+  selectedOption,
+  onSelectionChange,
+  bgColor = "red",
+  borderColor = "gray",
+  textColor = "black",
+  variant = "default", 
+  renderContent = null,
+  labelClassName = "",
+}) => {
   return (
-    <div className="flex flex-wrap gap-x-2 md:gap-x-3  pt-4">
-      {options.map((option) => (
-        <div key={option} className="flex items-center sm:me-3 md:me-4 pb-2 pt-6">
-          <input
-            id={`${option.toLowerCase()}-radio`}
-            type="radio"
-            value={option}
-            name="select"
-            checked={selectedOption === option}
-            onChange={() => onSelectionChange(option)}
-            className="w-4 h-4"
-            style={{
-              appearance: "none",
-              width: "15px",
-              height: "15px",
-              borderRadius: "50%",
-              backgroundColor: selectedOption === option ? bgColor : "#d1d3d1",
-              border: `2px solid ${borderColor}`,
-              cursor: "pointer",
-              boxShadow:
-                selectedOption === option
-                  ? `0 0 0 2px ${borderColor}`
-                  : "0 0 0 2px rgba(209, 211, 209, 0.5)",
-            }}
-          />
-          <label
-            htmlFor={`${option.toLowerCase()}-radio`}
-            className="ms-1 text-xs md:text-sm font-medium md:pl-1"
-            style={{ color: selectedOption === option ? bgColor : textColor }}
-          >
-            {option}
-          </label>
-        </div>
-      ))}
+    <div className={`flex ${variant === "box" ? "flex-col gap-4" : "flex-wrap gap-3 pt-4 md:pt-0"}`}>
+      {options.map((option) => {
+        const value = typeof option === "string" ? option : option.value;
+        const label = typeof option === "string" ? option : option.label;
+        const isSelected = selectedOption === value;
+        const id = `${value}-radio`;
+
+
+        return (
+          <div key={value} className="flex items-center">
+            <input
+              type="radio"
+              id={id}
+              name="radio-option"
+              value={value}
+              checked={isSelected}
+              onChange={() => onSelectionChange(value)}
+              className="hidden"
+            />
+            <label
+              htmlFor={id}
+              className={
+                variant === "box"
+                  ? "border border-lacampana-gray1 rounded-lg p-4 flex items-center gap-4 cursor-pointer transition duration-200 w-full"
+                  : "flex items-center gap-2 cursor-pointer text-sm"
+              }
+            >
+           
+              <span className="w-4 h-4 inline-block border border-gray-400 rounded-full flex-shrink-0 relative">
+                {isSelected && (
+                  <span className="absolute top-1/2 left-1/2 w-2 h-2 bg-lacampana-red2 rounded-full transform -translate-x-1/2 -translate-y-1/2" />
+                )}
+              </span>
+
+
+              
+              {renderContent ? renderContent(option) : (
+               <span
+               className={`ml-2 ${isSelected ? `text-[${bgColor}]` : `text-[${textColor}]`} ${labelClassName}`}
+             >
+             
+                  {label}
+                </span>
+              )}
+            </label>
+          </div>
+        );
+      })}
     </div>
   );
 };
+
 
 export default RadioSelect;

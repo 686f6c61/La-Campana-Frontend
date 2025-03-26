@@ -68,7 +68,7 @@ const Register = () => {
 
           <div className="max-w-xl mx-auto mt-6 bg-lacampana-white p-8 rounded-lg shadow-lg min-h-[500px]">
             <h2 className="text-2xl font-bold text-lacampana-gray1 font-antonio mb-2">
-              Accede a <span className="text-lacampana-red2">su cuenta</span>
+              Cree una <span className="text-lacampana-red2">cuenta nueva</span>
             </h2>
 
             <form onSubmit={handleRegister} className="space-y-6 pt-4">
