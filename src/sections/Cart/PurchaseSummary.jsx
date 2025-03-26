@@ -1,6 +1,7 @@
 import { IoIosArrowBack } from "react-icons/io";
 import { Link } from "react-router";
 import { IVA } from "../../utils/consts";
+import ActionButton from "../../components/common/ActionButton";
 
 const PurchaseSummary = ({ subtotal, city = "Bogotá" }) => {
   const total = subtotal + Math.trunc(subtotal * IVA)
@@ -49,9 +50,13 @@ const PurchaseSummary = ({ subtotal, city = "Bogotá" }) => {
         </table>
       </div>
       <div>
-        <button className="lacampana-btn bg-lacampana-red2 text-white py-2 w-full">
+        {/* <button className="lacampana-btn bg-lacampana-red2 text-white py-2 w-full">
           Finalizar carrito
-        </button>
+        </button> */}
+        <ActionButton 
+        text="Finalizar carrito"
+        link="/checkout"
+      />
         <Link to="/tienda" className="flex justify-end items-center text-lacampana-gray3">
           <IoIosArrowBack className="text-lacampana-gray3 text-lg" />
           Volver a la tienda
