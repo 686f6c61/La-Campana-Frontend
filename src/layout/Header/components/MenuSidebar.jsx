@@ -9,7 +9,7 @@ const MenuSidebar = ({ categories }) => {
   const handleMenuItemClick = (link) => navigate(link)
 
   return (
-    <div className="drawer drawer-end z-20 tablet:hidden">
+    <div className="drawer drawer-end z-20 lg:hidden">
       <input id="menu-sidebar" type="checkbox" className="drawer-toggle" />
       {/* BUTTON */}
       <div className="drawer-content">

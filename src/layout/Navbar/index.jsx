@@ -8,7 +8,7 @@ const Navbar = () => {
   const { pathname } = useLocation()
 
   return (
-    <nav className="hidden tablet:block">
+    <nav className="hidden lg:block">
       <article className="navbar bg-white max-w-screen-desktop justify-self-center">
         <CategoriesSidebar
           categories={categories}

@@ -10,7 +10,7 @@ const FooterItem = ({ title, links, collapsible = false }) => {
 
   useEffect(() => {
     const handleResize = () => {
-      const mobile = window.innerWidth < 768;
+      const mobile = window.innerWidth < 950;
       setIsMobile(mobile);
       setIsOpen(!collapsible || !mobile); // abierto por defecto en desktop
     };

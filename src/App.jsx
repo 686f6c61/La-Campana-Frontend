@@ -47,7 +47,7 @@ function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <div className="hidden tablet:block">
+      <div className="hidden lg:block">
         <Topbar />
       </div>
       <Header />

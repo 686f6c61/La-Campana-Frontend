@@ -20,7 +20,7 @@ const Header = () => {
         </div>
         <section className="navbar-end">
           <div className="flex gap-4">
-            <div className="hidden tablet:block">
+            <div className="hidden lg:block">
               <SearchBar placeholder="Buscar producto..." />
             </div>
             <ul className="flex gap-4 items-center">

@@ -9,7 +9,7 @@ const RelatedProducts = () => {
   return (
     <section className="text-start">
       <h4>Productos Similares</h4>
-      <div className="hidden tablet:block">
+      <div className="hidden lg:block">
         <div className="carousel w-full">
           {relatedProducts.map((productChunk, index) =>
             <article
@@ -17,7 +17,7 @@ const RelatedProducts = () => {
               className="carousel-item w-full"
             >
               {productChunk.map(product =>
-                <article className="w-1/2 tablet:w-1/3">
+                <article className="w-1/2 lg:w-1/3">
                   <div className="p-2 h-full">
                     <ProductCard
                       key={`related-product-card-${product.id}`}

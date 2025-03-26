@@ -9,20 +9,24 @@ import products from "../../../utils/products";
 import relatedProducts from "../../../utils/relatedProducts";
 
 const ProductGallery = ({ image }) => (
-	<div className="flex flex-col lg:flex-row-reverse gap-4">
-		<div className="flex-1">
-			<img src={image} alt="Producto" className="w-full h-auto object-contain border rounded-lg" />
+	<div className="flex flex-col lg:flex-row-reverse gap-1">
+		<div className="flex-1 relative">
+			<img src={image} alt="Producto" className="w-full h-full object-cover border rounded-lg" />
+
+			<span className="absolute top-2 left-2 bg-gray-200 w-24 lg:w-24 lg:h-7 lg:text-sm lg:pt-1 md:w-52 md:h-14 md:text-3xl md:pt-2 font-open-sans text-black px-2 py-1 rounded-tr-lg rounded-bl-lg rounded-br-lg text-md">
+          -20%
+        </span>
 		</div>
-		<div className="grid grid-cols-3 lg:flex lg:flex-col gap-2 mt-4 lg:mt-0 lg:mr-4">
+		<div className="grid grid-cols-3 lg:flex lg:flex-col gap-2 lg:mt-0 lg:mr-2">
 			{[...Array(3)].map((_, index) => (
-				<img key={index} src={image} alt={`Vista ${index + 1}`} className="h-20 w-full lg:h-32 lg:w-24 object-cover border rounded-lg cursor-pointer" />
+				<img key={index} src={image} alt={`Vista ${index + 1}`} className="h-20 w-full lg:h-36 lg:w-24 object-cover border rounded-lg cursor-pointer" />
 			))}
 		</div>
 	</div>
 );
 
 const ButtonTechnicalInformation = ({ }) => (
-	<button className="bg-lacampana-gray1 font-montserrat text-white w-full md:w-full h-[44px] rounded-md rounded-tl-full rounded-bl-full rounded-tr-full text-md">
+	<button className="bg-lacampana-gray1 font-montserrat text-white w-full h-[44px] rounded-md rounded-tl-full rounded-bl-full rounded-tr-full text-md">
 		Ficha Técnica
 	</button>
 );
@@ -42,8 +46,7 @@ const ProductOptions = ({ options }) => (
 		{["longitud", "ancho"].map((prop, index) => (
 			<div key={index} className="flex-1 min-w-[120px]">
 				<label className="block font-bold font-open-sans mb-2 capitalize">{prop}</label>
-				<select className="border w-full bg-gray-100 font-open-sans text-sm  text-gray-500 p-2 rounded 
-                   sm:w-full md:w-1/2 lg:w-full">
+				<select className="border w-full bg-gray-100 font-open-sans text-sm  text-gray-500 p-2 rounded">
 
 					{options[prop].map((option, i) => (
 						<option key={i}>{option}</option>
@@ -90,8 +93,8 @@ const QuantitySelector = () => (
 );
 
 const ActionButtons = ({ addToCart, productPrice }) => (
-	<div className="mt-4 flex lg:flex-row items-center justify-center lg:items-center gap-6">
-		<span className="text-lg font-bold text-black">${productPrice}</span>
+	<div className="mt-4 flex lg:flex-row items-center justify-start md:justify-center lg:justify-start lg:items-center gap-6">
+		<span className="text-2xl font-antonio text-black">${productPrice}</span>
 		<QuantitySelector />
 		<button onClick={addToCart} className="bg-lacampana-red2 font-montserrat text-white w-[180px] md:w-[270px] h-[44px] rounded-md rounded-tl-full rounded-bl-full rounded-tr-full text-md">
 			Añadir al carrito
@@ -125,25 +128,24 @@ const ProductDetailPage = () => {
 			dispatch(addItem(product));
 		}
 	};
-	const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+	const [isMobile, setIsMobile] = useState(window.innerWidth < 950);
 
 	useEffect(() => {
 		const handleResize = () => {
-			setIsMobile(window.innerWidth < 768);
+			setIsMobile(window.innerWidth < 950);
 		};
 
 		window.addEventListener("resize", handleResize);
 		return () => window.removeEventListener("resize", handleResize);
 	}, []);
 
-
 	return (
-		<div className="max-w-7xl mx-auto p-4 md:p-8">
+		<div className="max-w-7xl mx-auto p-4">
 			{isMobile && <h1 className="text-3xl pb-4 font-antonio">{product.name}</h1>}
 			<div className="flex flex-col lg:flex-row gap-8">
 				<ProductGalleyAndTechnicalInformation image={product.image} isMobile={isMobile} />
-				<div className="w-full lg:w-3/5">
-					{!isMobile && <h1 className="text-3xl font-antonio">{product.name}</h1>}
+				<div className="w-full flex flex-col justify-between lg:w-3/5">
+					{!isMobile && <h1 className="text-3xl font-antonio text-left">{product.name}</h1>}
 					<p className="text-gray-600 mt-2 text-left font-opensans">{product.description}</p>
 					{isMobile && <ActionButtons addToCart={addToCart} productPrice={product.price} />}
 					<ProductOptions options={product.options} />

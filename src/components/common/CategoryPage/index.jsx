@@ -27,7 +27,7 @@ const FILTER_OPTIONS = {
 const CategoryPage = () => {
 	const { categoryId } = useParams();
 	const navigate = useNavigate();
-	const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+	const [isMobile, setIsMobile] = useState(window.innerWidth < 950);
 	const [selectedFilters, setSelectedFilters] = useState({
 		espesor: "",
 		longitud: "",
@@ -49,7 +49,7 @@ const CategoryPage = () => {
 
 	useEffect(() => {
 		const handleResize = () => {
-			setIsMobile(window.innerWidth < 768);
+			setIsMobile(window.innerWidth < 950);
 		};
 
 		window.addEventListener("resize", handleResize);
@@ -138,7 +138,7 @@ const CategoryPage = () => {
 			</div>}
 
 			<div className="flex">
-				<aside className="w-1/4 h-1/2 bg-gray-100 p-10 shadow hidden lg:block">
+				<aside className="w-1/5 h-1/2 bg-gray-100 p-6 shadow hidden lg:block">
 					<div className="mb-4 relative">
 						<input
 							type="text"
@@ -167,14 +167,14 @@ const CategoryPage = () => {
 					{renderFilterSection("longitud", "Longitud")}
 					{renderFilterSection("ancho", "Ancho")}
 				</aside>
-				<main className="desktop:pl-4 sm:px-4">
+				<main className="desktop:pl-4 sm:px-4 w-4/5">
 					{isMobile && <FilterSearchBar />}
 
 					<div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-0 ">
 						{filteredProducts.slice(0, visibleProducts).map((product) => (
 							<div
 								key={product.id}
-								className="p-2 cursor-pointer "
+								className="p-1 cursor-pointer "
 								onClick={() => handleProductClick(product.id)}
 							>
 								<ProductCard

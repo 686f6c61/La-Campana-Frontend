@@ -29,7 +29,7 @@ const FILTER_OPTIONS = {
 const Store = () => {
 	const { categoryId } = useParams();
 	const navigate = useNavigate();
-	const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+	const [isMobile, setIsMobile] = useState(window.innerWidth < 950);
 	const [selectedFilters, setSelectedFilters] = useState({
 		espesor: "",
 		longitud: "",
@@ -53,7 +53,7 @@ const Store = () => {
 
 	useEffect(() => {
 		const handleResize = () => {
-			setIsMobile(window.innerWidth < 768);
+			setIsMobile(window.innerWidth < 950);
 		};
 
 		window.addEventListener("resize", handleResize);

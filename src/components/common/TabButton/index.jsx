@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import "./index.css"
 
 const TabButton = ({ tabName, activeTab, setActiveTab }) => {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 950);
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
+      setIsMobile(window.innerWidth < 950);
     };
 
     window.addEventListener("resize", handleResize);

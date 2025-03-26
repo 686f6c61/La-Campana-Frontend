@@ -45,11 +45,11 @@ const TabBody = ({ activeTab }) => {
 
 const ProductTabs = () => {
   const [activeTab, setActiveTab] = useState("normas");
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 950);
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
+      setIsMobile(window.innerWidth < 950);
     };
 
     window.addEventListener("resize", handleResize);
@@ -58,8 +58,8 @@ const ProductTabs = () => {
 
   return (
     <div>
-      <div className="flex gap-6">
-        <div className="lg:w-[200px] w-full flex lg:flex-col gap-3">
+      <div className="flex gap-5">
+        <div className="lg:w-[200px] w-full flex lg:flex-col gap-1">
           {["normas", "ventajas", "usos"].map((tab) => (
             <div className="flex-1">
               <TabButton
@@ -72,11 +72,11 @@ const ProductTabs = () => {
             </div>
           ))}
         </div>
-        {!isMobile && <div className="flex-1 bg-[#f2f2f2] p-8">
+        {!isMobile && <div className="flex-1 bg-[#f2f2f2] p-8 text-left">
           <TabBody activeTab={activeTab} />
         </div>}
       </div>
-      {isMobile && <div className="mt-4 bg-[#f2f2f2] p-8">
+      {isMobile && <div className="mt-4 bg-[#f2f2f2] p-8 text-left">
         <TabBody activeTab={activeTab} />
       </div>}
     </div>
