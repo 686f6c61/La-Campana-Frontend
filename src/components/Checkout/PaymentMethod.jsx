@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ActionButton from "../common/ActionButton";
 
 
 const PaymentMethod = () => {
@@ -6,7 +7,7 @@ const PaymentMethod = () => {
 
 
   return (
-    <section className="bg-white border border-lacampana-gray4 rounded-md p-6 space-y-6 w-full">
+    <section className="bg-white  rounded-md p-6 space-y-6 w-full">
       <table className="w-full text-left border-collapse">
         <thead>
           <tr className="bg-lacampana-gray1 text-lacampana-white font-antonio">
@@ -48,23 +49,23 @@ const PaymentMethod = () => {
 
 
 
-      <p className="text-sm text-lacampana-gray2">
+      <p className="text-sm text-left text-lacampana-gray2">
         Tus datos personales se utilizarán para procesar tu pedido, mejorar tu
         experiencia en esta web y otros propósitos descritos en nuestra política
         de privacidad.
       </p>
 
 
-      <div className="space-y-2 text-sm text-lacampana-gray2">
+      <div className="space-y-2 text-sm text-lacampana-gray2 text-left">
         <label className="flex items-start gap-2">
           <input
             type="checkbox"
             defaultChecked
             className="mt-1 accent-lacampana-red2"
           />
-          He leído y estoy de acuerdo con los{" "}
+         <p className="text-lacampana-gray2 text-sm"> He leído y estoy de acuerdo con los{" "}
           <strong className="text-lacampana-gray1">Términos y condiciones</strong>{" "}
-          de la web.
+          de la web.</p>
         </label>
 
 
@@ -80,11 +81,15 @@ const PaymentMethod = () => {
           Colombia.
         </label>
       </div>
+<div className="mt-8">
+      <ActionButton text="Realizar Pedido" 
+      link="/"
+      padding="py-3 px-20"
+      /></div>
 
-
-      <button className="mt-8 bg-lacampana-red1 text-lacampana-white px-8 py-2 text-sm sm:text-base font-montserrat rounded-tl-full rounded-bl-full rounded-tr-full w-auto md:w-auto relative z-10 border border-lacampana-red1 hover:bg-white hover:text-lacampana-red1 hover:border-lacampana-red1 transition duration-300 ease-in-out">
+      {/* <button className="mt-8 bg-lacampana-red1 text-lacampana-white px-8 py-2 text-sm sm:text-base font-montserrat rounded-tl-full rounded-bl-full rounded-tr-full w-auto md:w-auto relative z-10 border border-lacampana-red1 hover:bg-white hover:text-lacampana-red1 hover:border-lacampana-red1 transition duration-300 ease-in-out">
         Realizar Pedido
-      </button>
+      </button> */}
     </section>
   );
 };

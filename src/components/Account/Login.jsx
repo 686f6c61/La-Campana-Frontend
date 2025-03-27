@@ -45,7 +45,7 @@ const Login = () => {
               </h2>
             </div>
 
-            <div className="w-full max-w-xl mx-auto mt-12 bg-lacampana-white p-8 rounded-lg shadow-lg">
+            <div className="w-full max-w-xl mx-auto mt-12 bg-lacampana-white p-8 rounded-lg ">
               <h2 className="text-2xl font-bold text-lacampana-gray1 font-antonio mb-2">
                 Acceda a <span className="text-lacampana-red2">su cuenta</span>
               </h2>

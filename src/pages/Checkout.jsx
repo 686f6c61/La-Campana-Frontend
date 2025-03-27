@@ -6,7 +6,7 @@ import PurchaseSummary from "../sections/Cart/PurchaseSummary"
 import Highlighted from "../sections/Cart/Highlighted"
 import CheckoutForm from "../components/Checkout/CheckoutForm"
 import PaymentMethod from "../components/Checkout/PaymentMethod"
-import { Link, useNavigate } from "react-router-dom";
+
 
 const Checkout = () => {
   const cartProducts = useSelector(state => state.cart)

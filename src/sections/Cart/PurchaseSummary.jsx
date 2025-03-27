@@ -10,11 +10,13 @@ const PurchaseSummary = ({ subtotal, city = "Bogotá" }) => {
     <section className="flex flex-col gap-4">
       <div className="bg-lacampana-white rounded-br-2xl">
         <table className="table h-full">
-          <thead className="bg-lacampana-gray1">
-            <tr>
-              <th><h6 className="text-white text-center">Resumen de la compra</h6></th>
-            </tr>
-          </thead>
+        <thead>
+          <tr className="bg-lacampana-gray1 text-lacampana-white font-antonio">
+            <th className="text-left md:text-xl text-sm py-3 px-4 border-b md:pr-0 pr-20">
+              Resumen de la compra
+            </th>
+          </tr>
+        </thead>
           <tbody className="text-lacampana-gray1">
             <tr>
               <td>

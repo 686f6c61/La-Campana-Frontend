@@ -126,10 +126,21 @@ const FormAddress = ({ address, handleChange, countries, departments, cities, ro
       </div>
 
 
-      {/* Bloque Enviar a otra dirección */}
+      {/* otra dirección */}
       {showOtherAddress && (
-        <div className="border border-lacampana-gray3 rounded-lg p-4 bg-lacampana-white shadow-sm mb-6 ">
-          <h3 className="font-semibold text-lg mb-4 text-lacampana-gray1">Enviar a otra dirección</h3>
+        
+        <div className=" rounded-lg bg-lacampana-white  mb-6 ">
+          <table className="w-full text-left border-collapse">
+        <thead>
+          <tr className="bg-lacampana-gray1 text-lacampana-white font-antonio">
+            <th className="text-left md:text-xl text-sm py-3 px-4 border-b md:pr-0 pr-20">
+            Enviar a otra dirección
+            </th>
+          </tr>
+        </thead>
+      </table>
+           
+          {/* <h3 className="font-semibold text-lg mb-4 text-lacampana-gray1">Enviar a otra dirección</h3> */}
           <div className="grid md:grid-cols-2 grid-cols-1 gap-4 text-left  text-lacampana-gray1">
             {otherAddressFields.map((field) => {
               if (field.type === "select") {
@@ -183,10 +194,19 @@ const FormAddress = ({ address, handleChange, countries, departments, cities, ro
       )}
 
 
-      {/* Bloque Crear cuenta */}
+    
       {showCreateAccount && (
         <div className="mt-6">
-          <Register showIntro={false} showForgotPassword={false} />
+           <table className="w-full text-left border-collapse">
+        <thead>
+          <tr className="bg-lacampana-gray1 text-lacampana-white font-antonio">
+            <th className="text-left md:text-xl text-sm py-3 px-4 border-b md:pr-0 pr-20">
+            Crear cuenta
+            </th>
+          </tr>
+        </thead>
+      </table>
+           <Register showTitle={false} />
         </div>
       )}
     </div>
