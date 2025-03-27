@@ -1,9 +1,8 @@
 import React from "react";
-import ProductCard from "../../common/ProductCard"
+import ProductCard from "../../common/ProductCard";
 const CardGrid = ({ products, smCol, lgCol }) => {
-
   if (lgCol > 5) {
-    smCol = 5
+    smCol = 5;
   }
   return (
     <main className="w-full">
@@ -19,7 +18,6 @@ const CardGrid = ({ products, smCol, lgCol }) => {
         ))}
       </div>
     </main>
-
   );
 };
 

@@ -9,10 +9,11 @@ const RelatedBlogs = ({ relatedBlogs }) => {
         id="related-blog"
         cardsList={relatedBlogs}
         latestBlogs={true}
+        justifyValue="center"
       >
         {relatedBlogs.map((blog, index) => (
           <article
-            className="carousel-item w-full pb-4 h-[500px]"
+            className="carousel-item pb-4 h-[350px]"
             id={`related-blog-${index}`}
           >
             <BlogCard

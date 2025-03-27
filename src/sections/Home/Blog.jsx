@@ -7,16 +7,16 @@ import ActionButton from "../../components/common/ActionButton";
 const Blog = () => {
   const { data: blogs, error, isLoading } = useGetBlogsQuery("");
 
-  console.log(blogs)
+  console.log(blogs);
 
   if (isLoading) return <p>Cargando...</p>;
   if (error) return <p>Error al cargar los datos.</p>;
 
   return (
-    <section className="max-w-screen-desktop w-full tablet: mx-auto mt-12 mb-12">
-      <article className="flex desktop:gap-8 flex-col desktop:flex-row tablet: pl-5 justify-evenly">
+    <section className="w-full max-w-7xl w-full tablet: mx-auto mt-12 mb-12">
+      <article className="w-full flex justify-beetwen desktop:gap-8 flex-col desktop:flex-row tablet: pl-5">
         {/* TITLE SECTION */}
-        <section className="text-start sm:text-center flex flex-col justify-center gap-4 desktop:w-1/4">
+        <section className="text-start sm:text-center flex flex-col justify-center gap-4 desktop:w-1/3">
           <h3 className="text-start">
             Actualidad y
             <span className="text-lacampana-red1 text-start">
@@ -33,9 +33,9 @@ const Blog = () => {
           </div>
         </section>
         {/* BLOGS DESKTOP */}
-        <section className="hidden tablet:mt-4 tablet:grid grid-cols-3 gap-4">
+        <section className="flex w-full justify-end hidden tablet:grid grid-cols-3 gap-0 md:mt-5 justify-start">
           {blogs?.slice(0, 3).map((blog) => (
-            <article className=" w-full h-full">
+            <article className="flex justify-end h-full md:justify-start pr-2">
               <BlogCard
                 key={`blog-home-${blog._id}`}
                 id={blog._id}
@@ -48,6 +48,7 @@ const Blog = () => {
             </article>
           ))}
         </section>
+
         {/* BLOGS MOVILE */}
         <section className="tablet:hidden">
           <CardsCarousel id="blog-card-home-movile" cardsList={blogs}>

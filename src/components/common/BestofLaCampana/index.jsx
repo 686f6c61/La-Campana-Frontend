@@ -2,17 +2,18 @@ import React, { useEffect, useState } from "react";
 import { useGetProductsByTextQuery } from "../../../store/reducers/apiSlice";
 
 import CardGrid from "../CardGrid";
-import ActionButton from "../../common/ActionButton"
+import ActionButton from "../../common/ActionButton";
 
 const MAX_RETRIES = 3; // Límite de reintentos
 
 const BestOfLaCampana = () => {
-  const { data, error, isLoading, refetch } = useGetProductsByTextQuery("tuberia");
+  const { data, error, isLoading, refetch } =
+    useGetProductsByTextQuery("tuberia");
   const [retryCount, setRetryCount] = useState(0);
 
   useEffect(() => {
     if (error && retryCount < MAX_RETRIES) {
-      setRetryCount(prev => prev + 1);
+      setRetryCount((prev) => prev + 1);
       refetch();
     }
   }, [error, retryCount, refetch]);
@@ -22,7 +23,7 @@ const BestOfLaCampana = () => {
 
   return (
     <section className="py-12 bg-white">
-      <div className="container mx-auto px-4">
+      <div className="px-4 flex flex-col items-center justify-center">
         <h2 className="text-center text-3xl font-bold font-antonio mb-8">
           Lo mejor de la <span className="text-red-600">campana</span>
         </h2>
