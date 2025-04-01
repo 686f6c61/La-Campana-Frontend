@@ -11,7 +11,6 @@ const Navbar = () => {
   };
 
   const menuCat = [
-    { id: "drywall", name: "Perfiles Drywall" },
     { id: "ornamentacion", name: "Perfiles Ornamentación" },
     { id: "teja", name: "Tejas y Cubiertas" },
     { id: "tuberia", name: "Tuberías" },

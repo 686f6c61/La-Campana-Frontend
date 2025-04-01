@@ -1,4 +1,5 @@
-import { Link } from "react-router"
+import { Link } from "react-router-dom";
+
 
 const ActionButton = ({
   text,
@@ -6,6 +7,9 @@ const ActionButton = ({
   bgColor = "lacampana-red2",
   borderColor,
   width = "fit",
+  padding = "py-2 px-8",
+  margin = "mt-8",
+  font = "font-semibold",
   link,
   onClick }) => {
 
@@ -17,7 +21,8 @@ const ActionButton = ({
       className={className}>
       {text}
     </Link>
-  )
-}
+  );
+};
 
-export default ActionButton
+
+export default ActionButton;

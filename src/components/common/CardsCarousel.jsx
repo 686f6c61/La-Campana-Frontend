@@ -167,6 +167,7 @@ const CardsCarousel = ({
   controlCheckedColor = "checked:bg-lacampana-red2",
   customControlClass = "",
   latestBlogs,
+  justifyValue,
 }) => {
   const slides = [];
 
@@ -213,13 +214,7 @@ const CardsCarousel = ({
         ))}
       </div>
 
-      <div
-        className={
-          !latestBlogs
-            ? "flex justify-start items-center gap-2 mt-4"
-            : "flex justify-center items-center gap-2 mt-4"
-        }
-      >
+      <div className={`flex items-center gap-2 mt-4 justify-${justifyValue}`}>
         {slides.map((_, index) => (
           <input
             key={`${id}-radio-${index}`}
