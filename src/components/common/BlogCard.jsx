@@ -46,7 +46,7 @@ const BlogCard = ({
       </Link>
     </article>
   ) : (
-    <article className="bg-lacampana-white flex flex-col p-3 rounded-br-xl w-[265px] h-[350px] border border-lacampana-gray1/0 hover:border-lacampana-gray1 hover:scale-95 transition duration-300 ease-in-out">
+    <article className="bg-lacampana-white flex flex-col p-3 rounded-br-xl w-[265px] h-[350px] border border-lacampana-gray1/0border border-lacampana-gray1/0 hover:shadow-xl hover:shadow-lacampana-gray3/25 hover:scale-95 transition duration-300 ease-in-out">
       <div className="flex flex-col">
         <img
           className="rounded-tl-lg overflow-hidden w-full h-48 object-cover"
