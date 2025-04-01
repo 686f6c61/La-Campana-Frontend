@@ -64,7 +64,7 @@ const CategoryPage = () => {
 			id: product.ItemsGroupCode == 0 ? 1 : product.ItemsGroupCode,
 			image: product.image || "/images/prod4.jpg",
 			name: product.ItemName,
-			price: `29,99`,
+			price: product.ItemPrices,
 			discount: product.discount || "-",
 		}));
 	}, [data]);
