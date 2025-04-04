@@ -90,6 +90,7 @@ const ActionButtons = ({ addToCart, productPrice }) => (
 		<ActionButton
 			text="Añadir al carrito"
 			className="text-center mt-8"
+			onClick={addToCart}
 		/>
 	</div>
 );

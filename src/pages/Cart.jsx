@@ -6,13 +6,15 @@ import AddedProducts from "../sections/Cart/AddedProducts"
 import RelatedProducts from "../sections/Cart/RelatedProducts"
 import PurchaseSummary from "../sections/Cart/PurchaseSummary"
 import Highlighted from "../sections/Cart/Highlighted"
+import TestAdd from "../components/Test/TestAdd"
 
 const Cart = () => {
   const cartProducts = useSelector(state => state.cart)
 
   const subtotal = Math.round(cartProducts.map(product => product.subtotal).reduce((accumulator, currentValue) => accumulator + currentValue, 0) * 100) / 100
-  // console.log(cartProducts);
-  console.log(cartProducts);
+  console.log("cartProducts", cartProducts);
+  console.log("es array?", Array.isArray(cartProducts));
+  
 
 
   return (
@@ -21,7 +23,7 @@ const Cart = () => {
         title="Lleva lo mejor en aceros"
         bgTitle="Carrito"
         justify="center"
-      />
+      /><TestAdd/>
       <div className="flex flex-col tablet:flex-row gap-4">
         <main className="w-full tablet:w-2/3 flex flex-col gap-16">
           {/* TABLA DE PRODCUTOS DEL CARRITO */}
