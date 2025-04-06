@@ -28,7 +28,7 @@ const Navbar = () => {
   return (
     <nav className="hidden tablet:block w-full w-full mx-auto flex items-center">
       <article
-        className={`bg-white flex items-center justify-center w-full py-2 gap-4 m-h-[60px] ${
+        className={`bg-white flex items-center justify-center w-full py-2 gap-2 m-h-[60px] ${
           scrolling
             ? "bg-lacampana-red2 fixed top-[70px] left-0 z-50 shadow-lg m-0"
             : "max-w-7xl mx-auto"
