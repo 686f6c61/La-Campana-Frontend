@@ -197,7 +197,7 @@ const CardsCarousel = ({
   }
 
   return (
-    <article className="flex flex-col h-full">
+    <article className="flex flex-col h-full w-[270px]">
       <div className="carousel w-full h-full">
         {slides.map((slide, index) => (
           <article

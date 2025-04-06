@@ -26,15 +26,15 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="hidden tablet:block w-full max-w-7xl mx-auto flex items-center">
+    <nav className="hidden tablet:block w-full w-full mx-auto flex items-center">
       <article
         className={`bg-white flex items-center justify-center w-full py-2 gap-4 m-h-[60px] ${
           scrolling
             ? "bg-lacampana-red2 fixed top-[70px] left-0 z-50 shadow-lg m-0"
             : "max-w-7xl mx-auto"
-        } transition-all duration-300 ease-in-out`}
+        } transition-all duration-100 ease-in-out`}
       >
-        <ul className="menu menu-horizontal flex items-center p-0 lg:gap-8 md:gap-0 sm:gap-0">
+        <ul className="menu menu-horizontal flex items-center p-0 xl:gap-7 lg:gap-3 md:gap-0 sm:gap-0">
           <CategoriesSidebar categories={categories} />
           {categories.map((item) => (
             <NavItem

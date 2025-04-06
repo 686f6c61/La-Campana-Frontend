@@ -55,9 +55,9 @@ const BlogDetails = () => {
             <li className="text-lacampana-gray1">{blog.name}</li>
           </ul>
         </header>
-        <main className="flex gap-12 justify-between tablet:flex-row">
+        <main className="flex flex-col gap-12 lg:flex-row justify-between">
           <BlogBody image={blog.image} body={blog.body} />
-          <aside className="pl-5 pr-5 hidden w-3/12 flex gap-12 flex-col lg:flex">
+          <aside className="w-full lg:w-3/12 items-center pb-10 lg:items-start flex flex-col gap-12">
             <section className="flex">
               <div className="drop-shadow-lg w-full max-w-64">
                 <SearchBar
