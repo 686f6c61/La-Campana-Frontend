@@ -11,14 +11,27 @@ const ActionButton = ({
   margin = "mt-8",
   font = "font-semibold",
   link,
-  onClick }) => {
+  onClick,
+  className = "",
+}) => {
+  const classes = `
+    lacampana-btn
+    border
+    bg-${bgColor}
+    text-${textColor}
+    ${borderColor ? `border-${borderColor}` : `border-${bgColor}`}
+    font-${font}
+    w-${width}
+    ${padding}
+    ${margin}
+    hover:scale-90
+    transition duration-300 ease-in-out
+    ${className}
+  `;
 
-  const className = `lacampana-btn hover:bg-${textColor} hover:text-${bgColor} hover:scale-90 border ${borderColor ? `border-${borderColor}` : `border-${bgColor}`} bg-${bgColor} text-${textColor} font-semibold w-${width} py-2 px-8 transition duration-300 ease-in-out`
+
   return (
-    <Link
-      to={link}
-      onClick={onClick}
-      className={className}>
+    <Link to={link} onClick={onClick} className={classes}>
       {text}
     </Link>
   );
