@@ -171,7 +171,7 @@ const CategoryPage = () => {
 				<main className="desktop:pl-4 sm:px-4 w-4/5">
 					{isMobile && <FilterSearchBar />}
 
-					<div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-0 ">
+					<div className="grid grid-cols-2 w-full sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-0 ">
 						{filteredProducts.slice(0, visibleProducts).map((product) => (
 							<div
 								key={product.id}
