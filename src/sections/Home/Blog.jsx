@@ -11,8 +11,8 @@ const Blog = () => {
   if (error) return <p>Error al cargar los datos.</p>;
 
   return (
-    <section className="w-full max-w-7xl w-full tablet: mx-auto mt-12 mb-12">
-      <article className="w-full flex justify-beetwen desktop:gap-8 flex-col desktop:flex-row tablet: pl-5">
+    <section className="w-full max-w-7xl w-full tablet: mx-auto">
+      <article className="mb-20 w-full flex justify-beetwen desktop:gap-8 flex-col desktop:flex-row tablet: pl-5">
         {/* TITLE SECTION */}
         <section className="text-start sm:text-center flex flex-col justify-center gap-4 desktop:w-1/3">
           <h3 className="text-start">

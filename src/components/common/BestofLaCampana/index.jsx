@@ -22,8 +22,8 @@ const BestOfLaCampana = () => {
   if (error) return <p>Error al cargar los datos.</p>;
 
   return (
-    <section className="py-12 bg-white">
-      <div className="px-4 flex flex-col items-center justify-center">
+    <section className="max-w-screen-desktop w-full justify-self-center mx-auto bg-white">
+      <div className="px-4 flex flex-col items-center justify-center mb-20">
         <h2 className="text-center text-3xl font-bold font-antonio mb-8">
           Lo mejor de la <span className="text-red-600">campana</span>
         </h2>
@@ -53,14 +53,11 @@ const BestOfLaCampana = () => {
             lgCol="5"
           />
         </div>
-
-        <div className="text-center mt-8">
-          <ActionButton
-            text="Ver más productos"
-            link="/tienda"
-            className="text-center mt-8"
-          />
-        </div>
+        <ActionButton
+          styles="text-center mt-10"
+          text="Ver más productos"
+          link="/tienda"
+        />
       </div>
     </section>
   );

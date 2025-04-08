@@ -5,6 +5,16 @@
 @tailwind utilities;
 
 h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  @apply text-lacampana-gray1;
+}
+
+h1,
 h2 {
   @apply font-anton
     text-lacampana-gray1
@@ -56,14 +66,13 @@ p {
   @apply text-p1
     desktop:text-p1-desktop
     font-open-sans
-    font-normal
+    font-normal;
 }
 
 .lacampana-btn {
-    @apply
-    rounded-l-3xl
+  @apply rounded-l-3xl
     rounded-tr-3xl
-    font-montserrat
+    font-montserrat;
 }
 
 #root {

@@ -24,7 +24,7 @@ const Topbar = () => {
             to="/tienda"
             className="lacampana-btn flex items-center justify-center border-box h-8 w-32 bg-lacampana-gray1 text-white hover:scale-90 hover:bg-lacampana-gray4 hover:text-lacampana-gray1 hover:border border-lacampana-gray1 transition duration-300 ease-in-out px-4 py-1"
           >
-            <p className="text-p3-desktop">Comprar ahora</p>
+            <span className="text-p3-desktop">Comprar ahora</span>
           </Link>
           <SocialDropdown socialMedia={socialMedia} />
         </section>

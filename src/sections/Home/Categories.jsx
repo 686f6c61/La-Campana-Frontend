@@ -25,7 +25,7 @@ const Categories = () => {
   }, []);
 
   return (
-    <div className="flex flex-col items-center gap-8 px-4">
+    <div className="mb-20 flex flex-col items-center gap-8 px-4">
       <h3>
         Categorias <span className="text-lacampana-red2">Destacadas</span>
       </h3>
@@ -40,7 +40,7 @@ const Categories = () => {
           />
         ))}
       </ul>
-      <ActionButton link="/tienda" text="Ver más categorías" />
+      <ActionButton link="/tienda" text="Ver más categorías" styles="mt-5" />
     </div>
   );
 };
