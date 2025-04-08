@@ -1,3 +1,5 @@
+import ActionButton from "../../components/common/ActionButton";
+
 const Advantages = ({ image, description, advantagesList }) => {
   return (
     <section className="flex relative px-4 desktop:px-0">
@@ -39,9 +41,16 @@ const Advantages = ({ image, description, advantagesList }) => {
             ))}
           </ul>
 
-          <button className="lacampana-btn py-2 px-8 w-fit bg-lacampana-gray1 text-white border border-lacampana-gray1 hover:bg-white hover:text-lacampana-gray1 hover:border-lacampana-gray1 transition duration-300 ease-in-out">
-  Contactar
-</button>
+
+<ActionButton
+  text="Contactar"
+  link=""
+  bgColor="lacampana-gray1"
+  textColor="white"
+  borderColor="lacampana-gray1"
+  className="hover:bg-white hover:text-lacampana-gray1 hover:border-lacampana-gray1"
+/>
+
 
         </section>
       </article>

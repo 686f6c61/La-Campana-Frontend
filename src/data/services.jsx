@@ -31,9 +31,10 @@ const services = [
           y tablestacas de acero laminado estructural.
         </p>
 
-        <button className="mt-6 text-lacampana-red1 border border-lacampana-red1 px-8 py-2 text-sm sm:text-base font-montserrat rounded-tl-full rounded-bl-full rounded-tr-full w-auto hover:bg-lacampana-red1 hover:text-white transition duration-300 ease-in-out">
-          Ficha Técnica
-        </button>
+        <button className="mt-6 text-lacampana-red1 border border-lacampana-red1 px-8 py-2 text-sm sm:text-base font-montserrat rounded-tl-full rounded-bl-full rounded-tr-full w-auto hover:bg-lacampana-red1 hover:text-white hover:scale-90 transition duration-300 ease-in-out">
+  Ficha Técnica
+</button>
+
       </>
     ),
     image: "/images/services/corte-viga.png",
@@ -98,9 +99,10 @@ const services = [
           </p>
   
           {/* Botón */}
-          <button className="mt-6 text-lacampana-red1 border border-lacampana-red1 px-8 py-2 text-sm sm:text-base font-montserrat rounded-tl-full rounded-bl-full rounded-tr-full w-auto hover:bg-lacampana-red1 hover:text-white transition duration-300 ease-in-out">
-            Ficha Técnica
-          </button>
+          <button className="mt-6 text-lacampana-red1 border border-lacampana-red1 px-8 py-2 text-sm sm:text-base font-montserrat rounded-tl-full rounded-bl-full rounded-tr-full w-auto hover:bg-lacampana-red1 hover:text-white hover:scale-90 transition duration-300 ease-in-out">
+  Ficha Técnica
+</button>
+
         </>
       ),
       image: "/images/services/corte-plancha.png",
@@ -162,9 +164,10 @@ const services = [
           </p>
   
           {/* Botón */}
-          <button className="mt-6 text-lacampana-red1 border border-lacampana-red1 px-8 py-2 text-sm sm:text-base font-montserrat rounded-tl-full rounded-bl-full rounded-tr-full w-auto hover:bg-lacampana-red1 hover:text-white transition duration-300 ease-in-out">
-            Ficha Técnica
-          </button>
+          <button className="mt-6 text-lacampana-red1 border border-lacampana-red1 px-8 py-2 text-sm sm:text-base font-montserrat rounded-tl-full rounded-bl-full rounded-tr-full w-auto hover:bg-lacampana-red1 hover:text-white hover:scale-90 transition duration-300 ease-in-out">
+  Ficha Técnica
+</button>
+
         </>
       ),
       image: "/images/services/corte-transversal.jpeg",
@@ -226,9 +229,10 @@ const services = [
           </p>
     
           {/* Botón */}
-          <button className="mt-6 text-lacampana-red1 border border-lacampana-red1 px-8 py-2 text-sm sm:text-base font-montserrat rounded-tl-full rounded-bl-full rounded-tr-full w-auto hover:bg-lacampana-red1 hover:text-white transition duration-300 ease-in-out">
-            Ficha Técnica
-          </button>
+          <button className="mt-6 text-lacampana-red1 border border-lacampana-red1 px-8 py-2 text-sm sm:text-base font-montserrat rounded-tl-full rounded-bl-full rounded-tr-full w-auto hover:bg-lacampana-red1 hover:text-white hover:scale-90 transition duration-300 ease-in-out">
+  Ficha Técnica
+</button>
+
         </>
       ),
       image: "/images/services/corte-longitudinal.jpeg",
