@@ -190,12 +190,12 @@ const CategoryPage = () => {
 					</div>
 					{
 						visibleProducts < filteredProducts.length && (
-							<div className="mt-6 pb-12 text-center">
+							<div className="mt-6 pb-12 text-center text-black hover:scale-90 hover:bg-white transition duration-300 ease-in-out">
 								<ActionButton
 									onClick={handleLoadMore}
 									text="Cargar más"
 									bgColor="black"
-									
+
 								/>
 							</div>
 						)
