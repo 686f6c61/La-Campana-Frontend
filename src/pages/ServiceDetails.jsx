@@ -1,7 +1,6 @@
 import { useParams } from "react-router";
 import IntroductoryText from "../sections/common/IntroductoryText";
 import services from "../data/services.jsx";
-import { CiPlay1 } from "react-icons/ci";
 import Advantages from "../sections/ServiceDetails/Advantages";
 import FAQ from "../components/common/FAQ";
 import Form from "../components/common/Form";
@@ -14,17 +13,24 @@ const ServiceDetails = () => {
     <>
       <article className="flex flex-col gap-16">
         {/* Introductory section */}
-        <section className="max-w-screen-desktop w-full self-center px-4 desktop:px-8 py-8 desktop:py-16">
+        <section className="max-w-screen-desktop w-full self-center px-4 desktop:px-8 py-8 desktop:py-0">
           <IntroductoryText
             title={serviceData.customTitle || serviceData.name}
             bgTitle={serviceData.name}
             description={serviceData.customDescription || serviceData.description}
+            bgTitlePadding = "pt-10"
           >
             <div className="w-full md:mt-20 mt-0 tablet:w-1/2 flex-none h-[300px] tablet:h-[350px] rounded-tl-2xl overflow-hidden relative ">
               <div className="absolute left-0 right-0 bottom-0 top-0 flex justify-center items-center ">
-                <button className="btn btn-circle bg-lacampana-red2 btn-ghost pl-1">
-                  <CiPlay1 className="text-2xl text-white" />
-                </button>
+              
+<img
+      src="/images/play.png"
+      alt="Icono representativo"
+      className="absolute z-20 w-[60px] h-[60px] sm:w-[80px] sm:h-[80px] cursor-pointer"
+    />
+ 
+
+
               </div>
               <img className="w-full h-full object-cover" src={serviceData.image} alt="" />
             </div>
@@ -77,6 +83,13 @@ const ServiceDetails = () => {
             titleMargin=""
           >
             <Form
+            title={
+              <>
+                Contacte un <span className="text-lacampana-red2">asesor</span>
+               
+              </>
+            }
+          
               origin="Página de Servicios"
               padding="p-12"
               margin="md:transform -translate-y-12"

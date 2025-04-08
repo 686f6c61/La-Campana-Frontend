@@ -4,12 +4,15 @@ import RadioSelect from "../common/RadioSelect";
 import CardsCarousel from "../common/CardsCarousel";
 import sucursales from "../../data/sucursales";
 
+
 const ContactBranches = () => {
   const [selectedBranch, setSelectedBranch] = useState("Bogotá");
+
 
   const sucursalesFiltradas = sucursales.filter(
     (sucursal) => sucursal.ciudad === selectedBranch
   );
+
 
   return (
     <div className="relative max-w-screen-desktop w-full my-10 overflow-hidden">
@@ -23,7 +26,8 @@ const ContactBranches = () => {
         }}
       />
 
-      <div className="relative z-10 flex flex-col md:flex-row items-start justify-between ">
+
+      <div className="relative z-10 flex flex-col md:flex-row items-start justify-between">
         {/* Contenido a la izquierda */}
         <div className="w-full md:w-2/3 pt-12 md:pt-20 md:pl-20">
           <CustomSection
@@ -40,6 +44,7 @@ const ContactBranches = () => {
               placerat neque fames ante.
             </p>
 
+
             <RadioSelect
               options={[
                 "Bogotá",
@@ -55,7 +60,9 @@ const ContactBranches = () => {
               textColor="white"
             />
 
+
             <div className="mt-8">
+              {/* Carrusel Desktop */}
               <div className="hidden lg:block">
                 <CardsCarousel
                   cardsList={sucursalesFiltradas}
@@ -63,18 +70,24 @@ const ContactBranches = () => {
                   itemsPerSlide={3}
                   controlBgColor="bg-gray-200"
                   controlCheckedColor="checked:bg-gray-800"
+                  latestBlogs={true}
                 />
               </div>
+
+
+              {/* Carrusel Mobile */}
               <div className="lg:hidden">
                 <CardsCarousel
                   cardsList={sucursalesFiltradas}
                   id="sucursal-mobile"
                   itemsPerSlide={2}
+                  latestBlogs={true}
                 />
               </div>
             </div>
           </CustomSection>
         </div>
+
 
         {/* Mapa alineado a la derecha */}
         <div className="w-full md:w-1/3 pt-10 md:pt-20 px-4 md:px-0 flex justify-end">
@@ -90,5 +103,6 @@ const ContactBranches = () => {
     </div>
   );
 };
+
 
 export default ContactBranches;
