@@ -6,15 +6,15 @@ import ProductCard from "../../common/ProductCard"
 import { useGetProductsByTextQuery } from "../../../store/reducers/apiSlice";
 import ActionButton from "../ActionButton";
 
-const BreadCrumbs = () => {
+const BreadCrumbs = (product) => {
 	return (
 		<div className="flex justify-center ">
 			<ol class="list-reset py-4 pl-4 rounded flex bg-grey-light text-lacampana-gray2">
-				<li class="px-2"><a href="/" class="no-underline text-open-sans text-sm">Inicio</a></li>
+				<li class="px-2"><a href="/" class="no-underline text-open-sans hover:text-lacampana-red2 text-sm">Inicio</a></li>
 				<li>/</li>
-				<li class="px-2"><a href="/tienda" class="no-underline text-open-sans text-sm">Tienda</a></li>
+				<li class="px-2"><a href="/tienda" class="no-underline text-open-sans  hover:text-lacampana-red2 text-sm">Tienda</a></li>
 				<li>/</li>
-				<li class="px-2 text-open-sans">Láminas</li>
+				<li class="px-2 text-open-sans hover:text-lacampana-red2">Láminas</li>
 			</ol>
 		</div>
 	)
@@ -134,17 +134,17 @@ const CategoryPage = () => {
 					/>
 				</div>
 			</div>
-			{!isMobile && <div className="flex items-center space-x-2">
+			{!isMobile && <div className="flex items-center hover:text-red-600 space-x-2">
 				<BreadCrumbs />
 			</div>}
 
-			<div className="flex">
-				<aside className="w-1/5 h-1/2 bg-gray-100 p-6 shadow hidden lg:block">
+			<div className="flex justify-center">
+				<aside className="w-1/5 h-1/2 bg-gray-100 p-4 shadow hidden lg:block">
 					<div className="mb-4 relative">
 						<input
 							type="text"
 							placeholder="Buscar producto"
-							className="w-full p-2 pr-10 rounded bg-gray-100 focus:outline-none"
+							className="w-full p-2 pr-8 rounded bg-gray-100 focus:outline-none"
 							value={searchQuery}
 							onChange={handleSearchChange}
 						/>
