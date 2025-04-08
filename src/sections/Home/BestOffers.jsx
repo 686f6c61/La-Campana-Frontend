@@ -8,7 +8,7 @@ const BestOffers = () => {
   const chunkedProducts = chunkArray(products, 2);
 
   return (
-    <section className="max-w-screen-desktop w-full justify-self-center flex flex-col gap-8 px-4 tablet:px-8 py-16 tablet:py-32">
+    <section className="max-w-screen-desktop w-full justify-self-center flex flex-col gap-8 px-4 tablet:px-4 mt-20 mb-20 tablet: mx-auto">
       <section>
         <h2>
           Las mejores <span className="text-lacampana-red2">ofertas</span>
@@ -19,16 +19,17 @@ const BestOffers = () => {
         </p>
       </section>
       <section className="flex flex-col gap-8 items-center">
-        <div className="tablet:hidden w-full h-[300px]">
+        <div className="tablet:hidden w-full">
           <CardsCarousel
             id="best-offer-carousel-item"
             cardsList={chunkedProducts}
+            justifyValue="center"
             latestBlogs={true}
           >
             {chunkedProducts.map((chunk, index) => (
               <ul
                 id={`best-offer-carousel-item-${index}`}
-                className="carousel-item w-full"
+                className="carousel-item w-full h-[350px] tablet:h-[420px]"
               >
                 {chunk.map((product) => (
                   <li className="w-1/2 p-2">
@@ -58,7 +59,11 @@ const BestOffers = () => {
             </li>
           ))}
         </ul>
-        <ActionButton text="Explorar todas las ofertas" link="/tienda" />
+        <ActionButton
+          text="Explorar todas las ofertas"
+          styles="text-center mt-5"
+          link="/tienda"
+        />
       </section>
     </section>
   );

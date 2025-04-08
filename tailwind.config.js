@@ -14,6 +14,7 @@ export default {
         "lacampana-gray3": "#BDBDBD",
         "lacampana-gray4": "#E0E0E0",
         "lacampana-white": "#F2F2F2",
+        "lacampana-black": "#3C3C3B",
       },
       fontFamily: {
         anton: ["Anton", "sans-serif"],

@@ -84,7 +84,8 @@ const Ofertas = () => {
           Las mejores <span className="text-lacampana-red1">ofertas</span>
         </h2>
         <p className="text-gray-500 mt-2">
-          Descubre nuestras promociones destacadas y aprovecha grandes descuentos en productos seleccionados.
+          Descubre nuestras promociones destacadas y aprovecha grandes
+          descuentos en productos seleccionados.
         </p>
       </div>
 
@@ -93,12 +94,12 @@ const Ofertas = () => {
         <CardGrid products={products} smCol="2" lgCol="5" />
       </div>
       <div className="container mx-auto px-4 block lg:hidden">
-        <CardGrid products={products.slice(0,2)} smCol="2" lgCol="5" />
+        <CardGrid products={products.slice(0, 2)} smCol="2" lgCol="5" />
       </div>
 
       {/* Botón */}
       <div className="text-center mt-10">
-      <button className="bg-lacampana-red2 font-montserrat text-white md:w-[270px] w-[300px] h-[44px] rounded-md rounded-tl-full rounded-bl-full rounded-tr-full text-md">
+        <button className="bg-lacampana-red2 font-montserrat text-white md:w-[270px] w-[300px] h-[44px] rounded-md rounded-tl-full rounded-bl-full rounded-tr-full text-md">
           Explorar todas las ofertas
         </button>
       </div>

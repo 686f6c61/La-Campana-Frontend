@@ -4,7 +4,10 @@ import CardsCarousel from "../common/CardsCarousel";
 const RelatedBlogs = ({ relatedBlogs }) => {
   return (
     <section className="text-start flex flex-col gap-4">
-      <h4 className="text-lacampana-red2">Relacionados</h4>
+      <h4 className="text-lacampana-red2 text-center tablet:text-center desktop:text-left">
+        Relacionados
+      </h4>
+
       <CardsCarousel
         id="related-blog"
         cardsList={relatedBlogs}
@@ -13,7 +16,7 @@ const RelatedBlogs = ({ relatedBlogs }) => {
       >
         {relatedBlogs.map((blog, index) => (
           <article
-            className="carousel-item pb-4 h-[350px]"
+            className="carousel-item pb-4 h-[350px] flex justify-center w-full"
             id={`related-blog-${index}`}
           >
             <BlogCard
@@ -21,6 +24,7 @@ const RelatedBlogs = ({ relatedBlogs }) => {
               title={blog.name}
               description={blog.body}
               image={blog.image}
+              category={blog.blogCategoryId.name}
               publicationDate={blog.createdAt}
             />
           </article>

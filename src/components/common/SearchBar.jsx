@@ -12,7 +12,7 @@ const SearchBar = ({ placeholder, className, onSubmit, defaultValue }) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className={`lacampana-btn flex border-2 overflow-hidden w-full ${className}`}
+      className={`lacampana-btn flex border-2 overflow-hidden w-[280px] ${className}`}
     >
       <input
         className="text-p3-desktop px-4 rounded-l-3xl w-full"

@@ -6,7 +6,9 @@ const CardGrid = ({ products, smCol, lgCol }) => {
   }
   return (
     <main className="w-full">
-      <div className={`columns-${smCol} p-[4px] lg:columns-${lgCol}`}>
+      <div
+        className={`columns-${smCol} p-[4px] lg:columns-${lgCol} h-[350px] tablet:h-[420px]`}
+      >
         {products.map((product) => (
           <ProductCard
             id={product.id}

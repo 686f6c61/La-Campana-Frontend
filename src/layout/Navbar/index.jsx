@@ -34,7 +34,7 @@ const Navbar = () => {
             : "max-w-7xl mx-auto"
         } transition-all duration-100 ease-in-out`}
       >
-        <ul className="menu menu-horizontal flex items-center p-0 xl:gap-7 lg:gap-3 md:gap-0 sm:gap-0">
+        <ul className="menu menu-horizontal flex items-center p-0 lg:gap-7 md:gap-0 sm:gap-0 text-base sm:text-lg md:text-xl lg:text-2xl">
           <CategoriesSidebar categories={categories} />
           {categories.map((item) => (
             <NavItem

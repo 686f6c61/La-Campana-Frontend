@@ -7,10 +7,11 @@ import locations from "../utils/locations";
 const BottomBar = () => {
   return (
     <footer className="bg-lacampana-red2">
-      <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-4 pt-5 pb-5">
+      <div className="container mx-auto flex flex-col md:flex-row items-center justify-evenly px-4 pt-5 pb-5">
         {/* Texto del copyright */}
-        <p className="md:text-sm text-sm md:text-base text-center md:text-left text-white pt-2 pb-2 md:pl-12">
-          Copyright © La Campana Servicios de Acero. Todos los derechos reservados.
+        <p className="md:text-sm text-sm text-white pt-2 pb-2">
+          Copyright © La Campana Servicios de Acero. Todos los derechos
+          reservados.
         </p>
 
         {/* Botones para pantallas grandes */}
@@ -20,14 +21,16 @@ const BottomBar = () => {
             id="locations-home"
             button={
               <button
-                className="lacampana-btn text-nowrap h-fit px-8 py-2 border border-white/0 hover:border-white text-lacampana-red2 bg-white font-semibold hover:scale-90 hover:bg-lacampana-red2 hover:text-white transition duration-300 ease-in-out"
-                onClick={() => document.getElementById("locations-home").showModal()}
+                className="lacampana-btn text-nowrap h-fit px-8 py-2 border-2 border-white/0 hover:border-white text-lacampana-red2 bg-white font-semibold hover:scale-90 hover:bg-lacampana-red2 hover:text-white transition duration-300 ease-in-out"
+                onClick={() =>
+                  document.getElementById("locations-home").showModal()
+                }
               >
                 Sedes
               </button>
             }
           >
-            {locations.map(location => (
+            {locations.map((location) => (
               <LocationCard key={location.name} {...location} />
             ))}
           </ModalScreen>
@@ -37,14 +40,16 @@ const BottomBar = () => {
             id="talk-with-advisor-home"
             button={
               <button
-                className="lacampana-btn hover:text-lacampana-red2 hover:bg-white hover:scale-90 transition duration-300 ease-in-out w-full md:w-auto text-nowrap h-fit px-8 py-2 text-white border border-white font-semibold"
-                onClick={() => document.getElementById("talk-with-advisor-home").showModal()}
+                className="lacampana-btn hover:text-lacampana-red2 border-2 hover:bg-white hover:scale-90 transition duration-300 ease-in-out w-full md:w-auto text-nowrap h-fit px-8 py-2 text-white border border-white font-semibold"
+                onClick={() =>
+                  document.getElementById("talk-with-advisor-home").showModal()
+                }
               >
                 Hablar con un asesor
               </button>
             }
           >
-            {advisors.map(advisor => (
+            {advisors.map((advisor) => (
               <AdvisorCard key={advisor.name} {...advisor} />
             ))}
           </ModalScreen>
@@ -72,13 +77,15 @@ const BottomBar = () => {
               button={
                 <button
                   className="btn btn-secondary w-[100px] h-[44px] bg-white text-lacampana-red2 font-semibold text-lg px-2 py-1 rounded-tl-full rounded-bl-full rounded-tr-full hover:scale-90 hover:bg-lacampana-red2 hover:text-white transition duration-300 ease-in-out"
-                  onClick={() => document.getElementById("locations-home-mobile").showModal()}
+                  onClick={() =>
+                    document.getElementById("locations-home-mobile").showModal()
+                  }
                 >
                   Sedes
                 </button>
               }
             >
-              {locations.map(location => (
+              {locations.map((location) => (
                 <LocationCard key={location.name} {...location} />
               ))}
             </ModalScreen>
@@ -103,13 +110,17 @@ const BottomBar = () => {
             button={
               <button
                 className="btn btn-outline w-[300px] h-[44px] text-white border-white text-lg px-2 py-1 rounded-tl-full rounded-bl-full rounded-tr-full w-full max-w-xs mx-auto hover:bg-white hover:scale-90 transition duration-300 ease-in-out"
-                onClick={() => document.getElementById("talk-with-advisor-home-mobile").showModal()}
+                onClick={() =>
+                  document
+                    .getElementById("talk-with-advisor-home-mobile")
+                    .showModal()
+                }
               >
                 Hablar con un asesor
               </button>
             }
           >
-            {advisors.map(advisor => (
+            {advisors.map((advisor) => (
               <AdvisorCard key={advisor.name} {...advisor} />
             ))}
           </ModalScreen>
@@ -120,6 +131,3 @@ const BottomBar = () => {
 };
 
 export default BottomBar;
-
-
-

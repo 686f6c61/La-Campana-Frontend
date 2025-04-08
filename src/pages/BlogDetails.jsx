@@ -41,7 +41,7 @@ const BlogDetails = () => {
   if (categoriesError) return <p>Error al cargar los datos.</p>;
 
   return (
-    <article className="flex flex-col items-center px-4 py-8 tablet:py-16 tablet:px-8">
+    <article className="flex flex-col items-center px-4 py-8 tablet:py-16 tablet:px-8 pb-16 pt-16">
       <div className="flex flex-col w-full max-w-7xl">
         <IntroductoryText title={blog.name} bgTitle="Blog" justify="center" />
         <header className="breadcrumbs text-sm mb-5">
@@ -55,10 +55,11 @@ const BlogDetails = () => {
             <li className="text-lacampana-gray1">{blog.name}</li>
           </ul>
         </header>
-        <main className="flex flex-col gap-12 lg:flex-row justify-between">
+
+        <main className="flex gap-12 justify-between flex-col tablet:flex-row">
           <BlogBody image={blog.image} body={blog.body} />
-          <aside className="w-full lg:w-3/12 items-center pb-10 lg:items-start flex flex-col gap-12">
-            <section className="flex">
+          <aside className="pl-5 pr-5 w-full flex gap-10 flex-col tablet:w-3/12 lg:flex">
+            <section className="flex justify-center tablet:justify-center desktop:justify-start">
               <div className="drop-shadow-lg w-full max-w-64">
                 <SearchBar
                   onSubmit={handleSearchBar}

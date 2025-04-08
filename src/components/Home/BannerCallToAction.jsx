@@ -5,7 +5,7 @@ import ActionButton from "../common/ActionButton";
 const BannerCallToAction = () => {
   const [activeSlide, setActiveSlide] = useState("item1");
 
-  const slides = [
+  const slidesText = [
     {
       id: "item1",
       imgURL: "/images/home/banner/banner.jpg",
@@ -29,7 +29,7 @@ const BannerCallToAction = () => {
     },
   ];
 
-  const activeSlideData = slides.find((slide) => slide.id === activeSlide);
+  const activeSlideData = slidesText.find((slide) => slide.id === activeSlide);
 
   const handleDotClick = (slideID) => {
     setActiveSlide(slideID);
@@ -49,21 +49,24 @@ const BannerCallToAction = () => {
       <p className="font-open-sans text-sub-h1 lg:text-sub-h1-desktop text-lacampana-red1 leading-tight">
         SOMOS LA EMPRESA LÍDER EN
       </p>
-
-      <div className="flex flex-col justify-center gap-2 pl-4">
-        <h1 className="leading-none">{activeSlideData.title}</h1>
-        <p>{activeSlideData.description}</p>
-      </div>
+      {/* <div className="flex flex-col gap-2 sm:pl-4 pl-0">
+        <h1 className="leading-none text-lacampana-black">
+          {slidesText[activeSlideData].title}
+        </h1>
+        <p className="text-lacampana-black">
+          {slidesText[activeSlideData].description}
+        </p>
+      </div> */}
 
       <ActionButton text="Comprar ahora" link="/tienda" />
 
       <div className="w-full flex justify-end items-center gap-2 py-2 min-h-12">
-        {slides.map((slide) => (
+        {["item1", "item2", "item3"].map((id) => (
           <BannerDot
-            key={slide.id}
-            id={slide.id}
-            isActive={activeSlide === slide.id}
-            handleDotClick={handleDotClick}
+            key={id}
+            id={id}
+            // isChecked={currentSlide === id}
+            // onClick={onSlideChange}
           />
         ))}
       </div>
