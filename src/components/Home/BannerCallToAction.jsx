@@ -49,14 +49,12 @@ const BannerCallToAction = () => {
       <p className="font-open-sans text-sub-h1 lg:text-sub-h1-desktop text-lacampana-red1 leading-tight">
         SOMOS LA EMPRESA LÍDER EN
       </p>
-      {/* <div className="flex flex-col gap-2 sm:pl-4 pl-0">
+      <div className="flex flex-col gap-2 sm:pl-4 pl-0">
         <h1 className="leading-none text-lacampana-black">
-          {slidesText[activeSlideData].title}
+          {activeSlideData.title}
         </h1>
-        <p className="text-lacampana-black">
-          {slidesText[activeSlideData].description}
-        </p>
-      </div> */}
+        <p className="text-lacampana-black">{activeSlideData.description}</p>
+      </div>
 
       <ActionButton text="Comprar ahora" link="/tienda" />
 
@@ -65,8 +63,8 @@ const BannerCallToAction = () => {
           <BannerDot
             key={id}
             id={id}
-            // isChecked={currentSlide === id}
-            // onClick={onSlideChange}
+            isChecked={activeSlide === id}
+            onClick={handleDotClick}
           />
         ))}
       </div>

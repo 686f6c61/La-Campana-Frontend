@@ -175,29 +175,29 @@ const CardsCarousel = ({
   const content = children
     ? React.Children.toArray(children)
     : cardsList.map((item, idx) => (
-      <div
-        key={`${item.id || item.nombre}-${idx}`}
-        className={`w-1/${itemsPerSlide} p-4 ${cardBgColor} rounded-tl-lg shadow-md`}
-      >
-        <img
-          src={item.imagen}
-          alt={`Imagen de ${item.nombre}`}
-          className="w-full aspect-[16/10] object-cover rounded-md"
-        />
-        <h3 className={`text-lg font-bold mt-2 ${textColor}`}>
-          {item.nombre}
-        </h3>
-        <p className={`${textColor}`}>{item.direccion}</p>
-        <p className={`${textColor}`}>{item.telefono}</p>
-      </div>
-    ));
+        <div
+          key={`${item.id || item.nombre}-${idx}`}
+          className={`w-1/${itemsPerSlide} p-4 ${cardBgColor} rounded-tl-lg shadow-md`}
+        >
+          <img
+            src={item.imagen}
+            alt={`Imagen de ${item.nombre}`}
+            className="w-full aspect-[16/10] object-cover rounded-md"
+          />
+          <h3 className={`text-lg font-bold mt-2 ${textColor}`}>
+            {item.nombre}
+          </h3>
+          <p className={`${textColor}`}>{item.direccion}</p>
+          <p className={`${textColor}`}>{item.telefono}</p>
+        </div>
+      ));
 
   for (let i = 0; i < content.length; i += itemsPerSlide) {
     slides.push(content.slice(i, i + itemsPerSlide));
   }
 
   return (
-    <article className="flex flex-col h-full w-[270px]">
+    <article className="flex flex-col h-full w-full">
       <div className="carousel w-full h-full">
         {slides.map((slide, index) => (
           <article

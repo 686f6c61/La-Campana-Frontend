@@ -1,7 +1,7 @@
 import NavItem from "./components/NavItem";
 import CategoriesSidebar from "./components/CategoriesSidebar";
 import categories from "../../utils/categories";
-import { useLocation } from "react-router";
+import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 const Navbar = () => {
@@ -26,15 +26,14 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="hidden tablet:block w-full w-full mx-auto flex items-center">
+    <nav className="hidden tablet:block w-full flex items-center">
       <article
-        className={`bg-white flex items-center justify-center w-full py-2 gap-2 m-h-[60px] ${
-          scrolling
-            ? "bg-lacampana-red2 fixed top-[70px] left-0 z-50 shadow-lg m-0"
-            : "max-w-7xl mx-auto"
+        className={` mx-auto m-h-[60px] justify-center bg-white flex items-center w-full ${
+          scrolling &&
+          "m-h-[60px] bg-lacampana-red2 fixed top-[70px] left-0 z-50 shadow-lg m-0"
         } transition-all duration-100 ease-in-out`}
       >
-        <ul className="menu menu-horizontal flex items-center p-0 lg:gap-7 md:gap-0 sm:gap-0 text-base sm:text-lg md:text-xl lg:text-2xl">
+        <ul className="menu menu-horizontal flex items-center p-0 lg:gap-14 md:gap-0 sm:gap-0 text-base sm:text-lg md:text-xl lg:text-2xl">
           <CategoriesSidebar categories={categories} />
           {categories.map((item) => (
             <NavItem
