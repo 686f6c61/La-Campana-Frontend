@@ -4,7 +4,7 @@ const categories = [
     id: "ornamentacion",
     name: "Perfiles Ornamentación",
     link: "/tienda/perfil",
-    image: "public/images/categories/perfiles-de-ornamentacion.jpeg", // Cambia por tu URL de imagen
+    image: "/images/categories/perfiles-de-ornamentacion.jpeg", // Cambia por tu URL de imagen
     results: 256,
     subcategories: [
       {
@@ -43,7 +43,7 @@ const categories = [
     id: "teja",
     name: "Tejas y Cubiertas",
     link: "/tienda/teja",
-    image: "public/images/categories/tejas-y-cubiertas.jpeg", // Cambia por tu URL de imagen
+    image: "/images/categories/tejas-y-cubiertas.jpeg", // Cambia por tu URL de imagen
     results: 256,
     subcategories: [
       {
@@ -82,7 +82,7 @@ const categories = [
     id: "tuberia",
     name: "Tuberias",
     link: "/tienda/tuberia",
-    image: "public/images/categories/tuberias.jpeg", // Cambia por tu URL de imagen
+    image: "/public/images/categories/tuberias.jpeg", // Cambia por tu URL de imagen
     results: 256,
     subcategories: [
       {
@@ -199,7 +199,7 @@ const categories = [
     id: "lamina",
     name: "Laminas",
     link: "/tienda/lamina",
-    image: "public/images/categories/laminas.jpeg", // Cambia por tu URL de imagen
+    image: "/public/images/categories/laminas.jpeg", // Cambia por tu URL de imagen
     results: 256,
     subcategories: [
       {

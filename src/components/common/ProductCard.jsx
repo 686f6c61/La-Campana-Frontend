@@ -6,7 +6,7 @@ const ProductCard = ({ id, name, image, price, discount }) => {
   return (
     <Link
       to={`/tienda/product/${id}`}
-      className="text-start bg-lacampana-white p-3 mb-4 flex flex-col overflow-y-hidden h-full gap-4 rounded-br-2xl border border-lacampana-gray1/0  hover:scale-95 transition duration-300 ease-in-out"
+      className="text-start bg-lacampana-white p-3 mb-4 flex flex-col overflow-y-hidden h-full gap-4 rounded-br-2xl border border-lacampana-gray1/0   hover:shadow-xl hover:shadow-lacampana-gray3/25 hover:scale-95 transition duration-300 ease-in-out"
     >
       <section className="relative h-1/2">
         <img
