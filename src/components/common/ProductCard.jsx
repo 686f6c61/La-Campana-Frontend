@@ -15,7 +15,7 @@ const ProductCard = ({ id, name, image, price, discount }) => {
           alt="product-image"
         />
         <p
-          className="absolute top-2 left-2 bg-lacampana-white  px-7 py-1 rounded-md rounded-tl-none text-center"
+          className="absolute top-0 left-0 bg-lacampana-white  px-7 py-1 rounded-md rounded-tl-none text-center"
           style={{ color: "#3C3C3B" }}
         >
           {discount}

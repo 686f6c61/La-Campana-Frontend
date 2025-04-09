@@ -17,7 +17,7 @@ const ProductGallery = ({ image }) => (
 		<div className="flex-1 relative">
 			<img src={image} alt="Producto" className="w-full h-full object-cover border rounded-lg" />
 
-			<span className="absolute top-2 left-2 bg-gray-200 w-24 lg:w-24 lg:h-7 lg:text-sm lg:pt-1 md:w-52 md:h-14 md:text-3xl md:pt-2 font-open-sans text-black px-2 py-1 rounded-tr-lg rounded-bl-lg rounded-br-lg text-md">
+			<span className="absolute top-0 left-0 bg-gray-200 w-24 lg:w-24 lg:h-7 lg:text-sm lg:pt-1 md:w-52 md:h-14 md:text-3xl md:pt-2 font-open-sans text-black px-2 py-1 rounded-tr-lg rounded-bl-lg rounded-br-lg text-md">
 				-20%
 			</span>
 		</div>
