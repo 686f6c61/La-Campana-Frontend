@@ -1,30 +1,32 @@
 import React, { useState } from "react";
 import RadioSelect from "../../components/common/RadioSelect";
-import sucursales from "../../data/sucursales";
 import CardsCarousel from "../../components/common/CardsCarousel";
+import sucursales from "../../data/sucursales";
+import precenseNationData from "../../data/precenseNationData";
+
 
 const PrecenseNation = () => {
   const [selectedCity, setSelectedCity] = useState("Bogotá");
-
   const sucursalesFiltradas = sucursales.filter(
     (sucursal) => sucursal.ciudad === selectedCity
   );
+
 
   return (
     <article className="max-w-screen-desktop w-full justify-self-center">
       <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between space-y-8 lg:space-y-0">
         <div className="lg:w-2/3 p-8">
           <h4 className="text-3xl font-bold mb-4 text-left">
-            Presencia <span className="text-lacampana-red1">nacional</span>
+            {precenseNationData.title}{" "}
+            <span className="text-lacampana-red1">{precenseNationData.highlight}</span>
           </h4>
           <p className="text-gray-500 max-w-md text-left">
-            Lorem ipsum dolor sit amet consectetur. Pulvinar dignissim pulvinar
-            ut lorem pharetra. Vestibulum nulla faucibus nunc enim. Proin
-            feugiat fames turpis sociis viverra.
+            {precenseNationData.description}
           </p>
 
+
           <RadioSelect
-            options={["Bogotá", "Soacha", "Villavicencio", "Mosquera", "Neiva"]}
+            options={precenseNationData.cities}
             selectedOption={selectedCity}
             onSelectionChange={setSelectedCity}
             bgColor="red"
@@ -32,9 +34,8 @@ const PrecenseNation = () => {
             textColor="gray"
           />
 
-          {/* CAROUSEL usando CardsCarousel */}
+
           <div className="mt-8">
-            {/* Desktop - 3 columnas */}
             <div className="hidden lg:block">
               <CardsCarousel
                 cardsList={sucursalesFiltradas}
@@ -43,8 +44,6 @@ const PrecenseNation = () => {
                 latestBlogs={true}
               />
             </div>
-
-            {/* Mobile - 2 columnas */}
             <div className="lg:hidden">
               <CardsCarousel
                 cardsList={sucursalesFiltradas}
@@ -55,9 +54,10 @@ const PrecenseNation = () => {
           </div>
         </div>
 
+
         <div className="relative z-0 flex-1 flex items-end justify-end md:mr-0">
           <img
-            src="/images/Map.png"
+            src={precenseNationData.mapImage}
             alt="Mapa de Colombia"
             className="w-full object-cover rounded-lg"
           />
@@ -66,5 +66,6 @@ const PrecenseNation = () => {
     </article>
   );
 };
+
 
 export default PrecenseNation;

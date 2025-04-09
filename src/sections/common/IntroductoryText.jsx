@@ -31,7 +31,7 @@ const IntroductoryText = ({
           {bgTitle}
         </h1>
       </div>
-      <article className="pt-8 tablet:pt-20 desktop:pt-36 flex flex-col tablet:flex-row gap-16">
+      <article className="pt-8 tablet:pt-20 desktop:pt-28 flex flex-col tablet:flex-row gap-16">
         {/* Desktop Text */}
         <section
           className={`hidden text-${justify}  tablet:flex flex-col justify-center text-wrap w-full`}
