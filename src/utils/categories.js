@@ -82,7 +82,7 @@ const categories = [
     id: "tuberia",
     name: "Tuberias",
     link: "/tienda/tuberia",
-    image: "/public/images/categories/tuberias.jpeg", // Cambia por tu URL de imagen
+    image: "/images/categories/tuberias.jpeg", // Cambia por tu URL de imagen
     results: 256,
     subcategories: [
       {

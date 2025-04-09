@@ -63,6 +63,8 @@ export default {
     "lg:columns-4",
     "lg:columns-5",
     "lg:columns-6",
+    "lg:grid-cols-5",
     "hover:bg-red-600",
+    "hover:text-black"
   ],
 };

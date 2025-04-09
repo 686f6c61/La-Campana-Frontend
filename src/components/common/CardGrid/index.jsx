@@ -1,22 +1,24 @@
 import React from "react";
 import ProductCard from "../../common/ProductCard";
-const CardGrid = ({ products, smCol, lgCol }) => {
-  if (lgCol > 5) {
-    smCol = 5;
-  }
+
+const CardGrid = ({ products, smCol = 2, lgCol = 4 }) => {
+  // Asegurar que los valores sean válidos para Tailwind
+  const safeSmCol = Math.min(smCol, 6);
+  const safeLgCol = Math.min(lgCol, 6);
+  const className = `grid grid-cols-${safeSmCol} lg:grid-cols-${safeLgCol} gap-4`
   return (
     <main className="w-full">
-      <div
-        className={`columns-${smCol} p-[4px] lg:columns-${lgCol} h-[350px] tablet:h-[420px]`}
-      >
+      <div className={className}>
         {products.map((product) => (
-          <ProductCard
-            id={product.id}
-            name={product.name}
-            image={product.image}
-            price={product.price}
-            discount={product.discount}
-          />
+          <div key={product.id} className="h-full">
+            <ProductCard
+              id={product.id}
+              name={product.name}
+              image={product.image}
+              price={product.price}
+              discount={product.discount}
+            />
+          </div>
         ))}
       </div>
     </main>

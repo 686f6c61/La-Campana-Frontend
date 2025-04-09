@@ -195,7 +195,6 @@ const CategoryPage = () => {
 									onClick={handleLoadMore}
 									text="Cargar más"
 									bgColor="black"
-
 								/>
 							</div>
 						)

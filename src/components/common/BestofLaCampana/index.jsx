@@ -33,7 +33,7 @@ const BestOfLaCampana = () => {
               id: product.ItemsGroupCode,
               image: product.image || "images/prod4.jpg",
               name: product.ItemName,
-              price: "29,99",
+              price: product.ItemPrices,
               discount: product.discount || "-",
             }))}
             smCol="2"
@@ -46,7 +46,7 @@ const BestOfLaCampana = () => {
               id: product.ItemsGroupCode,
               image: product.image || "images/prod4.jpg",
               name: product.ItemName,
-              price: "29,99",
+              price: product.ItemPrices,
               discount: product.discount || "-",
             }))}
             smCol="2"
