@@ -89,10 +89,9 @@ const ActionButtons = ({ addToCart, productPrice }) => (
 		<QuantitySelector />
 		<ActionButton
 			text="Añadir al carrito"
-			className="text-center"
-			onClick={addToCart}
-			padding="lg:py-2 lg:px-8 py-2 px-4"
-			margin="mt-0"
+			className="text-center mt-8"
+			padding="py-2 px-4"
+			margin="mt-8"
 		/>
 	</div>
 );
