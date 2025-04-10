@@ -3,9 +3,9 @@ import socialMedia from "../../../utils/socialMedia";
 import { Link } from "react-router";
 
 const SocialWidget = ({
-  className = "",         // Estilos para los íconos (tamaño, animación)
-  iconSize = "w-6 h-6",   // Tamaño de los íconos
-  wrapperClass = "",      // NUEVO: Estilos para margen, padding, etc.
+  className = "", // Estilos para los íconos (tamaño, animación)
+  iconSize = "w-6 h-6", // Tamaño de los íconos
+  wrapperClass = "", // NUEVO: Estilos para margen, padding, etc.
 }) => {
   return (
     <div className={`flex gap-4 ${wrapperClass}`}>

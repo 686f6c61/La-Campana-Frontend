@@ -2,7 +2,7 @@ import ActionButton from "../../components/common/ActionButton";
 
 const Advisor = () => {
   return (
-    <section className="relative max-w-screen-desktop w-full justify-self-center pt-0 pb-32 mx-auto tablet:pt-32">
+    <section className="overflow-hidden relative max-w-screen-desktop w-full justify-self-center pt-0 pb-32 mx-auto tablet:pt-32">
       <article className="bg-lacampana-red2 flex flex-col tablet:flex-row justify-between rounded-tl-2xl">
         <div className="tablet:w-1/2 text-start md:p-12 p-7 md:pb-0 pb-32  flex flex-col gap-4">
           <h4 className="text-white">Contacta un asesor especializado</h4>
@@ -22,7 +22,7 @@ const Advisor = () => {
         </div>
         <div className="tablet:relative tablet:w-1/2">
           <img
-            className="absolute right-0 md:bottom-0 bottom-0 w-[300px] md:w-[60%] translate-x-16 md:translate-x-0"
+            className="absolute right-0 md:bottom-0 bottom-0 w-[280px] md:w-[60%] translate-x-16 md:translate-x-0"
             src="/images/girl.png"
             alt="girl"
           />

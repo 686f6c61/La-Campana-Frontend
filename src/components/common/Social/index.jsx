@@ -12,21 +12,17 @@ const Social = ({
   question = "¿Tienes alguna pregunta?",
   phone = "PBX: (601) 370.22.00",
   description = "",
-  containerPadding = "pt-10 pb-1",
+  containerPadding = "",
   iconsSize = "text-2xl",
   textWidth = "w-full md:w-70",
   questionColor = "text-black",
   phoneColor = "text-black",
- 
-  
 }) => {
   return (
     <div className={`text-left ${containerPadding}`}>
       <p className={`text-lg ${textWidth} ${questionColor}`}>{question}</p>
       <p className={`${phoneColor} pb-4`}>{phone}</p>
-      <p className="text-sm w-60 pb-4">{description}</p>
-
-     
+      <p className="text-sm w-60">{description}</p>
     </div>
   );
 };
