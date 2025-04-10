@@ -3,8 +3,8 @@ import { Star } from 'lucide-react';
 import { useGetProductCommentsQuery, useAddProductCommentMutation } from '../../../store/reducers/apiSlice';
 import ActionButton from '../ActionButton';
 
-export default function Comments() {
-  const { data: comments = [], error, isLoading, refetch } = useGetProductCommentsQuery();
+export default function Comments({ productId }) {
+  const { data: comments = [], error, isLoading, refetch } = useGetProductCommentsQuery(productId);
   const [addProductComment] = useAddProductCommentMutation();
   const [newComment, setNewComment] = useState({
     comment: '',
@@ -18,7 +18,7 @@ export default function Comments() {
     e.preventDefault();
     if (newComment.comment && newComment.name && newComment.rating) {
       const newCommentObj = {
-        productId: "CAA0.28US10703000R5017",
+        productId: productId, // Asegurarte de incluir el productId
         name: newComment.name,
         date: new Date().toISOString(),
         comment: newComment.comment,
@@ -53,7 +53,7 @@ export default function Comments() {
           </p>
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
-              <div className="text-sm  text-left font-open-sans mb-2">Califica este producto</div>
+              <div className="text-sm text-left font-open-sans mb-2">Califica este producto</div>
               <div className="flex gap-1 mb-2">
                 {[1, 2, 3, 4, 5].map((rating) => (
                   <button
@@ -65,10 +65,11 @@ export default function Comments() {
                     className="focus:outline-none"
                   >
                     <Star
-                      className={`w-6 h-6  ${rating <= (hoveredRating || newComment.rating)
-                        ? 'fill-yellow-400 text-yellow-400'
-                        : 'text-yellow-400'
-                        }`}
+                      className={`w-6 h-6 ${
+                        rating <= (hoveredRating || newComment.rating)
+                          ? 'fill-yellow-400 text-yellow-400'
+                          : 'text-yellow-400'
+                      }`}
                     />
                   </button>
                 ))}
@@ -111,70 +112,73 @@ export default function Comments() {
             <ActionButton
               text="Comentar"
               className="text-center mt-8"
+              type="submit"
             />
           </form>
         </div>
         <div className="space-y-6">
-          {comments.map((comment) => (
-            <div
-              key={comment.id}
-              className="flex gap-4 bg-white rounded-lg w-full"
-              style={{
-                height: '186px',
-                padding: '25px 0px 0px 0px',
-                gap: '12px',
-                borderRadius: '0px 0px 15px 0px',
-                boxShadow: '0px 4px 10px 0px #00000040',
-              }}
-            >
-              <div className="flex-1">
-                <div className="flex items-center justify-between mb-2">
-                  <h4 className="font-sm ml-6">{comment.name}</h4>
-                  <div className="flex gap-1 pr-8">
-                    {[1, 2, 3, 4, 5].map((star) => (
-                      <Star
-                        key={star}
-                        className={`w-5 h-5 ${star <= comment.rating
-                          ? 'fill-yellow-400 text-yellow-400'
-                          : 'text-yellow-400'
+          {comments.length > 0 ? (
+            
+            comments.map((comment) => (
+              <div
+                key={comment._id || comment.commentId}
+                className="flex gap-4 bg-white rounded-lg w-full"
+                style={{
+                  height: '186px',
+                  padding: '25px 0px 0px 0px',
+                  gap: '12px',
+                  borderRadius: '0px 0px 15px 0px',
+                  boxShadow: '0px 4px 10px 0px #00000040',
+                }}
+              >
+                <div className="flex-1">
+                  <div className="flex items-center justify-between mb-2">
+                    <h4 className="font-sm ml-6">{comment.name}</h4>
+                    <div className="flex gap-1 pr-8">
+                      {[1, 2, 3, 4, 5].map((star) => (
+                        <Star
+                          key={star}
+                          className={`w-5 h-5 ${
+                            star <= comment.rating
+                              ? 'fill-yellow-400 text-yellow-400'
+                              : 'text-yellow-400'
                           }`}
-                      />
-                    ))}
+                        />
+                      ))}
+                    </div>
                   </div>
+                  <div
+                    className="text-gray-500 ml-6 mb-2"
+                    style={{
+                      fontFamily: 'Open Sans',
+                      fontSize: '12px',
+                      fontWeight: '400',
+                      lineHeight: '25.5px',
+                      letterSpacing: '0.01em',
+                      textAlign: 'left',
+                    }}
+                  >
+                    {new Date(comment.date || comment.createdAt).toLocaleDateString('es-ES')}
+                  </div>
+                  <p
+                    className="text-gray-700 ml-6"
+                    style={{
+                      fontFamily: 'Open Sans',
+                      fontSize: '17px',
+                      fontWeight: '400',
+                      lineHeight: '25.5px',
+                      letterSpacing: '0.01em',
+                      textAlign: 'left',
+                    }}
+                  >
+                    {comment.comment}
+                  </p>
                 </div>
-                <div
-                  className="text-gray-500  ml-6 mb-2"
-                  style={{
-                    fontFamily: 'Open Sans',
-                    fontSize: '12px',
-                    fontWeight: '400',
-                    lineHeight: '25.5px',
-                    letterSpacing: '0.01em',
-                    textAlign: 'left',
-                    textUnderlinePosition: 'from-font',
-                    textDecorationSkipInk: 'none',
-                  }}
-                >
-                  {new Date(comment.date).toLocaleDateString('es-ES')}
-                </div>
-                <p
-                  className="text-gray-700 ml-6"
-                  style={{
-                    fontFamily: 'Open Sans',
-                    fontSize: '17px',
-                    fontWeight: '400',
-                    lineHeight: '25.5px',
-                    letterSpacing: '0.01em',
-                    textAlign: 'left',
-                    textUnderlinePosition: 'from-font',
-                    textDecorationSkipInk: 'none',
-                  }}
-                >
-                  {comment.comment}
-                </p>
               </div>
-            </div>
-          ))}
+            ))
+          ) : (
+            <p className="text-gray-500">No hay comentarios para este producto todavía.</p>
+          )}
         </div>
       </div>
     </div>

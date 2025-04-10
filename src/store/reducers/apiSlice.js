@@ -7,12 +7,15 @@ export const apiSlice = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: API_URL,
   }),
+  tagTypes: ['Comments', 'Products', 'Blogs'],
   endpoints: (builder) => ({
     getBlogs: builder.query({
       query: (query) => `blog${query}`,
+      providesTags: ['Blogs']
     }),
     getBlogById: builder.query({
       query: (id) => `blog/${id}`,
+      providesTags: (result, error, id) => [{ type: 'Blogs', id }]
     }),
     getBlogCategories: builder.query({
       query: () => "blog-category",
@@ -20,6 +23,7 @@ export const apiSlice = createApi({
     getProducts: builder.query({
       query: () => "products",
       keepUnusedDataFor: 600,
+      providesTags: ['Products']
     }),
     getProductsByText: builder.query({
       query: (params) => {
@@ -27,17 +31,19 @@ export const apiSlice = createApi({
       },
       keepUnusedDataFor: 600,
     }),
+    // Sacados del endpoints anidado y movidos al nivel correcto
     getProductComments: builder.query({
-      query: () => "product-comments",
+      query: (productId) => `/comments?productId=${productId}`,
+      providesTags: ['Comments']
     }),
     addProductComment: builder.mutation({
-      query: (newComment) => ({
-        url: "product-comments",
-        method: "POST",
-        body: newComment,
+      query: (comment) => ({
+        url: '/comments',
+        method: 'POST',
+        body: comment
       }),
+      invalidatesTags: ['Comments']
     }),
-
     // Cambia el endpoint a una mutación
     registerUser: builder.mutation({
       query: (newUser) => ({
@@ -46,7 +52,6 @@ export const apiSlice = createApi({
         body: newUser,
       }),
     }),
-
     loginUser: builder.mutation({
       query: (data) => ({
         url: "users/login",
@@ -54,7 +59,6 @@ export const apiSlice = createApi({
         body: data,
       }),
     }),
-
     forgotPassword: builder.mutation({
       query: (data) => ({
         url: "users/forgot-password",
@@ -63,9 +67,6 @@ export const apiSlice = createApi({
         body: JSON.stringify(data), 
       }),
     }),
-    
-
-
     resetPassword: builder.mutation({
       query: (data) => ({
         url: "users/reset-password", 
@@ -73,28 +74,19 @@ export const apiSlice = createApi({
         body: data, 
       }),
     }),
- 
-
-
-
   }),
 });
-
-
- 
 
 export const {
   useGetBlogsQuery,
   useGetBlogByIdQuery,
   useGetBlogCategoriesQuery,
   useGetProductsQuery,
+  useGetProductsByTextQuery,
   useGetProductCommentsQuery,
   useAddProductCommentMutation,
   useLoginUserMutation,
   useRegisterUserMutation,
-  useGetProductsByTextQuery,
   useForgotPasswordMutation, 
   useResetPasswordMutation,
-
-  
 } = apiSlice;
