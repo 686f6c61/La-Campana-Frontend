@@ -26,6 +26,7 @@ const SteelLeaders = () => {
         bgTitle={steelLeadersData.bgTitle}
         bgTitleMargin=""
         bgTitlePadding=""
+        titleMargin="mt-24"
       >
         <div className="flex items-center justify-center md:justify-end md:pr-16 mt-8 md:mt-0">
           <div className="flex items-center justify-center w-[790px] sm:w-[500px] h-[290px] relative overflow-hidden">

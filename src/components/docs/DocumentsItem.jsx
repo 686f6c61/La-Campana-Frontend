@@ -28,6 +28,7 @@ const DocumentsItem = () => {
             </>
           }
           bgTitle="Documentación"
+          titleMargin="mt-24"
           justify="center"
           description="Lorem ipsum dolor sit amet consectetur. Pulvinar dignissim
                 pulvinar ut lorem pharetra. Vestibulum nulla faucibus nunc enim.

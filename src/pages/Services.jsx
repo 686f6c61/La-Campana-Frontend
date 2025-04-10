@@ -11,7 +11,7 @@ const Services = () => {
         subtitle="Para la industria del acero"
         description="Lorem ipsum dolor sit amet consectetur. Libero sed netus at diam nec ullamcorper convallis pellentesque suscipit. Dictum sed purus et morbi in lorem in dolor sed. "
         justify="center"
-        titleMargin=""
+        titleMargin="mt-24"
       />
       <section className="grid grid-cols-2 tablet:grid-cols-3 desktop:grid-cols-4 gap-4 tablet:gap-8 h-[600px] desktop:h-[350px]">
         {services.map(service => 
