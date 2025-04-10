@@ -64,7 +64,7 @@ const DocumentsItem = () => {
                 pulvinar ut lorem pharetra.
               </p>
             </div>
-            <button className="border border-lacampana-gray1 text-lacampana-gray1 inline-flex self-start py-2 px-4 sm:py-2 sm:px-8 font-montserrat rounded-tl-full rounded-bl-full rounded-tr-full hover:bg-lacampana-gray1 hover:text-white hover:border-lacampana-gray1 transition duration-300 ease-in-out">
+            <button className="border border-lacampana-gray1 text-lacampana-gray1 inline-flex self-start py-2 px-4 sm:py-2 sm:px-8 font-montserrat rounded-tl-full rounded-bl-full rounded-tr-full hover:bg-lacampana-gray1 hover:text-white hover:border-lacampana-gray1 transition hover:scale-90 transition duration-300 ease-in-out">
   Descargar
 </button>
 
@@ -89,7 +89,7 @@ const DocumentsItem = () => {
                   pulvinar ut lorem pharetra.
                 </p>
               </div>
-              <button className="border border-lacampana-gray1 text-lacampana-gray1 inline-flex self-start py-2 px-4 sm:py-2 sm:px-8 font-montserrat rounded-tl-full rounded-bl-full rounded-tr-full hover:bg-lacampana-gray1 hover:text-white hover:border-lacampana-gray1 transition duration-300 ease-in-out">
+              <button className="border border-lacampana-gray1 text-lacampana-gray1 inline-flex self-start py-2 px-4 sm:py-2 sm:px-8 font-montserrat rounded-tl-full rounded-bl-full rounded-tr-full hover:bg-lacampana-gray1 hover:text-white hover:border-lacampana-gray1 transition hover:scale-90 transition duration-300 ease-in-out">
                 Descargar
               </button>
             </div>
@@ -109,7 +109,7 @@ const DocumentsItem = () => {
                   {doc.description}
                 </p>
               </div>
-              <button className="border border-lacampana-gray1 text-lacampana-gray1 inline-flex self-start py-2 px-4 sm:py-2 sm:px-8 font-montserrat rounded-tl-full rounded-bl-full rounded-tr-full hover:bg-lacampana-gray1 hover:text-white hover:border-lacampana-gray1 transition duration-300 ease-in-out">
+              <button className="border border-lacampana-gray1 text-lacampana-gray1 inline-flex self-start py-2 px-4 sm:py-2 sm:px-8 font-montserrat rounded-tl-full rounded-bl-full rounded-tr-full hover:bg-lacampana-gray1 hover:text-white hover:border-lacampana-gray1 transition hover:scale-90 transition duration-300 ease-in-out">
                 Descargar
               </button>
             </div>
@@ -118,7 +118,7 @@ const DocumentsItem = () => {
 
        
         <button
-  className="mt-8 bg-lacampana-red1 text-lacampana-white px-8 py-2 text-sm sm:text-base font-montserrat rounded-tl-full rounded-bl-full rounded-tr-full w-auto md:w-auto relative z-10 border border-lacampana-red1 hover:bg-white hover:text-lacampana-red1 hover:border-lacampana-red1 transition duration-300 ease-in-out"
+  className="mt-8 bg-lacampana-red1 text-lacampana-white px-8 py-2 text-sm sm:text-base font-montserrat rounded-tl-full rounded-bl-full rounded-tr-full w-auto md:w-auto relative z-10 border border-lacampana-red1 hover:bg-white hover:text-lacampana-red1 hover:border-lacampana-red1 transition hover:scale-90 transition duration-300 ease-in-out"
   onClick={loadMoreDocuments}
 >
   Cargar más documentos
