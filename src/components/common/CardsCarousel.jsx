@@ -184,11 +184,11 @@ const CardsCarousel = ({
             alt={`Imagen de ${item.nombre}`}
             className="w-full aspect-[16/10] object-cover rounded-md"
           />
-          <h3 className={`text-lg font-bold mt-2 ${textColor}`}>
+          <h3 className={`text-lg font-bold mt-2 text-lacampana-red1 text-left`}>
             {item.nombre}
           </h3>
-          <p className={`${textColor}`}>{item.direccion}</p>
-          <p className={`${textColor}`}>{item.telefono}</p>
+          <p className={`${textColor} text-left`}>{item.direccion}</p>
+          <p className={`${textColor} text-left`}>{item.telefono}</p>
         </div>
       ));
 
@@ -198,15 +198,15 @@ const CardsCarousel = ({
 
   return (
     <article className="flex flex-col h-full w-full">
-      <div className="carousel w-full h-full">
+      <div className="carousel w-full h-full overflow-x-auto snap-x snap-mandatory scroll-smooth scrollbar-hide">
         {slides.map((slide, index) => (
           <article
             key={`${id}-${index}`}
             id={`${id}-${index}`}
             className={
               !latestBlogs
-                ? "carousel-item flex w-[280px] mt-5"
-                : "carousel-item w-full"
+                ? "carousel-item flex gap-4 w-[280px] mt-5"
+                : "carousel-item flex gap-4 w-full"
             }
           >
             {slide}

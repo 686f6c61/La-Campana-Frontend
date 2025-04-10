@@ -42,7 +42,7 @@ const IntroductoryText = ({
               {subtitle}
             </span>
           </div>
-          <p className="max-w-[1000px] self-center">{description}</p>
+          <p className="max-w-[800px] text-justify text-lacampana-gray1 font-open-sans leading-relaxed self-center">{description}</p>
         </section>
         {/* Mobile Text */}
         <section

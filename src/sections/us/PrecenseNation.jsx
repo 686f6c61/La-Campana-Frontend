@@ -35,23 +35,46 @@ const PrecenseNation = () => {
           />
 
 
-          <div className="mt-8">
-            <div className="hidden lg:block">
-              <CardsCarousel
-                cardsList={sucursalesFiltradas}
-                id="sucursal-desktop"
-                itemsPerSlide={3}
-                latestBlogs={true}
-              />
-            </div>
-            <div className="lg:hidden">
-              <CardsCarousel
-                cardsList={sucursalesFiltradas}
-                id="sucursal-mobile"
-                itemsPerSlide={2}
-              />
-            </div>
-          </div>
+<div className="mt-8">
+  {/* Desktop ≥ 1024px */}
+  <div className="hidden lg:block">
+    <CardsCarousel
+      cardsList={sucursalesFiltradas}
+      id="sucursal-desktop"
+      itemsPerSlide={3}
+      latestBlogs={true}
+      cardBgColor="bg-lacampana-white"
+      textColor="text-lacampana-gray1"
+    />
+  </div>
+
+
+  {/* Tablet: md = 768px to <1024px */}
+  <div className="hidden md:block lg:hidden">
+    <CardsCarousel
+      cardsList={sucursalesFiltradas}
+      id="sucursal-tablet"
+      itemsPerSlide={3}
+      latestBlogs={true}
+      cardBgColor="bg-lacampana-white"
+      textColor="text-lacampana-gray1"
+    />
+  </div>
+
+
+  {/* Mobile <768px */}
+  <div className="md:hidden">
+    <CardsCarousel
+      cardsList={sucursalesFiltradas}
+      id="sucursal-mobile"
+      itemsPerSlide={2}
+      latestBlogs={true}
+      cardBgColor="bg-lacampana-white"
+      textColor="text-lacampana-gray1"
+    />
+  </div>
+</div>
+
         </div>
 
 

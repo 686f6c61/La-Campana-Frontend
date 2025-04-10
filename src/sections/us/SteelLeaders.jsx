@@ -28,11 +28,11 @@ const SteelLeaders = () => {
         bgTitlePadding=""
       >
         <div className="flex items-center justify-center md:justify-end md:pr-16 mt-8 md:mt-0">
-          <div className="flex items-center justify-center w-[790px] sm:w-[500px] h-[290px] relative">
+          <div className="flex items-center justify-center w-[790px] sm:w-[500px] h-[290px] relative overflow-hidden">
             <iframe
               src={steelLeadersData.videoUrl}
               title="Video representativo"
-              className="w-full h-full rounded-tl-lg"
+              className="w-full h-full rounded-tl-3xl "
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
