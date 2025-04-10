@@ -1,9 +1,13 @@
 import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
-import RadioSelect from "../../common/RadioSelect"; 
+import RadioSelect from "../../common/RadioSelect";
 
-
-const ContactForm = ({ origin = "", padding = "p-8", margin = "my-4", title }) => {
+const ContactForm = ({
+  origin = "",
+  padding = "p-8",
+  margin = "my-4",
+  title,
+}) => {
   const form = useRef();
   const [formData, setFormData] = useState({
     user_name: "",
@@ -15,7 +19,6 @@ const ContactForm = ({ origin = "", padding = "p-8", margin = "my-4", title }) =
     policyAccepted: false,
   });
 
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -24,21 +27,17 @@ const ContactForm = ({ origin = "", padding = "p-8", margin = "my-4", title }) =
     });
   };
 
-
   const handlePolicySelection = (value) => {
     setFormData({ ...formData, policyAccepted: value === "accepted" });
   };
 
-
   const sendEmail = (e) => {
     e.preventDefault();
-
 
     if (!formData.policyAccepted) {
       alert("Debes aceptar la política de tratamiento de datos personales.");
       return;
     }
-
 
     emailjs
       .sendForm(
@@ -57,19 +56,20 @@ const ContactForm = ({ origin = "", padding = "p-8", margin = "my-4", title }) =
       );
   };
 
-
   return (
-    <div className={`md:w-[800px] mx-auto bg-white rounded-lg drop-shadow-2xl ${padding} ${margin}`}>
+    <div
+      className={`md:w-[500px] bg-white rounded-lg drop-shadow-2xl ${padding} ${margin}`}
+    >
       {title && (
         <div className="mb-8 text-center">
-          <h2 className="text-3xl font-bold font-antonio leading-snug">{title}</h2>
+          <h2 className="text-3xl font-bold font-antonio leading-snug">
+            {title}
+          </h2>
         </div>
       )}
 
-
       <form ref={form} onSubmit={sendEmail}>
         <input type="hidden" name="origin" value={origin} />
-
 
         <div className="space-y-4">
           <input
@@ -115,14 +115,17 @@ const ContactForm = ({ origin = "", padding = "p-8", margin = "my-4", title }) =
             onChange={handleChange}
           ></textarea>
 
-
           {/* Política de datos con RadioSelect */}
           <RadioSelect
             options={[
               {
                 label: (
-                  <> <p className="text-xs text-lacampana-gray2">He leído y acepto la politica de tratamiento de datos personales </p>
-                   
+                  <>
+                    {" "}
+                    <p className="text-xs text-lacampana-gray2">
+                      He leído y acepto la politica de tratamiento de datos
+                      personales{" "}
+                    </p>
                   </>
                 ),
                 value: "accepted",
@@ -134,7 +137,6 @@ const ContactForm = ({ origin = "", padding = "p-8", margin = "my-4", title }) =
             bgColor="lacampana-red2"
             labelClassName="text-sm"
           />
-
 
           {/* Botón alineado a la izquierda */}
           <div className="pt-4 text-left">
@@ -150,6 +152,5 @@ const ContactForm = ({ origin = "", padding = "p-8", margin = "my-4", title }) =
     </div>
   );
 };
-
 
 export default ContactForm;
