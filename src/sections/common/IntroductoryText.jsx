@@ -45,11 +45,7 @@ const IntroductoryText = ({
               {subtitle}
             </span>
           </div>
-<<<<<<< HEAD
-          <p className="max-w-[1000px] self-center mt-8">{description}</p>
-=======
-          <p className="max-w-[800px] text-justify text-lacampana-gray1 font-open-sans leading-relaxed self-center">{description}</p>
->>>>>>> feature/documentos
+          <p className="max-w-[800px] text-justify text-lacampana-gray1 font-open-sans leading-relaxed self-center mt-8">{description}</p>
         </section>
         {/* Mobile Text */}
         <section
