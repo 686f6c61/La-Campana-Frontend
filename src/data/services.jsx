@@ -38,6 +38,7 @@ const services = [
       </>
     ),
     image: "/images/services/corte-viga.png",
+    videoUrl: "https://www.youtube.com/embed/FLdDLPx9wEg",
 
       advantages: {
         description: "Lorem ipsum dolor sit amet consectetur. Non molestie maecenas lectus dolor quis. Nisl pharetra id at morbi sed cursus ac. Eget sed lobortis maecenas sit augue semper. Sed sed maecenas amet congue cursus adipiscing dui id purus.",
