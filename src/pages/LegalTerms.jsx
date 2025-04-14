@@ -7,8 +7,8 @@ const Terms = () => {
   return (
     <div className="max-w-screen-desktop w-full mx-auto mt-16">
       <IntroductoryText
-        mt="mt-[5.8rem]"
         size="text-5xl"
+        mt="mt-[6rem]"
         mb="mb-0"
         title={
           <>

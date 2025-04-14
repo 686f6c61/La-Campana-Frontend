@@ -19,7 +19,7 @@ const IntroductoryText = ({
         className={`hidden tablet:block absolute left-0 right-0 -z-10 ${bgTitlePadding} ${bgTitleMargin}`}
       >
         <h1
-          className={`leading-tight text-${justify} text-[40px] tablet:text-[140px] desktop:text-[140px] bg-clip-text text-transparent bg-gradient-to-t from-lacampana-gray4/20 to-lacampana-gray4`}
+          className={`leading-tight text-${justify} text-[40px] tablet:text-[130px] desktop:text-[140px] bg-clip-text text-transparent bg-gradient-to-t from-lacampana-gray4/20 to-lacampana-gray4`}
         >
           {bgTitle}
         </h1>
