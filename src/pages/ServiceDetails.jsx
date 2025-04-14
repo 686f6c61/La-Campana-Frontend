@@ -20,7 +20,7 @@ const ServiceDetails = () => {
             description={serviceData.customDescription || serviceData.description}
             bgTitlePadding = "pt-10"
           >
-            <div className="w-full md:mt-20 mt-0 tablet:w-1/2 flex-none h-[300px] tablet:h-[350px] rounded-tl-2xl overflow-hidden relative ">
+            {/* <div className="w-full md:mt-20 mt-0 tablet:w-1/2 flex-none h-[300px] tablet:h-[350px] rounded-tl-2xl overflow-hidden relative ">
               <div className="absolute left-0 right-0 bottom-0 top-0 flex justify-center items-center ">
               
 <img
@@ -33,7 +33,19 @@ const ServiceDetails = () => {
 
               </div>
               <img className="w-full h-full object-cover" src={serviceData.image} alt="" />
-            </div>
+            </div> */}
+           <div className="w-full mt-10 h-[200px] tablet:h-[300px] desktop:h-[350px] rounded-tl-2xl overflow-hidden p-2">
+  <iframe
+    className="w-full h-full rounded-tl-3xl"
+    src={serviceData.videoUrl}
+    title="Video de servicio"
+    frameBorder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowFullScreen
+  ></iframe>
+</div>
+
+
           </IntroductoryText>
         </section>
 

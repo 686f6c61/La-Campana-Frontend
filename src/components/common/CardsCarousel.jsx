@@ -163,7 +163,7 @@ const CardsCarousel = ({
   children,
   cardBgColor = "bg-white",
   textColor = "text-gray-800",
-  controlBgColor = "bg-lacampana-gray3",
+  controlBgColor = "bg-lacampana-gray1",
   controlCheckedColor = "checked:bg-lacampana-red2",
   customControlClass = "",
   latestBlogs,
@@ -184,11 +184,11 @@ const CardsCarousel = ({
             alt={`Imagen de ${item.nombre}`}
             className="w-full aspect-[16/10] object-cover rounded-md"
           />
-          <h3 className={`text-lg font-bold mt-2 ${textColor}`}>
+          <h3 className={`text-lg font-bold mt-2 text-lacampana-red1 text-left`}>
             {item.nombre}
           </h3>
-          <p className={`${textColor}`}>{item.direccion}</p>
-          <p className={`${textColor}`}>{item.telefono}</p>
+          <p className={`${textColor} text-left`}>{item.direccion}</p>
+          <p className={`${textColor} text-left`}>{item.telefono}</p>
         </div>
       ));
 
@@ -198,15 +198,15 @@ const CardsCarousel = ({
 
   return (
     <article className="flex flex-col h-full w-full">
-      <div className="carousel w-full h-full">
+      <div className="carousel w-full h-full overflow-x-auto snap-x snap-mandatory scroll-smooth scrollbar-hide">
         {slides.map((slide, index) => (
           <article
             key={`${id}-${index}`}
             id={`${id}-${index}`}
             className={
               !latestBlogs
-                ? "carousel-item flex w-[280px] mt-5"
-                : "carousel-item w-full"
+                ? "carousel-item flex gap-4 w-[280px] mt-5"
+                : "carousel-item flex gap-4 w-full"
             }
           >
             {slide}
@@ -220,7 +220,7 @@ const CardsCarousel = ({
             key={`${id}-radio-${index}`}
             type="radio"
             name={id}
-            className={`radio w-2 h-2 checked:w-3 checked:h-3 border-none ${controlBgColor} ${controlCheckedColor} ${customControlClass}`}
+            className={`radio w-2 h-2 border-none bg-lacampana-gray1 checked:bg-lacampana-red1 checked:w-4 checked:h-4 hover:scale-90 transition duration-150 ease-in-ou ${controlBgColor} ${controlCheckedColor} ${customControlClass}`}
             onClick={() =>
               document
                 .getElementById(`${id}-${index}`)
