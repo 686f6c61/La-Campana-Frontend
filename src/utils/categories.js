@@ -1,7 +1,6 @@
 const categories = [
-
   {
-    id: "ornamentacion",
+    id: "perfil",
     name: "Perfiles Ornamentación",
     link: "/tienda/perfil",
     image: "/images/categories/perfiles-de-ornamentacion.jpeg", // Cambia por tu URL de imagen
@@ -160,7 +159,7 @@ const categories = [
     id: "entrepiso",
     name: "Entrepisos",
     link: "/tienda/entrepiso",
-    image: "/images/steel-pipes-factory.png", // Cambia por tu URL de imagen
+    image: "/images/categories/entrepiso.png", // Cambia por tu URL de imagen
     results: 256,
     subcategories: [
       {

@@ -5,12 +5,12 @@ import Comments from "../Comments";
 import ProductTabs from "../ProductTabs";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem, updateItem } from "../../../features/cart/cartSlice";
-import products from "../../../utils/products";
 import relatedProducts from "../../../utils/relatedProducts";
 import ActionButton from "../ActionButton";
 import QuantitySelector from "../QuantitySelector";
-import RadioSelect from "../RadioSelect";
 import ComplementSection from "../ComplementSection";
+
+import categories from "../../../utils/categories";
 
 const ProductGallery = ({ image }) => (
 	<div className="flex flex-col lg:flex-row-reverse gap-1">
@@ -47,18 +47,18 @@ const ProductGalleyAndTechnicalInformation = ({ image, isMobile }) => (
 
 const ProductOptions = ({ options }) => (
 	<div className="flex flex-wrap gap-6 text-left mt-8">
-		{["longitud", "ancho"].map((prop, index) => (
-			<div key={index} className="flex-1 min-w-[120px]">
-				<label className="block font-bold font-open-sans mb-2 capitalize">{prop}</label>
-				<select className="border w-full bg-gray-100 font-open-sans text-sm  text-gray-500 p-2 rounded">
+			{["longitud", "ancho"].map((prop, index) => (
+				<div key={index} className="flex-1 min-w-[120px]">
+					<label className="block font-bold font-open-sans mb-2 capitalize">{prop}</label>
+					<select className="border w-full bg-gray-100 font-open-sans text-sm  text-gray-500 p-2 rounded">
 
-					{options[prop].map((option, i) => (
-						<option key={i}>{option}</option>
-					))}
-				</select>
-			</div>
-		))}
-	</div >
+						{options[prop].map((option, i) => (
+							<option key={i}>{option}</option>
+						))}
+					</select>
+				</div>
+			))}
+		</div >
 );
 
 const ProductColors = ({ options }) => (
@@ -96,19 +96,30 @@ const ActionButtons = ({ addToCart, productPrice }) => (
 	</div>
 );
 
+const productOptions = {
+		paquete: ["Seleccione una opción", "Paquete 2", "Paquete 3"],
+		longitud: ["Seleccione una opción", "1.10 mm", "1.20 mm"],
+		ancho: ["Seleccione una opción", "1.10 mm", "1.20 mm"],
+		colorExterno: ["#E32119", "#BDBDBD", "#3C3C3B", "#BDBDBD"],
+		colorInterno: ["#F2F2F2", "#3C3C3B", "#000000"],
+}
+
 const ProductDetailPage = () => {
 	const { productId } = useParams();
-	console.log(productId)
-	console.log(products)
 	const [activeTab, setActiveTab] = useState("normas");
 
 	const cartProducts = useSelector(state => state.cart);
 	const dispatch = useDispatch();
+	
+	const products = useSelector((state) => state.products.list);
+	const categoryId = useSelector((state) => state.category.selectedCategory);
+	const category = categories.find(cat => cat.id === categoryId);
+	const [categoryImage, setCategoryImage] = useState(category.image)
 
-	const pid = productId == 0 ? 1 : productId // TODO: Remove when backend logic works as expected
-	const product = products.find(p => p.id === Number(pid));
+	const defaultDescription = "Descripcion del producto donde se da mas detalle del producto, este es un mensaje generico."
 
-	console.log(product)
+	const product = products.find(p => p.ItemCode === productId);
+
 	if (!product) {
 		return <div>Producto no encontrado</div>;
 	}
@@ -134,22 +145,22 @@ const ProductDetailPage = () => {
 
 	return (
 		<div className="max-w-7xl mx-auto p-4">
-			{isMobile && <h1 className="text-3xl pb-4 font-antonio">{product.name}</h1>}
+			{isMobile && <h1 className="text-3xl pb-4 font-antonio">{product.ItemName}</h1>}
 			<div className="flex flex-col lg:flex-row gap-8">
-				<ProductGalleyAndTechnicalInformation image={product.image} isMobile={isMobile} />
+				<ProductGalleyAndTechnicalInformation image={categoryImage} isMobile={isMobile} />
 				<div className="w-full flex flex-col justify-between lg:w-3/5">
-					{!isMobile && <h1 className="text-3xl font-antonio text-left">{product.name}</h1>}
-					<p className="text-gray-600 mt-2 text-left font-opensans">{product.description}</p>
-					{isMobile && <ActionButtons addToCart={addToCart} productPrice={product.price} />}
-					<ProductOptions options={product.options} />
-					<ProductColors options={product.options} />
+					{!isMobile && <h1 className="text-3xl font-antonio text-left">{product.ItemName}</h1>}
+					<p className="text-gray-600 mt-2 text-left font-opensans">{product.description || defaultDescription}</p>
+					{isMobile && <ActionButtons addToCart={addToCart} productPrice={product.ItemPrices} />}
+					<ProductOptions options={productOptions} />
+					<ProductColors options={productOptions} />
 					{isMobile &&
 						<div className="mt-12">
 							<ButtonTechnicalInformation />
 						</div>
 
 					}
-					{!isMobile && <ActionButtons addToCart={addToCart} productPrice={product.price} />}
+					{!isMobile && <ActionButtons addToCart={addToCart} productPrice={product.ItemPrices} />}
 				</div>
 			</div>
 
@@ -164,7 +175,7 @@ const ProductDetailPage = () => {
 			</div>
 
 			<div className="mt-16">
-				<Comments />
+				<Comments productId={productId}/>
 			</div>
 		</div>
 	);

@@ -33,12 +33,12 @@ export const apiSlice = createApi({
     }),
     // Sacados del endpoints anidado y movidos al nivel correcto
     getProductComments: builder.query({
-      query: (productId) => `/comments?productId=${productId}`,
+      query: (productId) => `/product-comments?productId=${productId}`,
       providesTags: ['Comments']
     }),
     addProductComment: builder.mutation({
       query: (comment) => ({
-        url: '/comments',
+        url: '/product-comments',
         method: 'POST',
         body: comment
       }),

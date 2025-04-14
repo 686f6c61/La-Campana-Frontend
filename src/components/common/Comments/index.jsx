@@ -4,21 +4,26 @@ import { useGetProductCommentsQuery, useAddProductCommentMutation } from '../../
 import ActionButton from '../ActionButton';
 
 export default function Comments({ productId }) {
+  console.log("productIdComments", productId)
   const { data: comments = [], error, isLoading, refetch } = useGetProductCommentsQuery(productId);
   const [addProductComment] = useAddProductCommentMutation();
+
   const [newComment, setNewComment] = useState({
     comment: '',
     name: '',
     email: '',
     rating: 0,
   });
+
   const [hoveredRating, setHoveredRating] = useState(0);
+  const [acceptedPolicy, setAcceptedPolicy] = useState(false);
+  const [refreshKey, setRefreshKey] = useState(0);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (newComment.comment && newComment.name && newComment.rating) {
+    if (newComment.comment && newComment.name && newComment.rating && acceptedPolicy) {
       const newCommentObj = {
-        productId: productId, // Asegurarte de incluir el productId
+        productId,
         name: newComment.name,
         date: new Date().toISOString(),
         comment: newComment.comment,
@@ -28,7 +33,9 @@ export default function Comments({ productId }) {
       try {
         await addProductComment(newCommentObj).unwrap();
         refetch();
+        setRefreshKey(prev => prev + 1); // Forzar re-render
         setNewComment({ comment: '', name: '', email: '', rating: 0 });
+        setAcceptedPolicy(false); // Resetear checkbox
       } catch (err) {
         console.error('Error al agregar el comentario:', err);
       }
@@ -38,8 +45,10 @@ export default function Comments({ productId }) {
   if (isLoading) return <p>Cargando...</p>;
   if (error) return <p>Error al cargar los datos.</p>;
 
+  console.log("comments",comments)
+
   return (
-    <div className="max-w-6xl mx-auto text-left px-4 py-8">
+    <div className="max-w-6xl mx-auto text-left px-4 py-8" key={refreshKey}>
       <h2 className="text-2xl font-semibold font-antonio mb-8">
         Comentarios de este <span className="text-red-500">producto</span>
       </h2>
@@ -75,6 +84,7 @@ export default function Comments({ productId }) {
                 ))}
               </div>
             </div>
+
             <textarea
               value={newComment.comment}
               onChange={(e) => setNewComment({ ...newComment, comment: e.target.value })}
@@ -103,7 +113,8 @@ export default function Comments({ productId }) {
                 type="checkbox"
                 id="privacy-policy"
                 className="rounded border-gray-300"
-                required
+                checked={acceptedPolicy}
+                onChange={() => setAcceptedPolicy(!acceptedPolicy)}
               />
               <label htmlFor="privacy-policy" className="text-sm text-gray-600">
                 He leído y acepto la política de tratamiento de datos personales
@@ -113,12 +124,13 @@ export default function Comments({ productId }) {
               text="Comentar"
               className="text-center mt-8"
               type="submit"
+              disabled={!acceptedPolicy}
             />
           </form>
         </div>
+
         <div className="space-y-6">
           {comments.length > 0 ? (
-            
             comments.map((comment) => (
               <div
                 key={comment._id || comment.commentId}

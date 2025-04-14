@@ -1,5 +1,10 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+
+import { setProducts } from '../../../store/reducers/productsSlice';
+import { setSelectedCategory } from '../../../store/reducers/categorySlice';
+
 import FilterSearchBar from "../FilterSearchBar";
 import IntroductoryText from "../../../sections/common/IntroductoryText";
 import ProductCard from "../../common/ProductCard"
@@ -27,6 +32,7 @@ const FILTER_OPTIONS = {
 
 const CategoryPage = () => {
 	const { categoryId } = useParams();
+	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const [isMobile, setIsMobile] = useState(window.innerWidth < 950);
 	const [selectedFilters, setSelectedFilters] = useState({
@@ -41,6 +47,7 @@ const CategoryPage = () => {
 
 	// All hooks must be called before any conditional returns
 	useEffect(() => {
+		dispatch(setSelectedCategory(categoryId));
 		setVisibleProducts(8);
 		refetch();
 		return () => {
@@ -57,11 +64,18 @@ const CategoryPage = () => {
 		return () => window.removeEventListener("resize", handleResize);
 	}, []);
 
+	useEffect(() => {
+		if (data) {
+			dispatch(setProducts(data));
+		}
+	}, [data, dispatch]);
+
 	const products = useMemo(() => {
 		if (!data) return [];
+		console.log("Category page:", data)
 
 		return data.map((product) => ({
-			id: product.ItemsGroupCode == 0 ? 1 : product.ItemsGroupCode,
+			id:  product.ItemCode,
 			image: product.image || "/images/prod4.jpg",
 			name: product.ItemName,
 			price: product.ItemPrices,
@@ -70,6 +84,7 @@ const CategoryPage = () => {
 	}, [data]);
 
 	const filteredProducts = useMemo(() => {
+		console.log("filtered product:", products)
 		return products.filter((product) => {
 			const matchesSearch = product.name.toLowerCase().includes(searchQuery);
 			const matchesFilters = Object.keys(selectedFilters).every(
@@ -81,6 +96,7 @@ const CategoryPage = () => {
 
 	// Event handlers
 	const handleProductClick = (productId) => {
+		console.log("handleProductClic:",productId)
 		navigate(`/tienda/product/${productId}`);
 	};
 

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 const ActionButton = ({
+  type,
   styles,
   text,
   textColor = "white",
@@ -11,19 +12,37 @@ const ActionButton = ({
   margin = "mt-8",
   font = "font-semibold",
   link,
-  onClick }) => {
+  disabled = false,
+  onClick
+}) => {
 
-  const className = `${styles} lacampana-btn hover:bg-${textColor} hover:text-${bgColor} hover:scale-90 border
-    ${borderColor ? `border-${borderColor}` : `border-${bgColor}`} bg-${bgColor} text-${textColor} font-semibold w-${width} 
-    ${padding} transition duration-300 ease-in-out`
+  const className = `
+    ${styles} 
+    lacampana-btn 
+    ${disabled ? 'opacity-50 pointer-events-none' : `hover:bg-${textColor} hover:text-${bgColor} hover:scale-90`} 
+    border 
+    ${borderColor ? `border-${borderColor}` : `border-${bgColor}`} 
+    bg-${bgColor} 
+    text-${textColor} 
+    ${font} 
+    w-${width} 
+    ${padding} 
+    ${margin}
+    transition duration-300 ease-in-out
+  `;
+
   return (
-    <Link
-      to={link}
-      onClick={onClick}
-      className={className}
-    >
-      {text}
-    </Link>
+    <>
+      {type === "submit" ? (
+        <button className={className} disabled={disabled}>
+          {text}
+        </button>
+      ) : (
+        <Link to={link} onClick={disabled ? (e) => e.preventDefault() : onClick} className={className}>
+          {text}
+        </Link>
+      )}
+    </>
   );
 };
 
