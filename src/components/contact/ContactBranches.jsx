@@ -12,17 +12,17 @@ const ContactBranches = () => {
   );
 
   return (
-    <div className="overflow-hidden w-full my-10 mb-24">
+    <div className="pr-5 relative w-full my-10 pb-10 tablet:pb-52 flex flex-col xl:flex-row items-start gap-8">
       {/* Fondo decorativo envuelve todo el contenido */}
       <div
-        className="relative w-[100%] lg:w-[80%] min-h-[620px] rounded-tr-[0%] tablet:rounded-tr-full rounded-br-[0%] tablet:rounded-br-full"
+        className="w-full xl:w-[76%] h-[300px] lg:h-[600px] xl:min-h-[600px] xl:pb-[180px] rounded-tr-full tablet:rounded-tr-full rounded-br-full tablet:rounded-br-full"
         style={{
           backgroundImage: "url('/images/categories/laminasBg.jpg')",
-          backgroundSize: "cover",
           backgroundPosition: "center",
+          backgroundSize: "cover",
         }}
       >
-        <div className="relative z-10 flex flex-col md:flex-row items-start justify-between pl-0 pt-0 pb-0 tablet:pl-20 tablet:pt-8 tablet:pb-5">
+        <div className="z-10 flex flex-col md:flex-row items-start justify-between pl-0 pt-0 pb-0 tablet:pl-20 tablet:pt-8 tablet:pb-5">
           {/* Contenido a la izquierda */}
           <div className="w-full md:w-2/3">
             <CustomSection
@@ -68,9 +68,10 @@ const ContactBranches = () => {
                 </div>
 
                 {/* Carrusel Mobile */}
-                <div className="lg:hidden">
+                <div className="block lg:hidden">
                   <CardsCarousel
                     cardsList={sucursalesFiltradas}
+                    justifyValue="start"
                     id="sucursal-mobile"
                     itemsPerSlide={2}
                     latestBlogs={true}
@@ -79,18 +80,17 @@ const ContactBranches = () => {
               </div>
             </CustomSection>
           </div>
-
-          {/* Mapa alineado a la derecha */}
-          <div className="hidden pr-5 lg:block">
-            <div>
-              <img
-                src="/images/Map.png"
-                alt="Mapa de Colombia"
-                className="absolute top-0 bottom-0 right-0 translate-x-[250px] w-[500px] object-cover rounded-lg"
-              />
-            </div>
-          </div>
         </div>
+      </div>
+
+      {/* Mapa alineado a la derecha */}
+      <div className="pl-5 w-full mt-72 xl:w-auto flex justify-center xl:justify-end xl:px-0 relative xl:static mt-6 xl:mt-0">
+        <img
+          src="/images/Map.png"
+          alt="Mapa de Colombia"
+          className="
+          relative xl:absolute xl:top-[-40px] xl:right-0 xl:translate-x-[-80px] w-[100%] max-w-[550px] xl:w-[550px] lg:w-[100%] object-cover rounded-lg xl:z-0"
+        />
       </div>
     </div>
   );
