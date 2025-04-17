@@ -25,51 +25,6 @@ const Blog = () => {
   if (errorBlogs) return <p>Error al cargar los datos.</p>;
   console.log(blogs);
 
-  <article className="pr-5 pl-5 flex justify-center">
-    <div className="max-w-screen-desktop w-full flex flex-col">
-      <IntroductoryText
-        title={
-          <>
-            Nuestro <span className="text-lacampana-red2">Blog</span>
-          </>
-        }
-        bgTitle="Actualidad en aceros"
-        description="Lorem ipsum dolor sit amet consectetur. Pulvinar dignissim pulvinar ut lorem pharetra. Vestibulum nulla faucibus nunc enim. Proin feugiat fames turpis sociis viverra. Viverra sit ut egestas placerat neque fames ante."
-        justify="start"
-      >
-        {/* LATEST BLOGS */}
-        <div className="w-full tablet:w-3/5 flex-none h-[500px]">
-          <CardsCarousel
-            id="hl-blog-card"
-            cardsList={latestBlogs}
-            latestBlogs={true}
-            justifyValue="end"
-          >
-            {latestBlogs.map((blog, index) => (
-              <article
-                key={`blog-carousel-item-${index}`}
-                className="carousel-item w-full py-2"
-                id={`hl-blog-card-${index}`}
-              >
-                {
-                  <LatestBlogItem
-                    title={blog.name}
-                    description={blog.body}
-                    category={blog.blogCategoryId.name}
-                    image={blog.image}
-                    publicationDate={blog.createdAt}
-                    link={`/blog/${blog._id}`}
-                  />
-                }
-              </article>
-            ))}
-          </CardsCarousel>
-        </div>
-      </IntroductoryText>
-      <BlogsGallery />
-    </div>
-  </article>;
-
   return (
     <article className="pl-5 pr-5 flex justify-center">
       <div className="max-w-screen-desktop w-full justify-self-center flex flex-col gap-16 py-16">
@@ -82,9 +37,11 @@ const Blog = () => {
           bgTitle="Actualidad en aceros"
           description="Lorem ipsum dolor sit amet consectetur. Pulvinar dignissim pulvinar ut lorem pharetra. Vestibulum nulla faucibus nunc enim. Proin feugiat fames turpis sociis viverra. Viverra sit ut egestas placerat neque fames ante."
           justify="start"
+          zIndex="-z-20"
+          titleMargin="lg:pt-24"
         >
           {/* LATEST BLOGS */}
-          <div className="w-full tablet:w-3/5 flex-none h-[500px]">
+          <div className="w-full tablet:w-3/5 flex-none h-[500px] pt-32">
             <CardsCarousel
               id="hl-blog-card"
               cardsList={latestBlogs}

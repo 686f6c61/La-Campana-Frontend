@@ -91,7 +91,8 @@ const ActionButtons = ({ addToCart, productPrice }) => (
 			text="Añadir al carrito"
 			className="text-center mt-8"
 			padding="py-2 px-4"
-			margin="mt-8"
+			margin=""
+			onClick={addToCart}
 		/>
 	</div>
 );

@@ -11,25 +11,26 @@ const IntroductoryText = ({
   children,
   mt,
   mb,
+  zIndex = "-z-10"
 }) => {
   return (
     <section className="relative ">
       {/* Desktop BgTitle */}
       <div
-        className={`hidden tablet:block absolute left-0 right-0 -z-10 ${bgTitlePadding} ${bgTitleMargin}`}
+        className={`hidden tablet:block absolute left-0 right-0 ${zIndex} ${bgTitlePadding} ${bgTitleMargin}`}
       >
         <h1
-          className={`leading-tight text-${justify} text-[40px] tablet:text-[130px] desktop:text-[140px] bg-clip-text text-transparent bg-gradient-to-t from-lacampana-gray4/20 to-lacampana-gray4`}
+          className={`leading-tight text-${justify} text-2xl tablet:text-[130px] lg:text-[150px] bg-clip-text text-transparent bg-gradient-to-t from-lacampana-gray4/20 to-lacampana-gray4`}
         >
           {bgTitle}
         </h1>
       </div>
       {/* Mobile BgTitle */}
       <div
-        className={`tablet:hidden absolute left-0 right-0 -z-10 ${bgTitlePadding} ${bgTitleMargin}`}
+        className={`tablet:hidden absolute left-0 right-0 ${zIndex} ${bgTitlePadding} ${bgTitleMargin}`}
       >
         <h1
-          className={`text-[60px] tablet:text-[140px] desktop:text-[140px] bg-clip-text text-transparent bg-gradient-to-t from-lacampana-gray4/20 to-lacampana-gray4`}
+          className={`text-[45px] tablet:text-[140px] lg:text-[150px] bg-clip-text text-transparent bg-gradient-to-t from-lacampana-gray4/20 to-lacampana-gray4`}
         >
           {bgTitle}
         </h1>
