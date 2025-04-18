@@ -8,13 +8,13 @@ export const cartSlice = createSlice({
       state.push(action.payload)
     },
     deleteItem: (state, action) => {
-      const foundItem = state.find(item => item.id === action.payload)
+      const foundItem = state.find(item => item.ItemCode === action.payload)
 
       foundItem && state.splice(state.indexOf(foundItem), 1)
     },
     updateItem: (state, action) => {
       const { id, quantity, options } = action.payload
-      const foundItem = state.find(item => item.id === id)
+      const foundItem = state.find(item => item.ItemCode === id)
       if (foundItem) {
         foundItem.quantity = quantity
         foundItem.options = options

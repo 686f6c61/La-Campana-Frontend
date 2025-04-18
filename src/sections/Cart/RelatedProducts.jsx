@@ -1,8 +1,15 @@
+import React, { useState } from "react";
 import ProductCard from "../../components/common/ProductCard"
 import chunkArray from "../../helpers/chunkArray"
-import products from "../../utils/products"
+import { useSelector } from "react-redux";
+import categories from "../../utils/categories";
 
 const RelatedProducts = () => {
+  const products = useSelector((state) => state.products.list.slice(0,9));
+  const categoryId = useSelector((state) => state.category.selectedCategory);
+	const category = categories.find(cat => cat.id === categoryId);
+	const [categoryImage, setCategoryImage] = useState(category?.image || "")
+
   const relatedProducts = chunkArray(products)
   const relatedProductsMovile = chunkArray(products, 2)
 
@@ -20,11 +27,11 @@ const RelatedProducts = () => {
                 <article className="w-1/2 lg:w-1/3">
                   <div className="p-2 h-full">
                     <ProductCard
-                      key={`related-product-card-${product.id}`}
-                      id={product.id}
-                      name={product.name}
-                      image={product.image}
-                      price={product.price}
+                      key={`related-product-card-${product.ItemCode}`}
+                      id={product.ItemCode}
+                      name={product.ItemName}
+                      image={categoryImage}
+                      price={product.ItemPrices}
                       discount={product.discount}
                     />
                   </div>

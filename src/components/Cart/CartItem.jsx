@@ -15,7 +15,7 @@ const CartItem = ({ id, name, image, price, stock = 10, initQuantity = 1, totalP
   const increaseQuantity = () => quantity < stock && setQuantity(quantity + 1)
   const decreaseQuantity = () => quantity > 1 && setQuantity(quantity - 1)
 
-  const updateProduct = () => dispatch(updateItem({...cartProducts.find(product => product.id === id), quantity: quantity}))
+  const updateProduct = () => dispatch(updateItem({...cartProducts.find(product => product.ItemCode === id), quantity: quantity}))
   const deleteProduct = () => dispatch(deleteItem(id))
 
   return (

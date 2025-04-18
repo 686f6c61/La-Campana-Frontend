@@ -22,7 +22,7 @@ const CartItemsTable = ({ cartProducts }) => {
         <tbody>
           {cartProducts.map(product =>
             <CartItem
-              key={`cart-item-${product.id}`}
+              key={`cart-item-${product.ItemCode}`}
               id={product.ItemCode}
               name={product.ItemName}
               image={product.image}
