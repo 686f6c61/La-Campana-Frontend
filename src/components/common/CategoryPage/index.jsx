@@ -13,7 +13,8 @@ import ActionButton from "../ActionButton";
 
 import categories from "../../../utils/categories";
 
-const BreadCrumbs = (product) => {
+const BreadCrumbs = ({path}) => {
+	const pathUp = path && path.charAt(0).toUpperCase() + path.slice(1).toLowerCase()
 	return (
 		<div className="flex justify-center ">
 			<ol class="list-reset py-4 pl-4 rounded flex bg-grey-light text-lacampana-gray2">
@@ -21,7 +22,7 @@ const BreadCrumbs = (product) => {
 				<li>/</li>
 				<li class="px-2"><a href="/tienda" class="no-underline text-open-sans  hover:text-lacampana-red2 text-sm">Tienda</a></li>
 				<li>/</li>
-				<li class="px-2 text-open-sans hover:text-lacampana-red2">Láminas</li>
+				{ path && <li class="px-2 text-open-sans hover:text-lacampana-red2">{pathUp}</li>}
 			</ol>
 		</div>
 	)
@@ -33,7 +34,9 @@ const FILTER_OPTIONS = {
 };
 
 const CategoryPage = () => {
-	const { categoryId } = useParams();
+	const { categoryId: rawCategoryId } = useParams();
+	const categoryId = rawCategoryId || "tuberia";
+
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const [isMobile, setIsMobile] = useState(window.innerWidth < 950);
@@ -156,7 +159,7 @@ const CategoryPage = () => {
 				</div>
 			</div>
 			{!isMobile && <div className="flex items-center hover:text-red-600 space-x-2">
-				<BreadCrumbs />
+				<BreadCrumbs path={rawCategoryId}/>
 			</div>}
 
 			<div className="flex justify-center">

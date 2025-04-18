@@ -2,8 +2,8 @@ import React, { useState, useEffect, useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import FilterSearchBar from "../components/common/FilterSearchBar";
 import IntroductoryText from "../sections/common/IntroductoryText";
-import Card from "../components/common/Card";
 import ProductCard from "../components/common/ProductCard"
+import categories from "../utils/categories";
 
 import { useGetProductsByTextQuery } from "../store/reducers/apiSlice";
 
@@ -40,6 +40,10 @@ const Store = () => {
 
 	const productCategory = categoryId || "tuberia";
 
+	const category = categories.find(cat => cat.id === productCategory);
+	const [categoryImage, setCategoryImage] = useState(category?.image || "")
+
+
 	const { data, error, isLoading, refetch } = useGetProductsByTextQuery(productCategory);
 
 	// All hooks must be called before any conditional returns
@@ -65,10 +69,10 @@ const Store = () => {
 
 		return data.map((product) => ({
 			id: product.ItemsGroupCode,
-			image: product.image || "images/prod4.jpg",
+			image: categoryImage || "images/prod4.jpg",
 			name: product.ItemName,
-			price: "29.99",
-			discount: product.discount || "-",
+			price: product.ItemPrices,
+			discount: product.discount,
 		}));
 	}, [data]);
 
