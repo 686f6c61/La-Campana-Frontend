@@ -11,6 +11,8 @@ import ProductCard from "../../common/ProductCard"
 import { useGetProductsByTextQuery } from "../../../store/reducers/apiSlice";
 import ActionButton from "../ActionButton";
 
+import categories from "../../../utils/categories";
+
 const BreadCrumbs = (product) => {
 	return (
 		<div className="flex justify-center ">
@@ -43,6 +45,8 @@ const CategoryPage = () => {
 	const [searchQuery, setSearchQuery] = useState("");
 	const [visibleProducts, setVisibleProducts] = useState(8);
 
+	const [categoryImage, setCategoryImage] = useState("");
+
 	const { data, error, isLoading, refetch } = useGetProductsByTextQuery(categoryId);
 
 	// All hooks must be called before any conditional returns
@@ -54,6 +58,11 @@ const CategoryPage = () => {
 			setVisibleProducts(8);
 		};
 	}, [categoryId, refetch]);
+
+	useEffect(() => {
+		const newCategory = categories.find(cat => cat.id === categoryId);
+		setCategoryImage(newCategory?.image || "/images/default-category.jpg");
+	}, [categoryId]);
 
 	useEffect(() => {
 		const handleResize = () => {
@@ -72,19 +81,18 @@ const CategoryPage = () => {
 
 	const products = useMemo(() => {
 		if (!data) return [];
-		console.log("Category page:", data)
-
+	
 		return data.map((product) => ({
-			id:  product.ItemCode,
-			image: product.image || "/images/prod4.jpg",
+			id: product.ItemCode,
+			image: product.image || categoryImage || "/images/prod4.jpg",
 			name: product.ItemName,
 			price: product.ItemPrices,
-			discount: product.discount || "-",
+			discount: product.discount,
 		}));
-	}, [data]);
+	}, [data, categoryImage]);
+	
 
 	const filteredProducts = useMemo(() => {
-		console.log("filtered product:", products)
 		return products.filter((product) => {
 			const matchesSearch = product.name.toLowerCase().includes(searchQuery);
 			const matchesFilters = Object.keys(selectedFilters).every(
@@ -96,7 +104,6 @@ const CategoryPage = () => {
 
 	// Event handlers
 	const handleProductClick = (productId) => {
-		console.log("handleProductClic:",productId)
 		navigate(`/tienda/product/${productId}`);
 	};
 
@@ -118,8 +125,6 @@ const CategoryPage = () => {
 	// Now we can have conditional returns
 	if (isLoading) return <p>Cargando...</p>;
 	if (error) return <p>Error al cargar los datos.</p>;
-
-
 
 	const renderFilterSection = (filterType, title) => (
 		<div>

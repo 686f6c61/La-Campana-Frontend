@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useGetProductsByTextQuery } from "../../../store/reducers/apiSlice";
+import categories from "../../../utils/categories";
 
 import CardGrid from "../CardGrid";
 import ActionButton from "../../common/ActionButton";
@@ -7,10 +8,10 @@ import ActionButton from "../../common/ActionButton";
 const MAX_RETRIES = 3; // Límite de reintentos
 
 const BestOfLaCampana = () => {
-  const { data, error, isLoading, refetch } =
-    useGetProductsByTextQuery("tuberia");
+  const { data: products, error, isLoading, refetch } =
+  useGetProductsByTextQuery("tuberia");
   const [retryCount, setRetryCount] = useState(0);
-
+  
   useEffect(() => {
     if (error && retryCount < MAX_RETRIES) {
       setRetryCount((prev) => prev + 1);
@@ -18,9 +19,16 @@ const BestOfLaCampana = () => {
     }
   }, [error, retryCount, refetch]);
 
+  const category = categories.find(cat => cat.id === "tuberia");
+	const [categoryImage, setCategoryImage] = useState(category?.image || "")
+
+  const filteredProductLg = products?.slice(0, 5)
+  const filteredProductSm = products?.slice(0, 4)
+
   if (isLoading) return <p>Cargando...</p>;
   if (error) return <p>Error al cargar los datos.</p>;
 
+  
   return (
     <section className="max-w-screen-desktop w-full justify-self-center mx-auto bg-white">
       <div className="px-4 flex flex-col items-center justify-center mb-20">
@@ -29,12 +37,12 @@ const BestOfLaCampana = () => {
         </h2>
         <div className="hidden lg:block">
           <CardGrid
-            products={data.slice(0, 5).map((product) => ({
-              id: product.ItemsGroupCode,
-              image: product.image || "images/prod4.jpg",
-              name: product.ItemName,
-              price: product.ItemPrices,
-              discount: product.discount || "-",
+            products={filteredProductLg.map((product) => ({
+              ItemCode: product.ItemCode,
+              image: categoryImage || "images/prod4.jpg",
+              ItemName: product.ItemName,
+              ItemPrices: product.ItemPrices,
+              discount: product.discount,
             }))}
             smCol="2"
             lgCol="5"
@@ -42,12 +50,12 @@ const BestOfLaCampana = () => {
         </div>
         <div className="lg:hidden">
           <CardGrid
-            products={data.slice(0, 4).map((product) => ({
-              id: product.ItemsGroupCode,
-              image: product.image || "images/prod4.jpg",
+            products={filteredProductSm.map((product) => ({
+              id: product.ItemCode,
+              image: categoryImage || "images/prod4.jpg",
               name: product.ItemName,
               price: product.ItemPrices,
-              discount: product.discount || "-",
+              discount: product.discount,
             }))}
             smCol="2"
             lgCol="5"

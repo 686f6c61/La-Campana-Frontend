@@ -12,9 +12,6 @@ const Checkout = () => {
   const cartProducts = useSelector(state => state.cart)
 
   const subtotal = Math.round(cartProducts.map(product => product.subtotal).reduce((accumulator, currentValue) => accumulator + currentValue, 0) * 100) / 100
-  // console.log(cartProducts);
-  console.log(cartProducts);
-
 
   return (
     <article className="max-w-screen-desktop w-full justify-self-center relative px-8 py-4 desktop:px-16 desktop:py-8">

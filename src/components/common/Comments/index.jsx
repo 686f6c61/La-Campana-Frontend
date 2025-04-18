@@ -4,7 +4,6 @@ import { useGetProductCommentsQuery, useAddProductCommentMutation } from '../../
 import ActionButton from '../ActionButton';
 
 export default function Comments({ productId }) {
-  console.log("productIdComments", productId)
   const { data: comments = [], error, isLoading, refetch } = useGetProductCommentsQuery(productId);
   const [addProductComment] = useAddProductCommentMutation();
 
@@ -44,8 +43,6 @@ export default function Comments({ productId }) {
 
   if (isLoading) return <p>Cargando...</p>;
   if (error) return <p>Error al cargar los datos.</p>;
-
-  console.log("comments",comments)
 
   return (
     <div className="max-w-6xl mx-auto text-left px-4 py-8" key={refreshKey}>

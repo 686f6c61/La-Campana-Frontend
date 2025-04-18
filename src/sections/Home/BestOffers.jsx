@@ -1,10 +1,31 @@
+import React, { useEffect, useState } from "react";
 import ActionButton from "../../components/common/ActionButton";
 import CardsCarousel from "../../components/common/CardsCarousel";
 import ProductCard from "../../components/common/ProductCard";
 import chunkArray from "../../helpers/chunkArray";
-import products from "../../utils/products";
+import { useGetProductsByTextQuery } from "../../store/reducers/apiSlice";
+import categories from "../../utils/categories";
 
 const BestOffers = () => {
+  const { data: products, error, isLoading, refetch } =
+    useGetProductsByTextQuery("perfil");
+
+  const [retryCount, setRetryCount] = useState(0);
+
+  const category = categories.find((cat) => cat.id === "perfil");
+  const [categoryImage, setCategoryImage] = useState(category?.image || "");
+
+  useEffect(() => {
+    if (error && retryCount < MAX_RETRIES) {
+      setRetryCount((prev) => prev + 1);
+      refetch();
+    }
+  }, [error, retryCount, refetch]);
+
+  // Los returns condicionales deben ir DESPUÉS de los hooks
+  if (isLoading) return <p>Cargando...</p>;
+  if (error) return <p>Error al cargar los datos.</p>;
+
   const chunkedProducts = chunkArray(products, 2);
 
   return (
@@ -13,10 +34,6 @@ const BestOffers = () => {
         <h2>
           Las mejores <span className="text-lacampana-red2">ofertas</span>
         </h2>
-        <p>
-          Lorem ipsum dolor sit amet consectetur. Etiam id enim diam
-          sollicitudin ut molestie velit
-        </p>
       </section>
       <section className="flex flex-col gap-8 items-center">
         <div className="tablet:hidden w-full">
@@ -28,16 +45,17 @@ const BestOffers = () => {
           >
             {chunkedProducts.map((chunk, index) => (
               <ul
+                key={`carousel-slide-${index}`} // <- agregá key para evitar más warnings
                 id={`best-offer-carousel-item-${index}`}
                 className="carousel-item w-full h-[350px] tablet:h-[420px]"
               >
                 {chunk.map((product) => (
-                  <li className="w-1/2 p-2">
+                  <li key={product.ItemCode} className="w-1/2 p-2">
                     <ProductCard
-                      id={product.id}
-                      name={product.name}
-                      image={product.image}
-                      price={product.price}
+                      id={product.ItemCode}
+                      name={product.ItemName}
+                      image={categoryImage || "images/prod4.jpg"}
+                      price={product.ItemPrices}
                       discount={product.discount}
                     />
                   </li>
@@ -47,13 +65,13 @@ const BestOffers = () => {
           </CardsCarousel>
         </div>
         <ul className="hidden tablet:grid grid-cols-2 tablet:grid-cols-4 desktop:grid-cols-5 gap-4">
-          {products.map((product) => (
-            <li>
+          {products.slice(0, 5).map((product) => (
+            <li key={product.ItemCode}>
               <ProductCard
-                id={product.id}
-                name={product.name}
-                image={product.image}
-                price={product.price}
+                id={product.ItemCode}
+                name={product.ItemName}
+                image={categoryImage}
+                price={product.ItemPrices}
                 discount={product.discount}
               />
             </li>
@@ -68,5 +86,6 @@ const BestOffers = () => {
     </section>
   );
 };
+
 
 export default BestOffers;

@@ -23,12 +23,12 @@ const CartItemsTable = ({ cartProducts }) => {
           {cartProducts.map(product =>
             <CartItem
               key={`cart-item-${product.id}`}
-              id={product.id}
-              name={product.name}
+              id={product.ItemCode}
+              name={product.ItemName}
               image={product.image}
-              price={product.price}
+              price={product.ItemPrices}
               totalPrice={product.subtotal}
-              initQuantity={product.quantity}
+              initQuantity={product.quantity || 1}
             />
           )}
         </tbody>

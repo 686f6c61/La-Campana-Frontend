@@ -14,12 +14,15 @@ const ProductCard = ({ id, name, image, price, discount }) => {
           src={image}
           alt="product-image"
         />
-        <p
-          className="absolute top-0 left-0 bg-lacampana-white  px-7 py-1 rounded-md rounded-tl-none text-center"
-          style={{ color: "#3C3C3B" }}
-        >
-          {discount}
-        </p>
+        {discount &&
+
+          <p
+            className="absolute top-0 left-0 bg-lacampana-white  px-7 py-1 rounded-md rounded-tl-none text-center"
+            style={{ color: "#3C3C3B" }}
+          >
+            {discount}
+          </p>
+        }
       </section>
       <section className="h-1/2 flex flex-col">
         <h5 className="" style={{ color: "#3C3C3B" }}>

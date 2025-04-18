@@ -2,48 +2,41 @@ import React from "react";
 import { useState, useEffect } from "react";
 import TabButton from "../TabButton";
 
-const TabBody = ({ activeTab }) => {
+const TabBody = ({ activeTab, productDescription }) => {
+  const renderList = (items) => {
+    if (!Array.isArray(items)) return null;
+
+    const itemsPerColumn = 5;
+    const columnCount = Math.ceil(items.length / itemsPerColumn);
+
+    // Generar columnas dividiendo el array original
+    const columns = Array.from({ length: columnCount }, (_, i) =>
+      items.slice(i * itemsPerColumn, (i + 1) * itemsPerColumn)
+    );
+
+    return (
+      <div className="flex flex-wrap gap-8">
+        {columns.map((col, colIndex) => (
+          <div key={colIndex} className="flex-1 min-w-[150px] space-y-4">
+            {col.map((item, index) => (
+              <p key={index} className="font-antonio text-[#333333]">{item}</p>
+            ))}
+          </div>
+        ))}
+      </div>
+    );
+  };
+
   return (
     <>
-      {activeTab === "normas" && (
-        <div className="space-y-6">
-          <div>
-            <h3 className="font-antonio text-lg font-bold mb-2 text-[#333333]">
-              NTC 5805:
-            </h3>
-            <p className="font-antonio text-[#333333]">
-              Lámina colaborante de acero conformada en frío.
-            </p>
-          </div>
-          <div>
-            <h3 className="font-antonio text-lg font-bold mb-2 text-[#333333]">
-              ASTM A653 = NTC 4011:
-            </h3>
-            <p className="font-antonio text-[#333333]">
-              Láminas de acero recubiertas con zinc (galvanizadas) o recubiertas
-              con aleación hierro y zinc mediante procesos de inmersión en
-              caliente.
-            </p>
-          </div>
-        </div>
-      )}
-
-      {activeTab === "ventajas" && (
-        <div>
-          <p className="font-antonio text-[#333333]">Contenido de ventajas...</p>
-        </div>
-      )}
-
-      {activeTab === "usos" && (
-        <div>
-          <p className="font-antonio text-[#333333]">Contenido de usos...</p>
-        </div>
-      )}
+      {activeTab === "normas" && renderList(productDescription.normas)}
+      {activeTab === "ventajas" && renderList(productDescription.ventajas)}
+      {activeTab === "usos" && renderList(productDescription.usos)}
     </>
   );
 };
 
-const ProductTabs = () => {
+const ProductTabs = ({productDescription}) => {
   const [activeTab, setActiveTab] = useState("normas");
   const [isMobile, setIsMobile] = useState(window.innerWidth < 950);
 
@@ -67,17 +60,18 @@ const ProductTabs = () => {
                 tabName={tab}
                 activeTab={activeTab}
                 setActiveTab={setActiveTab}
+                
               />
 
             </div>
           ))}
         </div>
         {!isMobile && <div className="flex-1 bg-[#f2f2f2] p-8 text-left">
-          <TabBody activeTab={activeTab} />
+          <TabBody activeTab={activeTab} productDescription={productDescription}/>
         </div>}
       </div>
       {isMobile && <div className="mt-4 bg-[#f2f2f2] p-8 text-left">
-        <TabBody activeTab={activeTab} />
+        <TabBody activeTab={activeTab} productDescription={productDescription}/>
       </div>}
     </div>
   );

@@ -23,7 +23,6 @@ const Blog = () => {
 
   if (isLoadingBlogs) return <p>Cargando...</p>;
   if (errorBlogs) return <p>Error al cargar los datos.</p>;
-  console.log(blogs);
 
   return (
     <article className="pl-5 pr-5 flex justify-center">

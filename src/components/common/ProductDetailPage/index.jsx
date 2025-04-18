@@ -11,6 +11,46 @@ import QuantitySelector from "../QuantitySelector";
 import ComplementSection from "../ComplementSection";
 
 import categories from "../../../utils/categories";
+import fichasTecnicas from "../../../utils/fichasTecnicas";
+
+const sanitizeProductName = (text) => {
+  return text
+    .normalize("NFD") // separa letras de sus tildes
+    .replace(/[\u0300-\u036f]/g, "") // remueve las tildes
+    .replace(/[^a-z0-9\s]/gi, "") // remueve caracteres especiales
+    .toLowerCase()
+    .trim(); // quita espacios al inicio y final
+}
+
+const filtrarProductosPorNombre = (productos, nombreBuscado) => {
+  if (!nombreBuscado) return null;
+
+  const nombreSanitizado = sanitizeProductName(nombreBuscado);
+  const palabras = nombreSanitizado.split(" ");
+
+  // Buscar con 3, luego 2
+  for (let i = 3; i >= 2; i--) {
+    const fragmento = palabras.slice(0, i).join(" ");
+
+    const resultado = productos.find((producto) => {
+      const nombreProductoSanitizado = sanitizeProductName(producto.nombre);
+      return nombreProductoSanitizado.includes(fragmento);
+    });
+
+    if (resultado) return resultado;
+  }
+
+	const productoPorDefecto = {
+		nombre: "Producto genérico",
+		normas: [],
+		ventajas: [],
+		usos: [],
+		fichaTecnica: "", // TODO: add this field to utils/fichasTecnicas.js
+		descripcion: "Descripcion no encontrada para este producto"
+	};
+
+  return productoPorDefecto; // Si no se encontró nada
+};
 
 const ProductGallery = ({ image }) => (
 	<div className="flex flex-col lg:flex-row-reverse gap-1">
@@ -115,11 +155,10 @@ const ProductDetailPage = () => {
 	const products = useSelector((state) => state.products.list);
 	const categoryId = useSelector((state) => state.category.selectedCategory);
 	const category = categories.find(cat => cat.id === categoryId);
-	const [categoryImage, setCategoryImage] = useState(category.image)
-
-	const defaultDescription = "Descripcion del producto donde se da mas detalle del producto, este es un mensaje generico."
+	const [categoryImage, setCategoryImage] = useState(category?.image || "")
 
 	const product = products.find(p => p.ItemCode === productId);
+	const productDescription = product && filtrarProductosPorNombre(fichasTecnicas, product.ItemName);
 
 	if (!product) {
 		return <div>Producto no encontrado</div>;
@@ -128,9 +167,9 @@ const ProductDetailPage = () => {
 	const addToCart = () => {
 		const sameProduct = cartProducts.find(cartProduct => cartProduct.id === product.id);
 		if (sameProduct) {
-			dispatch(updateItem({ ...product, quantity: sameProduct.quantity + 1 }));
+			dispatch(updateItem({ ...product, image: categoryImage, quantity: sameProduct.quantity + 1 }));
 		} else {
-			dispatch(addItem(product));
+			dispatch(addItem({...product, image: categoryImage}));
 		}
 	};
 	const [isMobile, setIsMobile] = useState(window.innerWidth < 950);
@@ -151,7 +190,7 @@ const ProductDetailPage = () => {
 				<ProductGalleyAndTechnicalInformation image={categoryImage} isMobile={isMobile} />
 				<div className="w-full flex flex-col justify-between lg:w-3/5">
 					{!isMobile && <h1 className="text-3xl font-antonio text-left">{product.ItemName}</h1>}
-					<p className="text-gray-600 mt-2 text-left font-opensans">{product.description || defaultDescription}</p>
+					<p className="text-gray-600 mt-2 text-left font-opensans">{productDescription.descripcion}</p>
 					{isMobile && <ActionButtons addToCart={addToCart} productPrice={product.ItemPrices} />}
 					<ProductOptions options={productOptions} />
 					<ProductColors options={productOptions} />
@@ -166,13 +205,12 @@ const ProductDetailPage = () => {
 			</div>
 
 			<div className="mt-12">
-				<ProductTabs />
+				<ProductTabs productDescription={productDescription}/>
 			</div>
 			<ComplementSection />
 
 			<div className="mt-8">
-
-				<CardGrid products={relatedProducts} lgCol="4" smCol="2" />
+				<CardGrid products={products.slice(0, 4)} productImage={categoryImage} lgCol="4" smCol="2" />
 			</div>
 
 			<div className="mt-16">

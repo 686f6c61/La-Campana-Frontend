@@ -7,8 +7,6 @@ import ActionButton from "../../components/common/ActionButton";
 const Blog = () => {
   const { data: blogs, error, isLoading } = useGetBlogsQuery("");
 
-  console.log(blogs);
-
   if (isLoading) return <p>Cargando...</p>;
   if (error) return <p>Error al cargar los datos.</p>;
 
