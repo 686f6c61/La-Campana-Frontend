@@ -13,42 +13,42 @@ import categories from "../../../utils/categories";
 import fichasTecnicas from "../../../utils/fichasTecnicas";
 
 const sanitizeProductName = (text) => {
-  return text
-    .normalize("NFD") // separa letras de sus tildes
-    .replace(/[\u0300-\u036f]/g, "") // remueve las tildes
-    .replace(/[^a-z0-9\s]/gi, "") // remueve caracteres especiales
-    .toLowerCase()
-    .trim(); // quita espacios al inicio y final
+	return text
+		.normalize("NFD") // separa letras de sus tildes
+		.replace(/[\u0300-\u036f]/g, "") // remueve las tildes
+		.replace(/[^a-z0-9\s]/gi, "") // remueve caracteres especiales
+		.toLowerCase()
+		.trim(); // quita espacios al inicio y final
 }
 
 const filtrarProductosPorNombre = (productos, nombreBuscado) => {
-  if (!nombreBuscado) return null;
+	if (!nombreBuscado) return null;
 
-  const nombreSanitizado = sanitizeProductName(nombreBuscado);
-  const palabras = nombreSanitizado.split(" ");
+	const nombreSanitizado = sanitizeProductName(nombreBuscado);
+	const palabras = nombreSanitizado.split(" ");
 
-  // Buscar con 3, luego 2
-  for (let i = 3; i >= 2; i--) {
-    const fragmento = palabras.slice(0, i).join(" ");
+	// Buscar con 3, luego 2
+	for (let i = 3; i >= 2; i--) {
+		const fragmento = palabras.slice(0, i).join(" ");
 
-    const resultado = productos.find((producto) => {
-      const nombreProductoSanitizado = sanitizeProductName(producto.nombre);
-      return nombreProductoSanitizado.includes(fragmento);
-    });
+		const resultado = productos.find((producto) => {
+			const nombreProductoSanitizado = sanitizeProductName(producto.nombre);
+			return nombreProductoSanitizado.includes(fragmento);
+		});
 
-    if (resultado) return resultado;
-  }
+		if (resultado) return resultado;
+	}
 
 	const productoPorDefecto = {
 		nombre: "Producto genérico",
 		normas: [],
 		ventajas: [],
 		usos: [],
-		fichaTecnica: "", // TODO: add this field to utils/fichasTecnicas.js
+		fichaTecUrl: null,
 		descripcion: "Descripcion no encontrada para este producto"
 	};
 
-  return productoPorDefecto; // Si no se encontró nada
+	return productoPorDefecto; // Si no se encontró nada
 };
 
 const ProductGallery = ({ image }) => (
@@ -68,17 +68,25 @@ const ProductGallery = ({ image }) => (
 	</div>
 );
 
-const ButtonTechnicalInformation = ({ }) => (
-	<button className="bg-lacampana-gray1 font-montserrat text-white w-full h-[44px] rounded-md rounded-tl-full rounded-bl-full rounded-tr-full text-md">
+const ButtonTechnicalInformation = ({ pdfUrl }) => (
+	<a
+		href={pdfUrl}
+		download
+		target="_blank"
+		rel="noopener noreferrer"
+		className="bg-lacampana-gray1 font-montserrat text-white w-full h-[44px] rounded-md rounded-tl-full rounded-bl-full rounded-tr-full
+		text-md flex items-center justify-center transition-all duration-200
+		border border-transparent hover:border-black hover:bg-white hover:text-black hover:scale-90"
+	>
 		Ficha Técnica
-	</button>
+	</a>
 );
 
-const ProductGalleyAndTechnicalInformation = ({ image, isMobile }) => (
+const ProductGalleyAndTechnicalInformation = ({ image, isMobile, pdfUrl }) => (
 	<div className="w-full lg:w-2/5">
 		<ProductGallery image={image} />
 		<div className="mt-4 flex justify-center lg:justify-start">
-			{!isMobile && <ButtonTechnicalInformation />}
+			{!isMobile && <ButtonTechnicalInformation pdfUrl={pdfUrl} />}
 		</div>
 	</div>
 );
@@ -86,18 +94,18 @@ const ProductGalleyAndTechnicalInformation = ({ image, isMobile }) => (
 
 const ProductOptions = ({ options }) => (
 	<div className="flex flex-wrap gap-6 text-left mt-8">
-			{["longitud", "ancho"].map((prop, index) => (
-				<div key={index} className="flex-1 min-w-[120px]">
-					<label className="block font-bold font-open-sans mb-2 capitalize">{prop}</label>
-					<select className="border w-full bg-gray-100 font-open-sans text-sm  text-gray-500 p-2 rounded">
+		{["longitud", "ancho"].map((prop, index) => (
+			<div key={index} className="flex-1 min-w-[120px]">
+				<label className="block font-bold font-open-sans mb-2 capitalize">{prop}</label>
+				<select className="border w-full bg-gray-100 font-open-sans text-sm  text-gray-500 p-2 rounded">
 
-						{options[prop].map((option, i) => (
-							<option key={i}>{option}</option>
-						))}
-					</select>
-				</div>
-			))}
-		</div >
+					{options[prop].map((option, i) => (
+						<option key={i}>{option}</option>
+					))}
+				</select>
+			</div>
+		))}
+	</div >
 );
 
 const ProductColors = ({ options }) => (
@@ -122,10 +130,10 @@ const ProductColors = ({ options }) => (
 );
 
 
-const ActionButtons = ({ addToCart, productPrice, setAmountOfProduct, amountOfProduct}) => (
+const ActionButtons = ({ addToCart, productPrice, setAmountOfProduct, amountOfProduct }) => (
 	<div className="mt-4 flex lg:flex-row items-center justify-start md:justify-center lg:justify-start lg:items-center gap-6">
 		<span className="text-2xl font-antonio text-black">${productPrice}</span>
-		<QuantitySelector setAmountOfProduct={setAmountOfProduct} amountOfProduct={amountOfProduct}/>
+		<QuantitySelector setAmountOfProduct={setAmountOfProduct} amountOfProduct={amountOfProduct} />
 		<ActionButton
 			text="Añadir al carrito"
 			className="text-center mt-8"
@@ -137,11 +145,11 @@ const ActionButtons = ({ addToCart, productPrice, setAmountOfProduct, amountOfPr
 );
 
 const productOptions = {
-		paquete: ["Seleccione una opción", "Paquete 2", "Paquete 3"],
-		longitud: ["Seleccione una opción", "1.10 mm", "1.20 mm"],
-		ancho: ["Seleccione una opción", "1.10 mm", "1.20 mm"],
-		colorExterno: ["#E32119", "#BDBDBD", "#3C3C3B", "#BDBDBD"],
-		colorInterno: ["#F2F2F2", "#3C3C3B", "#000000"],
+	paquete: ["Seleccione una opción", "Paquete 2", "Paquete 3"],
+	longitud: ["Seleccione una opción", "1.10 mm", "1.20 mm"],
+	ancho: ["Seleccione una opción", "1.10 mm", "1.20 mm"],
+	colorExterno: ["#E32119", "#BDBDBD", "#3C3C3B", "#BDBDBD"],
+	colorInterno: ["#F2F2F2", "#3C3C3B", "#000000"],
 }
 
 const ProductDetailPage = () => {
@@ -151,7 +159,7 @@ const ProductDetailPage = () => {
 
 	const cartProducts = useSelector(state => state.cart);
 	const dispatch = useDispatch();
-	
+
 	const products = useSelector((state) => state.products.list);
 	const categoryId = useSelector((state) => state.category.selectedCategory);
 	const category = categories.find(cat => cat.id === categoryId);
@@ -169,7 +177,7 @@ const ProductDetailPage = () => {
 		if (sameProduct) {
 			dispatch(updateItem({ ...product, image: categoryImage, quantity: amountOfProduct }));
 		} else {
-			dispatch(addItem({...product, image: categoryImage, quantity: amountOfProduct}));
+			dispatch(addItem({ ...product, image: categoryImage, quantity: amountOfProduct }));
 		}
 	};
 	const [isMobile, setIsMobile] = useState(window.innerWidth < 950);
@@ -187,16 +195,16 @@ const ProductDetailPage = () => {
 		<div className="max-w-7xl mx-auto p-4">
 			{isMobile && <h1 className="text-3xl pb-4 font-antonio">{product.ItemName}</h1>}
 			<div className="flex flex-col lg:flex-row gap-8">
-				<ProductGalleyAndTechnicalInformation image={categoryImage} isMobile={isMobile} />
+				<ProductGalleyAndTechnicalInformation image={categoryImage} isMobile={isMobile} pdfUrl={productDescription.fichaTecUrl} />
 				<div className="w-full flex flex-col justify-between lg:w-3/5">
 					{!isMobile && <h1 className="text-3xl font-antonio text-left">{product.ItemName}</h1>}
 					<p className="text-gray-600 mt-2 text-left font-opensans">{productDescription.descripcion}</p>
-					{isMobile && <ActionButtons addToCart={addToCart} productPrice={product.ItemPrices}  setAmountOfProduct={setAmountOfProduct} amountOfProduct={amountOfProduct}  />}
+					{isMobile && <ActionButtons addToCart={addToCart} productPrice={product.ItemPrices} setAmountOfProduct={setAmountOfProduct} amountOfProduct={amountOfProduct} />}
 					<ProductOptions options={productOptions} />
 					<ProductColors options={productOptions} />
 					{isMobile &&
 						<div className="mt-12">
-							<ButtonTechnicalInformation />
+							<ButtonTechnicalInformation pdfUrl={productDescription.fichaTecUrl} />
 						</div>
 
 					}
@@ -205,7 +213,7 @@ const ProductDetailPage = () => {
 			</div>
 
 			<div className="mt-12">
-				<ProductTabs productDescription={productDescription}/>
+				<ProductTabs productDescription={productDescription} />
 			</div>
 			<ComplementSection />
 
@@ -214,7 +222,7 @@ const ProductDetailPage = () => {
 			</div>
 
 			<div className="mt-16">
-				<Comments productId={productId}/>
+				<Comments productId={productId} />
 			</div>
 		</div>
 	);
