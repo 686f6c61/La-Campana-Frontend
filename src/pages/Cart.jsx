@@ -11,15 +11,20 @@ import TestAdd from "../components/Test/TestAdd"
 const Cart = () => {
   const cartProducts = useSelector(state => state.cart)
 
-  const subtotal = Math.round(cartProducts.map(product => product.subtotal).reduce((accumulator, currentValue) => accumulator + currentValue, 0) * 100) / 100
- 
+  const subtotal = Math.round(
+    cartProducts
+      .map(product => product.ItemPrices * product.quantity)
+      .reduce((accumulator, curr) => accumulator + curr, 0) * 100
+  ) / 100;
+
   return (
     <article className="max-w-screen-desktop w-full justify-self-center relative px-8 py-4 desktop:px-16 desktop:py-8">
       <IntroductoryText
-        title="Lleva lo mejor en aceros"
+        title="Lleva lo mejor en"
+        redTitle="aceros"
         bgTitle="Carrito"
         justify="center"
-      /><TestAdd/>
+      />
       <div className="flex flex-col tablet:flex-row gap-4">
         <main className="w-full tablet:w-2/3 flex flex-col gap-16">
           {/* TABLA DE PRODCUTOS DEL CARRITO */}

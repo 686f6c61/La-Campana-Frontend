@@ -1,5 +1,6 @@
 const IntroductoryText = ({
   title = "Título",
+  redTitle,
   subtitle,
   description,
   size,
@@ -16,11 +17,9 @@ const IntroductoryText = ({
   return (
     <section className="relative ">
       {/* Desktop BgTitle */}
-      <div
-        className={`hidden tablet:block absolute left-0 right-0 ${zIndex} ${bgTitlePadding} ${bgTitleMargin}`}
-      >
+      <div className={`hidden tablet:block absolute left-0 right-0 ${zIndex} ${bgTitlePadding} ${bgTitleMargin}`}>
         <h1
-          className={`leading-tight text-${justify} text-2xl tablet:text-[130px] lg:text-[150px] bg-clip-text text-transparent bg-gradient-to-t from-lacampana-gray4/20 to-lacampana-gray4`}
+          className={`leading-tight  text-2xl tablet:text-[130px] lg:text-9xl bg-clip-text text-transparent bg-gradient-to-t from-lacampana-gray4/20 to-lacampana-gray4`}
         >
           {bgTitle}
         </h1>
@@ -35,13 +34,13 @@ const IntroductoryText = ({
           {bgTitle}
         </h1>
       </div>
-      <article className={`flex flex-col tablet:flex-row gap-16`}>
+      <article className={`flex flex-col tablet:flex-row pt-24`}>
         {/* Desktop Text */}
         <section
           className={`hidden text-${justify} tablet:flex flex-col justify-center text-wrap w-full`}
         >
           <div className={`${titleMargin}`}>
-            <h1 className={`leading-tight ${mt} ${mb} ${size}`}>{title}</h1>
+            <h1 className={`leading-tight ${mt} ${mb} ${size}`}>{title} {redTitle && <span className="text-lacampana-red2">{redTitle}</span>}</h1>
             <span className="font-open-sans text-2xl text-lacampana-gray1 uppercase ">
               {subtitle}
             </span>

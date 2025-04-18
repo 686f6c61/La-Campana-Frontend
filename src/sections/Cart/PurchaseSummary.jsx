@@ -10,13 +10,13 @@ const PurchaseSummary = ({ subtotal, city = "Bogotá" }) => {
     <section className="flex flex-col gap-4">
       <div className="bg-lacampana-white rounded-br-2xl">
         <table className="table h-full">
-        <thead>
-          <tr className="bg-lacampana-gray1 text-lacampana-white font-antonio">
-            <th className="text-left md:text-xl text-sm py-3 px-4 border-b md:pr-0 pr-20">
-              Resumen de la compra
-            </th>
-          </tr>
-        </thead>
+          <thead>
+            <tr className="bg-lacampana-gray1 text-lacampana-white font-antonio">
+              <th className="text-left md:text-xl text-sm py-3 px-4 border-b md:pr-0 pr-20">
+                Resumen de la compra
+              </th>
+            </tr>
+          </thead>
           <tbody className="text-lacampana-gray1">
             <tr>
               <td>
@@ -51,15 +51,13 @@ const PurchaseSummary = ({ subtotal, city = "Bogotá" }) => {
           </tbody>
         </table>
       </div>
-      <div>
-        {/* <button className="lacampana-btn bg-lacampana-red2 text-white py-2 w-full">
-          Finalizar carrito
-        </button> */}
-        <ActionButton 
-        text="Finalizar carrito"
-        link="/checkout"
-      />
-        <Link to="/tienda" className="flex justify-end items-center text-lacampana-gray3">
+      <div className="flex flex-col">
+        <ActionButton
+          text="Finalizar carrito"
+          link="/checkout"
+          width="full"
+        />
+        <Link to="/tienda" className="flex justify-end items-center text-lacampana-gray3 py-5">
           <IoIosArrowBack className="text-lacampana-gray3 text-lg" />
           Volver a la tienda
         </Link>

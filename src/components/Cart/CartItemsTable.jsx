@@ -27,8 +27,8 @@ const CartItemsTable = ({ cartProducts }) => {
               name={product.ItemName}
               image={product.image}
               price={product.ItemPrices}
-              totalPrice={product.subtotal}
-              initQuantity={product.quantity || 1}
+              totalPrice={product.ItemPrices * product.quantity}
+              initQuantity={product.quantity}
             />
           )}
         </tbody>

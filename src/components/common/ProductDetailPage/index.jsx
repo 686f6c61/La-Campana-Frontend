@@ -5,7 +5,6 @@ import Comments from "../Comments";
 import ProductTabs from "../ProductTabs";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem, updateItem } from "../../../features/cart/cartSlice";
-import relatedProducts from "../../../utils/relatedProducts";
 import ActionButton from "../ActionButton";
 import QuantitySelector from "../QuantitySelector";
 import ComplementSection from "../ComplementSection";
@@ -123,10 +122,10 @@ const ProductColors = ({ options }) => (
 );
 
 
-const ActionButtons = ({ addToCart, productPrice }) => (
+const ActionButtons = ({ addToCart, productPrice, setAmountOfProduct, amountOfProduct}) => (
 	<div className="mt-4 flex lg:flex-row items-center justify-start md:justify-center lg:justify-start lg:items-center gap-6">
 		<span className="text-2xl font-antonio text-black">${productPrice}</span>
-		<QuantitySelector />
+		<QuantitySelector setAmountOfProduct={setAmountOfProduct} amountOfProduct={amountOfProduct}/>
 		<ActionButton
 			text="Añadir al carrito"
 			className="text-center mt-8"
@@ -148,6 +147,7 @@ const productOptions = {
 const ProductDetailPage = () => {
 	const { productId } = useParams();
 	const [activeTab, setActiveTab] = useState("normas");
+	const [amountOfProduct, setAmountOfProduct] = useState(1);
 
 	const cartProducts = useSelector(state => state.cart);
 	const dispatch = useDispatch();
@@ -165,11 +165,11 @@ const ProductDetailPage = () => {
 	}
 
 	const addToCart = () => {
-		const sameProduct = cartProducts.find(cartProduct => cartProduct.id === product.id);
+		const sameProduct = cartProducts.find(cartProduct => cartProduct.ItemCode === product.ItemCode);
 		if (sameProduct) {
-			dispatch(updateItem({ ...product, image: categoryImage, quantity: sameProduct.quantity + 1 }));
+			dispatch(updateItem({ ...product, image: categoryImage, quantity: amountOfProduct }));
 		} else {
-			dispatch(addItem({...product, image: categoryImage}));
+			dispatch(addItem({...product, image: categoryImage, quantity: amountOfProduct}));
 		}
 	};
 	const [isMobile, setIsMobile] = useState(window.innerWidth < 950);
@@ -191,7 +191,7 @@ const ProductDetailPage = () => {
 				<div className="w-full flex flex-col justify-between lg:w-3/5">
 					{!isMobile && <h1 className="text-3xl font-antonio text-left">{product.ItemName}</h1>}
 					<p className="text-gray-600 mt-2 text-left font-opensans">{productDescription.descripcion}</p>
-					{isMobile && <ActionButtons addToCart={addToCart} productPrice={product.ItemPrices} />}
+					{isMobile && <ActionButtons addToCart={addToCart} productPrice={product.ItemPrices}  setAmountOfProduct={setAmountOfProduct} amountOfProduct={amountOfProduct}  />}
 					<ProductOptions options={productOptions} />
 					<ProductColors options={productOptions} />
 					{isMobile &&
@@ -200,7 +200,7 @@ const ProductDetailPage = () => {
 						</div>
 
 					}
-					{!isMobile && <ActionButtons addToCart={addToCart} productPrice={product.ItemPrices} />}
+					{!isMobile && <ActionButtons addToCart={addToCart} productPrice={product.ItemPrices} setAmountOfProduct={setAmountOfProduct} amountOfProduct={amountOfProduct} />}
 				</div>
 			</div>
 

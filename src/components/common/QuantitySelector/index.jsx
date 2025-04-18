@@ -1,10 +1,7 @@
-import { useState } from "react";
+const QuantitySelector = ({amountOfProduct, setAmountOfProduct}) => {
 
-const QuantitySelector = () => {
-  const [quantity, setQuantity] = useState(1);
-
-  const increase = () => setQuantity(prev => prev + 1);
-  const decrease = () => setQuantity(prev => (prev > 1 ? prev - 1 : 1));
+  const increase = () => setAmountOfProduct(prev => prev + 1);
+  const decrease = () => setAmountOfProduct(prev => (prev > 1 ? prev - 1 : 1));
 
   return (
     <div className="flex items-center gap-2">
@@ -15,7 +12,7 @@ const QuantitySelector = () => {
       </button>
       <input 
         type="number" 
-        value={quantity} 
+        value={amountOfProduct} 
         readOnly 
         className="w-12 text-center border border-gray-300 rounded-md" 
       />
