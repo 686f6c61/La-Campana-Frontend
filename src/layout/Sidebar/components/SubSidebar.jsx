@@ -24,7 +24,7 @@ const SubSidebar = ({ title, link, imgURL, subSidebarItems, onCloseSubsidebar })
             />
           )}
         </section>
-        <section>
+        <section className="w-64">
           <img src={imgURL} alt="category-img" className="h-full object-cover" />
         </section>
       </section>
