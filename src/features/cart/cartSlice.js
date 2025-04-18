@@ -13,11 +13,13 @@ export const cartSlice = createSlice({
       foundItem && state.splice(state.indexOf(foundItem), 1)
     },
     updateItem: (state, action) => {
-      const { id, quantity, options } = action.payload
-      const foundItem = state.find(item => item.ItemCode === id)
+      const { ItemCode, quantity, options } = action.payload
+      const foundItem = state.find(item => item.ItemCode === ItemCode)
       if (foundItem) {
         foundItem.quantity = quantity
-        foundItem.options = options
+        if (options) {
+          foundItem.options = options
+        }
         foundItem.subtotal = Math.round((parseFloat(foundItem.price) * quantity) * 100) / 100
       }
     }
