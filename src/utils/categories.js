@@ -198,7 +198,7 @@ const categories = [
     id: "lamina",
     name: "Laminas",
     link: "/tienda/lamina",
-    image: "/public/images/categories/laminas.jpeg", // Cambia por tu URL de imagen
+    image: "/images/categories/laminas.jpeg", // Cambia por tu URL de imagen
     results: 256,
     subcategories: [
       {
