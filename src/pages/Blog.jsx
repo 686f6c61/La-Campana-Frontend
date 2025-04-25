@@ -26,7 +26,7 @@ const Blog = () => {
 
   return (
     <article className="pl-5 pr-5 flex justify-center">
-      <div className="max-w-screen-desktop w-full justify-self-center flex flex-col gap-16 py-16">
+      <div className="max-w-screen-desktop w-full justify-self-center flex flex-col gap-16 py-18">
         <IntroductoryText
           title={
             <>
@@ -37,10 +37,10 @@ const Blog = () => {
           description="Lorem ipsum dolor sit amet consectetur. Pulvinar dignissim pulvinar ut lorem pharetra. Vestibulum nulla faucibus nunc enim. Proin feugiat fames turpis sociis viverra. Viverra sit ut egestas placerat neque fames ante."
           justify="start"
           zIndex="-z-20"
-          titleMargin="lg:pt-24"
+          titleMargin="lg:pt-2"
         >
           {/* LATEST BLOGS */}
-          <div className="w-full tablet:w-3/5 flex-none h-[500px] pt-32">
+          <div className="w-full tablet:w-3/5 flex-none h-[500px]  pt-2 pb-6">
             <CardsCarousel
               id="hl-blog-card"
               cardsList={latestBlogs}
