@@ -7,10 +7,12 @@ import SocialWidget from "../common/SocialWidget";
 const ContactInfo = () => {
   return (
     <article className="pr-5 pl-5 max-w-screen-desktop w-full mx-auto pt-8 tablet:pt-20">
-      <div className="relative font-sans flex flex-col items-center justify-between lg:flex-row">
+      <div className="relative font-sans flex flex-col items-center justify-between md:flex-row">
         <IntroductoryText
-          mt="mt-[5.8rem]"
-          mb="mb-32"
+          sizeTitle="tablet:text-[6rem] lg:text-[8.5rem]"
+          mt="tablet:mt-[-50px] lg:mt-0"
+          sizeTitleMobile="text-[80px]"
+          size="text-5xl"
           title={
             <div className="mt-0 mb-10">
               Contactarnos

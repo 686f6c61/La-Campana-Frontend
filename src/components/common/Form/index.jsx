@@ -131,10 +131,10 @@ const ContactForm = ({
                 value: "accepted",
               },
             ]}
-            selectedOption={formData.policyAccepted ? "accepted" : ""}
+            selectedOption={formData.policyAccepted ? "accepted" : "dennegado"}
+            borderColorSelected="border-lacampana-red2"
             onSelectionChange={handlePolicySelection}
-            textColor="text-lacampana-gray1"
-            bgColor="lacampana-red2"
+            bgColorSelected="bg-lacampana-red2"
             labelClassName="text-sm"
           />
 

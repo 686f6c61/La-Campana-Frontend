@@ -17,8 +17,10 @@ const ServiceDetails = () => {
           <IntroductoryText
             title={serviceData.customTitle || serviceData.name}
             bgTitle={serviceData.name}
-            description={serviceData.customDescription || serviceData.description}
-            bgTitlePadding = "pt-10"
+            description={
+              serviceData.customDescription || serviceData.description
+            }
+            bgTitlePadding="pt-10"
           >
             {/* <div className="w-full md:mt-20 mt-0 tablet:w-1/2 flex-none h-[300px] tablet:h-[350px] rounded-tl-2xl overflow-hidden relative ">
               <div className="absolute left-0 right-0 bottom-0 top-0 flex justify-center items-center ">
@@ -34,18 +36,16 @@ const ServiceDetails = () => {
               </div>
               <img className="w-full h-full object-cover" src={serviceData.image} alt="" />
             </div> */}
-           <div className="w-full mt-10 h-[200px] tablet:h-[300px] desktop:h-[350px] rounded-tl-2xl overflow-hidden p-2">
-  <iframe
-    className="w-full h-full rounded-tl-3xl"
-    src={serviceData.videoUrl}
-    title="Video de servicio"
-    frameBorder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowFullScreen
-  ></iframe>
-</div>
-
-
+            <div className="w-full mt-10 h-[200px] tablet:h-[300px] desktop:h-[350px] rounded-tl-2xl overflow-hidden p-2">
+              <iframe
+                className="w-full h-full rounded-tl-3xl"
+                src={serviceData.videoUrl}
+                title="Video de servicio"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
           </IntroductoryText>
         </section>
 
@@ -56,7 +56,6 @@ const ServiceDetails = () => {
           advantagesList={serviceData.advantages.advantagesList}
         />
 
-        
         {/* <section className="max-w-screen-desktop w-full self-center px-4 desktop:px-8 py-8 desktop:py-16 flex flex-col desktop:flex-row gap-8">
           <section className="w-full desktop:w-1/2 flex flex-col gap-4">
             <h3>
@@ -80,12 +79,11 @@ const ServiceDetails = () => {
           <IntroductoryText
             title={
               <>
-                
                 <h3>
-              Preguntas <span className="text-lacampana-red2">Frecuentes</span>
-            </h3>
-            <FAQ questions={serviceData.faq} />
-               
+                  Preguntas{" "}
+                  <span className="text-lacampana-red2">Frecuentes</span>
+                </h3>
+                <FAQ questions={serviceData.faq} />
               </>
             }
             bgTitle=""
@@ -95,13 +93,12 @@ const ServiceDetails = () => {
             titleMargin=""
           >
             <Form
-            title={
-              <>
-                Contacte un <span className="text-lacampana-red2">asesor</span>
-               
-              </>
-            }
-          
+              title={
+                <>
+                  Contacte un{" "}
+                  <span className="text-lacampana-red2">asesor</span>
+                </>
+              }
               origin="Página de Servicios"
               padding="p-12"
               margin="md:transform -translate-y-12"
@@ -114,6 +111,3 @@ const ServiceDetails = () => {
 };
 
 export default ServiceDetails;
-
-
-

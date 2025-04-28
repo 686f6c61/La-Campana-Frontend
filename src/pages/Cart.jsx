@@ -1,31 +1,39 @@
-import { useSelector } from "react-redux"
-import IntroductoryText from "../sections/common/IntroductoryText"
-import products from "../utils/products"
-import chunkArray from "../helpers/chunkArray"
-import AddedProducts from "../sections/Cart/AddedProducts"
-import RelatedProducts from "../sections/Cart/RelatedProducts"
-import PurchaseSummary from "../sections/Cart/PurchaseSummary"
-import Highlighted from "../sections/Cart/Highlighted"
-import TestAdd from "../components/Test/TestAdd"
+import { useSelector } from "react-redux";
+import IntroductoryText from "../sections/common/IntroductoryText";
+import products from "../utils/products";
+import chunkArray from "../helpers/chunkArray";
+import AddedProducts from "../sections/Cart/AddedProducts";
+import RelatedProducts from "../sections/Cart/RelatedProducts";
+import PurchaseSummary from "../sections/Cart/PurchaseSummary";
+import Highlighted from "../sections/Cart/Highlighted";
+import TestAdd from "../components/Test/TestAdd";
 
 const Cart = () => {
-  const cartProducts = useSelector(state => state.cart)
+  const cartProducts = useSelector((state) => state.cart);
 
-  const subtotal = Math.round(
-    cartProducts
-      .map(product => product.ItemPrices * product.quantity)
-      .reduce((accumulator, curr) => accumulator + curr, 0) * 100
-  ) / 100;
+  const subtotal =
+    Math.round(
+      cartProducts
+        .map((product) => product.ItemPrices * product.quantity)
+        .reduce((accumulator, curr) => accumulator + curr, 0) * 100
+    ) / 100;
 
   return (
-    <article className="max-w-screen-desktop w-full justify-self-center relative px-8 py-4 desktop:px-16 desktop:py-8">
+    <article className="max-w-screen-desktop w-full justify-self-center relative px-8 py-4 desktop:px-16 desktop:py-8 mx-auto">
       <IntroductoryText
+        sizeTitle="tablet:text-[6rem] lg:text-[6rem]"
+        mt="mt-2 tablet:mt-[0px] lg:mt-0"
+        sizeTitleMobile="text-[80px]"
         title="Lleva lo mejor en"
-        redTitle="aceros"
+        bgTitleMargin="mt-10"
+        redTitle=" aceros"
         bgTitle="Carrito"
         justify="center"
+        size="text-5xl"
+        right="right-0"
+        left="left-0"
       />
-      <div className="flex flex-col tablet:flex-row gap-4">
+      <div className="flex flex-col tablet:flex-row gap-4 pt-10 pb-10">
         <main className="w-full tablet:w-2/3 flex flex-col gap-16">
           {/* TABLA DE PRODCUTOS DEL CARRITO */}
           <AddedProducts cartProducts={cartProducts} />
@@ -42,7 +50,7 @@ const Cart = () => {
         </aside>
       </div>
     </article>
-  )
-}
+  );
+};
 
-export default Cart
+export default Cart;

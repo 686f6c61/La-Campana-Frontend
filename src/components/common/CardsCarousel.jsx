@@ -184,7 +184,9 @@ const CardsCarousel = ({
             alt={`Imagen de ${item.nombre}`}
             className="w-full aspect-[16/10] object-cover rounded-md"
           />
-          <h3 className={`text-lg font-bold mt-2 text-lacampana-red1 text-left`}>
+          <h3
+            className={`text-lg font-bold mt-2 text-lacampana-red1 text-left`}
+          >
             {item.nombre}
           </h3>
           <p className={`${textColor} text-left`}>{item.direccion}</p>
@@ -220,7 +222,7 @@ const CardsCarousel = ({
             key={`${id}-radio-${index}`}
             type="radio"
             name={id}
-            className={`radio w-2 h-2 border-none bg-lacampana-gray1 checked:bg-lacampana-red1 checked:w-4 checked:h-4 hover:scale-90 transition duration-150 ease-in-ou ${controlBgColor} ${controlCheckedColor} ${customControlClass}`}
+            className={`radio w-[7px] h-[7px] border-none bg-lacampana-gray1 checked:bg-lacampana-red1 checked:w-[13px] checked:h-[13px] hover:scale-90 transition duration-150 ease-in-ou ${controlBgColor} ${controlCheckedColor} ${customControlClass}`}
             onClick={() =>
               document
                 .getElementById(`${id}-${index}`)

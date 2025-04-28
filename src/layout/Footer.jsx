@@ -1,16 +1,25 @@
 import { Link } from "react-router";
 import footerInfo from "../utils/footerInfo";
 import FooterItem from "../components/layouts/FooterItem";
+import { useLocation } from "react-router-dom";
 
 const Footer = () => {
   const { links, socialMedia } = footerInfo;
+  const location = useLocation();
 
+  const shouldHideFooter =
+    location.pathname === "/micuenta" || location.pathname === "/carrito";
+  console.log(shouldHideFooter);
   const empresa = links.find((item) => item.title === "Empresa");
   const cuenta = links.find((item) => item.title === "Mi Cuenta");
   const legal = links.find((item) => item.title === "Legal");
 
   return (
-    <footer className="bg-lacampana-white relative">
+    <footer
+      className={`bg-lacampana-white relative ${
+        shouldHideFooter ? "hidden" : "block"
+      }`}
+    >
       <div className="absolute w-32 h-32 left-1/2 -translate-x-1/2 -top-8 rounded-full bg-lacampana-white " />
 
       <article className="flex flex-col tablet:flex-wrap desktop:flex-nowrap tablet:flex-row gap-8 px-4 tablet:px-8 py-8 tablet:py-16 max-w-screen-desktop w-full justify-self-center mx-auto">

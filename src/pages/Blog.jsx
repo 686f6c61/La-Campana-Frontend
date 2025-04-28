@@ -35,12 +35,15 @@ const Blog = () => {
           }
           bgTitle="Actualidad en aceros"
           description="Lorem ipsum dolor sit amet consectetur. Pulvinar dignissim pulvinar ut lorem pharetra. Vestibulum nulla faucibus nunc enim. Proin feugiat fames turpis sociis viverra. Viverra sit ut egestas placerat neque fames ante."
+          sizeTitle="tablet:text-[5rem] lg:text-[7rem] xl:text-[9rem]"
+          mt="mt-0 tablet:mt-[-35px] lg:mt-[5px] xl:mt-[-10px]"
+          sizeTitleMobile="text-[45px]"
+          bgTitlePaddingMobile="pt-6"
           justify="start"
           zIndex="-z-20"
-          titleMargin="lg:pt-2"
         >
           {/* LATEST BLOGS */}
-          <div className="w-full tablet:w-3/5 flex-none h-[500px]  pt-2 pb-6">
+          <div className="w-full tablet:w-3/5 flex-none h-[500px] pt-2 pb-6 ml-0 tablet:ml-10">
             <CardsCarousel
               id="hl-blog-card"
               cardsList={latestBlogs}

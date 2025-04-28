@@ -49,9 +49,10 @@ const ContactBranches = () => {
                 ]}
                 selectedOption={selectedBranch}
                 onSelectionChange={setSelectedBranch}
-                bgColor="black"
+                bgColorSelected="bg-white"
                 borderColor="white"
                 textColor="white"
+                bgColor="black"
               />
 
               <div className="mt-8">
@@ -61,8 +62,7 @@ const ContactBranches = () => {
                     cardsList={sucursalesFiltradas}
                     id="sucursal-desktop"
                     itemsPerSlide={3}
-                    controlBgColor="bg-gray-200"
-                    controlCheckedColor="checked:bg-gray-800"
+                    controlCheckedColor="checked:bg-white"
                     latestBlogs={true}
                   />
                 </div>

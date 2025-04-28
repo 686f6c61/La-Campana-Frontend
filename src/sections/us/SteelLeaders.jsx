@@ -2,10 +2,9 @@ import React from "react";
 import IntroductoryText from "../../sections/common/IntroductoryText";
 import steelLeadersData from "../../data/steelLeadersData";
 
-
 const SteelLeaders = () => {
   return (
-    <article className="max-w-screen-desktop w-full justify-self-center">
+    <article className="pl-5 pr-5 max-w-screen-desktop w-full mx-auto">
       <IntroductoryText
         title={
           <>
@@ -23,17 +22,21 @@ const SteelLeaders = () => {
             ))}
           </>
         }
+        sizeTitle="tablet:text-[5rem] lg:text-[7rem] xl:text-[9rem]"
+        mt="mt-0 tablet:mt-[-55px] lg:mt-[-20px] xl:mt-[0px]"
         bgTitle={steelLeadersData.bgTitle}
-        bgTitleMargin=""
-        bgTitlePadding=""
-        titleMargin="mt-24"
+        sizeTitleMobile="text-[50px]"
+        bgTitlePaddingMobile="pt-5"
       >
-        <div className="flex items-center justify-center md:justify-end md:pr-16 mt-8 md:mt-0">
-          <div className="flex items-center justify-center w-[790px] sm:w-[500px] h-[290px] relative overflow-hidden">
+        <div className="w-full xl:flex xl:items-center md:w-1/2 flex justify-center md:justify-end mt-10 tablet:mt-0">
+          <div
+            className="w-full lg:w-[500px] xl:w-[573px] relative overflow-hidden rounded-tl-3xl"
+            style={{ aspectRatio: "573 / 322" }}
+          >
             <iframe
               src={steelLeadersData.videoUrl}
               title="Video representativo"
-              className="w-full h-full rounded-tl-3xl "
+              className="absolute top-0 left-0 w-full h-full"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
@@ -44,6 +47,5 @@ const SteelLeaders = () => {
     </article>
   );
 };
-
 
 export default SteelLeaders;

@@ -9,17 +9,20 @@ const ActionButton = ({
   borderColor,
   width = "fit",
   padding = "py-2 px-8",
-  margin = "mt-8",
+  margin = "",
   font = "font-semibold",
   link,
   disabled = false,
-  onClick
+  onClick,
 }) => {
-
   const className = `
     ${styles} 
     lacampana-btn 
-    ${disabled ? 'opacity-50 pointer-events-none' : `hover:bg-${textColor} hover:text-${bgColor} hover:scale-90`} 
+    ${
+      disabled
+        ? "opacity-50 pointer-events-none"
+        : `hover:bg-${textColor} hover:text-${bgColor} hover:scale-90`
+    } 
     border 
     ${borderColor ? `border-${borderColor}` : `border-${bgColor}`} 
     bg-${bgColor} 
@@ -38,7 +41,11 @@ const ActionButton = ({
           {text}
         </button>
       ) : (
-        <Link to={link} onClick={disabled ? (e) => e.preventDefault() : onClick} className={className}>
+        <Link
+          to={link}
+          onClick={disabled ? (e) => e.preventDefault() : onClick}
+          className={className}
+        >
           {text}
         </Link>
       )}

@@ -121,10 +121,15 @@ const Login = () => {
           </div>
         </>
       }
-      bgTitle="Login"
+      sizeTitle="tablet:text-[6rem] lg:text-[6rem]"
+      mt="mt-2 tablet:mt-[-35px] lg:mt-0"
+      sizeTitleMobile="text-[80px]"
+      bgTitleMargin="mt-5"
       justify="center"
-      bgTitleMargin=""
-      bgTitlePadding=""
+      size="text-5xl"
+      bgTitle="Login"
+      right="right-0"
+      left="left-0"
     />
   );
 };

@@ -19,11 +19,23 @@ const Banner = () => {
   };
 
   return (
-    <div className="h-[85svh] tablet:h-[65svh] desktop:h-[75svh] p-3 tablet:p-0 relative">
+    <div className="h-[85svh] tablet:h-[65svh] desktop:h-[75svh] pl-3 pr-3 tablet:pl-3 pr-3 relative">
       <div className="carousel w-full h-full">
-        <BannerSlide id="item1" imgURL="/images/home/banner/banner.jpg" alt="banner" />
-        <BannerSlide id="item2" imgURL="/images/home/banner/banner2.jpeg" alt="banner" />
-        <BannerSlide id="item3" imgURL="/images/home/banner/banner.jpg" alt="banner"/>
+        <BannerSlide
+          id="item1"
+          imgURL="/images/home/banner/banner.jpg"
+          alt="banner"
+        />
+        <BannerSlide
+          id="item2"
+          imgURL="/images/home/banner/banner2.jpeg"
+          alt="banner"
+        />
+        <BannerSlide
+          id="item3"
+          imgURL="/images/home/banner/banner.jpg"
+          alt="banner"
+        />
       </div>
       <BannerCallToAction
         currentSlide={currentSlide}

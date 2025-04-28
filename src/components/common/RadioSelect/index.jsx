@@ -1,6 +1,5 @@
 import React from "react";
 
-
 const RadioSelect = ({
   options,
   selectedOption,
@@ -8,18 +7,23 @@ const RadioSelect = ({
   bgColor = "red",
   borderColor = "gray",
   textColor = "black",
-  variant = "default", 
+  variant = "default",
   renderContent = null,
   labelClassName = "",
+  bgColorSelected,
+  borderColorSelected,
 }) => {
   return (
-    <div className={`flex ${variant === "box" ? "flex-col gap-4" : "flex-wrap gap-3 pt-4 md:pt-0"}`}>
+    <div
+      className={`flex ${
+        variant === "box" ? "flex-col gap-4" : "flex-wrap gap-3 pt-4 md:pt-0"
+      }`}
+    >
       {options.map((option) => {
         const value = typeof option === "string" ? option : option.value;
         const label = typeof option === "string" ? option : option.label;
         const isSelected = selectedOption === value;
         const id = `${value}-radio`;
-
 
         return (
           <div key={value} className="flex items-center">
@@ -40,20 +44,26 @@ const RadioSelect = ({
                   : "flex items-center gap-2 cursor-pointer text-sm"
               }
             >
-           
-              <span className="w-4 h-4 inline-block border border-gray-400 rounded-full flex-shrink-0 relative">
+              <span
+                className={`w-4 h-4 inline-block rounded-full flex-shrink-0 relative border ${
+                  isSelected ? borderColorSelected : "border-gray-400"
+                }`}
+              >
                 {isSelected && (
-                  <span className="absolute top-1/2 left-1/2 w-2 h-2 bg-lacampana-red2 rounded-full transform -translate-x-1/2 -translate-y-1/2" />
+                  <span
+                    className={`absolute top-1/2 left-1/2 w-2 h-2 border rounded-full ${bgColorSelected} transform -translate-x-1/2 -translate-y-1/2`}
+                  />
                 )}
               </span>
 
-
-              
-              {renderContent ? renderContent(option) : (
-               <span
-               className={`ml-2 ${isSelected ? `text-[${bgColor}]` : `text-[${textColor}]`} ${labelClassName}`}
-             >
-             
+              {renderContent ? (
+                renderContent(option)
+              ) : (
+                <span
+                  className={`ml-2 ${
+                    isSelected ? `text-[${bgColor}]` : `text-[${textColor}]`
+                  } ${labelClassName}`}
+                >
                   {label}
                 </span>
               )}
@@ -64,6 +74,5 @@ const RadioSelect = ({
     </div>
   );
 };
-
 
 export default RadioSelect;

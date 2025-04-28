@@ -12,24 +12,31 @@ const IntroductoryText = ({
   children,
   mt,
   mb,
-  zIndex = "-z-10"
+  zIndex = "-z-10",
+  sizeTitle,
+  sizeTitleMobile,
+  bgTitlePaddingMobile,
+  left,
+  right,
 }) => {
   return (
     <section className="relative ">
       {/* Desktop BgTitle */}
-      <div className={`hidden tablet:block absolute left-0 right-0 ${zIndex} ${bgTitlePadding} ${bgTitleMargin}`}>
+      <div
+        className={`hidden tablet:block absolute ${left} ${right} ${zIndex} ${bgTitlePadding} ${bgTitleMargin}`}
+      >
         <h1
-          className={`leading-tight  text-2xl tablet:text-[130px] lg:text-9xl bg-clip-text text-transparent bg-gradient-to-t from-lacampana-gray4/20 to-lacampana-gray4`}
+          className={`leading-tight ${sizeTitle}  bg-clip-text text-transparent bg-gradient-to-t from-lacampana-gray4/20 to-lacampana-gray4`}
         >
           {bgTitle}
         </h1>
       </div>
       {/* Mobile BgTitle */}
       <div
-        className={`tablet:hidden absolute left-0 right-0 ${zIndex} ${bgTitlePadding} ${bgTitleMargin}`}
+        className={`tablet:hidden absolute left-0 right-0 ${zIndex} ${bgTitlePaddingMobile} mt-0 tablet:${bgTitleMargin}`}
       >
         <h1
-          className={`text-[45px] tablet:text-[140px] lg:text-[150px] bg-clip-text text-transparent bg-gradient-to-t from-lacampana-gray4/20 to-lacampana-gray4`}
+          className={`${sizeTitleMobile} tablet:text-[80px] bg-clip-text text-transparent bg-gradient-to-t from-lacampana-gray4/20 to-lacampana-gray4`}
         >
           {bgTitle}
         </h1>
@@ -40,24 +47,42 @@ const IntroductoryText = ({
           className={`hidden text-${justify} tablet:flex flex-col justify-center text-wrap w-full`}
         >
           <div className={`${titleMargin}`}>
-            <h1 className={`leading-tight ${mt} ${mb} ${size}`}>{title} {redTitle && <span className="text-lacampana-red2">{redTitle}</span>}</h1>
-            <span className="font-open-sans text-2xl text-lacampana-gray1 uppercase ">
-              {subtitle}
-            </span>
+            <h1 className={`leading-tight ${mt} ${mb} ${size} `}>
+              {title}
+              {redTitle && (
+                <span className="text-lacampana-red2">{redTitle}</span>
+              )}
+            </h1>
+            {
+              <span className="font-open-sans text-2xl text-lacampana-gray1 uppercase ">
+                {subtitle}
+              </span>
+            }
           </div>
-          <p className="max-w-[800px] text-justify text-lacampana-gray1 font-open-sans leading-relaxed self-center mt-8">{description}</p>
+          {description && (
+            <p className="max-w-[800px] text-justify text-lacampana-gray1 font-open-sans leading-relaxed self-center mt-8">
+              {description}
+            </p>
+          )}
         </section>
         {/* Mobile Text */}
         <section
           className={`tablet:hidden flex flex-col gap-8 text-wrap w-full`}
         >
           <div className={`${titleMargin}`}>
-            <h1 className="mt-[1.5rem]">{title}</h1>
+            <h1
+              className={`leading-tight mt-[-2.5rem] tablet:${mt} ${mb} text-4xl tablet:${size}`}
+            >
+              {title}
+              {redTitle && (
+                <span className="text-lacampana-red2">{redTitle}</span>
+              )}
+            </h1>
             <span className="font-open-sans text-2xl text-lacampana-gray1 uppercase">
               {subtitle}
             </span>
           </div>
-          <p>{description}</p>
+          {description && <p>{description}</p>}
         </section>
         {children}
       </article>
