@@ -122,7 +122,7 @@ const Login = () => {
         </>
       }
       sizeTitle="tablet:text-[6rem] lg:text-[6rem]"
-      mt="mt-2 tablet:mt-[-35px] lg:mt-0"
+      mt="mt-2 tablet:mt-[-15px] lg:mt-0"
       sizeTitleMobile="text-[80px]"
       bgTitleMargin="mt-5"
       justify="center"

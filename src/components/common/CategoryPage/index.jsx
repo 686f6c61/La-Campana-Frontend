@@ -182,7 +182,7 @@ const CategoryPage = () => {
               </>
             }
             sizeTitle="tablet:text-[6rem] lg:text-[6rem]"
-            mt="mt-2 tablet:mt-[0px] lg:mt-0"
+            mt="mt-2 tablet:mt-[-5px] lg:mt-[-5px]"
             sizeTitleMobile="text-[60px]"
             bgTitlePaddingMobile="pt-3"
             bgTitle="Lideres en acero"
