@@ -3,7 +3,7 @@ import React from "react";
 
 const LegalCertification = () => {
   return (
-    <div className="min-h-[600px] pt-20 pr-5">
+    <div className="min-h-[600px] pt-20 pr-0 tablet:pr-5">
       {/* Contenedor del fondo decorativo */}
       <div className="relative w-full h-[600px] flex justify-end items-center">
         <div

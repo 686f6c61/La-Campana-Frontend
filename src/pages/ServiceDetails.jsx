@@ -8,10 +8,24 @@ import Form from "../components/common/Form";
 const ServiceDetails = () => {
   const { serviceId } = useParams();
   const serviceData = services.find((service) => service.id == serviceId);
+  const sizeTitleValue =
+    serviceData.name.length <= 13
+      ? "tablet:text-[5rem] lg:text-[7rem] xl:text-[9rem]"
+      : "tablet:text-[3rem] lg:text-[4rem] xl:text-[6rem]";
+
+  const mtValue =
+    serviceData.name.length <= 13
+      ? "mt-0 tablet:mt-[-55px] lg:mt-[-20px] xl:mt-[10px]"
+      : "mt-0 tablet:mt-[-70px] lg:mt-[-60px] xl:mt-[-35px]";
+
+  const sizeTitleMobileValue =
+    serviceData.name.length <= 13 ? "text-[50px]" : "text-[35px]";
+
+  const paddingTitleValue = serviceData.name.length <= 13 ? "pt-6" : "pt-9";
 
   return (
     <>
-      <article className="flex flex-col gap-16">
+      <article className="flex flex-col overflow-hidden">
         {/* Introductory section */}
         <section className="max-w-screen-desktop w-full self-center px-4 desktop:px-8 py-8 desktop:py-0">
           <IntroductoryText
@@ -20,7 +34,12 @@ const ServiceDetails = () => {
             description={
               serviceData.customDescription || serviceData.description
             }
-            bgTitlePadding="pt-10"
+            sizeTitle={sizeTitleValue}
+            mt={mtValue}
+            sizeTitleMobile={sizeTitleMobileValue}
+            bgTitlePaddingMobile={paddingTitleValue}
+            sizeMobile="text-3xl"
+            size="text-5xl"
           >
             {/* <div className="w-full md:mt-20 mt-0 tablet:w-1/2 flex-none h-[300px] tablet:h-[350px] rounded-tl-2xl overflow-hidden relative ">
               <div className="absolute left-0 right-0 bottom-0 top-0 flex justify-center items-center ">
@@ -36,7 +55,7 @@ const ServiceDetails = () => {
               </div>
               <img className="w-full h-full object-cover" src={serviceData.image} alt="" />
             </div> */}
-            <div className="w-full mt-10 h-[200px] tablet:h-[300px] desktop:h-[350px] rounded-tl-2xl overflow-hidden p-2">
+            <div className="w-full mt-10 ml-0 tablet:ml-10 h-[200px] tablet:h-[350px] desktop:h-[350px] rounded-tl-2xl overflow-hidden p-2">
               <iframe
                 className="w-full h-full rounded-tl-3xl"
                 src={serviceData.videoUrl}
@@ -74,35 +93,32 @@ const ServiceDetails = () => {
       </article>
 
       {/* Extra contact section */}
-      <div className="max-w-screen-desktop w-full justify-self-center pt-20">
+      <div className="max-w-screen-desktop w-full justify-between pb-16 mx-auto">
         <div className="font-sans">
           <IntroductoryText
             title={
               <>
-                <h3>
-                  Preguntas{" "}
-                  <span className="text-lacampana-red2">Frecuentes</span>
+                <h3 className="mb-5 w-full tablet:w-[500px]">
+                  Preguntas
+                  <span className="text-lacampana-red2"> frecuentes</span>
                 </h3>
                 <FAQ questions={serviceData.faq} />
               </>
             }
             bgTitle=""
             description=""
-            justify="center"
+            justify=""
             bgTitleMargin=""
             titleMargin=""
+            ServiceDetails={true}
+            flexJustify="justify-start"
           >
-            <Form
-              title={
-                <>
-                  Contacte un{" "}
-                  <span className="text-lacampana-red2">asesor</span>
-                </>
-              }
-              origin="Página de Servicios"
-              padding="p-12"
-              margin="md:transform -translate-y-12"
-            />
+            <div className="flex flex-col">
+              <h2 className="text-center tablet:text-start mb-5 mt-10 tablet:mt-0 text-2xl tablet:text-4xl">
+                Contacte un <span className="text-lacampana-red2">asesor</span>
+              </h2>
+              <Form origin="Página de Servicios" padding="p-12" margin="" />
+            </div>
           </IntroductoryText>
         </div>
       </div>

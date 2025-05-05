@@ -16,6 +16,9 @@ const IntroductoryText = ({
   sizeTitle,
   sizeTitleMobile,
   bgTitlePaddingMobile,
+  flexJustify,
+  ServiceDetails,
+  sizeMobile,
   left,
   right,
 }) => {
@@ -44,9 +47,11 @@ const IntroductoryText = ({
       <article className={`flex flex-col tablet:flex-row pt-24`}>
         {/* Desktop Text */}
         <section
-          className={`hidden text-${justify} tablet:flex flex-col justify-center text-wrap w-full`}
+          className={`hidden text-${justify} tablet:flex flex-col ${flexJustify} text-wrap w-full`}
         >
-          <div className={`${titleMargin}`}>
+          <div
+            className={`${titleMargin} ${ServiceDetails ? "text-start" : ""}`}
+          >
             <h1 className={`leading-tight ${mt} ${mb} ${size} `}>
               {title}
               {redTitle && (
@@ -71,11 +76,11 @@ const IntroductoryText = ({
         >
           <div className={`${titleMargin}`}>
             <h1
-              className={`leading-tight mt-[-2.5rem] tablet:${mt} ${mb} text-4xl tablet:${size}`}
+              className={`leading-tight mt-[-2.5rem] tablet:${mt} ${mb} ${sizeMobile} tablet:text-4xl`}
             >
               {title}
               {redTitle && (
-                <span className="text-lacampana-red2">{redTitle}</span>
+                <span className={`text-lacampana-red2`}>{redTitle}</span>
               )}
             </h1>
             <span className="font-open-sans text-2xl text-lacampana-gray1 uppercase">

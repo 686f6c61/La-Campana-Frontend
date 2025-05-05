@@ -38,6 +38,7 @@ const Blog = () => {
           sizeTitle="tablet:text-[5rem] lg:text-[7rem] xl:text-[9rem]"
           mt="mt-0 tablet:mt-[-35px] lg:mt-[5px] xl:mt-[-10px]"
           sizeTitleMobile="text-[45px]"
+          flexJustify="justify-center"
           bgTitlePaddingMobile="pt-6"
           justify="start"
           zIndex="-z-20"
