@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { FiSearch } from "react-icons/fi";
 
 import { setProducts } from "../../../store/reducers/productsSlice";
 import { setSelectedCategory } from "../../../store/reducers/categorySlice";
@@ -17,7 +18,7 @@ const BreadCrumbs = ({ path }) => {
   const pathUp =
     path && path.charAt(0).toUpperCase() + path.slice(1).toLowerCase();
   return (
-    <div className="flex justify-center ">
+    <div className="flex justify-left ">
       <ol class="list-reset py-4 pl-4 rounded flex bg-grey-light text-lacampana-gray2">
         <li class="px-2">
           <a
@@ -54,25 +55,33 @@ const FILTER_OPTIONS = {
 
 const CategoryPage = () => {
   const { categoryId: rawCategoryId } = useParams();
-  const categoryId = rawCategoryId || "tuberia";
-
+  const location = useLocation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const searchParams = new URLSearchParams(location.search);
+  const urlSearchQuery = searchParams.get("search") || "";
+  const categoryId = rawCategoryId || "tuberia";
+
+  const queryValue = urlSearchQuery ? urlSearchQuery : categoryId;
+
   const [isMobile, setIsMobile] = useState(window.innerWidth < 950);
   const [selectedFilters, setSelectedFilters] = useState({
     espesor: "",
     longitud: "",
     ancho: "",
   });
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState(urlSearchQuery);
   const [visibleProducts, setVisibleProducts] = useState(8);
-
   const [categoryImage, setCategoryImage] = useState("");
+  const [showMobileFilters, setShowMobileFilters] = useState(false);
 
-  const { data, error, isLoading, refetch } =
-    useGetProductsByTextQuery(categoryId);
+  const { data, error, isLoading, refetch } = useGetProductsByTextQuery(queryValue);
 
-  // All hooks must be called before any conditional returns
+  useEffect(() => {
+    setSearchQuery(urlSearchQuery);
+  }, [urlSearchQuery]);
+
   useEffect(() => {
     dispatch(setSelectedCategory(categoryId));
     setVisibleProducts(8);
@@ -80,7 +89,7 @@ const CategoryPage = () => {
     return () => {
       setVisibleProducts(8);
     };
-  }, [categoryId, refetch]);
+  }, [queryValue, dispatch, refetch]);
 
   useEffect(() => {
     const newCategory = categories.find((cat) => cat.id === categoryId);
@@ -116,7 +125,10 @@ const CategoryPage = () => {
 
   const filteredProducts = useMemo(() => {
     return products.filter((product) => {
-      const matchesSearch = product.name.toLowerCase().includes(searchQuery);
+      const matchesSearch = searchQuery
+        ? product.name.toLowerCase().includes(searchQuery.toLowerCase())
+        : true;
+
       const matchesFilters = Object.keys(selectedFilters).every(
         (filter) =>
           !selectedFilters[filter] ||
@@ -132,14 +144,40 @@ const CategoryPage = () => {
   };
 
   const handleFilterChange = (filterType, value) => {
-    setSelectedFilters((prevFilters) => ({
-      ...prevFilters,
-      [filterType]: value,
-    }));
+    setSelectedFilters((prevFilters) => {
+      // If the same value is selected again, deselect it
+      if (prevFilters[filterType] === value) {
+        return {
+          ...prevFilters,
+          [filterType]: ""
+        };
+      }
+      // Otherwise select the new value
+      return {
+        ...prevFilters,
+        [filterType]: value
+      };
+    });
   };
 
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value.toLowerCase());
+  };
+
+  const handleSearchSubmit = (query) => {
+    setSearchQuery(query.toLowerCase());
+    // Update URL with search parameter without navigation
+    const newSearchParams = new URLSearchParams(location.search);
+    if (query) {
+      newSearchParams.set('search', query);
+    } else {
+      newSearchParams.delete('search');
+    }
+    navigate(`${location.pathname}?${newSearchParams.toString()}`, { replace: true });
+  };
+
+  const handleToggleMobileFilters = (isActive) => {
+    setShowMobileFilters(isActive);
   };
 
   const handleLoadMore = () => {
@@ -157,11 +195,10 @@ const CategoryPage = () => {
         {FILTER_OPTIONS[filterType].map((value) => (
           <li key={value}>
             <button
-              className={`text-sm ${
-                selectedFilters[filterType] === value
-                  ? "font-bold text-red-500"
-                  : ""
-              }`}
+              className={`text-sm ${selectedFilters[filterType] === value
+                ? "font-bold text-red-500"
+                : ""
+                }`}
               onClick={() => handleFilterChange(filterType, value)}
             >
               {value}
@@ -171,6 +208,31 @@ const CategoryPage = () => {
       </ul>
     </div>
   );
+
+  const renderMobileFilters = () => {
+    if (!showMobileFilters) return null;
+
+    return (
+      <div className="bg-gray-100 p-4 mb-4 rounded-lg">
+        <h2 className="text-lg border-b border-gray-500 text-left font-antonio mb-4">
+          FILTRAR POR
+        </h2>
+        {renderFilterSection("espesor", "Espesor")}
+        {renderFilterSection("longitud", "Longitud")}
+        {renderFilterSection("ancho", "Ancho")}
+
+        <div className="mt-4 flex justify-center">
+          <button
+            className="bg-lacampana-red2 text-white px-4 py-1 rounded-full text-sm"
+            onClick={() => setSelectedFilters({ espesor: "", longitud: "", ancho: "" })}
+          >
+            Limpiar filtros
+          </button>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="max-w-7xl mx-auto">
       <div className="relative w-full flex flex-col items-center justify-center bg-white">
@@ -195,11 +257,9 @@ const CategoryPage = () => {
           />
         </div>
       </div>
-      {!isMobile && (
-        <div className="flex items-center hover:text-red-600 space-x-2">
-          <BreadCrumbs path={rawCategoryId} />
-        </div>
-      )}
+
+      {/* BreadCrumbs displayed for all screen sizes */}
+      <BreadCrumbs path={rawCategoryId} />
 
       <div className="flex justify-center">
         <aside className="w-1/5 h-1/2 bg-gray-100 p-4 shadow hidden lg:block">
@@ -210,8 +270,17 @@ const CategoryPage = () => {
               className="w-full p-2 pr-8 rounded bg-gray-100 focus:outline-none"
               value={searchQuery}
               onChange={handleSearchChange}
+              onKeyPress={(e) => {
+                if (e.key === 'Enter') {
+                  e.preventDefault();
+                  handleSearchSubmit(e.target.value);
+                }
+              }}
             />
-            <span className="absolute h-4 right-2 top-2.5 text-gray-500">
+            <button
+              className="absolute h-4 right-2 top-2.5 text-gray-500"
+              onClick={() => handleSearchSubmit(searchQuery)}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -224,7 +293,7 @@ const CategoryPage = () => {
                   clipRule="evenodd"
                 />
               </svg>
-            </span>
+            </button>
           </div>
           <h2 className="text-lg border-b border-gray-500 text-left font-antonio mb-6">
             FILTRAR POR
@@ -232,26 +301,60 @@ const CategoryPage = () => {
           {renderFilterSection("espesor", "Espesor")}
           {renderFilterSection("longitud", "Longitud")}
           {renderFilterSection("ancho", "Ancho")}
-        </aside>
-        <main className="desktop:pl-4 sm:px-4 w-4/5">
-          {isMobile && <FilterSearchBar />}
 
-          <div className="grid grid-cols-2 w-full sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-0 ">
-            {filteredProducts.slice(0, visibleProducts).map((product) => (
-              <div
-                key={product.id}
-                className="p-1 cursor-pointer "
-                onClick={() => handleProductClick(product.id)}
-              >
-                <ProductCard
-                  id={product.id}
-                  name={product.name}
-                  image={product.image}
-                  price={product.price}
-                  discount={product.discount}
-                />
+          <div className="mt-6">
+            <button
+              className="text-sm text-lacampana-red2 hover:underline"
+              onClick={() => setSelectedFilters({ espesor: "", longitud: "", ancho: "" })}
+            >
+
+            </button>
+          </div>
+        </aside>
+        <main className="desktop:pl-4 sm:px-4 w-full lg:w-4/5">
+          {isMobile && (
+            <>
+              <FilterSearchBar
+                onSearchSubmit={handleSearchSubmit}
+                onFilterClick={handleToggleMobileFilters}
+              />
+              {renderMobileFilters()}
+            </>
+          )}
+
+          <div className="grid grid-cols-2 w-full sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-0">
+            {filteredProducts.length > 0 ? (
+              filteredProducts.slice(0, visibleProducts).map((product) => (
+                <div
+                  key={product.id}
+                  className="p-1 cursor-pointer"
+                  onClick={() => handleProductClick(product.id)}
+                >
+                  <ProductCard
+                    id={product.id}
+                    name={product.name}
+                    image={product.image}
+                    price={product.price}
+                    discount={product.discount}
+                  />
+                </div>
+              ))
+            ) : (
+              <div className="col-span-full text-center py-10">
+                <p>No se encontraron productos que coincidan con la búsqueda.</p>
+                {searchQuery && (
+                  <button
+                    className="mt-4 text-lacampana-red2 hover:underline"
+                    onClick={() => {
+                      setSearchQuery('');
+                      navigate(location.pathname);
+                    }}
+                  >
+                    Limpiar búsqueda
+                  </button>
+                )}
               </div>
-            ))}
+            )}
           </div>
           {visibleProducts < filteredProducts.length && (
             <div className="mt-6 pb-12 text-center text-black hover:scale-90 hover:bg-white transition duration-300 ease-in-out">
@@ -267,4 +370,5 @@ const CategoryPage = () => {
     </div>
   );
 };
+
 export default CategoryPage;

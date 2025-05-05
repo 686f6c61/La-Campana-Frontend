@@ -1,12 +1,27 @@
 import { useRef } from "react";
 import { IoIosSearch } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 
-const SearchBar = ({ placeholder, className, onSubmit, defaultValue }) => {
-  let inputRef = useRef("");
+const SearchBar = ({ placeholder = "Buscar producto", className, onSubmit, defaultValue = "" }) => {
+  let inputRef = useRef(null);
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onSubmit(inputRef.current.value);
+    const searchValue = inputRef.current.value.trim();
+    
+    if (onSubmit) {
+      // If onSubmit is passed, use that (for specific component use cases)
+      onSubmit(searchValue);
+    } else {
+      // Default behavior: Navigate to tienda with search params
+      if (searchValue) {
+        navigate(`/tienda?search=${encodeURIComponent(searchValue)}`);
+      } else {
+        // If search is empty, just go to the store page
+        navigate('/tienda');
+      }
+    }
   };
 
   return (
@@ -21,7 +36,7 @@ const SearchBar = ({ placeholder, className, onSubmit, defaultValue }) => {
         ref={inputRef}
         defaultValue={defaultValue}
       />
-      <button className="p-2 bg-lacampana-red2">
+      <button className="p-2 bg-lacampana-red2" type="submit">
         <IoIosSearch className="text-white w-[20px] h-[20px]" />
       </button>
     </form>
