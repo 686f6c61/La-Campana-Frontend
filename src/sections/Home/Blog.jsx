@@ -9,12 +9,14 @@ const Blog = () => {
 
   if (isLoading) return <p>Cargando...</p>;
   if (error) return <p>Error al cargar los datos.</p>;
-
+  console.log("blog",blogs)
   return (
     <section className="w-full max-w-7xl w-full tablet: mx-auto">
+       
       <article className="mb-20 w-full flex justify-beetwen desktop:gap-8 flex-col desktop:flex-row">
         {/* TITLE SECTION */}
         <section className="text-start sm:text-center flex flex-col justify-center gap-4 desktop:w-1/2">
+          
           <h3 className="text-start w-[300px]">
             Actualidad y
             <span className="text-lacampana-red1 text-start">
@@ -32,7 +34,8 @@ const Blog = () => {
         </section>
         {/* BLOGS DESKTOP */}
         <section className="flex w-2/2 justify-end hidden tablet:flex justify-end">
-          {blogs?.slice(0, 3).map((blog) => (
+          
+          {blogs && blogs?.slice(0, 3).map((blog) => (
             <article className="flex h-full md:justify-center w-[260px] mr-2 ml-2">
               <BlogCard
                 key={`blog-home-${blog._id}`}

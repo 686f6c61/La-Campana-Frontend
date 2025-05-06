@@ -83,14 +83,18 @@ const DocumentsItem = () => {
           title={
             <>
               Repositorio de{" "}
-              <span className="text-lacampana-red2">documentos</span>
+              <span className="text-lacampana-red2 ">Documentos</span>
             </>
           }
           bgTitle="Documentación"
-          description="Lorem ipsum dolor sit amet consectetur. Pulvinar dignissim
-                pulvinar ut lorem pharetra. Vestibulum nulla faucibus nunc enim.
-                Proin feugiat fames turpis sociis viverra. Viverra sit ut
-                egestas placerat neque fames ante."
+          description="Lorem ipsum dolor sit amet consectetur. Libero sed netus at diam nec ullamcorper convallis pellentesque suscipit. Dictum sed purus et morbi in lorem in dolor sed. "
+          sizeTitle="tablet:text-[6rem] lg:text-[10rem]"
+          sizeTitleMobile="text-[60px]"
+          bgTitleMargin="mt-10"//
+          mt="mt-16"
+          justify="center"
+          right="right-0"
+          left="left-0"
         />
 
         <div className="mt-6 flex flex-col md:flex-row justify-between  w-full relative z-10 space-y-4 md:space-y-0">
@@ -117,8 +121,30 @@ const DocumentsItem = () => {
           </div>
         </div>
 
+
         <div className="mt-10 space-y-4 relative z-10">
-          {filteredDocuments.map((doc, index) => (
+          <div className="p-4 bg-lacampana-white rounded-tl-lg rounded-bl-lg rounded-tr-lg flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            <div className="w-full md:w-auto">
+              <h3 className="text-lg font-bold font-open-sans text-left">
+                Solicitud de crédito covinoc
+              </h3>
+              <p className="text-gray-500 text-sm font-open-sans text-left">
+                Lorem ipsum dolor sit amet consectetur. Pulvinar dignissim
+                pulvinar ut lorem pharetra.
+              </p>
+            </div>
+            <button className="border border-lacampana-gray1 text-lacampana-gray1 inline-flex self-start py-2 px-4 sm:py-2 sm:px-8 font-montserrat rounded-tl-full rounded-bl-full rounded-tr-full hover:bg-lacampana-gray1 hover:text-white hover:border-lacampana-gray1 transition hover:scale-90 transition duration-300 ease-in-out">
+              Descargar
+            </button>
+
+          </div>
+
+          {[
+            "Formulario de crédito persona natural",
+            "Formulario de crédito persona juridica",
+            "Pesos y espesores de láminas de acero",
+            "Láminas de acero por atados",
+          ].map((title, index) => (
             <div
               key={doc.index}
               className="p-4 bg-lacampana-white rounded-tl-lg rounded-bl-lg rounded-tr-lg flex flex-col md:flex-row justify-between items-start md:items-center items-start gap-4"
@@ -158,9 +184,14 @@ const DocumentsItem = () => {
           ))}
         </div>
 
-        <button className="mt-8 border-2 bg-lacampana-red1 text-lacampana-white px-8 py-2 text-sm sm:text-base font-montserrat rounded-tl-full rounded-bl-full rounded-tr-full w-auto md:w-auto relative z-10 border border-lacampana-red1 hover:bg-white hover:text-lacampana-red1 hover:border-lacampana-red1 transition hover:scale-90 transition duration-300 ease-in-out">
+
+        <button
+          className="mt-8 bg-lacampana-red1 text-lacampana-white px-8 py-2 text-sm sm:text-base font-montserrat rounded-tl-full rounded-bl-full rounded-tr-full w-auto md:w-auto relative z-10 border border-lacampana-red1 hover:bg-white hover:text-lacampana-red1 hover:border-lacampana-red1 transition hover:scale-90 transition duration-300 ease-in-out"
+          onClick={loadMoreDocuments}
+        >
           Cargar más documentos
         </button>
+
       </div>
     </div>
   );

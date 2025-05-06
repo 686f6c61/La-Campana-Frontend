@@ -2,12 +2,7 @@ import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import RadioSelect from "../../common/RadioSelect";
 
-const ContactForm = ({
-  origin = "",
-  padding = "p-8",
-  margin = "my-4",
-  title,
-}) => {
+const ContactForm = ({ origin = "", title }) => {
   const form = useRef();
   const [formData, setFormData] = useState({
     user_name: "",
@@ -21,10 +16,7 @@ const ContactForm = ({
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handlePolicySelection = (value) => {
@@ -47,108 +39,85 @@ const ContactForm = ({
         import.meta.env.VITE_PUBLIC_KEY
       )
       .then(
-        () => {
-          alert("Mensaje enviado correctamente");
-        },
-        (error) => {
-          console.error("Error al enviar:", error);
-        }
+        () => alert("Mensaje enviado correctamente"),
+        (error) => console.error("Error al enviar:", error)
       );
   };
 
   return (
-    <div
-      className={`md:w-[500px] bg-white rounded-lg drop-shadow-2xl ${padding} ${margin}`}
-    >
+    <div className="flex flex-col w-full pl-32">
       {title && (
-        <div className="mb-8 text-center">
-          <h2 className="text-3xl font-bold font-antonio leading-snug">
-            {title}
-          </h2>
-        </div>
+        <h2 className="text-2xl md:text-3xl font-bold font-antonio text-lacampana-gray1 mb-6 text-start">
+        {title}
+      </h2>
       )}
 
-      <form ref={form} onSubmit={sendEmail}>
-        <input type="hidden" name="origin" value={origin} />
+      <div
+        className="flex w-[90%] md:w-[420px] bg-white rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.2)] p-6 mb-20 items-center"
+      >
+        <form ref={form} onSubmit={sendEmail}>
+          <input type="hidden" name="origin" value={origin} />
 
-        <div className="space-y-4">
-          <input
-            type="text"
-            name="user_name"
-            placeholder="Nombre completo"
-            required
-            className="w-full border border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-red-500 focus:outline-none"
-            onChange={handleChange}
-          />
-          <input
-            type="text"
-            name="user_city"
-            placeholder="Ciudad"
-            required
-            className="w-full border border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-red-500 focus:outline-none"
-            onChange={handleChange}
-          />
-          <input
-            type="email"
-            name="user_email"
-            placeholder="Correo electrónico"
-            required
-            className="w-full border border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-red-500 focus:outline-none"
-            onChange={handleChange}
-          />
-          <input
-            type="tel"
-            name="user_phone"
-            placeholder="Teléfono de contacto"
-            required
-            pattern="[0-9]{8,}"
-            title="Debe contener al menos 8 dígitos numéricos"
-            className="w-full border border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-red-500 focus:outline-none"
-            onChange={handleChange}
-          />
-          <textarea
-            name="message"
-            placeholder="Mensaje breve"
-            rows="4"
-            required
-            className="w-full border border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-red-500 focus:outline-none"
-            onChange={handleChange}
-          ></textarea>
-
-          {/* Política de datos con RadioSelect */}
-          <RadioSelect
-            options={[
+          <div className="space-y-4">
+            {[
+              { name: "user_name", placeholder: "Nombre completo", type: "text" },
+              { name: "user_city", placeholder: "Ciudad", type: "text" },
+              { name: "user_email", placeholder: "Correo electrónico", type: "email" },
               {
-                label: (
-                  <>
-                    {" "}
-                    <p className="text-xs text-lacampana-gray2">
-                      He leído y acepto la politica de tratamiento de datos
-                      personales{" "}
-                    </p>
-                  </>
-                ),
-                value: "accepted",
+                name: "user_phone",
+                placeholder: "Teléfono de contacto",
+                type: "tel",
+                pattern: "[0-9]{8,}",
+                title: "Debe contener al menos 8 dígitos numéricos",
               },
-            ]}
-            selectedOption={formData.policyAccepted ? "accepted" : "dennegado"}
-            borderColorSelected="border-lacampana-red2"
-            onSelectionChange={handlePolicySelection}
-            bgColorSelected="bg-lacampana-red2"
-            labelClassName="text-sm"
-          />
+            ].map((field) => (
+              <input
+                key={field.name}
+                {...field}
+                required
+                onChange={handleChange}
+                className="w-full border border-gray-200 rounded-lg p-3 text-sm placeholder-gray-400 focus:ring-2 focus:ring-lacampana-red1 focus:outline-none"
+              />
+            ))}
 
-          {/* Botón alineado a la izquierda */}
-          <div className="pt-4 text-left">
-            <button
-              type="submit"
-              className="bg-lacampana-red1 text-lacampana-white px-12 py-2 text-sm sm:text-base font-montserrat rounded-tl-full rounded-bl-full rounded-tr-full border border-lacampana-red1 hover:bg-white hover:text-lacampana-red1 hover:border-lacampana-red1 transition duration-300 ease-in-out hover:scale-90"
-            >
-              Enviar
-            </button>
+            <textarea
+              name="message"
+              placeholder="Mensaje breve"
+              rows="4"
+              required
+              onChange={handleChange}
+              className="w-full border border-gray-200 rounded-lg p-3 text-sm placeholder-gray-400 focus:ring-2 focus:ring-lacampana-red1 focus:outline-none"
+            ></textarea>
+
+            <RadioSelect
+              options={[
+                {
+                  label: (
+                    <p className="text-xs text-lacampana-gray2 text-start">
+                      He leído y acepto la política de tratamiento de datos personales
+                    </p>
+                  ),
+                  value: "accepted",
+                },
+              ]}
+              selectedOption={formData.policyAccepted ? "accepted" : "denegado"}
+              borderColorSelected="border-lacampana-red2"
+              onSelectionChange={handlePolicySelection}
+              bgColorSelected="bg-lacampana-red2"
+              labelClassName="text-sm"
+            />
+
+            <div className="pt-3 text-left">
+              <button
+                type="submit"
+                className="bg-lacampana-red1 text-white px-10 py-2 text-sm font-montserrat rounded-full border border-lacampana-red1 hover:bg-white hover:text-lacampana-red1 transition duration-300 ease-in-out hover:scale-95"
+              >
+                Enviar
+              </button>
+            </div>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   );
 };

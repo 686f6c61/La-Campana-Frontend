@@ -14,58 +14,50 @@ const FAQ = ({ questions }) => {
   };
 
   return (
-    <div className="max-w-[700px] w-full self-center flex flex-col gap-4 p-2">
+    <div className="max-w-3xl w-full mx-auto flex flex-col gap-4 p-4">
       {questions.map((question) => {
         const isOpen = openId === question.id;
 
         return (
           <div
             key={question.id}
-            className="transition-all bg-white font-antonio rounded-2xl"
+            className={`overflow-hidden transition-all duration-300 rounded-2xl ${
+              isOpen ? "" : "shadow-xl"
+            } bg-white`}
           >
+            {/* Botón título */}
             <button
               onClick={() => toggle(question.id)}
-              className={`w-full text-left text-base font-normal px-4 py-3 flex justify-between items-center ${
+              className={`w-full text-left px-6 py-4 flex justify-between items-center text-base font-antonio transition-colors duration-300 rounded-2xl ${
                 isOpen
-                  ? "bg-lacampana-red1 text-white rounded-2xl"
-                  : "text-lacamapana-gray1"
+                  ? "bg-lacampana-red1 text-white"
+                  : "text-lacampana-gray1 bg-white"
               }`}
             >
               <span>{question.question}</span>
               <IoIosArrowDown
-                className={`text-xl transition-transform duration-300 ${
-                  isOpen
-                    ? "rotate-180 text-white"
-                    : "rotate-0 text-lacamapana-gray1"
+                className={`text-2xl transition-transform duration-300 ${
+                  isOpen ? "rotate-180 text-white" : "rotate-0 text-lacampana-gray1"
                 }`}
               />
             </button>
 
-            <div
-              ref={(el) => setRef(el, question.id)}
-              style={{
-                height: isOpen
-                  ? `${contentRefs.current[question.id]?.scrollHeight}px`
-                  : "0px",
-              }}
-              className="overflow-hidden transition-all duration-500 ease-in-out"
-            >
-              <div className="px-4 pt-3 pb-4 text-left font-open-sans space-y-2">
-                {Array.isArray(question.answer) ? (
-                  <div className="bg-lacampana-white text-black text-sm font-normal px-4 py-3 rounded-2xl transform md:-translate-x-5 -translate-x-2">
+            {/* Contenido desplegable */}
+            {isOpen && (
+              <div className="px-6 pb-5 pt-2">
+                <div className="bg-gray-100 text-gray text-sm font-antonio w-full px-6 py-4 flex justify-between  rounded-2xl text-left">
+                  {Array.isArray(question.answer) ? (
                     <ul className="list-decimal list-inside space-y-1">
                       {question.answer.map((item, index) => (
                         <li key={index}>{item}</li>
                       ))}
                     </ul>
-                  </div>
-                ) : (
-                  <div className="bg-lacampana-white text-black text-sm font-normal px-4 py-3 rounded-b-2xl">
+                  ) : (
                     <p>{question.answer}</p>
-                  </div>
-                )}
+                  )}
+                </div>
               </div>
-            </div>
+            )}
           </div>
         );
       })}

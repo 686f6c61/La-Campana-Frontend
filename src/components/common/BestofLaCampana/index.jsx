@@ -22,16 +22,17 @@ const BestOfLaCampana = () => {
   const category = categories.find(cat => cat.id === "tuberia");
 	const [categoryImage, setCategoryImage] = useState(category?.image || "")
 
-  const filteredProductLg = products?.slice(0, 5)
-  const filteredProductSm = products?.slice(0, 4)
+  const filteredProductLg = products && products?.slice(0, 5)
+  const filteredProductSm = products && products?.slice(0, 4)
 
   if (isLoading) return <p>Cargando...</p>;
   if (error) return <p>Error al cargar los datos.</p>;
 
   
   return (
-    <section className="max-w-screen-desktop w-full justify-self-center mx-auto bg-white">
+    <section className="max-w-screen-desktop w-full justify-self-center mx-auto bg-white "> 
       <div className="px-4 flex flex-col items-center justify-center mb-20">
+      <div className="fixed top-0 right-0 h-full w-[20vw] bg-gradient-to-l from-[#ff0000]/10 via-[#ff0000]/5 to-transparent z-0 pointer-events-none" />
         <h2 className="text-center text-3xl font-bold font-antonio mb-8">
           Lo mejor de la <span className="text-red-600">campana</span>
         </h2>

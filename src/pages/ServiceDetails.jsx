@@ -34,12 +34,10 @@ const ServiceDetails = () => {
             description={
               serviceData.customDescription || serviceData.description
             }
-            sizeTitle={sizeTitleValue}
-            mt={mtValue}
-            sizeTitleMobile={sizeTitleMobileValue}
-            bgTitlePaddingMobile={paddingTitleValue}
-            sizeMobile="text-3xl"
-            size="text-5xl"
+            sizeTitle="tablet:text-[6rem] lg:text-[10rem]"
+            sizeTitleMobile="text-[60px]"
+            mt="mt-14"
+
           >
             {/* <div className="w-full md:mt-20 mt-0 tablet:w-1/2 flex-none h-[300px] tablet:h-[350px] rounded-tl-2xl overflow-hidden relative ">
               <div className="absolute left-0 right-0 bottom-0 top-0 flex justify-center items-center ">
@@ -98,9 +96,9 @@ const ServiceDetails = () => {
           <IntroductoryText
             title={
               <>
-                <h3 className="mb-5 w-full tablet:w-[500px]">
-                  Preguntas
-                  <span className="text-lacampana-red2"> frecuentes</span>
+                <h3 className="text-start">
+                  Preguntas{" "}
+                  <span className="text-lacampana-red2">Frecuentes</span>
                 </h3>
                 <FAQ questions={serviceData.faq} />
               </>

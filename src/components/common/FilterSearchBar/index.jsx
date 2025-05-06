@@ -155,7 +155,7 @@ const FilterSearchBar = ({
               } text-white px-10 py-2 rounded-tl-full rounded-bl-full rounded-tr-full hover:bg-red-600`}
               onClick={handleFilterClick}
             >
-              {selectedCategory ? formatCategoryName(getCategoryNameById(selectedCategory)) : "Filtro"}
+              Filtro
             </button>
             
             {/* Dropdown menu for categories */}

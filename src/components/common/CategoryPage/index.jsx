@@ -18,7 +18,7 @@ const BreadCrumbs = ({ path }) => {
   const pathUp =
     path && path.charAt(0).toUpperCase() + path.slice(1).toLowerCase();
   return (
-    <div className="flex justify-left ">
+    <div className="hidden lg:flex lg:justify-start">
       <ol class="list-reset py-4 pl-4 rounded flex bg-grey-light text-lacampana-gray2">
         <li class="px-2">
           <a
@@ -226,7 +226,6 @@ const CategoryPage = () => {
             className="bg-lacampana-red2 text-white px-4 py-1 rounded-full text-sm"
             onClick={() => setSelectedFilters({ espesor: "", longitud: "", ancho: "" })}
           >
-            Limpiar filtros
           </button>
         </div>
       </div>
@@ -307,7 +306,7 @@ const CategoryPage = () => {
               className="text-sm text-lacampana-red2 hover:underline"
               onClick={() => setSelectedFilters({ espesor: "", longitud: "", ancho: "" })}
             >
-
+            
             </button>
           </div>
         </aside>
