@@ -45,7 +45,7 @@ const ContactForm = ({ origin = "", title }) => {
   };
 
   return (
-    <div className="flex flex-col w-full pl-32">
+    <div className="flex flex-col w-full pl-10 lg:pl-32">
       {title && (
         <h2 className="text-2xl md:text-3xl font-bold font-antonio text-lacampana-gray1 mb-6 text-start">
         {title}

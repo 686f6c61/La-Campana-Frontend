@@ -46,6 +46,21 @@ const BlogsGallery = () => {
       }, 300);
     }
   }, []);
+  useEffect(() => {
+    if (blogDetailsSearch) {
+      if (blogDetailsSearch.startsWith("categoryId=")) {
+        const categoryId = blogDetailsSearch.split("=")[1];
+        handleRadioChange(categoryId);
+        setSelectedCategory(categoryId); // Marcar el radio visualmente
+      } else {
+        handleSearchBar(blogDetailsSearch);
+      }
+
+      setTimeout(() => {
+        window.scrollTo({ top: 950, behavior: "smooth" });
+      }, 300);
+    }
+  }, []);
 
   const handleLoadMore = () => setNumRenders(numRenders + 1);
   const handleRadioChange = (categoryId) => {
@@ -77,21 +92,6 @@ const BlogsGallery = () => {
   };
   const allCategories = [cleanFilterCategory, ...categories];
 
-  useEffect(() => {
-    if (blogDetailsSearch) {
-      if (blogDetailsSearch.startsWith("categoryId=")) {
-        const categoryId = blogDetailsSearch.split("=")[1];
-        handleRadioChange(categoryId);
-        setSelectedCategory(categoryId); // Marcar el radio visualmente
-      } else {
-        handleSearchBar(blogDetailsSearch);
-      }
-
-      setTimeout(() => {
-        window.scrollTo({ top: 950, behavior: "smooth" });
-      }, 300);
-    }
-  }, []);
 
   return (
     <section className="flex flex-col pb-20">
