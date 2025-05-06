@@ -5,81 +5,22 @@ import additionalDocuments from "../../../src/data/documentsData.jsx";
 import IntroductoryText from "../../sections/common/IntroductoryText.jsx";
 
 const DocumentsItem = () => {
+  const [selectedOption, setSelectedOption] = useState("Formularios");
+
   const selectDocuments = ["Formularios", "Normas técnicas", "Todos"];
-  const [selectedOption, setSelectedOption] = useState("Todos");
+
+
   const [loadedDocs, setLoadedDocs] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
 
-  const allDocuments = [
-    {
-      title: "Solicitud de crédito covinoc",
-      category: "Formularios",
-      description:
-        "Lorem ipsum dolor sit amet consectetur. Pulvinar dignissim pulvinar ut lorem pharetra.",
-      id: 1,
-    },
-    {
-      title: "Formulario de crédito persona natural",
-      category: "Formularios",
-      description:
-        "Lorem ipsum dolor sit amet consectetur. Pulvinar dignissim pulvinar ut lorem pharetra.",
-      id: 2,
-    },
-    {
-      title: "Formulario de crédito persona juridica",
-      category: "Formularios",
-      description:
-        "Lorem ipsum dolor sit amet consectetur. Pulvinar dignissim pulvinar ut lorem pharetra.",
-      id: 3,
-    },
-    {
-      title: "Pesos y espesores de láminas de acero",
-      category: "Normas técnicas",
-      description:
-        "Lorem ipsum dolor sit amet consectetur. Pulvinar dignissim pulvinar ut lorem pharetra.",
-      id: 4,
-    },
-    {
-      title: "Láminas de acero por atados",
-      category: "Normas técnicas",
-      description:
-        "Lorem ipsum dolor sit amet consectetur. Pulvinar dignissim pulvinar ut lorem pharetra.",
-      id: 5,
-    },
-    ...loadedDocs,
-  ];
-
-  const filteredDocuments = allDocuments.filter((doc) => {
-    const matchesSearch = doc.title
-      .toLowerCase()
-      .includes(searchTerm.toLowerCase());
-
-    if (selectedOption === "Todos") return matchesSearch;
-
-    return matchesSearch && doc.category === selectedOption;
-  });
 
   const loadMoreDocuments = () => {
-    setLoadedDocs((prevDocs) => {
-      return [
-        ...prevDocs,
-        ...additionalDocuments.filter(
-          (doc) => !prevDocs.some((existingDoc) => existingDoc.id === doc.id)
-        ),
-      ];
-    });
+    setLoadedDocs((prevDocs) => [...prevDocs, ...additionalDocuments]);
   };
 
   return (
     <div className="relative w-full flex flex-col items-center justify-center bg-white pb-20">
       <div className="relative z-10 text-center w-full max-w-screen-xl">
         <IntroductoryText
-          sizeTitle="tablet:text-[6rem] lg:text-[6rem]"
-          sizeTitleMobile="text-[80px]"
-          bgTitleMargin="mt-10" //
-          justify="center"
-          right="right-0"
-          left="left-0"
           title={
             <>
               Repositorio de{" "}
@@ -100,8 +41,6 @@ const DocumentsItem = () => {
         <div className="mt-6 flex flex-col md:flex-row justify-between  w-full relative z-10 space-y-4 md:space-y-0">
           <div className="w-full md:w-auto flex justify-center md:justify-start">
             <RadioSelect
-              bgColorSelected="bg-lacampana-red1"
-              borderColorSelected="border-lacampana-red1"
               options={selectDocuments}
               selectedOption={selectedOption}
               onSelectionChange={setSelectedOption}
@@ -112,12 +51,7 @@ const DocumentsItem = () => {
           </div>
 
           <div className="drop-shadow-lg flex justify-center w-full md:w-[300px] md:h-[40px] md:p-0 p-8">
-            <SearchBar
-              onInputChange={(value) => setSearchTerm(value)}
-              onSubmit={(value) => setSearchTerm(value)}
-              placeholder="Buscar archivo..."
-              defaultValue={searchTerm}
-            />
+            <SearchBar placeholder="Buscar archivo..." />
           </div>
         </div>
 
@@ -146,12 +80,12 @@ const DocumentsItem = () => {
             "Láminas de acero por atados",
           ].map((title, index) => (
             <div
-              key={doc.index}
+              key={index}
               className="p-4 bg-lacampana-white rounded-tl-lg rounded-bl-lg rounded-tr-lg flex flex-col md:flex-row justify-between items-start md:items-center items-start gap-4"
             >
               <div className="w-full md:w-auto">
                 <h3 className="text-lg font-bold font-open-sans text-left">
-                  {doc.title}
+                  {title}
                 </h3>
                 <p className="text-gray-500 text-sm font-open-sans text-left">
                   Lorem ipsum dolor sit amet consectetur. Pulvinar dignissim
@@ -163,6 +97,7 @@ const DocumentsItem = () => {
               </button>
             </div>
           ))}
+
 
           {loadedDocs.map((doc, index) => (
             <div
@@ -177,7 +112,7 @@ const DocumentsItem = () => {
                   {doc.description}
                 </p>
               </div>
-              <button className="border-2 border-lacampana-gray1 text-lacampana-gray1 inline-flex self-start py-2 px-4 sm:py-2 sm:px-8 font-montserrat rounded-tl-full rounded-bl-full rounded-tr-full hover:bg-lacampana-gray1 hover:text-white hover:border-lacampana-gray1 transition hover:scale-90 transition duration-300 ease-in-out">
+              <button className="border border-lacampana-gray1 text-lacampana-gray1 inline-flex self-start py-2 px-4 sm:py-2 sm:px-8 font-montserrat rounded-tl-full rounded-bl-full rounded-tr-full hover:bg-lacampana-gray1 hover:text-white hover:border-lacampana-gray1 transition hover:scale-90 transition duration-300 ease-in-out">
                 Descargar
               </button>
             </div>
