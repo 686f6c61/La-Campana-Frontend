@@ -6,6 +6,7 @@ import {
   useGetBlogsQuery,
 } from "../../store/reducers/apiSlice";
 import { useLocation } from "react-router";
+import RadioSelect from "../../components/common/RadioSelect";
 
 const MAX_NUM_RENDERS = 9;
 
@@ -14,6 +15,7 @@ const BlogsGallery = () => {
   const [numRenders, setNumRenders] = useState(1); // Número de veces que se a clickeado el boton "Cargar más"
   const [blogsGallery, setBlogsGallery] = useState(); // Los datos de los Blogs de la galería
   const { state: blogDetailsSearch } = useLocation();
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
   const {
     data: categories,
@@ -46,11 +48,13 @@ const BlogsGallery = () => {
   }, []);
 
   const handleLoadMore = () => setNumRenders(numRenders + 1);
-  const handleRadioFilter = (event, categoryId) => {
-    if (event.target.checked) {
-      setQuery([...query, `categoryId=${categoryId}`]);
+  const handleRadioChange = (categoryId) => {
+    setSelectedCategory(categoryId);
+
+    if (categoryId === "clear-filters") {
+      setQuery([]);
     } else {
-      setQuery(query.filter((value) => !value.includes(categoryId)));
+      setQuery([`categoryId=${categoryId}`]);
     }
   };
   const handleSearchBar = (searchTerm) => {
@@ -67,23 +71,47 @@ const BlogsGallery = () => {
   if (isLoadingCategories) return <p>Cargando...</p>;
   if (errorCategories) return <p>Error al cargar los datos.</p>;
 
+  const cleanFilterCategory = {
+    _id: "clear-filters",
+    name: "Limpiar",
+  };
+  const allCategories = [cleanFilterCategory, ...categories];
+
+  useEffect(() => {
+    if (blogDetailsSearch) {
+      if (blogDetailsSearch.startsWith("categoryId=")) {
+        const categoryId = blogDetailsSearch.split("=")[1];
+        handleRadioChange(categoryId);
+        setSelectedCategory(categoryId); // Marcar el radio visualmente
+      } else {
+        handleSearchBar(blogDetailsSearch);
+      }
+
+      setTimeout(() => {
+        window.scrollTo({ top: 950, behavior: "smooth" });
+      }, 300);
+    }
+  }, []);
+
   return (
     <section className="flex flex-col pb-20">
       <header className="flex flex-col tablet:flex-row justify-between">
         <div className="flex flex-wrap w-full">
-          {categories?.map((category) => (
-            <CategoryRadio
-              key={`blogs-category-filter-${category._id}`}
-              id={category._id}
-              name={category.name}
-              onClick={() => handleRadioFilter(event, category._id)}
-            />
-          ))}
+          <RadioSelect
+            options={allCategories.map((category) => ({
+              value: category._id,
+              label: category.name,
+            }))}
+            selectedOption={selectedCategory}
+            onSelectionChange={handleRadioChange}
+            bgColorSelected="bg-lacampana-red2"
+            borderColorSelected="border-lacampana-red2"
+          />
         </div>
         <div className="drop-shadow-lg flex justify-center">
           <SearchBar
             onSubmit={handleSearchBar}
-            defaultValue={blogDetailsSearch}
+            defaultValue=""
             placeholder="Buscar noticia..."
           />
         </div>
@@ -101,7 +129,11 @@ const BlogsGallery = () => {
                 id={blog._id}
                 title={blog.name}
                 description={blog.body}
-                category={blog.blogCategoryId.name}
+                category={
+                  blog.blogCategoryId
+                    ? blog.blogCategoryId.name
+                    : "Categoría no disponible"
+                }
                 image={blog.image}
                 publicationDate={blog.createdAt}
                 blogsGallery={true}
@@ -125,18 +157,22 @@ const BlogsGallery = () => {
 
 export default BlogsGallery;
 
-const CategoryRadio = ({ id, name, onClick }) => {
-  return (
-    <div className="form-control">
-      <label className="label cursor-pointer gap-2">
-        <input
-          onClick={onClick}
-          type="checkbox"
-          name={`radio-filter-news-${id}`}
-          className="radio w-4 h-4 checked:bg-lacampana-red2"
-        />
-        <span className="text-p2-desktop">{name}</span>
-      </label>
-    </div>
-  );
-};
+// const CategoryRadio = ({ id, name, onClick, isChecked }) => {
+//   return (
+//     <div className="form-control">
+//       <label className="label cursor-pointer gap-2">
+//         <input
+//           onClick={(event) => onClick(event, id)}
+//           type="checkbox"
+//           name={`radio-filter-news-${id}`}
+//           className="radio w-4 h-4 border-2 checked:border-lacampana-red2"
+//           checked={isChecked}
+//         />
+//         <div className="custom-radio">
+//           {isChecked && <span className="inner-circle" />}
+//         </div>
+//         <span className="text-p2-desktop">{name}</span>
+//       </label>
+//     </div>
+//   );
+// };

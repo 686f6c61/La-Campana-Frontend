@@ -23,7 +23,7 @@ const ActionButton = ({
         ? "opacity-50 pointer-events-none"
         : `hover:bg-${textColor} hover:text-${bgColor} hover:scale-90`
     } 
-    border 
+    border-2
     ${borderColor ? `border-${borderColor}` : `border-${bgColor}`} 
     bg-${bgColor} 
     text-${textColor} 
@@ -31,6 +31,7 @@ const ActionButton = ({
     w-${width} 
     ${padding} 
     ${margin}
+    h-[42px]
     transition duration-300 ease-in-out
   `;
 

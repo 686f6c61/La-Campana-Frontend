@@ -2,6 +2,7 @@ import BlogCard from "../common/BlogCard";
 import CardsCarousel from "../common/CardsCarousel";
 
 const RelatedBlogs = ({ relatedBlogs }) => {
+  console.log(relatedBlogs);
   return (
     <section className="text-start flex flex-col gap-4">
       <h4 className="text-lacampana-red2 text-center tablet:text-center desktop:text-left">

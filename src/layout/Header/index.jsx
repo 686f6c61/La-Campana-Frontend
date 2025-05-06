@@ -10,11 +10,15 @@ import categories from "../../utils/categories";
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import { useSelector } from "react-redux";
+import { useGetProductsQuery } from "../../store/reducers/apiSlice";
 
 const Header = () => {
   const [scrolling, setScrolling] = useState(false);
   const cart = useSelector((state) => state.cart);
   const cartItemCount = cart.length;
+
+  const { data: products } = useGetProductsQuery();
+  console.log(products);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,10 +38,11 @@ const Header = () => {
 
   return (
     <header
-      className={`pl-5 pr-5 bg-lacampana-red2 flex justify-evenly items-center ${!scrolling
+      className={`pl-5 pr-5 bg-lacampana-red2 flex justify-evenly items-center ${
+        !scrolling
           ? "h-[100px]"
           : "bg-lacampana-red2 fixed top-0 w-full z-50 shadow-lg h-[70px]"
-        } transition-all duration-300 ease-in-out`}
+      } transition-all duration-300 ease-in-out`}
     >
       <nav className="w-full max-w-7xl flex items-center justify-between">
         <div className="navbar-start">
@@ -45,10 +50,11 @@ const Header = () => {
             <img
               src="/images/logo.png"
               alt="logo"
-              className={`transition-all duration-300 ease-in-out object-cover ${scrolling
+              className={`transition-all duration-300 ease-in-out object-cover ${
+                scrolling
                   ? "w-[130px] tablet:w-[200px]"
                   : "w-[130px] tablet:w-[230px]"
-                }`}
+              }`}
             />
           </Link>
         </div>
@@ -82,7 +88,6 @@ const Header = () => {
                   </div>
                 }
               />
-
             </ul>
             <MenuSidebar categories={categories} scrolling={scrolling} />
           </div>

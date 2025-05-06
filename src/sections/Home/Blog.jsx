@@ -38,7 +38,7 @@ const Blog = () => {
                 key={`blog-home-${blog._id}`}
                 id={blog._id}
                 title={blog.name}
-                category={blog.category}
+                category={blog.blogCategoryId.name}
                 image={blog.image}
                 publicationDate={blog.createdAt}
                 blogsGallery={false}

@@ -6,7 +6,7 @@ const BlogCard = ({
   id,
   title,
   image,
-  category = "Categoría",
+  category,
   publicationDate,
   description = "",
   blogsGallery,

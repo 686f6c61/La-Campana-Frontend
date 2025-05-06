@@ -43,7 +43,16 @@ const BlogDetails = () => {
   return (
     <article className="flex flex-col items-center px-4 py-8 tablet:py-16 tablet:px-8 pb-16 pt-16">
       <div className="flex flex-col w-full max-w-7xl">
-        <IntroductoryText title={blog.name} bgTitle="Blog" justify="center" />
+        <IntroductoryText
+          sizeTitle="tablet:text-[6rem] lg:text-[6rem]"
+          sizeTitleMobile="text-[80px]"
+          bgTitleMargin="mt-10" //
+          title={blog.name}
+          justify="center"
+          right="right-0"
+          bgTitle="Blog"
+          left="left-0"
+        />
         <header className="breadcrumbs text-sm mb-5">
           <ul className="text-lacampana-gray2">
             <li>
@@ -67,7 +76,13 @@ const BlogDetails = () => {
                 />
               </div>
             </section>
-            <Novelty noveltyItems={categories} />
+            <Novelty
+              noveltyItems={categories}
+              onSelectCategory={(categoryId) =>
+                navigate("/blog", { state: `categoryId=${categoryId}` })
+              }
+            />
+
             <RelatedBlogs relatedBlogs={relatedBlogs} />
           </aside>
         </main>

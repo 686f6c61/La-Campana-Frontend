@@ -1,12 +1,24 @@
 import { useRef } from "react";
 import { IoIosSearch } from "react-icons/io";
 
-const SearchBar = ({ placeholder, className, onSubmit, defaultValue }) => {
+const SearchBar = ({
+  placeholder,
+  className,
+  onSubmit,
+  defaultValue,
+  onInputChange,
+}) => {
   let inputRef = useRef("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
     onSubmit(inputRef.current.value);
+  };
+
+  const handleInputChange = () => {
+    if (onInputChange) {
+      onInputChange(inputRef.current.value);
+    }
   };
 
   return (
@@ -20,6 +32,7 @@ const SearchBar = ({ placeholder, className, onSubmit, defaultValue }) => {
         placeholder={placeholder}
         ref={inputRef}
         defaultValue={defaultValue}
+        onChange={handleInputChange}
       />
       <button className="p-2 bg-lacampana-red2">
         <IoIosSearch className="text-white w-[20px] h-[20px]" />

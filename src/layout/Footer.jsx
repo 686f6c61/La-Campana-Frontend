@@ -75,7 +75,7 @@ const Footer = () => {
                 type="text"
                 placeholder="Correo electrónico"
               />
-              <button className="lacampana-btn bg-lacampana-red2 text-white px-8 py-2 w-full border-2 border-lacampana-red2/0 hover:scale-90 hover:bg-white hover:text-lacampana-red2 hover:border-lacampana-red2 transition duration-300 ease-in-out">
+              <button className="lacampana-btn h-[44px] bg-lacampana-red2 text-white px-8 py-2 w-full border-2 border-lacampana-red2/0 hover:scale-90 hover:bg-white hover:text-lacampana-red2 hover:border-lacampana-red2 transition duration-300 ease-in-out">
                 Suscribirme
               </button>
               <label className="flex gap-2 cursor-pointer">
