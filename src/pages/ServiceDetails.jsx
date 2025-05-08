@@ -113,12 +113,18 @@ const ServiceDetails = () => {
             ServiceDetails={true}
             flexJustify="justify-start"
           >
-            <div className="flex flex-col">
-              <h2 className="text-center tablet:text-start mb-5 mt-10 tablet:mt-0 text-2xl tablet:text-4xl">
-                Contacte un <span className="text-lacampana-red2">asesor</span>
-              </h2>
-              <Form origin="Página de Servicios" padding="p-12" margin="" />
-            </div>
+            <Form
+              title={
+                <>
+                  Contacte un <span className="text-lacampana-red2">asesor</span>
+
+                </>
+              }
+
+              origin="Página de Servicios"
+              padding="p-12"
+              margin="md:transform -translate-y-12"
+            />
           </IntroductoryText>
         </div>
       </div>
