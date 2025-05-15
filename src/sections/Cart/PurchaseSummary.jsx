@@ -35,7 +35,7 @@ const PurchaseSummary = ({ subtotal, city = "Bogotá" }) => {
                   </div>
                   <div className="flex flex-col gap-4">
                     <h6>Contra entrega enviar a <span className="bg-lacampana-gray4 rounded-full px-2 text-p2-desktop">{city}</span></h6>
-                    <Link to="micuenta/direcciones" className="text-lacampana-red2 font-bold">Cambiar direccion</Link>
+                    <Link to="/micuenta/direcciones" className="text-lacampana-red2 font-bold">Cambiar direccion</Link>
                   </div>
                 </div>
               </td>

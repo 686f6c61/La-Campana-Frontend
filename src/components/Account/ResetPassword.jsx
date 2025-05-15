@@ -21,7 +21,7 @@ const ResetPassword = () => {
     try {
       // const response = await resetPassword({ token, newPassword }).unwrap();
       const response = await fetch(
-        `http://localhost:3000/api/users/reset-password`,
+        `https://la-campana-backend-production.up.railway.app/api`,
         {
           method: "POST",
           headers: {

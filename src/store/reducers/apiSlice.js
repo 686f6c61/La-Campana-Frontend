@@ -26,12 +26,9 @@ export const apiSlice = createApi({
       providesTags: ['Products']
     }),
     getProductsByText: builder.query({
-      query: (params) => {
-        return `products/${params.toString()}`;
-      },
+      query: (params) => `products/${params.toString()}`,
       keepUnusedDataFor: 600,
     }),
-    // Sacados del endpoints anidado y movidos al nivel correcto
     getProductComments: builder.query({
       query: (productId) => `/product-comments?productId=${productId}`,
       providesTags: ['Comments']
@@ -44,7 +41,6 @@ export const apiSlice = createApi({
       }),
       invalidatesTags: ['Comments']
     }),
-    // Cambia el endpoint a una mutación
     registerUser: builder.mutation({
       query: (newUser) => ({
         url: "users/register",
@@ -74,8 +70,29 @@ export const apiSlice = createApi({
         body: data, 
       }),
     }),
+
+    // ✅ Estos son los nuevos endpoints que estaban mal posicionados antes:
+    getUserAddresses: builder.query({
+      query: (userId) => `users/${userId}/addresses/`,
+    }),
+
+    deleteUserAddress: builder.mutation({
+      query: ({ userId, addressId }) => ({
+        url: `users/${userId}/addresses/${addressId}`,
+        method: 'DELETE',
+      }),
+    }),
+
+    updateUserAddress: builder.mutation({
+      query: ({ userId, addressId, data }) => ({
+        url: `users/${userId}/addresses/${addressId}`,
+        method: 'PUT',
+        body: data,
+      }),
+    }),
   }),
 });
+
 
 export const {
   useGetBlogsQuery,
@@ -89,4 +106,7 @@ export const {
   useRegisterUserMutation,
   useForgotPasswordMutation, 
   useResetPasswordMutation,
+  useGetUserAddressesQuery,
+  useDeleteUserAddressMutation,
+  useUpdateUserAddressMutation,
 } = apiSlice;
