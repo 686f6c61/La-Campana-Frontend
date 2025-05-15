@@ -94,7 +94,7 @@ const footerInfo = {
       id: 1,
       title: "YouTube",
       link: "https://www.youtube.com/channel/UCSB_jR1084XFuvYcR4koPWQ?view_as=subscriber",
-      icon: "/svg/socialMedia/youtube.svg",
+      icon: "/svg/socialMedia/youtube.png",
     },
     {
       id: 2,

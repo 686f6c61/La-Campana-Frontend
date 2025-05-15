@@ -7,6 +7,7 @@ import RelatedProducts from "../sections/Cart/RelatedProducts";
 import PurchaseSummary from "../sections/Cart/PurchaseSummary";
 import Highlighted from "../sections/Cart/Highlighted";
 import TestAdd from "../components/Test/TestAdd";
+import ComplementSection from "../components/common/ComplementSection";
 
 const Cart = () => {
   const cartProducts = useSelector((state) => state.cart);
@@ -33,12 +34,13 @@ const Cart = () => {
         right="right-0"
         left="left-0"
       />
-      <div className="flex flex-col tablet:flex-row gap-4 pt-10 pb-10">
-        <main className="w-full tablet:w-2/3 flex flex-col gap-16">
+      <div className="flex flex-col tablet:flex-row gap-8 pt-10 pb-10">
+        <main className="w-full tablet:w-2/3 flex flex-col gap-2">
           {/* TABLA DE PRODCUTOS DEL CARRITO */}
           <AddedProducts cartProducts={cartProducts} />
           {/* PRODUCTOS SIMILARES */}
-          <RelatedProducts />
+        
+          <RelatedProducts/>
         </main>
         <aside className="w-full tablet:w-1/3 flex flex-col gap-16">
           {/* RESUMEN DE LA COMPRA */}

@@ -44,7 +44,7 @@ const FAQ = ({ questions }) => {
 
             {/* Contenido desplegable */}
             {isOpen && (
-              <div className="px-6 pb-5 pt-2">
+              <div className="px-2 pb-5 pt-2">
                 <div className="bg-gray-100 text-gray text-sm font-antonio w-full px-6 py-4 flex justify-between  rounded-2xl text-left">
                   {Array.isArray(question.answer) ? (
                     <ul className="list-decimal list-inside space-y-1">

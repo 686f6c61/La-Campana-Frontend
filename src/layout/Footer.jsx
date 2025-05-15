@@ -43,7 +43,7 @@ const Footer = () => {
             {socialMedia.map((social) => (
               <Link
                 key={social.id}
-                className="flex hover:scale-90 transition duration-300 ease-in-out"
+                className="flex hover:scale-90 hover:fill-red-500 transition duration-300 ease-in-out"
                 title={social.title}
                 to={social.link}
               >

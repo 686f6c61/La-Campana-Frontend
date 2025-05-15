@@ -22,6 +22,7 @@ const BlogsGallery = () => {
     error: errorCategories,
     isLoading: isLoadingCategories,
   } = useGetBlogCategoriesQuery();
+
   const {
     data: blogs,
     error: errorBlogs,
@@ -88,9 +89,12 @@ const BlogsGallery = () => {
 
   const cleanFilterCategory = {
     _id: "clear-filters",
-    name: "Limpiar",
+    name: "Todos",
   };
-  const allCategories = [cleanFilterCategory, ...categories];
+  const allCategories = [...categories, cleanFilterCategory];
+  const filteredCategories = allCategories.filter(
+    (category) => category.name.toLowerCase() !== "uncategorized"
+  );
 
 
   return (
@@ -98,7 +102,7 @@ const BlogsGallery = () => {
       <header className="flex flex-col tablet:flex-row justify-between">
         <div className="flex flex-wrap w-full">
           <RadioSelect
-            options={allCategories.map((category) => ({
+            options={filteredCategories.map((category) => ({
               value: category._id,
               label: category.name,
             }))}

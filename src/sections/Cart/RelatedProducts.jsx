@@ -3,6 +3,7 @@ import ProductCard from "../../components/common/ProductCard"
 import chunkArray from "../../helpers/chunkArray"
 import { useSelector } from "react-redux";
 import categories from "../../utils/categories";
+import ComplementSection from "../../components/common/ComplementSection";
 
 const RelatedProducts = () => {
   const products = useSelector((state) => state.products.list.slice(0,9));
@@ -14,14 +15,15 @@ const RelatedProducts = () => {
   const relatedProductsMovile = chunkArray(products, 2)
 
   return (
+    
     <section className="text-start">
-      <h4>Productos Similares</h4>
+      <ComplementSection />
       <div className="hidden lg:block">
-        <div className="carousel w-full">
+        <div className="carousel w-full gap-8">
           {relatedProducts.map((productChunk, index) =>
             <article
               id={`product-chunk-${index}`}
-              className="carousel-item w-full"
+              className="carousel-item w-full mt-6"
             >
               {productChunk.map(product =>
                 <article className="w-1/2 lg:w-1/3">

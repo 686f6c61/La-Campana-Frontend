@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useGetProductsByTextQuery } from "../../../store/reducers/apiSlice";
 import categories from "../../../utils/categories";
+import CardsCarousel from "../CardsCarousel";
+import chunkArray from "../../../helpers/chunkArray";
+import ProductCard from "../ProductCard";
 
 import CardGrid from "../CardGrid";
 import ActionButton from "../../common/ActionButton";
@@ -9,9 +12,9 @@ const MAX_RETRIES = 3; // Límite de reintentos
 
 const BestOfLaCampana = () => {
   const { data: products, error, isLoading, refetch } =
-  useGetProductsByTextQuery("tuberia");
+    useGetProductsByTextQuery("tuberia");
   const [retryCount, setRetryCount] = useState(0);
-  
+
   useEffect(() => {
     if (error && retryCount < MAX_RETRIES) {
       setRetryCount((prev) => prev + 1);
@@ -20,53 +23,76 @@ const BestOfLaCampana = () => {
   }, [error, retryCount, refetch]);
 
   const category = categories.find(cat => cat.id === "tuberia");
-	const [categoryImage, setCategoryImage] = useState(category?.image || "")
+  const [categoryImage, setCategoryImage] = useState(category?.image || "")
 
   const filteredProductLg = products && products?.slice(0, 5)
   const filteredProductSm = products && products?.slice(0, 4)
 
   if (isLoading) return <p>Cargando...</p>;
   if (error) return <p>Error al cargar los datos.</p>;
+  const chunkedProducts = chunkArray(products, 2);
 
-  
   return (
-    <section className="max-w-screen-desktop w-full justify-self-center mx-auto bg-white "> 
-      <div className="px-4 flex flex-col items-center justify-center mb-20">
-      <div className="fixed top-0 right-0 h-full w-[20vw] bg-gradient-to-l from-[#ff0000]/10 via-[#ff0000]/5 to-transparent z-0 pointer-events-none" />
-        <h2 className="text-center text-3xl font-bold font-antonio mb-8">
-          Lo mejor de la <span className="text-red-600">campana</span>
-        </h2>
-        <div className="hidden lg:block">
-          <CardGrid
-            products={filteredProductLg.map((product) => ({
-              ItemCode: product.ItemCode,
-              image: categoryImage || "images/prod4.jpg",
-              ItemName: product.ItemName,
-              ItemPrices: product.ItemPrices,
-              discount: product.discount,
-            }))}
-            smCol="2"
-            lgCol="5"
+    <section className="relative overflow-hidden py-20 px-4 tablet:px-6">
+      <div className="relative z-10 max-w-screen-desktop mx-auto flex flex-col gap-8">
+        <header className="text-center">
+          <h2 className="text-3xl font-bold">
+            Lo mejor de  <span className="text-lacampana-red2">La Camapana</span>
+          </h2>
+        </header>
+
+        <section className="flex flex-col gap-8 items-center">
+          {/* Carrusel mobile */}
+          <div className="tablet:hidden w-full">
+            <CardsCarousel
+              id="best-offer-carousel-item"
+              cardsList={chunkedProducts}
+              justifyValue="center"
+              latestBlogs={true}
+            >
+              {chunkedProducts.map((chunk, index) => (
+                <ul
+                  key={`carousel-slide-${index}`}
+                  id={`best-offer-carousel-item-${index}`}
+                  className="carousel-item w-full h-[350px] tablet:h-[420px]"
+                >
+                  {chunk.map((product) => (
+                    <li key={product.ItemCode} className="w-1/2 p-2">
+                      <ProductCard
+                        id={product.ItemCode}
+                        name={product.ItemName}
+                        image={categoryImage || "images/prod4.jpg"}
+                        price={product.ItemPrices}
+                        discount={product.discount}
+                      />
+                    </li>
+                  ))}
+                </ul>
+              ))}
+            </CardsCarousel>
+          </div>
+
+          {/* Vista en grilla desktop */}
+          <ul className="hidden tablet:grid grid-cols-2 tablet:grid-cols-4 desktop:grid-cols-5 gap-4">
+            {products.slice(0, 5).map((product) => (
+              <li key={product.ItemCode}>
+                <ProductCard
+                  id={product.ItemCode}
+                  name={product.ItemName}
+                  image={categoryImage}
+                  price={product.ItemPrices}
+                  discount={product.discount}
+                />
+              </li>
+            ))}
+          </ul>
+
+          <ActionButton
+            text="Ver más productos"
+            styles="text-center mt-5"
+            link="/tienda"
           />
-        </div>
-        <div className="lg:hidden">
-          <CardGrid
-            products={filteredProductSm.map((product) => ({
-              id: product.ItemCode,
-              image: categoryImage || "images/prod4.jpg",
-              name: product.ItemName,
-              price: product.ItemPrices,
-              discount: product.discount,
-            }))}
-            smCol="2"
-            lgCol="5"
-          />
-        </div>
-        <ActionButton
-          styles="text-center mt-10"
-          text="Ver más productos"
-          link="/tienda"
-        />
+        </section>
       </div>
     </section>
   );

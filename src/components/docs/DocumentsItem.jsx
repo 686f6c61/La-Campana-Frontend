@@ -47,6 +47,8 @@ const DocumentsItem = () => {
               bgColor="red"
               borderColor="0 0 0 2px rgba(255, 0, 0, 0.5)"
               textColor="gray"
+              bgColorSelected="bg-lacampana-red2"
+              borderColorSelected="border-lacampana-red2"
             />
           </div>
 

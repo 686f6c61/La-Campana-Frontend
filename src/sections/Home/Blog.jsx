@@ -15,7 +15,7 @@ const Blog = () => {
        
       <article className="mb-20 w-full flex justify-beetwen desktop:gap-8 flex-col desktop:flex-row">
         {/* TITLE SECTION */}
-        <section className="text-start sm:text-center flex flex-col justify-center gap-4 desktop:w-1/2">
+        <section className="text-start sm:text-center pl-8 flex flex-col justify-center gap-4 desktop:w-1/2">
           
           <h3 className="text-start w-[300px]">
             Actualidad y
