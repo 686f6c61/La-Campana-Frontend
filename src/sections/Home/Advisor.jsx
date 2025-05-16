@@ -12,13 +12,14 @@ const Advisor = () => {
             equipo de expertos asesores que te guiarán en todo el proceso de
             compra.
           </p>
-          <div className="md:pt-10 pt-10 md:pb-10">
+          <div className="md:pt-10 pt-10 md:pb-10 transition duration-300 ease-in-out hover:scale-90">
             <ActionButton
               text="Hablar con un asesor"
               link="/"
               bgColor="lacampana-gray1"
             />
           </div>
+
         </div>
         <div className="tablet:relative tablet:w-1/2">
           <img

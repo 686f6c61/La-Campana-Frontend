@@ -37,7 +37,7 @@ const BestOfLaCampana = () => {
       <div className="relative z-10 max-w-screen-desktop mx-auto flex flex-col gap-8">
         <header className="text-center">
           <h2 className="text-3xl font-bold">
-            Lo mejor de  <span className="text-lacampana-red2">La Camapana</span>
+            Lo mejor de  <span className="text-lacampana-red2">La Campana</span>
           </h2>
         </header>
 
