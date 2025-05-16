@@ -150,7 +150,7 @@ const BlogsGallery = () => {
         <button
           disabled={MAX_NUM_RENDERS * numRenders >= blogs?.length}
           onClick={handleLoadMore}
-          className="lacampana-btn mt-10 bg-lacampana-red2 px-8 py-2 mb-5 text-white disabled:bg-lacampana-gray2 md:pb-2 transition duration-300 ease-in-out hover:scale-90 hover:bg-white hover:text-black border border-transparent hover:border-black"
+          className="lacampana-btn mt-10 bg-lacampana-red2 px-8 py-2 mb-5 text-white disabled:bg-lacampana-gray2 md:pb-2 transition duration-300 ease-in-out hover:scale-90 hover:bg-white hover:text-lacampana-red2 border border-transparent hover:border-lacampana-red2"
         >
           Cargar más
         </button>
