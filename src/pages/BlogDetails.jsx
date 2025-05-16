@@ -83,7 +83,8 @@ const BlogDetails = () => {
               }
             />
 
-            <RelatedBlogs relatedBlogs={relatedBlogs} />
+            <RelatedBlogs relatedBlogs={relatedBlogs} currentBlogId={blogId} />
+
           </aside>
         </main>
       </div>

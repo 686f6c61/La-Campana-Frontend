@@ -1,8 +1,11 @@
 import BlogCard from "../common/BlogCard";
 import CardsCarousel from "../common/CardsCarousel";
 
-const RelatedBlogs = ({ relatedBlogs }) => {
-  console.log(relatedBlogs);
+const RelatedBlogs = ({ relatedBlogs, currentBlogId }) => {
+  const filteredBlogs = relatedBlogs.filter(
+    (blog) => String(blog._id) !== String(currentBlogId)
+  );
+
   return (
     <section className="text-start flex flex-col gap-4">
       <h4 className="text-lacampana-red2 text-center tablet:text-center desktop:text-left">
@@ -11,12 +14,13 @@ const RelatedBlogs = ({ relatedBlogs }) => {
 
       <CardsCarousel
         id="related-blog"
-        cardsList={relatedBlogs}
+        cardsList={filteredBlogs}
         latestBlogs={true}
         justifyValue="center"
       >
-        {relatedBlogs.map((blog, index) => (
+        {filteredBlogs.map((blog, index) => (
           <article
+            key={blog._id}
             className="carousel-item pb-4 h-[350px] flex justify-center w-full"
             id={`related-blog-${index}`}
           >
@@ -25,7 +29,7 @@ const RelatedBlogs = ({ relatedBlogs }) => {
               title={blog.name}
               description={blog.body}
               image={blog.image}
-              category={blog.blogCategoryId.name}
+              category={blog.blogCategoryId?.name}
               publicationDate={blog.createdAt}
             />
           </article>
